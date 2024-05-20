@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func setBackground() {
-        profileBackgroundView.image = UIImage(named: "profileBackgroundImage")?.withRenderingMode(.alwaysOriginal)
+        profileBackgroundView.image = UIImage(named: "profileBackground")?.withRenderingMode(.alwaysOriginal)
         profileBackgroundView.contentMode = .scaleAspectFill
     }
     
