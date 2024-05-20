@@ -40,7 +40,7 @@ final class RegisterViewController: UIViewController {
     }
     
     private func setTitleLabel() {
-        titleLabel.text = RegisterViewControllerConstants.titleLabelText
+        titleLabel.text = RegisterConstants.titleLabelText
         titleLabel.textColor = .red
         titleLabel.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
         titleLabel.textAlignment = .center
@@ -125,7 +125,7 @@ final class RegisterViewController: UIViewController {
     private func enableRegisterButton() {
         registerButton.backgroundColor = .white
         let attributedString = NSAttributedString(
-            string: RegisterViewControllerConstants.registerButtonTitle,
+            string: RegisterConstants.registerButtonTitle,
             attributes: [
             NSAttributedString.Key.font : UIFont.systemFont(
                 ofSize: 12,
@@ -160,7 +160,7 @@ final class RegisterViewController: UIViewController {
     }
     
     private func setBottomLabels() {
-        bottomLabel.text = RegisterViewControllerConstants.bottomLabelText
+        bottomLabel.text = RegisterConstants.bottomLabelText
         bottomLabel.textColor = .white
         
         switchButton.onTintColor = .systemRed
@@ -229,17 +229,17 @@ fileprivate enum InfoType: String, CaseIterable {
     func disabledReson() -> String {
         switch self {
         case .personalInfo:
-            RegisterViewControllerConstants.personalDisableReason
+            RegisterConstants.personalDisableReason
         case .password:
-            RegisterViewControllerConstants.passwordDisableReason
+            RegisterConstants.passwordDisableReason
         case .nickname:
-            RegisterViewControllerConstants.nicknameDisableReason
+            RegisterConstants.nicknameDisableReason
         case .location:
-            RegisterViewControllerConstants.locationDisableReason
+            RegisterConstants.locationDisableReason
         case .couponNumber:
-            RegisterViewControllerConstants.couponNumberDisableReason
+            RegisterConstants.couponNumberDisableReason
         case .enabled:
-            RegisterViewControllerConstants.enabledReason
+            RegisterConstants.enabledReason
         }
     }
 }

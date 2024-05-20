@@ -69,17 +69,17 @@ final class EmotionDiaryViewController:
     }
     
     private func setTabBar() {
-        navigationController?.tabBarItem.title = "Emotion"
-        navigationController?.tabBarItem.image = UIImage(systemName: "face.smiling.inverse")
+        navigationController?.tabBarItem.title = EmotionDiaryConstants.tabItemTitle
+        navigationController?.tabBarItem.image = UIImage(systemName: EmotionDiaryConstants.tabBarItemImageName)
     }
     
     private func setNavigationBar() {
         // navigation bar title
-        navigationItem.title = "감정 다이어리"
+        navigationItem.title = EmotionDiaryConstants.navigationTitle
     
         // navigation bar left button
         let leftBarButton = UIBarButtonItem(
-            image: UIImage(systemName: "list.bullet"),
+            image: UIImage(systemName: EmotionDiaryConstants.leftBarButtonImageName),
             style: .plain,
             target: self,
             action: #selector(showDetailController)
@@ -89,15 +89,15 @@ final class EmotionDiaryViewController:
     }
     
     @objc private func showDetailController() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            vc.title = "상세 페이지"
+        if let vc = storyboard?.instantiateViewController(withIdentifier: DetailConstants.identifier) as? DetailViewController {
+            vc.title = DetailConstants.title
             vc.buttonCountDictionary = buttonCountDictionary
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     private func setBackgroundImageView() {
-        slimeBackgroundImageView.image = UIImage(named: "paperBackground")
+        slimeBackgroundImageView.image = UIImage(named: EmotionDiaryConstants.backgroundImageName)
         slimeBackgroundImageView.contentMode = .scaleAspectFill
     }
     
@@ -217,23 +217,23 @@ internal enum EmotionType: String, CaseIterable {
     internal func imageName() -> String {
         switch self {
         case .smile:
-            return "slime1"
+            return EmotionDiaryConstants.smileButtonImageName
         case .happy:
-            return "slime2"
+            return EmotionDiaryConstants.happyButtonImageName
         case .love:
-            return "slime3"
+            return EmotionDiaryConstants.loveButtonImageName
         case .angry:
-            return "slime4"
+            return EmotionDiaryConstants.angryButtonImageName
         case .soso:
-            return "slime5"
+            return EmotionDiaryConstants.sosoButtonImageName
         case .sleepy:
-            return "slime6"
+            return EmotionDiaryConstants.sleepyButtonImageName
         case .embarrased:
-            return "slime7"
+            return EmotionDiaryConstants.embarrasedButtonImageName
         case .unHappy:
-            return "slime8"
+            return EmotionDiaryConstants.unHappyButtonImageName
         case .cry:
-            return "slime9"
+            return EmotionDiaryConstants.cryButtonImageName
         }
     }
     

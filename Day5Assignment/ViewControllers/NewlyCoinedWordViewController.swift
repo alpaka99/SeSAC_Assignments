@@ -60,8 +60,8 @@ final class NewlyCoinedWordViewController: UIViewController {
     
     // MARK: 이 부분은 view가 켜져야 보이는 부분이기 때문에 해당 탭을 눌러서 view를 초기화 하지 않으면 안보임. 그러면 어떻게 처음부터 보이게 할 수 있을까? 방법은 UITabBarController를 상속받는 클래스를 만들어서 거기에서 초기화부터 다 해주면 됨
     private func setTabBar() {
-        navigationController?.tabBarItem.title = "MZ Language"
-        navigationController?.tabBarItem.image = UIImage(systemName: "magnifyingglass.circle.fill")
+        navigationController?.tabBarItem.title = NewlyCoinedWordConstants.tabBarTitle
+        navigationController?.tabBarItem.image = UIImage(systemName: NewlyCoinedWordConstants.tabBarItemImageName)
     }
     
     private func setTextFieldArea() {
@@ -72,12 +72,12 @@ final class NewlyCoinedWordViewController: UIViewController {
     
     private func setMZTextField() {
         mzTextField.borderStyle = .none
-        mzTextField.placeholder = "어떤 신조어가 궁금하신가요..?"
+        mzTextField.placeholder = NewlyCoinedWordConstants.placeholder
         mzTextField.clearButtonMode = .whileEditing
     }
     
     private func setMZSearchButton() {
-        mzSearchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        mzSearchButton.setImage(UIImage(systemName: NewlyCoinedWordConstants.searchButtonImageName), for: .normal)
         mzSearchButton.setTitle("", for: .normal)
         mzSearchButton.backgroundColor = .black
         mzSearchButton.tintColor = .white
@@ -139,13 +139,13 @@ final class NewlyCoinedWordViewController: UIViewController {
     }
     
     private func setMZImageView() {
-        mzResultImageView.image = UIImage(named: "background")
+        mzResultImageView.image = UIImage(named: NewlyCoinedWordConstants.imageViewBackgroundImageName)
         mzResultImageView.contentMode = .scaleAspectFill
     }
     
     private func setMZResultLabel() {
         mzResultLabel.numberOfLines = 0
-        changeMZResultLableText("신조어를 검색해보세요!")
+        changeMZResultLableText(NewlyCoinedWordConstants.initialLabelText)
     }
     
     private func changeMZResultLableText(_ text: String) {
@@ -251,29 +251,29 @@ private enum MZWordType: String, CaseIterable {
     fileprivate func getValue() -> String {
         switch self {
         case .디토:
-            return "동의합니다"
+            return NewlyCoinedWordConstants.디토Value
         case .kijul:
-            return "너무 재밌어서 기절하겠다"
+            return NewlyCoinedWordConstants.kijulValue
         case .중꺾그마:
-            return "중요한건 꺾였는데도 그냥 하는 마음"
+            return NewlyCoinedWordConstants.중꺾그마Value
         case .ㄱㅂㅈㄱ:
-            return "가보자고"
+            return NewlyCoinedWordConstants.ㄱㅂㅈㄱValue
         case .그잡채:
-            return "그 자체"
+            return NewlyCoinedWordConstants.그잡채Value
         case .h워얼v:
-            return "180도 회정시켜 보면 \'사랑해\'"
+            return NewlyCoinedWordConstants.h워얼vValue
         case .내또출:
-            return "내일 또 출근이야"
+            return NewlyCoinedWordConstants.내또출Value
         case .일며들다:
-            return "일이 내 삶에 스며들었다"
+            return NewlyCoinedWordConstants.일며들다Value
         case .당모치:
-            return "당연히 모든 치킨은 옳다"
+            return NewlyCoinedWordConstants.당모치Value
         case .잼얘:
-            return "재밋는 이야기"
+            return NewlyCoinedWordConstants.잼얘Value
         case .군싹:
-            return "군침이 싹 도네"
+            return NewlyCoinedWordConstants.군싹Value
         case .sbn:
-            return "선배님"
+            return NewlyCoinedWordConstants.sbnValue
         }
     }
     

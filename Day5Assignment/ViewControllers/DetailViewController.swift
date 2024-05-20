@@ -36,10 +36,10 @@ final class DetailViewController: UIViewController {
     }
     
     private var detailLabelText: String {
-        var detailLabelText = "당신의 현재 감정은"
+        var detailLabelText = DetailConstants.initialDetailLabelText
         let middleText = emotions.reduce("") { $0+"\n"+$1.rawValue }
         detailLabelText += middleText
-        detailLabelText += "\n입니다...!"
+        detailLabelText += DetailConstants.endDetailLabelText
         
         return detailLabelText
     }
@@ -162,7 +162,7 @@ final class DetailViewController: UIViewController {
         //            changeImageButton.tintColor = .white
         //        }
         var config = UIButton.Configuration.plain()
-        config.image = UIImage(systemName: "arrow.clockwise")
+        config.image = UIImage(systemName: DetailConstants.buttonConfigurationImageName)
         config.background.backgroundColor = color
         config.cornerStyle = .capsule
         
