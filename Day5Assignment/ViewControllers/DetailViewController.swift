@@ -37,7 +37,7 @@ final class DetailViewController: UIViewController {
     
     private var detailLabelText: String {
         var detailLabelText = DetailConstants.initialDetailLabelText
-        let middleText = emotions.reduce("") { $0+"\n"+$1.rawValue }
+        let middleText = emotions.reduce("") { $0+"\n"+"\"\($1.rawValue)\"" }
         detailLabelText += middleText
         detailLabelText += DetailConstants.endDetailLabelText
         

@@ -15,16 +15,11 @@ internal struct RegisterConstants {
     
     // TextFieldType constants
     static let personalDisableReason: String = "이메일 혹은 전화번호를 입력해주세요"
-    static let passwordDisableReason: String =
-    "비밀번호는 숫자로 입력해주세요"
-    static let nicknameDisableReason: String =
-    "닉네임을 입력해주세요"
-    static let locationDisableReason: String =
-    "장소를 입력해주세요"
-    static let couponNumberDisableReason: String =
-    "쿠폰 번호는 숫자로만 이루어져 있습니다."
-    static let enabledReason: String =
-    "허가됨"
+    static let passwordDisableReason: String = "비밀번호는 숫자로 입력해주세요"
+    static let nicknameDisableReason: String = "닉네임을 입력해주세요"
+    static let locationDisableReason: String = "장소를 입력해주세요"
+    static let couponNumberDisableReason: String = "쿠폰 번호는 숫자로만 이루어져 있습니다."
+    static let enabledReason: String = "허가됨"
 }
 
 
