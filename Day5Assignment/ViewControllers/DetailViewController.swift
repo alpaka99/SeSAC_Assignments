@@ -30,10 +30,10 @@ final class DetailViewController: UIViewController {
             ]
     }
     
-    private var randomColor: UIColor {
-        let randomIndex = Int.random(in: 0..<colors.count)
-        return colors[randomIndex]
+    private var randomColor: UIColor? {
+        return colors.randomElement()
     }
+    
     
     private var detailLabelText: String {
         var detailLabelText = DetailConstants.initialDetailLabelText
@@ -95,7 +95,10 @@ final class DetailViewController: UIViewController {
     //    }
     
     private func setTitleEmotion() {
-        titleEmotion = emotions[Int.random(in: 0..<emotions.count)]
+        if let emotion = emotions.randomElement() {
+//            titleEmotion = emotions[Int.random(in: 0..<emotions.count)]
+            titleEmotion = emotion
+        }
     }
     
     private func setImageViewLayouts() {
@@ -235,9 +238,10 @@ final class DetailViewController: UIViewController {
     }
     
     private func changeColorsUsingRandomColor() {
-        let randomColor = randomColor
-        changeDetailImageBackground(withColor: randomColor)
-        setChangeImageButtonLayouts(withColor: randomColor)
+        if let randomColor = randomColor {
+            changeDetailImageBackground(withColor: randomColor)
+            setChangeImageButtonLayouts(withColor: randomColor)
+        }
     }
     
 }
