@@ -42,11 +42,18 @@ final class NewlyCoinedWordViewController: UIViewController {
         return Array(randomWordArray[0..<numberOfRandomButtons])
     }
     
+    private var randomViewContollerType: RandomViewControllerType? {
+        return RandomViewControllerType.allCases.randomElement()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // setTabBar
         setTabBar()
+        
+        // set navigationBar
+        setNavigationBar()
         
         // setTextField
         setTextFieldArea()
@@ -62,6 +69,35 @@ final class NewlyCoinedWordViewController: UIViewController {
     private func setTabBar() {
         navigationController?.tabBarItem.title = NewlyCoinedWordConstants.tabBarTitle
         navigationController?.tabBarItem.image = UIImage(systemName: NewlyCoinedWordConstants.tabBarItemImageName)
+    }
+    
+    private func setNavigationBar() {
+        navigationItem.title = NewlyCoinedWordConstants.navigationTitle
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: NewlyCoinedWordConstants.rightBarButtonImageName),
+            style: .plain,
+            target: self,
+            action: #selector(showRandomViewController)
+        )
+    }
+    
+    @objc private func showRandomViewController() {
+        if let randomViewContollerType = randomViewContollerType {
+            switch randomViewContollerType {
+            case .profile:
+                if let vc = storyboard?.instantiateViewController(identifier: randomViewContollerType.rawValue) as? ProfileViewController {
+                    present(vc, animated: true)
+                }
+            case .musicPlayer:
+                if let vc = storyboard?.instantiateViewController(identifier: randomViewContollerType.rawValue) as? MusicPlayerViewController {
+                    present(vc, animated: true)
+                }
+            case .baemin:
+                if let vc = storyboard?.instantiateViewController(identifier: randomViewContollerType.rawValue) as? BaeminViewController {
+                    present(vc, animated: true)
+                }
+            }
+        }
     }
     
     private func setTextFieldArea() {
@@ -197,10 +233,6 @@ final class NewlyCoinedWordViewController: UIViewController {
         slideDownKeyboard()
     }
     
-    private func shuffleMZWordArray() {
-        
-    }
-    
 }
 
 
@@ -291,3 +323,10 @@ private enum MZWordType: String, CaseIterable {
 //    }
 }
 
+
+private enum RandomViewControllerType: String, CaseIterable {
+    case profile = "ProfileViewController"
+    case musicPlayer = "MusicPlayerViewController"
+    case baemin = "BaeminViewController"
+    
+}

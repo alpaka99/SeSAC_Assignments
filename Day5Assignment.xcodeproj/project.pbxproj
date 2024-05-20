@@ -19,6 +19,9 @@
 		CE5F02092BFB2EFF003DC6BE /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F02082BFB2EFF003DC6BE /* UIImage+Resize.swift */; };
 		CE5F020B2BFB31B4003DC6BE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F020A2BFB31B4003DC6BE /* RegisterViewController.swift */; };
 		CE5F020E2BFB33F8003DC6BE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F020D2BFB33F8003DC6BE /* Constants.swift */; };
+		CE5F02132BFB85FD003DC6BE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F02122BFB85FD003DC6BE /* ProfileViewController.swift */; };
+		CE5F02152BFB8609003DC6BE /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F02142BFB8609003DC6BE /* MusicPlayerViewController.swift */; };
+		CE5F02172BFB8612003DC6BE /* BaeminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F02162BFB8612003DC6BE /* BaeminViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		CE5F02082BFB2EFF003DC6BE /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		CE5F020A2BFB31B4003DC6BE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		CE5F020D2BFB33F8003DC6BE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE5F02122BFB85FD003DC6BE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CE5F02142BFB8609003DC6BE /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
+		CE5F02162BFB8612003DC6BE /* BaeminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaeminViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +91,9 @@
 		CE5F01FA2BFB2B73003DC6BE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE5F02012BFB2E8C003DC6BE /* NewlyCoinedWordViewController.swift */,
-				CE5F02032BFB2EBC003DC6BE /* EmotionDiaryViewController.swift */,
-				CE5F02052BFB2ED4003DC6BE /* DetailViewController.swift */,
-				CE5F020A2BFB31B4003DC6BE /* RegisterViewController.swift */,
+				CE5F02112BFB85BB003DC6BE /* NewlyCoinedWord */,
+				CE5F020F2BFB8575003DC6BE /* Register */,
+				CE5F02102BFB857E003DC6BE /* EmotionDiary */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -107,6 +112,34 @@
 				CE5F020D2BFB33F8003DC6BE /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		CE5F020F2BFB8575003DC6BE /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F020A2BFB31B4003DC6BE /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		CE5F02102BFB857E003DC6BE /* EmotionDiary */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F02032BFB2EBC003DC6BE /* EmotionDiaryViewController.swift */,
+				CE5F02052BFB2ED4003DC6BE /* DetailViewController.swift */,
+			);
+			path = EmotionDiary;
+			sourceTree = "<group>";
+		};
+		CE5F02112BFB85BB003DC6BE /* NewlyCoinedWord */ = {
+			isa = PBXGroup;
+			children = (
+				CE5F02012BFB2E8C003DC6BE /* NewlyCoinedWordViewController.swift */,
+				CE5F02122BFB85FD003DC6BE /* ProfileViewController.swift */,
+				CE5F02142BFB8609003DC6BE /* MusicPlayerViewController.swift */,
+				CE5F02162BFB8612003DC6BE /* BaeminViewController.swift */,
+			);
+			path = NewlyCoinedWord;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,12 +215,15 @@
 			files = (
 				CE5F02092BFB2EFF003DC6BE /* UIImage+Resize.swift in Sources */,
 				CE5F01EB2BFB2B19003DC6BE /* ViewController.swift in Sources */,
+				CE5F02132BFB85FD003DC6BE /* ProfileViewController.swift in Sources */,
 				CE5F01E72BFB2B19003DC6BE /* AppDelegate.swift in Sources */,
+				CE5F02172BFB8612003DC6BE /* BaeminViewController.swift in Sources */,
 				CE5F020B2BFB31B4003DC6BE /* RegisterViewController.swift in Sources */,
 				CE5F02022BFB2E8C003DC6BE /* NewlyCoinedWordViewController.swift in Sources */,
 				CE5F02062BFB2ED4003DC6BE /* DetailViewController.swift in Sources */,
 				CE5F01E92BFB2B19003DC6BE /* SceneDelegate.swift in Sources */,
 				CE5F02042BFB2EBC003DC6BE /* EmotionDiaryViewController.swift in Sources */,
+				CE5F02152BFB8609003DC6BE /* MusicPlayerViewController.swift in Sources */,
 				CE5F020E2BFB33F8003DC6BE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

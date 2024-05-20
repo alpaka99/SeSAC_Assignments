@@ -65,6 +65,10 @@ internal struct NewlyCoinedWordConstants {
     static let tabBarTitle: String = "MZ Language"
     static let tabBarItemImageName: String = "magnifyingglass.circle.fill"
     
+    // navigation bar constants
+    static let navigationTitle = "신조어 검색"
+    static let rightBarButtonImageName = "shuffle"
+    
     // textfield constants
     static let placeholder: String = "어떤 신조어가 궁금하신가요..?"
     static let searchButtonImageName: String = "magnifyingglass"
