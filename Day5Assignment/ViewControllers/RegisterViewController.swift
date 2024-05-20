@@ -40,48 +40,50 @@ final class RegisterViewController: UIViewController {
     }
     
     private func setTitleLabel() {
-        titleLabel.text = "JACKFLIX"
-        titleLabel.textColor = .systemRed
+        titleLabel.text = RegisterViewControllerConstants.titleLabelText
+        titleLabel.textColor = .red
         titleLabel.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
         titleLabel.textAlignment = .center
     }
     
     private func setTextFields() {
-        let textFields: [TextFieldType] = TextFieldType.allCases
+        let textFields: [InfoType] = InfoType.allCases
         
         textFields.forEach { textField in
             switch textField {
             case .personalInfo:
                 setTextField(
                     personalInfoTextField,
-                    textFieldType: .personalInfo
+                    infoType: .personalInfo
                 )
             case .password:
                 setTextField(
                     passwordTextField,
-                    textFieldType: .password
+                    infoType: .password
                 )
             case .nickname:
                 setTextField(
                     nicknameTextField,
-                    textFieldType: .nickname
+                    infoType: .nickname
                 )
             case .location:
                 setTextField(
                     locationTextField,
-                    textFieldType: .location
+                    infoType: .location
                 )
             case .couponNumber:
                 setTextField(
                     couponNumberTextField,
-                    textFieldType: .couponNumber
+                    infoType: .couponNumber
                 )
+            case .enabled:
+                break
             }
         }
     }
     
-    private func setAttributedString(_ textFieldType: TextFieldType) -> NSAttributedString {
-        let placeholder = textFieldType.rawValue
+    private func setAttributedString(_ infoType: InfoType) -> NSAttributedString {
+        let placeholder = infoType.rawValue
         
         let attributedString = NSAttributedString(
             string: placeholder,
@@ -98,13 +100,13 @@ final class RegisterViewController: UIViewController {
     
     private func setTextField(
         _ textField: UITextField,
-        textFieldType: TextFieldType
+        infoType: InfoType
     ) {
         textField.textAlignment = .center
         textField.backgroundColor = .gray
-        textField.attributedPlaceholder = setAttributedString(textFieldType)
+        textField.attributedPlaceholder = setAttributedString(infoType)
         
-        if textFieldType == .password {
+        if infoType == .password {
             textField.isSecureTextEntry = true
         }
     }
@@ -116,13 +118,15 @@ final class RegisterViewController: UIViewController {
             for: .touchUpInside
         )
         
-        disableRegisterButton(CheckResultType.personalInfo.disabledReson())
+        disableRegisterButton(InfoType.personalInfo.disabledReson())
         registerButton.isEnabled = false
     }
     
     private func enableRegisterButton() {
         registerButton.backgroundColor = .white
-        let attributedString = NSAttributedString(string: "회원가입", attributes: [
+        let attributedString = NSAttributedString(
+            string: RegisterViewControllerConstants.registerButtonTitle,
+            attributes: [
             NSAttributedString.Key.font : UIFont.systemFont(
                 ofSize: 12,
                 weight: .bold
@@ -156,13 +160,13 @@ final class RegisterViewController: UIViewController {
     }
     
     private func setBottomLabels() {
-        bottomLabel.text = "추가 정보 입력"
+        bottomLabel.text = RegisterViewControllerConstants.bottomLabelText
         bottomLabel.textColor = .white
         
         switchButton.onTintColor = .systemRed
     }
     
-    private func checkButtonDisabled() -> CheckResultType {
+    private func checkButtonDisabled() -> InfoType {
         guard checkPersonalInfo() else { return .personalInfo }
         guard checkPassword() else { return .password }
         guard checkNickname() else { return .nickname }
@@ -210,39 +214,32 @@ final class RegisterViewController: UIViewController {
         default:
             disableRegisterButton(checkResult.disabledReson())
         }
-            }
+    }
 }
 
-fileprivate enum TextFieldType: String, CaseIterable {
+// combine two enums into one
+fileprivate enum InfoType: String, CaseIterable {
     case personalInfo = "이메일 주소 또는 전화번호"
     case password = "비밀번호"
     case nickname = "닉네임"
     case location = "위치"
     case couponNumber = "추천코드 입력"
-}
+    case enabled = "허가됨"
 
-fileprivate enum CheckResultType {
-    case personalInfo
-    case password
-    case nickname
-    case location
-    case couponNumber
-    case enabled
-    
     func disabledReson() -> String {
         switch self {
         case .personalInfo:
-            "이메일 혹은 전화번호를 입력해주세요"
+            RegisterViewControllerConstants.personalDisableReason
         case .password:
-            "비밀번호는 숫자로 입력해주세요"
+            RegisterViewControllerConstants.passwordDisableReason
         case .nickname:
-            "닉네임을 입력해주세요"
+            RegisterViewControllerConstants.nicknameDisableReason
         case .location:
-            "장소를 입력해주세요"
+            RegisterViewControllerConstants.locationDisableReason
         case .couponNumber:
-            "쿠폰 번호는 숫자로만 이루어져 있습니다."
+            RegisterViewControllerConstants.couponNumberDisableReason
         case .enabled:
-            "허가됨"
+            RegisterViewControllerConstants.enabledReason
         }
     }
 }

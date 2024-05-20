@@ -106,7 +106,7 @@ final class EmotionDiaryViewController:
         EmotionType.allCases.forEach { emotionType in
             if let button = emotionButtons[emotionType] {
                 if let count = buttonCountDictionary[emotionType] {
-                    let title = "\(emotionType.titleName()) \(count)"
+                    let title = "\(emotionType.rawValue) \(count)"
                     setButtonConfig(
                         for: button,
                         with: title,
@@ -188,7 +188,7 @@ final class EmotionDiaryViewController:
         _ emotionType: EmotionType,
         with count: Int
     ) {
-        let newTitle = "\(emotionType.titleName()) \(String(count))"
+        let newTitle = "\(emotionType.rawValue) \(String(count))"
         
         if let button = emotionButtons[emotionType] {
             setButtonConfig(
@@ -201,16 +201,17 @@ final class EmotionDiaryViewController:
 }
 
 
-internal enum EmotionType: CaseIterable {
-    case smile
-    case happy
-    case love
-    case angry
-    case soso
-    case sleepy
-    case embarrased
-    case unHappy
-    case cry
+internal enum EmotionType: String, CaseIterable {
+    case smile = "재밌어"
+    case happy = "행복해"
+    case love = "사랑해"
+    case angry = "화나"
+    case soso = "그저그래"
+    case sleepy = "잠온다"
+    case embarrased = "당황해"
+    case unHappy = "안행복해"
+    case cry = "눈물나"
+
     
     
     internal func imageName() -> String {
@@ -236,28 +237,28 @@ internal enum EmotionType: CaseIterable {
         }
     }
     
-    internal func titleName() -> String {
-        switch self {
-        case .smile:
-            return "재밌어"
-        case .happy:
-            return "행복해"
-        case .love:
-            return "사랑해"
-        case .angry:
-            return "화나"
-        case .soso:
-            return "그저그래"
-        case .sleepy:
-            return "잠온다"
-        case .embarrased:
-            return "당황해"
-        case .unHappy:
-            return "안행복해"
-        case .cry:
-            return "눈물나"
-        }
-    }
+//    internal func titleName() -> String {
+//        switch self {
+//        case .smile:
+//            return "재밌어"
+//        case .happy:
+//            return "행복해"
+//        case .love:
+//            return "사랑해"
+//        case .angry:
+//            return "화나"
+//        case .soso:
+//            return "그저그래"
+//        case .sleepy:
+//            return "잠온다"
+//        case .embarrased:
+//            return "당황해"
+//        case .unHappy:
+//            return "안행복해"
+//        case .cry:
+//            return "눈물나"
+//        }
+//    }
     
     static func createEmotionTypeByTagNumber(_ tagNumber: Int) -> Self? {
         switch tagNumber {

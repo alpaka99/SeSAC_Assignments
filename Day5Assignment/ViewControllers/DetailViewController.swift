@@ -13,39 +13,55 @@ final class DetailViewController: UIViewController {
     @IBOutlet var changeImageButton: UIButton!
     @IBOutlet var detailLabel: UILabel!
     
-    var buttonCountDictionary: [EmotionType : Int]!
-    var emotions: [EmotionType] = []
-    var titleEmotion: EmotionType?
+    internal var buttonCountDictionary: [EmotionType : Int]!
+    private var emotions: [EmotionType] = []
+    private var titleEmotion: EmotionType?
     
-    let colors: [UIColor] = [
-        .systemPink,
-        .systemRed,
-        .systemOrange,
-        .systemYellow,
-        .systemGreen,
-        .systemCyan,
-        .systemBlue,
-        .systemIndigo,
-    ]
-    var randomColor: UIColor?
+    // new computed properties
+    private var colors: [UIColor] {
+        return [ .systemPink,
+                 .systemRed,
+                 .systemOrange,
+                 .systemYellow,
+                 .systemGreen,
+                 .systemCyan,
+                 .systemBlue,
+                 .systemIndigo,
+            ]
+    }
+    
+    private var randomColor: UIColor {
+        let randomIndex = Int.random(in: 0..<colors.count)
+        return colors[randomIndex]
+    }
+    
+    private var detailLabelText: String {
+        var detailLabelText = "당신의 현재 감정은"
+        let middleText = emotions.reduce("") { $0+"\n"+$1.rawValue }
+        detailLabelText += middleText
+        detailLabelText += "\n입니다...!"
+        
+        return detailLabelText
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // set Layout
         setLayouts()
-                
+        
     }
     
     private func setLayouts() {
         getMostFrequentEmotions()
-        setRandomColor()
+        //        setRandomColor()
         
         setImageViewLayouts()
         setDetailImageNameLayout()
-        setChangeImageButtonLayouts()
+        //        setChangeImageButtonLayouts()
         setLabelLayouts()
+        
+        changeColorsUsingRandomColor()
     }
     
     private func getMostFrequentEmotions() {
@@ -71,9 +87,12 @@ final class DetailViewController: UIViewController {
         setTitleEmotion()
     }
     
-    private func setRandomColor() {
-        randomColor = colors[Int.random(in: 0..<colors.count)]
-    }
+    //    private func setRandomColor() {
+    //        randomColor = colors[Int.random(in: 0..<colors.count)]
+    //        let randomColor = randomColor
+    //        changeDetailImageBackground(with: randomColor)
+    
+    //    }
     
     private func setTitleEmotion() {
         titleEmotion = emotions[Int.random(in: 0..<emotions.count)]
@@ -102,44 +121,66 @@ final class DetailViewController: UIViewController {
         )
         
         changeDetailImageName()
-        changeDetailImageBackground()
+        //        changeDetailImageBackground()
     }
     
     private func changeDetailImageName() {
         if let titleEmotion = titleEmotion {
-            detailImageNameLabel.text = titleEmotion.titleName()
+            //            detailImageNameLabel.text = titleEmotion.titleName()
+            detailImageNameLabel.text = titleEmotion.rawValue
         }
     }
     
-    private func changeDetailImageBackground() {
-        if let randomColor = randomColor {
-            detailImageView.backgroundColor = randomColor.withAlphaComponent(0.7)
-        }
+    private func changeDetailImageBackground(withColor color: UIColor) {
+        //        if let randomColor = randomColor {
+        //            detailImageView.backgroundColor = randomColor.withAlphaComponent(0.7)
+        //        }
+        detailImageView.backgroundColor = color.withAlphaComponent(0.7)
     }
     
-    private func setChangeImageButtonLayouts() {
-        if let randomColor = randomColor {
-            var config = UIButton.Configuration.plain()
-            config.image = UIImage(systemName: "arrow.clockwise")
-            config.background.backgroundColor = randomColor
-            config.cornerStyle = .capsule
-            
-            changeImageButton.configuration = config
-            changeImageButton.configurationUpdateHandler = { btn in
-                switch btn.state {
-                case .highlighted:
-                    UIView.animate(withDuration: 0.05, delay: 0) {
-                        btn.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                    }
-                default:
-                    UIView.animate(withDuration: 0.05, delay: 0) {
-                        btn.transform = CGAffineTransform.identity
-                    }
+    private func setChangeImageButtonLayouts(withColor color: UIColor) {
+        //        if let randomColor = randomColor {
+        //            var config = UIButton.Configuration.plain()
+        //            config.image = UIImage(systemName: "arrow.clockwise")
+        //            config.background.backgroundColor = randomColor
+        //            config.cornerStyle = .capsule
+        //
+        //            changeImageButton.configuration = config
+        //            changeImageButton.configurationUpdateHandler = { btn in
+        //                switch btn.state {
+        //                case .highlighted:
+        //                    UIView.animate(withDuration: 0.05, delay: 0) {
+        //                        btn.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        //                    }
+        //                default:
+        //                    UIView.animate(withDuration: 0.05, delay: 0) {
+        //                        btn.transform = CGAffineTransform.identity
+        //                    }
+        //                }
+        //            }
+        //
+        //            changeImageButton.tintColor = .white
+        //        }
+        var config = UIButton.Configuration.plain()
+        config.image = UIImage(systemName: "arrow.clockwise")
+        config.background.backgroundColor = color
+        config.cornerStyle = .capsule
+        
+        changeImageButton.configuration = config
+        changeImageButton.configurationUpdateHandler = { btn in
+            switch btn.state {
+            case .highlighted:
+                UIView.animate(withDuration: 0.05, delay: 0) {
+                    btn.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                }
+            default:
+                UIView.animate(withDuration: 0.05, delay: 0) {
+                    btn.transform = CGAffineTransform.identity
                 }
             }
-            
-            changeImageButton.tintColor = .white
         }
+        
+        changeImageButton.tintColor = .white
     }
     
     private func setLabelLayouts() {
@@ -160,11 +201,11 @@ final class DetailViewController: UIViewController {
     }
     
     private func changeLabelText() {
-        var detailLabelText = "당신의 현재 감정은"
-        emotions.forEach { emotion in
-            detailLabelText += "\n\"\(emotion.titleName())\""
-        }
-        detailLabelText += "\n입니다...!"
+//        var detailLabelText = "당신의 현재 감정은"
+//        emotions.forEach { emotion in
+//            detailLabelText += "\n\"\(emotion.titleName())\""
+//        }
+//        detailLabelText += "\n입니다...!"
         
         detailLabel.text = detailLabelText
     }
@@ -185,11 +226,18 @@ final class DetailViewController: UIViewController {
     @IBAction func changeImageButtonTapped(_ sender: UIButton) {
         setTitleEmotion()
         
-        setRandomColor()
+        //        setRandomColor()
         chageImageViewBackgroundColor()
         changeImageViewImage()
         changeDetailImageName()
-        setChangeImageButtonLayouts()
+        changeColorsUsingRandomColor()
+        //        setChangeImageButtonLayouts()
+    }
+    
+    private func changeColorsUsingRandomColor() {
+        let randomColor = randomColor
+        changeDetailImageBackground(withColor: randomColor)
+        setChangeImageButtonLayouts(withColor: randomColor)
     }
     
 }

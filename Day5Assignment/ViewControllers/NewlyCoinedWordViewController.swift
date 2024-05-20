@@ -17,19 +17,33 @@ final class NewlyCoinedWordViewController: UIViewController {
     @IBOutlet var thirdMZLanguageButton: UIButton!
     @IBOutlet var fourthMZLanguageButton: UIButton!
     
-    lazy var randomButtons: [UIButton] = [
+    private lazy var randomButtons: [UIButton] = [
         firstMZLanguageButton,
         secondMZLanguageButton,
         thirdMZLanguageButton,
         fourthMZLanguageButton
     ]
     
+    // new computed property
+    private var numberOfRandomButtons: Int {
+        return randomButtons.count
+    }
+    
     @IBOutlet var mzResultImageView: UIImageView!
     @IBOutlet var mzResultLabel: UILabel!
     
+    
+    // new computed properties
+    private var randomWordArray: [MZWordType]  {
+        return MZWordType.allCases.shuffled()
+    }
+    
+    private var selectedRandomWords: [MZWordType] {
+        return Array(randomWordArray[0..<numberOfRandomButtons])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
         
         // setTabBar
         setTabBar()
@@ -75,9 +89,9 @@ final class NewlyCoinedWordViewController: UIViewController {
     }
     
     private func setMZLanguageButtons() {
-        let randomMZWords: [MZWordType] = MZWordType.getRandomMZWords(of: randomButtons.count)
+        let randomMZWords: [MZWordType] = selectedRandomWords
         
-        for i in 0..<randomButtons.count {
+        for i in 0..<numberOfRandomButtons {
             let randomButton = randomButtons[i]
             setRandomButton(
                 randomButton,
@@ -97,7 +111,7 @@ final class NewlyCoinedWordViewController: UIViewController {
         var titleContainer = AttributeContainer()
         titleContainer.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         config.attributedTitle = AttributedString(
-            mzWord.getKey(),
+            mzWord.rawValue,
             attributes: titleContainer
         )
         
@@ -183,6 +197,10 @@ final class NewlyCoinedWordViewController: UIViewController {
         slideDownKeyboard()
     }
     
+    private func shuffleMZWordArray() {
+        
+    }
+    
 }
 
 
@@ -201,34 +219,34 @@ private enum MZWordType: String, CaseIterable {
     case sbn = "SBN"
     
     
-    fileprivate func getKey() -> String {
-        switch self {
-        case .디토:
-            return "디토"
-        case .kijul:
-            return "KIJUL"
-        case .중꺾그마:
-            return "중꺾그마"
-        case .ㄱㅂㅈㄱ:
-            return "ㄱㅂㅈㄱ"
-        case .그잡채:
-            return "그 잡채"
-        case .h워얼v:
-            return "H워얼V"
-        case .내또출:
-            return "내또출"
-        case .일며들다:
-            return "일며들다"
-        case .당모치:
-            return "당모치"
-        case .잼얘:
-            return"잼얘"
-        case .군싹:
-            return "군싹"
-        case .sbn:
-            return "SBN"
-        }
-    }
+//    fileprivate func getKey() -> String {
+//        switch self {
+//        case .디토:
+//            return "디토"
+//        case .kijul:
+//            return "KIJUL"
+//        case .중꺾그마:
+//            return "중꺾그마"
+//        case .ㄱㅂㅈㄱ:
+//            return "ㄱㅂㅈㄱ"
+//        case .그잡채:
+//            return "그 잡채"
+//        case .h워얼v:
+//            return "H워얼V"
+//        case .내또출:
+//            return "내또출"
+//        case .일며들다:
+//            return "일며들다"
+//        case .당모치:
+//            return "당모치"
+//        case .잼얘:
+//            return"잼얘"
+//        case .군싹:
+//            return "군싹"
+//        case .sbn:
+//            return "SBN"
+//        }
+//    }
     
     fileprivate func getValue() -> String {
         switch self {
@@ -259,17 +277,17 @@ private enum MZWordType: String, CaseIterable {
         }
     }
     
-    static func getRandomMZWords(of limit: Int) -> [Self] {
-        let mzWords: [Self] = Self.allCases
-        let mzWordCount = mzWords.count
-        
-        var randomMZWords: Set<Self> = []
-        
-        while randomMZWords.count < limit {
-            randomMZWords.insert(mzWords[Int.random(in: 0..<mzWordCount)])
-        }
-        
-        return Array(randomMZWords)
-    }
+//    static func getRandomMZWords(of limit: Int) -> [Self] {
+//        let mzWords: [Self] = Self.allCases
+//        let mzWordCount = mzWords.count
+//        
+//        var randomMZWords: Set<Self> = []
+//        
+//        while randomMZWords.count < limit {
+//            randomMZWords.insert(mzWords[Int.random(in: 0..<mzWordCount)])
+//        }
+//        
+//        return Array(randomMZWords)
+//    }
 }
 
