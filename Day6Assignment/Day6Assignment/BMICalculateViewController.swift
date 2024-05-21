@@ -21,7 +21,7 @@ class BMICalculateViewController: UIViewController {
     
     @IBOutlet var heightTextFieldBackgroundView: UIView!
     @IBOutlet var weightTextFieldBackgroundView: UIView!
-    private lazy var textFieldBackgrounds: [ TextFieldType : UIView ] = [
+    private lazy var textFieldBackgrounds: [TextFieldType : UIView] = [
         .height : heightTextFieldBackgroundView,
         .weight : weightTextFieldBackgroundView
     ]
@@ -37,8 +37,8 @@ class BMICalculateViewController: UIViewController {
     @IBOutlet var calculateButton: UIButton!
     @IBOutlet var randomBMIButton: UIButton!
     private lazy var buttons: [ButtonType : UIButton] = [
-        .secureEntry(.enabled) : secureEntryButton,
-        .calculate: calculateButton,
+        .secureTextEntry(.enabled) : secureEntryButton,
+        .calculate(.disabled): calculateButton,
         .randomBMI: randomBMIButton
     ]
     
@@ -50,7 +50,7 @@ class BMICalculateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // configure titleLabels
         configureLabels()
         
@@ -79,11 +79,13 @@ class BMICalculateViewController: UIViewController {
             label.numberOfLines = type.numberOfLines
         }
     }
-
+    
     private func configureTextFields() {
         TextFieldType.allCases.forEach { type in
             setTextFieldBackgroundLayout(type)
             setTextFieldLayout(type)
+            
+            addTargetToTextField(type)
         }
     }
     
@@ -106,6 +108,96 @@ class BMICalculateViewController: UIViewController {
     private func configureButtons() {
         ButtonType.allCases.forEach { type in
             setButtonLayout(type)
+            changeButtonEnabled(type)
+        }
+        
+        addTargetToButtons()
+    }
+    
+    private func addTargetToButtons() {
+        buttons.values.forEach { button in
+            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func buttonAction(_ sender: UIButton) {
+        switch sender.tag {
+        case 0: // secureEntry button
+            secureTextEnteryButtonTapped()
+        case 1: // calculate button
+            showBMIAlert()
+        case 2: // random bmi button
+            break
+        default:
+            break
+        }
+    }
+    
+    private func showBMIAlert() {
+        let type = calculateAlertType()
+        
+        let alertController = UIAlertController(title: type.title, message: type.message, preferredStyle: type.preferredStyle)
+        let action = UIAlertAction(title: AlertActionType.cancel.title, style: AlertActionType.cancel.style)
+        alertController.addAction(action)
+        
+        present(alertController, animated: true)
+    }
+    
+    private func calculateAlertType() -> AlertType {
+        if let height = getCalculatavableValue(.height), // in m
+           let weight = getCalculatavableValue(.weight) { // in kg
+            let bmi = weight / pow(height, 2)
+            return .bmiAlert(bmi)
+        }
+        
+        return .wrongInputAlert
+    }
+    
+    
+    
+    private func getCalculatavableValue(_ type: TextFieldType) -> Double? {
+        guard let textField = textFields[type] else { return nil }
+        guard let text = textField.text else { return nil }
+        guard let decimalNumber = Double(text) else {  return nil }
+        
+        switch type {
+        case .height:
+            return convertHeightToCalculatableValue(decimalNumber)
+        case .weight:
+            return convertWeightToCalculatableValue(decimalNumber)
+        }
+        
+    }
+    
+    // converts cm, m to m
+    private func convertHeightToCalculatableValue(_ decimalNumber: Double) -> Double? {
+        switch decimalNumber {
+        case .leastNonzeroMagnitude..<0.2:
+            return nil
+        case 0.2..<2.6: // 0.2m~2.6m
+            return decimalNumber
+        case 3.0..<20:
+            return nil
+        case 20...260: // 20cm~260cm
+            return decimalNumber / 100
+        default:
+            return nil
+        }
+    }
+    
+    // converts g, kg to kg
+    private func convertWeightToCalculatableValue(_ decimalNumber: Double) -> Double? {
+        switch decimalNumber {
+        case .leastNonzeroMagnitude..<1:
+            return nil
+        case 1..<500: // 1kg~500kg
+            return decimalNumber
+        case 500..<1000:
+            return nil
+        case 1000..<500000: // 1000g ~ 500,000g:
+            return decimalNumber / 1000
+        default:
+            return nil
         }
     }
     
@@ -119,6 +211,7 @@ class BMICalculateViewController: UIViewController {
             config.image = UIImage(systemName: type.buttonSystemImageName)
             
             button.configuration = config
+            button.tag = type.tag
         }
     }
     
@@ -133,6 +226,85 @@ class BMICalculateViewController: UIViewController {
             imageView.image = UIImage(named: type.imageName)?.withRenderingMode(type.withRenderingMode)
             imageView.contentMode = type.contentMode
         }
+    }
+    
+    // textfield actions
+    private func addTargetToTextField(_ type: TextFieldType) {
+        if let textField = textFields[type] {
+            textField.addTarget(self, action: #selector(checkTextFieldText), for: .editingChanged)
+        }
+    }
+    
+    @objc private func checkTextFieldText() {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        if let heightText = heightTextField.text,
+           let _ = numberFormatter.number(from: heightText),
+           let weightText = weightTextField.text,
+           let _ = numberFormatter.number(from: weightText) {
+            changeButtonState(to: .calculate(.enabled))
+        } else {
+            changeButtonState(to: .calculate(.disabled))
+        }
+    }
+    
+    private func changeButtonState(to buttonType: ButtonType) {
+        changeButtonState(buttonType)
+        changeButtonEnabled(buttonType)
+        //MARK: key로 있는 button type의 disabled 변경해야함
+        toggleEnabledProperty(buttonType)
+    }
+    
+    private func changeButtonState(_ buttonType: ButtonType) {
+        switch buttonType {
+        case .calculate(_), .secureTextEntry(_):
+            if let _ = buttons[buttonType] {
+                setButtonLayout(buttonType)
+            }
+        default:
+            break
+        }
+    }
+    
+    private func changeButtonEnabled(_ buttonType: ButtonType) {
+        switch buttonType {
+        case .calculate(_):
+            if let button = buttons[buttonType] {
+                button.isEnabled = buttonType.enabled
+            }
+        default:
+            break
+        }
+    }
+    
+    private func toggleSecureTextEntryOption(_ type: ButtonType) {
+        changeButtonState(type)
+    }
+    
+    // change key from .calculate(.disabled) to .calculate(.enabled) and vice versa
+    private func toggleEnabledProperty(_ buttonType: ButtonType) {
+        if let button = buttons.removeValue(forKey: buttonType) {
+            buttons[buttonType.toggle()] = button
+        }
+    }
+    
+    
+    // button actions
+    private func secureTextEnteryButtonTapped() {
+        if buttons.keys.contains(.secureTextEntry(.enabled)) {
+            changeButtonEnabled(.secureTextEntry(.disabled))
+        } else {
+            changeButtonEnabled(.secureTextEntry(.enabled))
+        }
+    }
+    
+    @objc private func calculateButtonTapped() {
+        
+    }
+    
+    @objc private func randomBMIButtonTapped() {
+        
     }
 }
 
@@ -158,8 +330,8 @@ private enum LabelType: CaseIterable {
     
     var textColor: UIColor {
         switch self {
-            default:
-                return .black
+        default:
+            return .black
         }
     }
     
@@ -208,9 +380,9 @@ private enum TextFieldType: CaseIterable {
     var placeholder: String {
         switch self {
         case .height:
-            return "키를 입력해주세요"
+            return "키를 입력해주세요(m)"
         case .weight:
-            return "몸무게를 입력해주세요"
+            return "몸무게를 입력해주세요(kg)"
         }
     }
     
@@ -257,13 +429,13 @@ private enum TextFieldType: CaseIterable {
 
 private enum ButtonType: CaseIterable, Hashable {
     static var allCases: [ButtonType] = [
-        Self.calculate,
+        Self.calculate(.disabled),
         Self.randomBMI,
-        Self.secureEntry(.enabled)
+        Self.secureTextEntry(.enabled)
     ]
     
-    case secureEntry(SecureEntryType)
-    case calculate
+    case secureTextEntry(ButtonEnabledType)
+    case calculate(ButtonEnabledType)
     case randomBMI
     
     // button style property
@@ -277,7 +449,7 @@ private enum ButtonType: CaseIterable, Hashable {
     // button image properties
     var buttonSystemImageName: String {
         switch self {
-        case .secureEntry(let secureEntryType):
+        case .secureTextEntry(let secureEntryType):
             if secureEntryType == .enabled {
                 return "eye.slash"
             } else {
@@ -310,9 +482,9 @@ private enum ButtonType: CaseIterable, Hashable {
     // button foreground properties
     var tintColor: UIColor {
         switch self {
-        case .randomBMI, .secureEntry(.enabled):
+        case .randomBMI, .secureTextEntry(.enabled):
             return .red
-        case .secureEntry(.disabled):
+        case .secureTextEntry(.disabled):
             return .blue
         case .calculate:
             return .white
@@ -321,9 +493,9 @@ private enum ButtonType: CaseIterable, Hashable {
     
     var baseForegroundColor: UIColor {
         switch self {
-        case .secureEntry(.enabled), .randomBMI:
+        case .secureTextEntry(.enabled), .randomBMI:
             return .red
-        case .secureEntry(.disabled):
+        case .secureTextEntry(.disabled):
             return .blue
         case .calculate:
             return .white
@@ -332,12 +504,14 @@ private enum ButtonType: CaseIterable, Hashable {
     
     var title: String? {
         switch self {
-        case .secureEntry(.enabled):
+        case .secureTextEntry(.enabled):
             return nil
-        case .secureEntry(.disabled):
+        case .secureTextEntry(.disabled):
             return nil
-        case .calculate:
+        case .calculate(.enabled):
             return "결과 확인"
+        case .calculate(.disabled):
+            return "숫자를 입력해주세요"
         case .randomBMI:
             return "랜덤으로 BMI 계산하기"
         }
@@ -351,11 +525,62 @@ private enum ButtonType: CaseIterable, Hashable {
                 .center
         }
     }
+    
+    // other properties
+    var tag: Int {
+        switch self {
+        case .secureTextEntry(_):
+            return 0
+        case .calculate(_):
+            return 1
+        case .randomBMI:
+            return 2
+        }
+    }
+    
+    // enabled disabled properties
+    var enabled: Bool {
+        switch self {
+        case .calculate(let flag), .secureTextEntry(let flag):
+            return flag.rawValue
+        default:
+            return false
+        }
+    }
+    
+    func toggle() -> Self {
+        switch self {
+        case .calculate(let flag):
+            return .calculate(flag.toggle())
+        case .secureTextEntry(let flag):
+            return .secureTextEntry(flag.toggle())
+        default:
+            return self
+        }
+    }
 }
 
-private enum SecureEntryType {
+private enum ButtonEnabledType {
     case enabled
     case disabled
+    
+    var rawValue: Bool {
+        switch self {
+        case .enabled:
+            return true
+        case .disabled:
+            return false
+        }
+    }
+    
+    func toggle() -> Self {
+        switch self {
+        case .enabled:
+            return .disabled
+        case .disabled:
+            return .enabled
+        }
+    }
 }
 
 private enum ImageViewType: CaseIterable {
@@ -381,6 +606,54 @@ private enum ImageViewType: CaseIterable {
         switch self {
         default:
             return .alwaysOriginal
+        }
+    }
+}
+
+private enum AlertType {
+    case bmiAlert(Double)
+    case wrongInputAlert
+    
+    var title: String {
+        switch self {
+        case .bmiAlert(let bmi):
+            return "당신의 bmi는 \(bmi)입니다."
+        case .wrongInputAlert:
+            return "제대로 된 숫자를 입력해주세요."
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .bmiAlert(_):
+            return "bmi메세지"
+        case .wrongInputAlert:
+            return "사람이 아니신가요..?"
+        }
+    }
+    
+    var preferredStyle: UIAlertController.Style {
+        switch self {
+        default:
+                return .alert
+        }
+    }
+}
+
+enum AlertActionType {
+    case cancel
+    
+    var title: String {
+        switch self {
+        default:
+            return "취소"
+        }
+    }
+    
+    var style: UIAlertAction.Style {
+        switch self {
+        default:
+            return .cancel
         }
     }
 }
