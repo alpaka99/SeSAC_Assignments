@@ -66,11 +66,11 @@ class BMICalculateViewController: UIViewController {
     
     private func configureLabels() {
         LabelType.allCases.forEach { type in
-            setLabel(type)
+            setLabelLayout(type)
         }
     }
     
-    private func setLabel(_ type: LabelType) {
+    private func setLabelLayout(_ type: LabelType) {
         if let label = labels[type] {
             label.text = type.text
             label.font = type.font
@@ -82,21 +82,20 @@ class BMICalculateViewController: UIViewController {
 
     private func configureTextFields() {
         TextFieldType.allCases.forEach { type in
-            setTextFieldBackground(type)
-            setTextField(type)
+            setTextFieldBackgroundLayout(type)
+            setTextFieldLayout(type)
         }
     }
     
-    private func setTextFieldBackground(_ type: TextFieldType) {
+    private func setTextFieldBackgroundLayout(_ type: TextFieldType) {
         if let backgroundView = textFieldBackgrounds[type] {
             backgroundView.layer.borderColor = type.borderColor
             backgroundView.layer.borderWidth = type.borderWidth
             backgroundView.layer.cornerRadius = type.cornerRadius
         }
-
     }
     
-    private func setTextField(_ type: TextFieldType) {
+    private func setTextFieldLayout(_ type: TextFieldType) {
         if let textField = textFields[type] {
             textField.placeholder = type.placeholder
             textField.isSecureTextEntry = type.isSecureEntry
@@ -106,11 +105,11 @@ class BMICalculateViewController: UIViewController {
     
     private func configureButtons() {
         ButtonType.allCases.forEach { type in
-            setButton(type)
+            setButtonLayout(type)
         }
     }
     
-    private func setButton(_ type: ButtonType) {
+    private func setButtonLayout(_ type: ButtonType) {
         if let button = buttons[type] {
             var config = type.config
             config.title = type.title
@@ -125,11 +124,11 @@ class BMICalculateViewController: UIViewController {
     
     private func configureImageViews() {
         ImageViewType.allCases.forEach { type in
-            setImage(type)
+            setImageLayout(type)
         }
     }
     
-    private func setImage(_ type: ImageViewType) {
+    private func setImageLayout(_ type: ImageViewType) {
         if let imageView = imageViews[type] {
             imageView.image = UIImage(named: type.imageName)?.withRenderingMode(type.withRenderingMode)
             imageView.contentMode = type.contentMode
@@ -395,3 +394,7 @@ private enum ImageViewType: CaseIterable {
 //    let textAlignment: NSTextAlignment
 //}
 
+
+//func calculateBMI<T: Numeric>(height: T, weight: T) -> T {
+//    // bmi 계산 로직
+//}
