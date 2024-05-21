@@ -37,7 +37,7 @@ class BMICalculateViewController: UIViewController {
     @IBOutlet var calculateButton: UIButton!
     @IBOutlet var randomBMIButton: UIButton!
     private lazy var buttons: [ButtonType : UIButton] = [
-        .secureEntryEnabled : secureEntryButton,
+        .secureEntry(.enabled) : secureEntryButton,
         .calculate: calculateButton,
         .randomBMI: randomBMIButton
     ]
@@ -54,9 +54,6 @@ class BMICalculateViewController: UIViewController {
         // configure titleLabels
         configureLabels()
         
-        // configure textField Backgrounds
-        configureTextFieldBackgrounds()
-        
         // configure textFields
         configureTextFields()
         
@@ -68,59 +65,74 @@ class BMICalculateViewController: UIViewController {
     }
     
     private func configureLabels() {
-        LabelType.allCases.forEach { labelType in
-            if let label = labels[labelType] {
-                label.text = labelType.text
-                label.font = labelType.font
-                label.textColor = labelType.textColor
-                label.textAlignment = labelType.textAlignment
-                label.numberOfLines = labelType.numberOfLines
-            }
-        }
-    }
-
-    private func configureTextFieldBackgrounds() {
-        TextFieldType.allCases.forEach { type in
-            if let backgroundView = textFieldBackgrounds[type] {
-                backgroundView.layer.borderColor = type.borderColor
-                backgroundView.layer.borderWidth = type.borderWidth
-                backgroundView.layer.cornerRadius = type.cornerRadius
-            }
+        LabelType.allCases.forEach { type in
+            setLabel(type)
         }
     }
     
+    private func setLabel(_ type: LabelType) {
+        if let label = labels[type] {
+            label.text = type.text
+            label.font = type.font
+            label.textColor = type.textColor
+            label.textAlignment = type.textAlignment
+            label.numberOfLines = type.numberOfLines
+        }
+    }
+
     private func configureTextFields() {
         TextFieldType.allCases.forEach { type in
-            if let textField = textFields[type] {
-                textField.placeholder = type.placeholder
-                textField.isSecureTextEntry = type.isSecureEntry
-                textField.borderStyle = .none
-            }
+            setTextFieldBackground(type)
+            setTextField(type)
+        }
+    }
+    
+    private func setTextFieldBackground(_ type: TextFieldType) {
+        if let backgroundView = textFieldBackgrounds[type] {
+            backgroundView.layer.borderColor = type.borderColor
+            backgroundView.layer.borderWidth = type.borderWidth
+            backgroundView.layer.cornerRadius = type.cornerRadius
+        }
+
+    }
+    
+    private func setTextField(_ type: TextFieldType) {
+        if let textField = textFields[type] {
+            textField.placeholder = type.placeholder
+            textField.isSecureTextEntry = type.isSecureEntry
+            textField.borderStyle = .none
         }
     }
     
     private func configureButtons() {
         ButtonType.allCases.forEach { type in
-            if let button = buttons[type] {
-                
-                var config = type.config
-                config.title = type.title
-                config.baseForegroundColor = type.baseForegroundColor
-                config.background.backgroundColor = type.backgroundColor
-                config.titleAlignment = type.titleAlignment
-                config.image = UIImage(systemName: type.buttonSystemImageName)
-                
-                button.configuration = config
-            }
+            setButton(type)
+        }
+    }
+    
+    private func setButton(_ type: ButtonType) {
+        if let button = buttons[type] {
+            var config = type.config
+            config.title = type.title
+            config.baseForegroundColor = type.baseForegroundColor
+            config.background.backgroundColor = type.backgroundColor
+            config.titleAlignment = type.titleAlignment
+            config.image = UIImage(systemName: type.buttonSystemImageName)
+            
+            button.configuration = config
         }
     }
     
     private func configureImageViews() {
         ImageViewType.allCases.forEach { type in
-            if let imageView = imageViews[type] {
-                imageView.image = UIImage(named: type.imageName)?.withRenderingMode(type.withRenderingMode)
-                imageView.contentMode = type.contentMode
-            }
+            setImage(type)
+        }
+    }
+    
+    private func setImage(_ type: ImageViewType) {
+        if let imageView = imageViews[type] {
+            imageView.image = UIImage(named: type.imageName)?.withRenderingMode(type.withRenderingMode)
+            imageView.contentMode = type.contentMode
         }
     }
 }
@@ -243,9 +255,15 @@ private enum TextFieldType: CaseIterable {
     }
 }
 
-private enum ButtonType: CaseIterable {
-    case secureEntryEnabled
-    case secureEntryDisabled
+
+private enum ButtonType: CaseIterable, Hashable {
+    static var allCases: [ButtonType] = [
+        Self.calculate,
+        Self.randomBMI,
+        Self.secureEntry(.enabled)
+    ]
+    
+    case secureEntry(SecureEntryType)
     case calculate
     case randomBMI
     
@@ -260,10 +278,12 @@ private enum ButtonType: CaseIterable {
     // button image properties
     var buttonSystemImageName: String {
         switch self {
-        case .secureEntryDisabled:
-            return "eye.fill"
-        case .secureEntryEnabled:
-            return "eye.slash"
+        case .secureEntry(let secureEntryType):
+            if secureEntryType == .enabled {
+                return "eye.slash"
+            } else {
+                return "eye.fill"
+            }
         default:
             return ""
         }
@@ -291,20 +311,20 @@ private enum ButtonType: CaseIterable {
     // button foreground properties
     var tintColor: UIColor {
         switch self {
-        case .randomBMI, .secureEntryEnabled:
+        case .randomBMI, .secureEntry(.enabled):
             return .red
-        case .secureEntryDisabled:
+        case .secureEntry(.disabled):
             return .blue
         case .calculate:
             return .white
         }
     }
     
-    var baseForegroundColor:  UIColor {
+    var baseForegroundColor: UIColor {
         switch self {
-        case .secureEntryEnabled, .randomBMI:
+        case .secureEntry(.enabled), .randomBMI:
             return .red
-        case .secureEntryDisabled:
+        case .secureEntry(.disabled):
             return .blue
         case .calculate:
             return .white
@@ -313,9 +333,9 @@ private enum ButtonType: CaseIterable {
     
     var title: String? {
         switch self {
-        case .secureEntryEnabled:
+        case .secureEntry(.enabled):
             return nil
-        case .secureEntryDisabled:
+        case .secureEntry(.disabled):
             return nil
         case .calculate:
             return "결과 확인"
@@ -332,7 +352,11 @@ private enum ButtonType: CaseIterable {
                 .center
         }
     }
-    
+}
+
+private enum SecureEntryType {
+    case enabled
+    case disabled
 }
 
 private enum ImageViewType: CaseIterable {
@@ -360,10 +384,6 @@ private enum ImageViewType: CaseIterable {
             return .alwaysOriginal
         }
     }
-    
-//    func temp() {
-//        let temp = UIImage(named: <#T##String#>).
-//    }
 }
 
 
