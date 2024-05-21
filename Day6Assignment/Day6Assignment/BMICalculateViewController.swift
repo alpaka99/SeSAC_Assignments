@@ -12,14 +12,11 @@ class BMICalculateViewController: UIViewController {
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var heightQuestionLabel: UILabel!
     @IBOutlet var weightQuestionLabel: UILabel!
-    @IBOutlet var randomBMILabel: UILabel!
-    
     private lazy var labels: [LabelType : UILabel] = [
         .title : titleLabel,
         .subTitle : subTitleLabel,
         .heightQuestion : heightQuestionLabel,
-        .weightQuestion : weightQuestionLabel,
-        .randomBMI : randomBMILabel
+        .weightQuestion : weightQuestionLabel
     ]
     
     @IBOutlet var heightTextFieldBackgroundView: UIView!
@@ -38,10 +35,18 @@ class BMICalculateViewController: UIViewController {
     
     @IBOutlet var secureEntryButton: UIButton!
     @IBOutlet var calculateButton: UIButton!
+    @IBOutlet var randomBMIButton: UIButton!
     private lazy var buttons: [ButtonType : UIButton] = [
-        :
+        .secureEntryEnabled : secureEntryButton,
+        .calculate: calculateButton,
+        .randomBMI: randomBMIButton
     ]
     
+    
+    @IBOutlet var personImageView: UIImageView!
+    private lazy var imageViews: [ImageViewType:UIImageView] = [
+        .personImage : personImageView
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +60,11 @@ class BMICalculateViewController: UIViewController {
         // configure textFields
         configureTextFields()
         
+        // configure buttons
+        configureButtons()
+        
+        // configure images
+        configureImageViews()
     }
     
     private func configureLabels() {
@@ -88,6 +98,31 @@ class BMICalculateViewController: UIViewController {
             }
         }
     }
+    
+    private func configureButtons() {
+        ButtonType.allCases.forEach { type in
+            if let button = buttons[type] {
+                
+                var config = type.config
+                config.title = type.title
+                config.baseForegroundColor = type.baseForegroundColor
+                config.background.backgroundColor = type.backgroundColor
+                config.titleAlignment = type.titleAlignment
+                config.image = UIImage(systemName: type.buttonSystemImageName)
+                
+                button.configuration = config
+            }
+        }
+    }
+    
+    private func configureImageViews() {
+        ImageViewType.allCases.forEach { type in
+            if let imageView = imageViews[type] {
+                imageView.image = UIImage(named: type.imageName)?.withRenderingMode(type.withRenderingMode)
+                imageView.contentMode = type.contentMode
+            }
+        }
+    }
 }
 
 
@@ -96,7 +131,6 @@ private enum LabelType: CaseIterable {
     case subTitle
     case heightQuestion
     case weightQuestion
-    case randomBMI
     
     var text: String {
         switch self {
@@ -108,15 +142,11 @@ private enum LabelType: CaseIterable {
             return "키가 어떻게 되시나요?"
         case .weightQuestion:
             return "몸무게가 어떻게 되시나요?"
-        case .randomBMI:
-            return "랜덤으로 BMI 계산하기"
         }
     }
     
     var textColor: UIColor {
         switch self {
-        case .randomBMI:
-            return .red
             default:
                 return .black
         }
@@ -139,15 +169,11 @@ private enum LabelType: CaseIterable {
                 ofSize: 16,
                 weight: .medium
             )
-        case .randomBMI:
-            return .systemFont(ofSize: 12)
         }
     }
     
     var textAlignment: NSTextAlignment {
         switch self {
-        case .randomBMI:
-            return .right
         default:
             return .left
         }
@@ -215,6 +241,129 @@ private enum TextFieldType: CaseIterable {
             return false
         }
     }
+}
+
+private enum ButtonType: CaseIterable {
+    case secureEntryEnabled
+    case secureEntryDisabled
+    case calculate
+    case randomBMI
+    
+    // button style property
+    var config: UIButton.Configuration {
+        switch self {
+        default:
+                .plain()
+        }
+    }
+    
+    // button image properties
+    var buttonSystemImageName: String {
+        switch self {
+        case .secureEntryDisabled:
+            return "eye.fill"
+        case .secureEntryEnabled:
+            return "eye.slash"
+        default:
+            return ""
+        }
+    }
+    
+    // button background properties
+    var backgroundColor: UIColor {
+        switch self {
+        case .calculate:
+            return .systemPurple
+        default:
+            return .clear
+        }
+    }
+    
+    var cornerRadius: CGFloat {
+        switch self {
+        case .calculate:
+            return 8
+        default:
+            return 0
+        }
+    }
+    
+    // button foreground properties
+    var tintColor: UIColor {
+        switch self {
+        case .randomBMI, .secureEntryEnabled:
+            return .red
+        case .secureEntryDisabled:
+            return .blue
+        case .calculate:
+            return .white
+        }
+    }
+    
+    var baseForegroundColor:  UIColor {
+        switch self {
+        case .secureEntryEnabled, .randomBMI:
+            return .red
+        case .secureEntryDisabled:
+            return .blue
+        case .calculate:
+            return .white
+        }
+    }
+    
+    var title: String? {
+        switch self {
+        case .secureEntryEnabled:
+            return nil
+        case .secureEntryDisabled:
+            return nil
+        case .calculate:
+            return "결과 확인"
+        case .randomBMI:
+            return "랜덤으로 BMI 계산하기"
+        }
+    }
+    
+    var titleAlignment: UIButton.Configuration.TitleAlignment {
+        switch self {
+        case .randomBMI:
+                .trailing
+        default:
+                .center
+        }
+    }
+    
+}
+
+private enum ImageViewType: CaseIterable {
+    case personImage
+    
+    var imageName: String {
+        switch self {
+        case .personImage:
+            return "image"
+        default:
+            return ""
+        }
+    }
+    
+    var contentMode: UIImageView.ContentMode {
+        switch self {
+        default:
+            return .scaleAspectFill
+        }
+    }
+    
+    var withRenderingMode: UIImage.RenderingMode {
+        switch self {
+        default:
+            return .alwaysOriginal
+        }
+    }
+    
+//    func temp() {
+//        let temp = UIImage(named: <#T##String#>).
+//    }
 }
 
 
