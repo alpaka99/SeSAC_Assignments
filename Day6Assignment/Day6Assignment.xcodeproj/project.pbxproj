@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5DF7FE2BFD5AB200319C86 /* Dictionary+SwitchKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF7FD2BFD5AB200319C86 /* Dictionary+SwitchKey.swift */; };
 		CE7999572BFC7FDB0010F7D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7999562BFC7FDB0010F7D0 /* AppDelegate.swift */; };
 		CE7999592BFC7FDB0010F7D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7999582BFC7FDB0010F7D0 /* SceneDelegate.swift */; };
 		CE79995B2BFC7FDB0010F7D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79995A2BFC7FDB0010F7D0 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE5DF7FD2BFD5AB200319C86 /* Dictionary+SwitchKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+SwitchKey.swift"; sourceTree = "<group>"; };
 		CE7999532BFC7FDB0010F7D0 /* Day6Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Day6Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7999562BFC7FDB0010F7D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7999582BFC7FDB0010F7D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5DF7FC2BFD5A8B00319C86 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF7FD2BFD5AB200319C86 /* Dictionary+SwitchKey.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CE79994A2BFC7FDB0010F7D0 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		CE7999552BFC7FDB0010F7D0 /* Day6Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DF7FC2BFD5A8B00319C86 /* Extensions */,
 				CE7999562BFC7FDB0010F7D0 /* AppDelegate.swift */,
 				CE7999582BFC7FDB0010F7D0 /* SceneDelegate.swift */,
 				CE79995A2BFC7FDB0010F7D0 /* ViewController.swift */,
@@ -145,6 +156,7 @@
 				CE79995B2BFC7FDB0010F7D0 /* ViewController.swift in Sources */,
 				CE7999572BFC7FDB0010F7D0 /* AppDelegate.swift in Sources */,
 				CE7999592BFC7FDB0010F7D0 /* SceneDelegate.swift in Sources */,
+				CE5DF7FE2BFD5AB200319C86 /* Dictionary+SwitchKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -103,22 +103,26 @@ class BMICalculateViewController: UIViewController {
         if let textField = textFields[type] {
             textField.placeholder = type.placeholder
             textField.isSecureTextEntry = type.isSecureEntry
-            textField.borderStyle = .none
+            textField.borderStyle = type.borderStyle
+            textField.tag = type.tag
         }
     }
     
     private func configureButtons() {
         buttons.keys.forEach { type in
             setButtonLayout(type)
-            changeButtonEnabled(type)
+            
+            addTargetToButtons(type)
         }
-        
-        addTargetToButtons()
     }
     
-    private func addTargetToButtons() {
-        buttons.values.forEach { button in
-            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+    private func addTargetToButtons(_ type: ButtonType) {
+        if let button = buttons[type] {
+            button.addTarget(
+                self,
+                action: #selector(buttonAction),
+                for: .touchUpInside
+            )
         }
     }
     
@@ -144,6 +148,7 @@ class BMICalculateViewController: UIViewController {
             message: type.message,
             preferredStyle: type.preferredStyle
         )
+        
         actionTypes.forEach { actionType in
             let alertAction = UIAlertAction(
                 title: actionType.title,
@@ -165,11 +170,9 @@ class BMICalculateViewController: UIViewController {
         return .wrongInputAlert
     }
     
-    
-    
     private func getCalculatavableValue(_ type: TextFieldType) -> Double? {
         guard let textField = textFields[type] else { return nil }
-        guard let text = textField.text else { return nil }
+        guard let text = textField.text?.components(separatedBy: " ").first else { return nil }
         guard let decimalNumber = Double(text) else {  return nil }
         
         switch type {
@@ -181,7 +184,7 @@ class BMICalculateViewController: UIViewController {
         
     }
     
-    // assume that user input is cm, drops any other unit value such as m, km etc...
+    // assume user input is cm. drops any other unit value such as m, km etc...
     private func convertHeightToCalculatableValue(_ decimalNumber: Double) -> Double? {
         switch decimalNumber {
         case 20..<260: // 0.2m~2.6m
@@ -191,7 +194,7 @@ class BMICalculateViewController: UIViewController {
         }
     }
     
-    // assume that user input is kg, drops any other unit value such as g, kg, t etc...
+    // assume user input is kg. drops any other unit value such as g, kg, t etc...
     private func convertWeightToCalculatableValue(_ decimalNumber: Double) -> Double? {
         switch decimalNumber {
         case 1..<500: // 1kg~500kg
@@ -212,6 +215,7 @@ class BMICalculateViewController: UIViewController {
             
             button.configuration = config
             button.tag = type.tag
+//            button.isEnabled = type.isEnabled
         }
     }
     
@@ -231,7 +235,21 @@ class BMICalculateViewController: UIViewController {
     // textfield actions
     private func addTargetToTextField(_ type: TextFieldType) {
         if let textField = textFields[type] {
-            textField.addTarget(self, action: #selector(checkTextFieldText), for: .editingChanged)
+            textField.addTarget(
+                self,
+                action: #selector(checkTextFieldText),
+                for: .editingChanged
+            )
+            textField.addTarget(
+                self,
+                action: #selector(addInputUnit),
+                for: .editingDidEnd
+            )
+            textField.addTarget(
+                self,
+                action: #selector(deleteInputUnit),
+                for: .editingDidBegin
+            )
         }
     }
     
@@ -240,19 +258,57 @@ class BMICalculateViewController: UIViewController {
         numberFormatter.numberStyle = .decimal
         
         if let heightText = heightTextField.text,
-           let _ = numberFormatter.number(from: heightText),
-           let weightText = weightTextField.text,
-           let _ = numberFormatter.number(from: weightText) {
-            changeButtonState(to: .calculate(.enabled))
+           let weightText = weightTextField.text {
+            if let _ = numberFormatter.number(from: heightText),
+                let _ = numberFormatter.number(from: weightText) {
+                changeButtonState(to: .calculate(.enabled))
+            }
         } else {
             changeButtonState(to: .calculate(.disabled))
+        }
+    }
+    
+    @objc private func addInputUnit(_ sender: UITextField) {
+        let tag = sender.tag
+        var type = TextFieldType.height
+        
+        if tag != type.tag { // heightTextField
+            type = .weight(secureTextEntryButtonState)
+        }
+        
+        addInputUnitFromText(type)
+    }
+    
+    private func addInputUnitFromText(_ type: TextFieldType) {
+        if let textField = textFields[type],
+           let text = textField.text {
+            textField.text = text + " " + type.unit
+        }
+    }
+    
+    @objc func deleteInputUnit(_ sender: UITextField) {
+        let tag = sender.tag
+        var type = TextFieldType.height
+        
+        if tag != type.tag { // heightTextField
+            type = .weight(secureTextEntryButtonState)
+        }
+        
+        deleteInputUnitFromText(type)
+    }
+    
+    private func deleteInputUnitFromText(_ type: TextFieldType) {
+        if let textField = textFields[type],
+           let text = textField.text {
+            let pureText = text.components(separatedBy: " ").first
+            textField.text = pureText
         }
     }
     
     private func changeButtonState(to buttonType: ButtonType) {
         changeButtonLayout(buttonType)
         changeButtonEnabled(buttonType)
-        //MARK: key로 있는 button type의 disabled 변경해야함
+        
         toggleEnabledProperty(buttonType)
     }
     
@@ -271,7 +327,7 @@ class BMICalculateViewController: UIViewController {
         switch buttonType {
         case .calculate(_):
             if let button = buttons[buttonType] {
-                button.isEnabled = buttonType.enabled
+                button.isEnabled = buttonType.isEnabled
             }
         default:
             break
@@ -384,10 +440,43 @@ private enum TextFieldType: CaseIterable, Hashable {
     var borderStyle: UITextField.BorderStyle {
         switch self {
         default:
-                .none
+            return .none
         }
     }
     
+    var isSecureEntry: Bool {
+        switch self {
+        case .weight(let state):
+            return (state == .enabled) ? true : false
+        default:
+            return false
+        }
+    }
+    
+    var keyboardType: UIKeyboardType {
+        switch self {
+        default:
+            return .numberPad
+        }
+    }
+    
+    var unit: String {
+        switch self {
+        case .height:
+            return "cm"
+        case .weight(_):
+            return "kg"
+        }
+    }
+    
+    var tag: Int {
+        switch self {
+        case .height:
+            return 0
+        case .weight(_):
+            return 1
+        }
+    }
     
     // background properties
     var borderColor: CGColor {
@@ -408,15 +497,6 @@ private enum TextFieldType: CaseIterable, Hashable {
         switch self {
         default:
             return 8
-        }
-    }
-    
-    var isSecureEntry: Bool {
-        switch self {
-        case .weight(let state):
-            return (state == .enabled) ? true : false
-        default:
-            return false
         }
     }
 }
@@ -532,12 +612,12 @@ private enum ButtonType: CaseIterable, Hashable {
     }
     
     // enabled disabled properties
-    var enabled: Bool {
+    var isEnabled: Bool {
         switch self {
-        case .calculate(let flag), .secureTextEntry(let flag):
-            return flag.rawValue
+        case .calculate(let buttonEnabledValue), .secureTextEntry(let buttonEnabledValue):
+            return buttonEnabledValue.rawValue
         default:
-            return false
+            return true
         }
     }
     
@@ -681,12 +761,3 @@ enum AlertActionType {
 //func calculateBMI<T: Numeric>(height: T, weight: T) -> T {
 //    // bmi 계산 로직
 //}
-
-
-extension Dictionary {
-    mutating func switchKey(_ originalKey: Self.Key, with newKey: Self.Key) {
-        if let value = self.removeValue(forKey: originalKey) {
-            self[newKey] = value
-        }
-    }
-}
