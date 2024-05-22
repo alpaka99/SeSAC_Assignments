@@ -15,6 +15,7 @@
 		CE5DF8792BFDF5F400319C86 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE5DF8782BFDF5F400319C86 /* Base */; };
 		CE5DF8812BFDF64E00319C86 /* BMICalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */; };
 		CE5DF8842BFDF67A00319C86 /* Dictionary+Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8832BFDF67A00319C86 /* Dictionary+Switch.swift */; };
+		CE5DF8862BFDFE2900319C86 /* UserDefaults+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8852BFDFE2900319C86 /* UserDefaults+Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CE5DF87A2BFDF5F400319C86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculatorViewController.swift; sourceTree = "<group>"; };
 		CE5DF8832BFDF67A00319C86 /* Dictionary+Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Switch.swift"; sourceTree = "<group>"; };
+		CE5DF8852BFDFE2900319C86 /* UserDefaults+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Data.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5DF8832BFDF67A00319C86 /* Dictionary+Switch.swift */,
+				CE5DF8852BFDFE2900319C86 /* UserDefaults+Data.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			files = (
 				CE5DF8712BFDF5F300319C86 /* ViewController.swift in Sources */,
 				CE5DF86D2BFDF5F300319C86 /* AppDelegate.swift in Sources */,
+				CE5DF8862BFDFE2900319C86 /* UserDefaults+Data.swift in Sources */,
 				CE5DF8842BFDF67A00319C86 /* Dictionary+Switch.swift in Sources */,
 				CE5DF86F2BFDF5F300319C86 /* SceneDelegate.swift in Sources */,
 				CE5DF8812BFDF64E00319C86 /* BMICalculatorViewController.swift in Sources */,

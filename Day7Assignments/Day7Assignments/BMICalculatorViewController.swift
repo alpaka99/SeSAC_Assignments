@@ -140,6 +140,7 @@ class BMICalculateViewController: UIViewController {
     }
     
     private func showAlert(_ alertType: AlertType) {
+        saveBMIData(.bmi)
         let type = alertType
         let actionTypes: [AlertActionType] = [AlertActionType.cancel]
         
@@ -158,6 +159,10 @@ class BMICalculateViewController: UIViewController {
         }
         
         present(alertController, animated: true)
+    }
+    
+    private func saveBMIData(_ type: KeyType) {
+        
     }
     
     private func calculateAlertType() -> AlertType {
@@ -749,6 +754,29 @@ private enum AlertActionType {
 }
 
 
+internal enum KeyType {
+    case bmi
+    
+    var forKey: String {
+        switch self {
+        case .bmi:
+            return "bmiCalculator"
+        }
+    }
+    
+    var type: Any {
+        switch self {
+        case .bmi:
+            return BMIData.self
+        }
+    }
+}
+
+private struct BMIData {
+    let height: Double
+    let weight: Double
+}
+
 // MARK: UIButton.configuration을 따라해보려고 했는데 프레임워크처럼 사용법을 고정해놓은 상태면 괜찮지만, 그렇지 않으면 한가지 프로퍼티가 추가되거나 삭제되면 전체 코드를 다 다시짜야함 -> OCP 위반(?)
 //private struct LabelConfiguration {
 //    let text: String
@@ -761,3 +789,9 @@ private enum AlertActionType {
 //func calculateBMI<T: Numeric>(height: T, weight: T) -> T {
 //    // bmi 계산 로직
 //}
+
+
+// userdefault로 구현해보고 싶은거
+// 1. bmi 날짜 저장 -> spm 사용?
+// 2. slimeview reset, 날짜저장 -> 1번과 마찬가지?
+// 2. 앱 background로 갈때 자동 저장 -> scenedelegate 사용?
