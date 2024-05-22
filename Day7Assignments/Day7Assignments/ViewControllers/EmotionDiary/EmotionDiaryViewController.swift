@@ -74,7 +74,7 @@ final class EmotionDiaryViewController:
         navigationItem.title = EmotionDiaryConstants.navigationTitle
     
         configureLeftBarButtonItem()
-        configureRightBarButtonItem()
+        configureRightBarButtonItems()
     }
     
     private func configureLeftBarButtonItem() {
@@ -89,21 +89,39 @@ final class EmotionDiaryViewController:
         navigationItem.leftBarButtonItem = leftBarButton
     }
     
-    private func configureRightBarButtonItem() {
-        let rightBarButton = UIBarButtonItem(
+    private func configureRightBarButtonItems() {
+        var rightBarButtonItems: [UIBarButtonItem] = []
+        let saveButton = UIBarButtonItem(
             image: UIImage(systemName: EmotionDiaryConstants.rightBarButtonImageName),
             style: .plain,
             target: self,
             action: #selector(saveEmotionButtonTapped)
         )
-        rightBarButton.tintColor = .black
-        navigationItem.rightBarButtonItem = rightBarButton
+        rightBarButtonItems.append(saveButton)
+        
+        let resetButton = UIBarButtonItem(
+            image: UIImage(systemName: "trash.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(resetButtonTapped)
+        )
+        rightBarButtonItems.append(resetButton)
+        
+        rightBarButtonItems.forEach{ button in
+                button.tintColor = .black
+        }
+        
+        navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     
     @objc
     private func saveEmotionButtonTapped() {
         // 감정을 저장할건지 물어보는 alert 만들기
         showAlert(.emotionWillSaveAlert)
+    }
+    @objc
+    private func resetButtonTapped() {
+        showAlert(.emotionWillResetAlert)
     }
     
     private func showAlert(_ alertType: AlertType) {
@@ -129,6 +147,15 @@ final class EmotionDiaryViewController:
                 switch actionType {
                 case .save:
                     self?.saveEmotions()
+                case .delete:
+                    DispatchQueue.main.async {
+                        self?.setButtonCountDictionary()
+                        self?.setButtons()
+                        self?.showAlert(.success(.delete))
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            self?.saveEmotions()
+                        }
+                    }
                 default:
                     break
                 }

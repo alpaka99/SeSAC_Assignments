@@ -785,6 +785,8 @@ internal enum AlertType {
     case wrongInputAlert
     case randomBMIAlert(Double)
     case emotionWillSaveAlert
+    case emotionWillResetAlert
+    
     case success(SuccessType)
     case failure(UserDefaultErrorType)
     
@@ -796,10 +798,14 @@ internal enum AlertType {
             return "제대로 된 숫자를 입력해주세요."
         case .emotionWillSaveAlert:
             return "지금의 감정 저장"
+        case .emotionWillResetAlert:
+            return "주의! 저장된 감정이 지워집니다"
         case .success(.save):
             return "저장 완료!"
         case .success(.load):
             return "불러오기 완료!"
+        case .success(.delete):
+            return "삭제 완료"
         case .failure(.emptyTextfield), .failure(.notNumber):
             return "저장 실패"
         case .failure(.convertFailure):
@@ -834,10 +840,14 @@ internal enum AlertType {
             return "랜덤한 BMI 계산결과에요"
         case .emotionWillSaveAlert:
             return "지금의 감정을 간직할게요"
+        case .emotionWillResetAlert:
+            return "지금의 감정을 날려버릴까요?"
         case .success(.save):
             return "정보가 저장되었습니다"
         case .success(.load):
             return "정보를 불러왔습니다"
+        case .success(.delete):
+            return "감정을 날려버렸어요✈️"
         case .failure(.emptyTextfield):
             return "빈칸이 있나 확인해주세요"
         case .failure(.notNumber):
@@ -860,7 +870,9 @@ internal enum AlertType {
         switch self {
         case .bmiAlert(_), .emotionWillSaveAlert:
             return [.cancel, .save]
-        default:
+        case .emotionWillResetAlert:
+            return [.cancel, .delete]
+        case .failure(_), .success(_), .randomBMIAlert(_), .wrongInputAlert:
             return [.complete]
         }
     }
@@ -870,6 +882,7 @@ internal enum AlertActionType {
     case cancel
     case save
     case complete
+    case delete
     
     var title: String {
         switch self {
@@ -879,6 +892,8 @@ internal enum AlertActionType {
             return "취소"
         case .complete:
             return "완료"
+        case .delete:
+            return "삭제"
         }
     }
     
@@ -890,6 +905,8 @@ internal enum AlertActionType {
             return .cancel
         case .complete:
             return .default
+        case .delete:
+            return .destructive
         }
     }
 }
@@ -921,6 +938,7 @@ internal enum KeyType {
 internal enum SuccessType {
     case save
     case load
+    case delete
 }
 
 internal enum UserDefaultErrorType: Error {
