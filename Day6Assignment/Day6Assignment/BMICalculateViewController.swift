@@ -730,7 +730,7 @@ private enum AlertType {
     }
 }
 
-enum AlertActionType {
+private enum AlertActionType {
     case cancel
     
     var title: String {
