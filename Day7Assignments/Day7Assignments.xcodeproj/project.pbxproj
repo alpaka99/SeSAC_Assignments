@@ -16,6 +16,10 @@
 		CE5DF8812BFDF64E00319C86 /* BMICalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */; };
 		CE5DF8842BFDF67A00319C86 /* Dictionary+Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8832BFDF67A00319C86 /* Dictionary+Switch.swift */; };
 		CE5DF8862BFDFE2900319C86 /* UserDefaults+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8852BFDFE2900319C86 /* UserDefaults+Data.swift */; };
+		CE5DF88B2BFE1EAA00319C86 /* EmotionDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF88A2BFE1EAA00319C86 /* EmotionDiaryViewController.swift */; };
+		CE5DF88D2BFE1ECC00319C86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF88C2BFE1ECC00319C86 /* DetailViewController.swift */; };
+		CE5DF8902BFE1EF700319C86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF88F2BFE1EF700319C86 /* Constants.swift */; };
+		CE5DF8932BFE1F1700319C86 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8922BFE1F1700319C86 /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculatorViewController.swift; sourceTree = "<group>"; };
 		CE5DF8832BFDF67A00319C86 /* Dictionary+Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Switch.swift"; sourceTree = "<group>"; };
 		CE5DF8852BFDFE2900319C86 /* UserDefaults+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Data.swift"; sourceTree = "<group>"; };
+		CE5DF88A2BFE1EAA00319C86 /* EmotionDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionDiaryViewController.swift; sourceTree = "<group>"; };
+		CE5DF88C2BFE1ECC00319C86 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CE5DF88F2BFE1EF700319C86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE5DF8922BFE1F1700319C86 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +70,13 @@
 		CE5DF86B2BFDF5F300319C86 /* Day7Assignments */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DF88E2BFE1EE900319C86 /* Constants */,
+				CE5DF8872BFE1E7400319C86 /* ViewControllers */,
 				CE5DF8822BFDF66900319C86 /* Extensions */,
 				CE5DF86C2BFDF5F300319C86 /* AppDelegate.swift */,
 				CE5DF86E2BFDF5F300319C86 /* SceneDelegate.swift */,
 				CE5DF8702BFDF5F300319C86 /* ViewController.swift */,
 				CE5DF8722BFDF5F300319C86 /* Main.storyboard */,
-				CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */,
 				CE5DF8752BFDF5F400319C86 /* Assets.xcassets */,
 				CE5DF8772BFDF5F400319C86 /* LaunchScreen.storyboard */,
 				CE5DF87A2BFDF5F400319C86 /* Info.plist */,
@@ -80,8 +89,43 @@
 			children = (
 				CE5DF8832BFDF67A00319C86 /* Dictionary+Switch.swift */,
 				CE5DF8852BFDFE2900319C86 /* UserDefaults+Data.swift */,
+				CE5DF8922BFE1F1700319C86 /* UIImage+Resize.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE5DF8872BFE1E7400319C86 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF8892BFE1E9000319C86 /* EmotionDiary */,
+				CE5DF8882BFE1E7C00319C86 /* BMICalculator */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CE5DF8882BFE1E7C00319C86 /* BMICalculator */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */,
+			);
+			path = BMICalculator;
+			sourceTree = "<group>";
+		};
+		CE5DF8892BFE1E9000319C86 /* EmotionDiary */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF88A2BFE1EAA00319C86 /* EmotionDiaryViewController.swift */,
+				CE5DF88C2BFE1ECC00319C86 /* DetailViewController.swift */,
+			);
+			path = EmotionDiary;
+			sourceTree = "<group>";
+		};
+		CE5DF88E2BFE1EE900319C86 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF88F2BFE1EF700319C86 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +202,13 @@
 				CE5DF8712BFDF5F300319C86 /* ViewController.swift in Sources */,
 				CE5DF86D2BFDF5F300319C86 /* AppDelegate.swift in Sources */,
 				CE5DF8862BFDFE2900319C86 /* UserDefaults+Data.swift in Sources */,
+				CE5DF8932BFE1F1700319C86 /* UIImage+Resize.swift in Sources */,
 				CE5DF8842BFDF67A00319C86 /* Dictionary+Switch.swift in Sources */,
 				CE5DF86F2BFDF5F300319C86 /* SceneDelegate.swift in Sources */,
+				CE5DF88B2BFE1EAA00319C86 /* EmotionDiaryViewController.swift in Sources */,
 				CE5DF8812BFDF64E00319C86 /* BMICalculatorViewController.swift in Sources */,
+				CE5DF88D2BFE1ECC00319C86 /* DetailViewController.swift in Sources */,
+				CE5DF8902BFE1EF700319C86 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
