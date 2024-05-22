@@ -59,8 +59,6 @@ class BMICalculateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // configure data
-        configureData()
         
         // configure titleLabels
         configureLabels()
@@ -73,6 +71,9 @@ class BMICalculateViewController: UIViewController {
         
         // configure images
         configureImageViews()
+        
+        // configure data
+        configureData()
     }
     
     private func configureData() {
@@ -91,6 +92,12 @@ class BMICalculateViewController: UIViewController {
         nicknameTextField.text = bmiData.nickname
         heightTextField.text = String(bmiData.height * 100)
         weightTextField.text = String(bmiData.weight)
+        
+        TextFieldType.allCases.forEach { type in
+            if let textField = textFields[type] {
+                addInputUnit(textField)
+            }
+        }
     }
     
     private func configureLabels() {
@@ -202,7 +209,7 @@ class BMICalculateViewController: UIViewController {
     private func saveBMIData(
         _ type: KeyType
     ) {
-        if let nickname = nicknameTextField.text,
+        if let nickname = nicknameTextField.text?.components(separatedBy: " ").first,
            let height = getCalculatavableValue(.height),
            let weight = getCalculatavableValue(.weight(secureTextEntryButtonState)) {
                 let bmiData = BMIData(
@@ -218,7 +225,9 @@ class BMICalculateViewController: UIViewController {
                     case .failure(let errorType):
                         showAlert(.failure(errorType))
                     }
-                }
+            }
+        } else {
+            showAlert(.failure(.unknown))
         }
     }
     
