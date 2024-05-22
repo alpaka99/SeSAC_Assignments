@@ -186,7 +186,7 @@ class BMICalculateViewController: UIViewController {
             preferredStyle: type.preferredStyle
         )
         
-        alertType.actions.forEach { actionType in
+        alertType.actionTypes.forEach { actionType in
             let alertAction = UIAlertAction(
                 title: actionType.title,
                 style: actionType.style) { [weak self] _ in
@@ -221,7 +221,7 @@ class BMICalculateViewController: UIViewController {
                 UserDefaults.standard.saveData(bmiData, with: .bmi) { result in
                     switch result {
                     case .success(_):
-                        showAlert(.success)
+                        showAlert(.success(.save))
                     case .failure(let errorType):
                         showAlert(.failure(errorType))
                     }
@@ -780,11 +780,12 @@ private enum ImageViewType: CaseIterable {
     }
 }
 
-private enum AlertType {
+internal enum AlertType {
     case bmiAlert(Double)
     case wrongInputAlert
     case randomBMIAlert(Double)
-    case success
+    case emotionWillSaveAlert
+    case success(SuccessType)
     case failure(UserDefaultErrorType)
     
     var title: String {
@@ -793,8 +794,12 @@ private enum AlertType {
             return "당신의 bmi는 \(String(format: "%.2f", bmi))입니다."
         case .wrongInputAlert:
             return "제대로 된 숫자를 입력해주세요."
-        case .success:
+        case .emotionWillSaveAlert:
+            return "지금의 감정 저장"
+        case .success(.save):
             return "저장 완료!"
+        case .success(.load):
+            return "불러오기 완료!"
         case .failure(.emptyTextfield), .failure(.notNumber):
             return "저장 실패"
         case .failure(.convertFailure):
@@ -827,8 +832,12 @@ private enum AlertType {
             return "제대로 된 BMI가 측정되지 않았어요.\n체중과 몸무게를 다시 한번 확인해주세요"
         case .randomBMIAlert(_):
             return "랜덤한 BMI 계산결과에요"
-        case .success:
-            return "정보가 저장되었습니다...!"
+        case .emotionWillSaveAlert:
+            return "지금의 감정을 간직할게요"
+        case .success(.save):
+            return "정보가 저장되었습니다"
+        case .success(.load):
+            return "정보를 불러왔습니다"
         case .failure(.emptyTextfield):
             return "빈칸이 있나 확인해주세요"
         case .failure(.notNumber):
@@ -847,19 +856,20 @@ private enum AlertType {
         }
     }
     
-    var actions: [AlertActionType] {
+    var actionTypes: [AlertActionType] {
         switch self {
-        case .bmiAlert(_):
+        case .bmiAlert(_), .emotionWillSaveAlert:
             return [.cancel, .save]
         default:
-            return [.cancel]
+            return [.complete]
         }
     }
 }
 
-private enum AlertActionType {
+internal enum AlertActionType {
     case cancel
     case save
+    case complete
     
     var title: String {
         switch self {
@@ -867,6 +877,8 @@ private enum AlertActionType {
             return "저장"
         case .cancel:
             return "취소"
+        case .complete:
+            return "완료"
         }
     }
     
@@ -876,6 +888,8 @@ private enum AlertActionType {
             return .default
         case .cancel:
             return .cancel
+        case .complete:
+            return .default
         }
     }
 }
@@ -883,11 +897,14 @@ private enum AlertActionType {
 
 internal enum KeyType {
     case bmi
+    case emotion
     
     var forKey: String {
         switch self {
         case .bmi:
             return "bmiCalculator"
+        case .emotion:
+            return "emotionDiary"
         }
     }
     
@@ -895,8 +912,15 @@ internal enum KeyType {
         switch self {
         case .bmi:
             return BMIData.self
+        case .emotion:
+            return EmotionData.self
         }
     }
+}
+
+internal enum SuccessType {
+    case save
+    case load
 }
 
 internal enum UserDefaultErrorType: Error {

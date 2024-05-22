@@ -54,6 +54,7 @@ internal struct EmotionDiaryConstants {
     // navigation bar constants
     static let navigationTitle: String = "감정 다이어리"
     static let leftBarButtonImageName: String = "list.bullet"
+    static let rightBarButtonImageName: String = "square.and.arrow.down.on.square.fill"
     
     // tab bar constants
     static let tabItemTitle: String = "Emotion"

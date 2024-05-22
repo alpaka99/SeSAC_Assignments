@@ -38,8 +38,11 @@ final class EmotionDiaryViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set Data
+        // set Data structure
         setButtonCountDictionary()
+        
+        // configureData
+        configureData()
         
         // setTab Bar
         setTabBar()
@@ -70,6 +73,11 @@ final class EmotionDiaryViewController:
         // navigation bar title
         navigationItem.title = EmotionDiaryConstants.navigationTitle
     
+        configureLeftBarButtonItem()
+        configureRightBarButtonItem()
+    }
+    
+    private func configureLeftBarButtonItem() {
         // navigation bar left button
         let leftBarButton = UIBarButtonItem(
             image: UIImage(systemName: EmotionDiaryConstants.leftBarButtonImageName),
@@ -80,6 +88,70 @@ final class EmotionDiaryViewController:
         leftBarButton.tintColor = .black
         navigationItem.leftBarButtonItem = leftBarButton
     }
+    
+    private func configureRightBarButtonItem() {
+        let rightBarButton = UIBarButtonItem(
+            image: UIImage(systemName: EmotionDiaryConstants.rightBarButtonImageName),
+            style: .plain,
+            target: self,
+            action: #selector(saveEmotionButtonTapped)
+        )
+        rightBarButton.tintColor = .black
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    @objc
+    private func saveEmotionButtonTapped() {
+        // 감정을 저장할건지 물어보는 alert 만들기
+        showAlert(.emotionWillSaveAlert)
+    }
+    
+    private func showAlert(_ alertType: AlertType) {
+        var alertController: UIAlertController
+        alertController = configureAlert(alertType)
+        
+        present(alertController, animated: true)
+    }
+    
+    private func configureAlert(_ alertType: AlertType) -> UIAlertController {
+        let alertController = UIAlertController(
+            title: alertType.title,
+            message: alertType.message,
+            preferredStyle: alertType.preferredStyle
+        )
+        
+        let alertActionTypes = alertType.actionTypes
+        alertActionTypes.forEach { actionType in
+            let alertAction = UIAlertAction(
+                title: actionType.title,
+                style: actionType.style
+            ) { [ weak self] _ in
+                switch actionType {
+                case .save:
+                    self?.saveEmotions()
+                default:
+                    break
+                }
+            }
+            
+            alertController.addAction(alertAction)
+        }
+        
+        return alertController
+    }
+    
+    private func saveEmotions() {
+        let emotionData = EmotionData(emotionCount: buttonCountDictionary)
+        UserDefaults.standard.saveData(emotionData, with: .emotion) { result in
+            switch result {
+            case .success(_):
+                showAlert(.success(.save))
+            case .failure(_):
+                showAlert(.failure(.unknown))
+            }
+        }
+    }
+    
     
     @objc private func showDetailController() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: DetailConstants.identifier) as? DetailViewController {
@@ -191,10 +263,22 @@ final class EmotionDiaryViewController:
             )
         }
     }
+    
+    private func configureData() {
+         UserDefaults.standard.loadData(.emotion, into: EmotionData.self) { result in
+            switch result {
+            case .success(let data):
+                buttonCountDictionary = data.emotionCount
+                showAlert(.success(.load))
+            case .failure(_):
+                showAlert(.failure(.convertFailure))
+            }
+        }
+    }
 }
 
 
-internal enum EmotionType: String, CaseIterable {
+internal enum EmotionType: String, CaseIterable, Codable {
     case smile = "재밌어"
     case happy = "행복해"
     case love = "사랑해"
@@ -230,29 +314,6 @@ internal enum EmotionType: String, CaseIterable {
         }
     }
     
-//    internal func titleName() -> String {
-//        switch self {
-//        case .smile:
-//            return "재밌어"
-//        case .happy:
-//            return "행복해"
-//        case .love:
-//            return "사랑해"
-//        case .angry:
-//            return "화나"
-//        case .soso:
-//            return "그저그래"
-//        case .sleepy:
-//            return "잠온다"
-//        case .embarrased:
-//            return "당황해"
-//        case .unHappy:
-//            return "안행복해"
-//        case .cry:
-//            return "눈물나"
-//        }
-//    }
-    
     static func createEmotionTypeByTagNumber(_ tagNumber: Int) -> Self? {
         switch tagNumber {
         case 0: // smile buttton action
@@ -281,3 +342,6 @@ internal enum EmotionType: String, CaseIterable {
 
 
 
+internal struct EmotionData: Codable {
+    let emotionCount: [EmotionType:Int]
+}
