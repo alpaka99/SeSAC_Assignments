@@ -10,25 +10,32 @@ import UIKit
 class BMICalculateViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
+    
+    @IBOutlet var nicknameQuestionLabel: UILabel!
     @IBOutlet var heightQuestionLabel: UILabel!
     @IBOutlet var weightQuestionLabel: UILabel!
     private lazy var labels: [LabelType : UILabel] = [
         .title : titleLabel,
         .subTitle : subTitleLabel,
+        .nicknameQuestion : nicknameQuestionLabel,
         .heightQuestion : heightQuestionLabel,
         .weightQuestion : weightQuestionLabel
     ]
     
+    @IBOutlet var nicknameBackgroundView: UIView!
     @IBOutlet var heightTextFieldBackgroundView: UIView!
     @IBOutlet var weightTextFieldBackgroundView: UIView!
     private lazy var textFieldBackgrounds: [TextFieldType : UIView] = [
+        .nickname : nicknameBackgroundView,
         .height : heightTextFieldBackgroundView,
         .weight(secureTextEntryButtonState) : weightTextFieldBackgroundView
     ]
     
+    @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var heightTextField: UITextField!
     @IBOutlet var weightTextField: UITextField!
     private lazy var textFields: [TextFieldType : UITextField] = [
+        .nickname : nicknameTextField,
         .height : heightTextField,
         .weight(secureTextEntryButtonState) : weightTextField
     ]
@@ -52,6 +59,8 @@ class BMICalculateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // configure data
+        configureData()
         
         // configure titleLabels
         configureLabels()
@@ -64,6 +73,24 @@ class BMICalculateViewController: UIViewController {
         
         // configure images
         configureImageViews()
+    }
+    
+    private func configureData() {
+        UserDefaults.standard.loadData(.bmi, into: BMIData.self) { result in
+            switch result {
+            case .success(let data):
+                loadDataToTextFields(data)
+            case .failure(let errorType):
+                showAlert(.failure(errorType))
+            }
+        }
+    }
+    
+    private func loadDataToTextFields(_ bmiData: BMIData) {
+        //MARK: 이 부분 enum 안에 넣는 방법 없을까...?
+        nicknameTextField.text = bmiData.nickname
+        heightTextField.text = String(bmiData.height * 100)
+        weightTextField.text = String(bmiData.weight)
     }
     
     private func configureLabels() {
@@ -133,16 +160,18 @@ class BMICalculateViewController: UIViewController {
         case 1: // random bmi button
             showAlert(.randomBMIAlert(Double.random(in: 0...1000)))
         case 2: // calculate button
-            showAlert(calculateAlertType())
+            calculateButtonTapped(calculateAlertType())
         default:
             break
         }
     }
     
+    private func calculateButtonTapped(_ alertType: AlertType) {
+        showAlert(alertType)
+    }
+    
     private func showAlert(_ alertType: AlertType) {
-        saveBMIData(.bmi)
         let type = alertType
-        let actionTypes: [AlertActionType] = [AlertActionType.cancel]
         
         let alertController = UIAlertController(
             title: type.title,
@@ -150,19 +179,47 @@ class BMICalculateViewController: UIViewController {
             preferredStyle: type.preferredStyle
         )
         
-        actionTypes.forEach { actionType in
+        alertType.actions.forEach { actionType in
             let alertAction = UIAlertAction(
                 title: actionType.title,
-                style: actionType.style
-            )
+                style: actionType.style) { [weak self] _ in
+                    // trigger action
+                    switch actionType {
+                    case .save:
+                        self?.saveBMIData(.bmi)
+                    default:
+                        break
+                    }
+                }
+            
             alertController.addAction(alertAction)
         }
         
         present(alertController, animated: true)
+        
     }
     
-    private func saveBMIData(_ type: KeyType) {
-        
+    private func saveBMIData(
+        _ type: KeyType
+    ) {
+        if let nickname = nicknameTextField.text,
+           let height = getCalculatavableValue(.height),
+           let weight = getCalculatavableValue(.weight(secureTextEntryButtonState)) {
+                let bmiData = BMIData(
+                    nickname: nickname,
+                    height: height,
+                    weight: weight
+                )
+            
+                UserDefaults.standard.saveData(bmiData, with: .bmi) { result in
+                    switch result {
+                    case .success(_):
+                        showAlert(.success)
+                    case .failure(let errorType):
+                        showAlert(.failure(errorType))
+                    }
+                }
+        }
     }
     
     private func calculateAlertType() -> AlertType {
@@ -185,6 +242,8 @@ class BMICalculateViewController: UIViewController {
             return convertHeightToCalculatableValue(decimalNumber)
         case .weight:
             return convertWeightToCalculatableValue(decimalNumber)
+        default:
+            return nil
         }
         
     }
@@ -220,7 +279,6 @@ class BMICalculateViewController: UIViewController {
             
             button.configuration = config
             button.tag = type.tag
-//            button.isEnabled = type.isEnabled
         }
     }
     
@@ -262,10 +320,12 @@ class BMICalculateViewController: UIViewController {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
-        if let heightText = heightTextField.text,
+        if let nicknameText = nicknameTextField.text,
+           let heightText = heightTextField.text,
            let weightText = weightTextField.text {
-            if let _ = numberFormatter.number(from: heightText),
-                let _ = numberFormatter.number(from: weightText) {
+            if nicknameText.isEmpty == false,
+               let _ = numberFormatter.number(from: heightText),
+               let _ = numberFormatter.number(from: weightText) {
                 changeButtonState(to: .calculate(.enabled))
             }
         } else {
@@ -274,11 +334,17 @@ class BMICalculateViewController: UIViewController {
     }
     
     @objc private func addInputUnit(_ sender: UITextField) {
-        let tag = sender.tag
-        var type = TextFieldType.height
+        var type: TextFieldType
         
-        if tag != type.tag { // heightTextField
+        switch sender.tag {
+        case 0: // nickname
+            type = .nickname
+        case 1: // height
+            type = .height
+        case 2: // weight
             type = .weight(secureTextEntryButtonState)
+        default:
+            return
         }
         
         addInputUnitFromText(type)
@@ -292,11 +358,17 @@ class BMICalculateViewController: UIViewController {
     }
     
     @objc func deleteInputUnit(_ sender: UITextField) {
-        let tag = sender.tag
-        var type = TextFieldType.height
+        var type: TextFieldType
         
-        if tag != type.tag { // heightTextField
+        switch sender.tag {
+        case 0: // nickname
+            type = .nickname
+        case 1: // height
+            type = .height
+        case 2: // weight
             type = .weight(secureTextEntryButtonState)
+        default:
+            return
         }
         
         deleteInputUnitFromText(type)
@@ -363,6 +435,7 @@ class BMICalculateViewController: UIViewController {
 private enum LabelType: CaseIterable {
     case title
     case subTitle
+    case nicknameQuestion
     case heightQuestion
     case weightQuestion
     
@@ -372,6 +445,8 @@ private enum LabelType: CaseIterable {
             return "BMI Calculator"
         case .subTitle:
             return "당신의 BMI 지수를\n알려드릴게요"
+        case .nicknameQuestion:
+            return "닉네임을 알려주세요 :)"
         case .heightQuestion:
             return "키가 어떻게 되시나요?"
         case .weightQuestion:
@@ -398,7 +473,7 @@ private enum LabelType: CaseIterable {
                 ofSize: 16,
                 weight: .regular
             )
-        case .heightQuestion, .weightQuestion:
+        case .nicknameQuestion, .heightQuestion, .weightQuestion:
             return .systemFont(
                 ofSize: 16,
                 weight: .medium
@@ -425,16 +500,20 @@ private enum LabelType: CaseIterable {
 
 private enum TextFieldType: CaseIterable, Hashable {
     static var allCases: [TextFieldType] = [
+        .nickname,
         .height,
         .weight(.enabled)
     ]
     
+    case nickname
     case height
     case weight(ButtonEnabledType)
     
     // textField properties
     var placeholder: String {
         switch self {
+        case .nickname:
+            return "nickname을 알려주세요"
         case .height:
             return "키를 입력해주세요(cm)"
         case .weight(_):
@@ -467,6 +546,8 @@ private enum TextFieldType: CaseIterable, Hashable {
     
     var unit: String {
         switch self {
+        case .nickname:
+            return "님"
         case .height:
             return "cm"
         case .weight(_):
@@ -476,10 +557,12 @@ private enum TextFieldType: CaseIterable, Hashable {
     
     var tag: Int {
         switch self {
-        case .height:
+        case .nickname:
             return 0
-        case .weight(_):
+        case .height:
             return 1
+        case .weight(_):
+            return 2
         }
     }
     
@@ -692,14 +775,23 @@ private enum AlertType {
     case bmiAlert(Double)
     case wrongInputAlert
     case randomBMIAlert(Double)
+    case success
+    case failure(UserDefaultErrorType)
     
     var title: String {
-        
         switch self {
         case .bmiAlert(let bmi), .randomBMIAlert(let bmi):
             return "당신의 bmi는 \(String(format: "%.2f", bmi))입니다."
         case .wrongInputAlert:
             return "제대로 된 숫자를 입력해주세요."
+        case .success:
+            return "저장 완료!"
+        case .failure(.emptyTextfield), .failure(.notNumber):
+            return "저장 실패"
+        case .failure(.convertFailure):
+            return "불러오기 실패"
+        case .failure(.unknown):
+            return "실패...!"
         }
     }
     
@@ -717,37 +809,63 @@ private enum AlertType {
                 return "1단계 비만이에요"
             case 30..<35:
                 return "2단계 비만이에요"
-            case 30..<34.9:
-                return "3단계 비만이에요"
+            case 30...:
+                return "3단계 비만 이상이에요"
             default:
                 return "제대로된 BMI가 측정되지 않았어요"
             }
-        case .wrongInputAlert, .randomBMIAlert(_):
-            return "제대로 된 BMI가 측정되지 않았어요"
+        case .wrongInputAlert:
+            return "제대로 된 BMI가 측정되지 않았어요.\n체중과 몸무게를 다시 한번 확인해주세요"
+        case .randomBMIAlert(_):
+            return "랜덤한 BMI 계산결과에요"
+        case .success:
+            return "정보가 저장되었습니다...!"
+        case .failure(.emptyTextfield):
+            return "빈칸이 있나 확인해주세요"
+        case .failure(.notNumber):
+            return "숫자를 제대로 기입했는지 확인해주세요"
+        case .failure(.unknown):
+            return "알 수 없는 오류가 발생했어요 :("
+        case .failure(.convertFailure):
+            return "데이터 변환에 실패했어요 :("
         }
     }
     
     var preferredStyle: UIAlertController.Style {
         switch self {
         default:
-                return .alert
+            return .alert
+        }
+    }
+    
+    var actions: [AlertActionType] {
+        switch self {
+        case .bmiAlert(_):
+            return [.cancel, .save]
+        default:
+            return [.cancel]
         }
     }
 }
 
 private enum AlertActionType {
     case cancel
+    case save
     
     var title: String {
         switch self {
-        default:
+        case .save:
+            return "저장"
+        case .cancel:
             return "취소"
         }
     }
     
     var style: UIAlertAction.Style {
         switch self {
-        default:
+        case .save:
+            return .default
+        case .cancel:
             return .cancel
         }
     }
@@ -772,7 +890,15 @@ internal enum KeyType {
     }
 }
 
-private struct BMIData {
+internal enum UserDefaultErrorType: Error {
+    case emptyTextfield
+    case notNumber
+    case convertFailure
+    case unknown
+}
+
+private struct BMIData: Codable {
+    let nickname: String
     let height: Double
     let weight: Double
 }
