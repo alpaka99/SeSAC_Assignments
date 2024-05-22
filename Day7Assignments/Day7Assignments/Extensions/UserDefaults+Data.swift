@@ -23,7 +23,7 @@ extension UserDefaults {
         }
     }
     
-    // 저장할 변수들의 struct를 만들어두고 해당 struct로 변환하면 되려나...?
+    // 저장할 변수들의 struct를 만들어두고 해당 struct로 변환하면 되려나...? -> 이렇게 함. 대신에 struct 혹은 class는 UserDefaults에 넣으려면 json으로 바꿔야함.
     func loadData<T: Codable>(
         _ key: KeyType,
         into type: T.Type,
