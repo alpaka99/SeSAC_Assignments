@@ -302,6 +302,26 @@ final class EmotionDiaryViewController:
             }
         }
     }
+    
+    private func saveDataWhenEnteringBackground() {
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        
+        
+        let _ = sceneDelegate.observe(
+            \.sceneState,
+             options: [.old, .new]
+        ) { [weak self] (object, change) in
+            if let oldValue = change.oldValue, let newValue = change.newValue {
+                // active, inactive -> background
+                if oldValue == 0 || oldValue == 1 {
+                    if newValue == 2 {
+                        self?.saveEmotions()
+                    }
+                    
+                }
+            }
+        }
+    }
 }
 
 
