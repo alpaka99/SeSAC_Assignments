@@ -8,52 +8,10 @@
 import UIKit
 
 final class FocusTableViewController: UITableViewController {
-    
-    let customCellReuseIdentifier: String = "CustomCell"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // custom cell register
-        self.tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.cellId)
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "header"
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "footer"
-    }
-    
-    // 1. cell 몇개 만들지
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    // 2. 만든 cell의 높이는 몇으로 할지
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45 // MARK: 이 부분을 dynamic하게 맞추는 방법 없을까 흠..
-    }
-    
-    // 3. cell 정보 담기
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.cellId, for: indexPath) as! CustomTableViewCell
-        
-        cell.leadingImage.image = UIImage(systemName: "person.fill")
-        
-        
-        
-        cell.textLabel?.text = "\(indexPath.row)"
-        return cell
-
-    }
-    
-    
 }
 
 
