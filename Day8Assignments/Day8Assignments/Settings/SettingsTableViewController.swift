@@ -9,81 +9,204 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+    private let settingsTableViewControllerData: [HeaderType: [SettingsCellType]] = [
+        .commonSettings : [
+            .defaultType("공지사항"),
+            .defaultType("실험실"),
+            .defaultType("버전 정보"),
+        ],
+        .privateSettings : [
+            .defaultType("개인/보안"),
+            .defaultType("알림"),
+            .defaultType("채팅"),
+            .defaultType("멀티프로필")
+        ],
+        .others: [
+            .defaultType("고객센터/도움말")
+        ]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
-
-    // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return HeaderType.getHeaderType(section).title
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return HeaderType.allCases[section].numberOfRowsInSection
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as UITableViewCell
+        
+        if let cells = settingsTableViewControllerData[HeaderType.getHeaderType(indexPath.section)] {
+            let cellData = cells[indexPath.row]
+            
+            cell.textLabel?.text = cellData.title
+            cell.textLabel?.font = cellData.font
+            cell.textLabel?.textColor = cellData.textColor
+            cell.accessoryType = cellData.accessoryType
+        }
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let headerType = HeaderType.getHeaderType(indexPath.section)
+        if let cells = settingsTableViewControllerData[headerType] {
+            let selectedCell = cells[indexPath.row]
+            
+            if let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+                
+                detailViewController.title = selectedCell.title
+                detailViewController.textLabel.text = "\(selectedCell.title)이 서비스 준비중이에요🛠️"
+                detailViewController.textLabel.textAlignment = .center
+                
+                detailViewController.view.backgroundColor = UIColor(
+                    red: CGFloat.random(in: 0...1),
+                    green: CGFloat.random(in: 0...1),
+                    blue: CGFloat.random(in: 0...1),
+                    alpha: 1
+                )
+                
+                navigationController?.pushViewController(detailViewController, animated: true)
+            }
+        }
     }
-    */
+}
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+private enum HeaderType: CaseIterable {
+    // for .allCases to be in same order everytime and remove unknown case
+    static var allCases: [HeaderType] = [
+        commonSettings,
+        privateSettings,
+        others
+    ]
+    
+    case commonSettings
+    case privateSettings
+    case others
+    case unknown
+    
+    var title: String {
+        switch self {
+        case .commonSettings:
+            return "전체 설정"
+        case .privateSettings:
+            return "개인 설정"
+        case .others:
+            return "기타"
+        case .unknown:
+            return "unknown"
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    var numberOfRowsInSection: Int {
+        switch self {
+        case .commonSettings:
+            return 3
+        case .privateSettings:
+            return 4
+        case .others:
+            return 1
+        case .unknown:
+            return 2
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    static func getHeaderType(_ number: Int) -> Self {
+        switch number {
+        case 0:
+            return .commonSettings
+        case 1:
+            return .privateSettings
+        case 2:
+            return .others
+        default:
+            return .unknown
+        }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    var color: UIColor {
+        switch self {
+        case .commonSettings:
+            return .gray
+        case .privateSettings:
+            return .gray
+        case .others:
+            return .gray
+        case .unknown:
+            return .clear
+        }
     }
-    */
+    
+    var font: UIFont {
+        switch self {
+            
+        case .commonSettings:
+            return UIFont.systemFont(
+                ofSize: 24,
+                weight: .medium
+            )
+        case .privateSettings:
+            return UIFont.systemFont(
+                ofSize: 24,
+                weight: .medium
+            )
+        case .others:
+            return UIFont.systemFont(
+                ofSize: 24,
+                weight: .medium
+            )
+        case .unknown:
+            return UIFont.systemFont(
+                ofSize: 24,
+                weight: .medium
+            )
+        }
+    }
+}
 
+private enum SettingsCellType {
+    case defaultType(String)
+    
+    var title: String {
+        switch self {
+        case .defaultType(let title):
+            return title
+        }
+    }
+    
+    var font: UIFont {
+        switch self {
+        case .defaultType(_):
+            return UIFont.systemFont(
+                ofSize: 12,
+                weight: .regular
+            )
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .defaultType(_):
+            return .lightGray
+        }
+    }
+    
+    var accessoryType: UITableViewCell.AccessoryType {
+        switch self {
+        case .defaultType(_):
+            return .none
+        }
+    }
 }

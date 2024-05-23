@@ -19,6 +19,8 @@
 		CE5DF9152BFF50D500319C86 /* FocusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9142BFF50D500319C86 /* FocusTableViewController.swift */; };
 		CE5DF9172BFF50DE00319C86 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9162BFF50DE00319C86 /* SettingsTableViewController.swift */; };
 		CE5DF9192BFF50E600319C86 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9182BFF50E500319C86 /* ShoppingListTableViewController.swift */; };
+		CE5DF9212BFF861E00319C86 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9202BFF861E00319C86 /* CustomTableViewCell.swift */; };
+		CE5DF9232BFF959700319C86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9222BFF959700319C86 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		CE5DF9142BFF50D500319C86 /* FocusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTableViewController.swift; sourceTree = "<group>"; };
 		CE5DF9162BFF50DE00319C86 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		CE5DF9182BFF50E500319C86 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
+		CE5DF9202BFF861E00319C86 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		CE5DF9222BFF959700319C86 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			children = (
 				CE5DF90B2BFF486E00319C86 /* FocusMode.storyboard */,
 				CE5DF9142BFF50D500319C86 /* FocusTableViewController.swift */,
+				CE5DF9202BFF861E00319C86 /* CustomTableViewCell.swift */,
 			);
 			path = FocusMode;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			children = (
 				CE5DF90D2BFF488B00319C86 /* Settings.storyboard */,
 				CE5DF9162BFF50DE00319C86 /* SettingsTableViewController.swift */,
+				CE5DF9222BFF959700319C86 /* DetailViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -194,9 +200,11 @@
 				CE5DF9152BFF50D500319C86 /* FocusTableViewController.swift in Sources */,
 				CE5DF9172BFF50DE00319C86 /* SettingsTableViewController.swift in Sources */,
 				CE5DF8FB2BFF475E00319C86 /* ViewController.swift in Sources */,
+				CE5DF9212BFF861E00319C86 /* CustomTableViewCell.swift in Sources */,
 				CE5DF8F72BFF475E00319C86 /* AppDelegate.swift in Sources */,
 				CE5DF8F92BFF475E00319C86 /* SceneDelegate.swift in Sources */,
 				CE5DF9192BFF50E600319C86 /* ShoppingListTableViewController.swift in Sources */,
+				CE5DF9232BFF959700319C86 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
