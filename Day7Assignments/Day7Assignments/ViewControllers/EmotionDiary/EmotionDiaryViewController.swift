@@ -306,7 +306,7 @@ final class EmotionDiaryViewController:
     private func saveDataWhenEnteringBackground() {
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
         
-        
+        // MARK: background로 이동할때 이 화면이 먼저 파괴됨. 그래서 이 observer가 동작하지 않음
         let _ = sceneDelegate.observe(
             \.sceneState,
              options: [.old, .new]
@@ -315,6 +315,7 @@ final class EmotionDiaryViewController:
                 // active, inactive -> background
                 if oldValue == 0 || oldValue == 1 {
                     if newValue == 2 {
+                        print(#function)
                         self?.saveEmotions()
                     }
                     
