@@ -15,7 +15,10 @@
 		CE5DF9032BFF476000319C86 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE5DF9022BFF476000319C86 /* Base */; };
 		CE5DF90C2BFF486E00319C86 /* FocusMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DF90B2BFF486E00319C86 /* FocusMode.storyboard */; };
 		CE5DF90E2BFF488B00319C86 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DF90D2BFF488B00319C86 /* Settings.storyboard */; };
-		CE5DF9102BFF489E00319C86 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DF90F2BFF489E00319C86 /* Shopping.storyboard */; };
+		CE5DF9102BFF489E00319C86 /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5DF90F2BFF489E00319C86 /* ShoppingList.storyboard */; };
+		CE5DF9152BFF50D500319C86 /* FocusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9142BFF50D500319C86 /* FocusTableViewController.swift */; };
+		CE5DF9172BFF50DE00319C86 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9162BFF50DE00319C86 /* SettingsTableViewController.swift */; };
+		CE5DF9192BFF50E600319C86 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF9182BFF50E500319C86 /* ShoppingListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +26,16 @@
 		CE5DF8F62BFF475E00319C86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5DF8F82BFF475E00319C86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE5DF8FA2BFF475E00319C86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE5DF8FD2BFF475E00319C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBar.storyboard; sourceTree = "<group>"; };
+		CE5DF8FD2BFF475E00319C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE5DF8FF2BFF476000319C86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5DF9022BFF476000319C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5DF9042BFF476000319C86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5DF90B2BFF486E00319C86 /* FocusMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FocusMode.storyboard; sourceTree = "<group>"; };
 		CE5DF90D2BFF488B00319C86 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		CE5DF90F2BFF489E00319C86 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
+		CE5DF90F2BFF489E00319C86 /* ShoppingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
+		CE5DF9142BFF50D500319C86 /* FocusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTableViewController.swift; sourceTree = "<group>"; };
+		CE5DF9162BFF50DE00319C86 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		CE5DF9182BFF50E500319C86 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 		CE5DF8F52BFF475E00319C86 /* Day8Assignments */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DF9132BFF4C2100319C86 /* Shopping */,
+				CE5DF9122BFF4C1200319C86 /* Settings */,
+				CE5DF9112BFF4C0000319C86 /* FocusMode */,
 				CE5DF90A2BFF485000319C86 /* StoryBoards */,
 				CE5DF8F62BFF475E00319C86 /* AppDelegate.swift */,
 				CE5DF8F82BFF475E00319C86 /* SceneDelegate.swift */,
@@ -76,12 +85,36 @@
 		CE5DF90A2BFF485000319C86 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
-				CE5DF8FC2BFF475E00319C86 /* TabBar.storyboard */,
-				CE5DF90B2BFF486E00319C86 /* FocusMode.storyboard */,
-				CE5DF90D2BFF488B00319C86 /* Settings.storyboard */,
-				CE5DF90F2BFF489E00319C86 /* Shopping.storyboard */,
+				CE5DF8FC2BFF475E00319C86 /* Main.storyboard */,
 			);
 			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		CE5DF9112BFF4C0000319C86 /* FocusMode */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF90B2BFF486E00319C86 /* FocusMode.storyboard */,
+				CE5DF9142BFF50D500319C86 /* FocusTableViewController.swift */,
+			);
+			path = FocusMode;
+			sourceTree = "<group>";
+		};
+		CE5DF9122BFF4C1200319C86 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF90D2BFF488B00319C86 /* Settings.storyboard */,
+				CE5DF9162BFF50DE00319C86 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CE5DF9132BFF4C2100319C86 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DF90F2BFF489E00319C86 /* ShoppingList.storyboard */,
+				CE5DF9182BFF50E500319C86 /* ShoppingListTableViewController.swift */,
+			);
+			path = Shopping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +180,7 @@
 				CE5DF8FE2BFF475E00319C86 /* Base in Resources */,
 				CE5DF90C2BFF486E00319C86 /* FocusMode.storyboard in Resources */,
 				CE5DF90E2BFF488B00319C86 /* Settings.storyboard in Resources */,
-				CE5DF9102BFF489E00319C86 /* Shopping.storyboard in Resources */,
+				CE5DF9102BFF489E00319C86 /* ShoppingList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,21 +191,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5DF9152BFF50D500319C86 /* FocusTableViewController.swift in Sources */,
+				CE5DF9172BFF50DE00319C86 /* SettingsTableViewController.swift in Sources */,
 				CE5DF8FB2BFF475E00319C86 /* ViewController.swift in Sources */,
 				CE5DF8F72BFF475E00319C86 /* AppDelegate.swift in Sources */,
 				CE5DF8F92BFF475E00319C86 /* SceneDelegate.swift in Sources */,
+				CE5DF9192BFF50E600319C86 /* ShoppingListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE5DF8FC2BFF475E00319C86 /* TabBar.storyboard */ = {
+		CE5DF8FC2BFF475E00319C86 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CE5DF8FD2BFF475E00319C86 /* Base */,
 			);
-			name = TabBar.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		CE5DF9012BFF476000319C86 /* LaunchScreen.storyboard */ = {
