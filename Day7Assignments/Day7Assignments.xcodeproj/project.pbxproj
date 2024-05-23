@@ -20,6 +20,7 @@
 		CE5DF88D2BFE1ECC00319C86 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF88C2BFE1ECC00319C86 /* DetailViewController.swift */; };
 		CE5DF8902BFE1EF700319C86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF88F2BFE1EF700319C86 /* Constants.swift */; };
 		CE5DF8932BFE1F1700319C86 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8922BFE1F1700319C86 /* UIImage+Resize.swift */; };
+		CE5DF8952BFEC48600319C86 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8942BFEC48600319C86 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CE5DF88C2BFE1ECC00319C86 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CE5DF88F2BFE1EF700319C86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE5DF8922BFE1F1700319C86 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		CE5DF8942BFEC48600319C86 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5DF8802BFDF64E00319C86 /* BMICalculatorViewController.swift */,
+				CE5DF8942BFEC48600319C86 /* CalendarViewController.swift */,
 			);
 			path = BMICalculator;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				CE5DF8712BFDF5F300319C86 /* ViewController.swift in Sources */,
 				CE5DF86D2BFDF5F300319C86 /* AppDelegate.swift in Sources */,
 				CE5DF8862BFDFE2900319C86 /* UserDefaults+Data.swift in Sources */,
+				CE5DF8952BFEC48600319C86 /* CalendarViewController.swift in Sources */,
 				CE5DF8932BFE1F1700319C86 /* UIImage+Resize.swift in Sources */,
 				CE5DF8842BFDF67A00319C86 /* Dictionary+Switch.swift in Sources */,
 				CE5DF86F2BFDF5F300319C86 /* SceneDelegate.swift in Sources */,

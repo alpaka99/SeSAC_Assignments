@@ -33,7 +33,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // inactive -> active
         print(#function)
+        
         sceneState = SceneState.foreground.rawValue
+        print(sceneState)
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -42,7 +44,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // active -> inactive
         print(#function)
+        
         sceneState = SceneState.inactive.rawValue
+        print(sceneState)
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -51,7 +55,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // inactive -> foreground
         print(#function)
+        
         sceneState = SceneState.foreground.rawValue
+        print(sceneState)
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -61,7 +67,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // foreground -> background
         print(#function)
+        
         sceneState = SceneState.background.rawValue
+        print(sceneState)
     }
 
 }

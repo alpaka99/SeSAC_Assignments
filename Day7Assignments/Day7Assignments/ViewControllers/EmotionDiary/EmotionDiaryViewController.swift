@@ -38,6 +38,9 @@ final class EmotionDiaryViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // add oberver
+        saveDataWhenEnteringBackground()
+        
         // set Data structure
         setButtonCountDictionary()
         
@@ -73,20 +76,23 @@ final class EmotionDiaryViewController:
         // navigation bar title
         navigationItem.title = EmotionDiaryConstants.navigationTitle
     
-        configureLeftBarButtonItem()
+        configureLeftBarButtonItems()
         configureRightBarButtonItems()
     }
     
-    private func configureLeftBarButtonItem() {
+    private func configureLeftBarButtonItems() {
         // navigation bar left button
-        let leftBarButton = UIBarButtonItem(
+        var leftBarButtonItems: [UIBarButtonItem] = []
+        let detailViewButton = UIBarButtonItem(
             image: UIImage(systemName: EmotionDiaryConstants.leftBarButtonImageName),
             style: .plain,
             target: self,
             action: #selector(showDetailController)
         )
-        leftBarButton.tintColor = .black
-        navigationItem.leftBarButtonItem = leftBarButton
+        detailViewButton.tintColor = .black
+        leftBarButtonItems.append(detailViewButton)
+        
+        navigationItem.leftBarButtonItems = leftBarButtonItems
     }
     
     private func configureRightBarButtonItems() {
@@ -304,14 +310,20 @@ final class EmotionDiaryViewController:
     }
     
     private func saveDataWhenEnteringBackground() {
-        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        print(#function)
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
+            print("cannot find sceneDelegate")
+            return
+        }
         
-        // MARK: background로 이동할때 이 화면이 먼저 파괴됨. 그래서 이 observer가 동작하지 않음
+        // MARK: background로 이동할때 이 화면이 먼저 파괴됨. 그래서 이 observer가 동작하지 않음 -> 이게 아니라 observer를 달았는데 observing을 못하는데?
         let _ = sceneDelegate.observe(
             \.sceneState,
              options: [.old, .new]
         ) { [weak self] (object, change) in
+            print("observing")
             if let oldValue = change.oldValue, let newValue = change.newValue {
+                print(oldValue, newValue)
                 // active, inactive -> background
                 if oldValue == 0 || oldValue == 1 {
                     if newValue == 2 {

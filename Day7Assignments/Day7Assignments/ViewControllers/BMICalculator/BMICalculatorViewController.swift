@@ -59,6 +59,9 @@ class BMICalculateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // configure navigationBar
+        configureNavigationBar()
+        
         
         // configure titleLabels
         configureLabels()
@@ -74,6 +77,23 @@ class BMICalculateViewController: UIViewController {
         
         // configure data
         configureData()
+    }
+    
+    private func configureNavigationBar() {
+        configureNavigationBarItems()
+    }
+    
+    private func configureNavigationBarItems() {
+        var leftBarButtonItems: [UIBarButtonItem] = []
+        var rightBarButtonItems: [UIBarButtonItem] = []
+        
+        let calendarBarButton = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(showCalendarViewController))
+        leftBarButtonItems.append(calendarBarButton)
+    }
+    
+    @objc
+    private func showCalendarViewController() {
+        
     }
     
     private func configureData() {
