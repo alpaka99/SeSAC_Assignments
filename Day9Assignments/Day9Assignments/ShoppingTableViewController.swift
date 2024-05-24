@@ -12,9 +12,8 @@ final class ShoppingTableViewController:
     
     private let shoppingTableViewIdentifier: String = "ShoppingTableViewCell"
     private let textField = UITextField()
-    private var items: [CellState] = [
-    ]
-    
+    private var items: [CellState] = []
+    private var favoritesEndItemPointer: Int = -1
 
     
     override func loadView() {
@@ -27,6 +26,11 @@ final class ShoppingTableViewController:
         
         self.tableView.rowHeight = 44
         self.tableView.keyboardDismissMode = .onDrag
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
     }
     
     // section associated methods
@@ -85,7 +89,6 @@ final class ShoppingTableViewController:
     
     @objc
     private func textFieldSubmitted() {
-        print(#function)
         addItemToTodoList()
     }
     
@@ -94,8 +97,14 @@ final class ShoppingTableViewController:
             // do something to add new item
             items.append(CellState.initialize(text))
             self.tableView.reloadData()
+            super.becomeFirstResponder()
+            self.textField.becomeFirstResponder()
         }
     }
+    
+    // section associated methods
+    
+    
     
     // cell associated methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,7 +120,7 @@ final class ShoppingTableViewController:
             let item = items[indexPath.row]
             
             // cell configuration
-            cellConfiguration(cell: cell)
+            cellConfiguration(cell: cell, item: item)
             
             // leadingButton configuration
             leadingButtonConfiguration(cell: cell, item: item, tag: index)
@@ -131,9 +140,15 @@ final class ShoppingTableViewController:
         }
     }
     
-    private func cellConfiguration(cell: ShoppingTableViewCell) {
+    private func cellConfiguration(cell: ShoppingTableViewCell, item: CellState) {
         cell.selectionStyle = .none
-        cell.backgroundColor = .systemGray5
+        switch item.trailingButtonState {
+        case .checked:
+            cell.backgroundColor = .systemTeal
+        case .unChecked:
+            cell.backgroundColor = .systemGray5
+        }
+        
         cell.layer.cornerRadius = 8
     }
     
@@ -171,7 +186,7 @@ final class ShoppingTableViewController:
     @objc
     func leadingButtonTapped(_ sender: UIButton) {
         let index = sender.tag
-        items[index] = items[index].toggleLeading()
+        items[index] = items[index].toggleLeadingButton()
         
         tableView.reloadRows(
             at: [IndexPath(row: index, section: 0)],
@@ -179,55 +194,106 @@ final class ShoppingTableViewController:
         )
     }
     
-    // MARK: 즐겨찾기 해둔것들은 위로 옮기는 작업 해보기
+    // MARK: 즐겨찾기 해둔것들은 위로 옮기는 작업 해보기 -> 문제점: 현재 tag는 Int로만 받아서 하나의 섹션에서는 구분가능한데 두개의 섹션에서는 어떤 섹션에서 눌렀는지 구분 불가 e.g) 0번째 섹션의 0번째와, 1번째 섹션의 0번째는 같은 tag가 같이 0
+    // 음... 이걸 하려면 contextMenu를 띄워서 해야겠는데...?
+    
+    // 카톡 단톡방 방법
+    // 1. 즐겨찾기 설정한것들(.unChecked -> .checked인 것들)은 items의 가장 앞에 넣기
+    // 2. 즐겨찾기 해제된 것들(.checked -> .unChecked인 것들)은 updatedAt의 순서대로 sort
+    
+    
+    // 이걸 구현할 내 생각
+    // 1. favorite array, normal array 2개 운용
+    // 2. favorite array에 갈때(즐찾 설정)는 그냥 array.append()
+    // 3. normal array에 갈때(즐찾 해제)는 array.append()하고 sort()
     @objc
     func trailingButtonTapped(_ sender: UIButton) {
         let index = sender.tag
-        items[index] = items[index].toggleTrailingButton()
-        tableView.reloadRows(
-            at: [IndexPath(row: index, section: 0)],
-            with: .automatic
-        )
+        
+        let currentPosition: SectionType = (index <= favoritesEndItemPointer) ? .favorites : .common
+        switch currentPosition {
+        case .favorites:
+            moveItemToCommons(from: index)
+        case .common:
+            moveItemToFavorites(from: index)
+        }
     }
     
+    private func moveItemToFavorites(from index: Int) {
+        favoritesEndItemPointer += 1
+        let item = items.remove(at: index).toggleTrailingButton()
+        items.insert(item, at: favoritesEndItemPointer)
+        
+        self.tableView.reloadData()
+    }
     
+    private func moveItemToCommons(from index: Int) {
+        favoritesEndItemPointer -= 1
+        let item = items.remove(at: index).toggleTrailingButton()
+        putItemInCommonArray(item, start: favoritesEndItemPointer+1)
+        
+        tableView.reloadData()
+    }
+    
+    // MARK: 위치를 생성된 순서대로 계산해서 넣기
+    private func putItemInCommonArray(_ item: CellState, start: Int) {
+        for index in start..<items.count {
+            if item.createdAt < items[index].createdAt {
+                items.insert(item, at: index)
+                return
+            }
+        }
+        items.append(item)
+    }
+}
+
+private enum SectionType {
+    case favorites
+    case common
 }
 
 
-enum CellState {
-    case defaultCell(ButtonCheckState, String, ButtonCheckState)
+private enum CellState {
+    case defaultCell(ButtonCheckState, String, ButtonCheckState, Date)
     
     var title: String {
         switch self {
-        case .defaultCell(_, let title, _):
+        case .defaultCell(_, let title, _, _):
             return title
         }
     }
     
     var leadingButtonState: ButtonCheckState {
         switch self {
-        case .defaultCell(let leadingButtonState, _, _):
+        case .defaultCell(let leadingButtonState, _, _, _):
             return leadingButtonState
         }
     }
     
     var trailingButtonState: ButtonCheckState {
         switch self {
-        case .defaultCell(_, _, let trailingButtonState):
+        case .defaultCell(_, _, let trailingButtonState, _):
             return trailingButtonState
+        }
+    }
+    
+    var createdAt: Date {
+        switch self {
+        case .defaultCell(_, _, _, let date):
+            return date
         }
     }
     
     var leadingButtonImageName: String {
         switch self {
-        case .defaultCell(let state, _, _):
+        case .defaultCell(let state, _, _, _):
             return state.isChecked ? "checkmark.square.fill" : "checkmark.square"
         }
     }
     
     var trailingButtonImageName: String {
         switch self {
-        case .defaultCell(_, _, let state):
+        case .defaultCell(_, _, let state, _):
             return state.isChecked ? "star.fill" : "star"
         }
     }
@@ -235,35 +301,36 @@ enum CellState {
     static func initialize(_ title: String) -> Self {
         switch self {
         default:
-            return .defaultCell(.unChecked, title, .unChecked)
+            return .defaultCell(.unChecked, title, .unChecked, Date.now)
         }
     }
     
-    func toggleLeading() -> Self {
+    func toggleLeadingButton() -> Self {
         switch self {
-        case .defaultCell(let leadingState, let title, let trailingState):
+        case .defaultCell(let leadingState, let title, let trailingState, let updatedAt):
             return .defaultCell(
                 leadingState.toggledState,
                 title,
-                trailingState
+                trailingState,
+                updatedAt
             )
         }
     }
     
     func toggleTrailingButton() -> Self {
         switch self {
-        case .defaultCell(let leadingState, let title, let trailingButtonState):
+        case .defaultCell(let leadingState, let title, let trailingButtonState, let updatedAt):
             return .defaultCell(
                 leadingState,
                 title,
-                trailingButtonState.toggledState
+                trailingButtonState.toggledState,
+                updatedAt
             )
         }
     }
 }
 
-
-enum ButtonCheckState {
+private enum ButtonCheckState {
     case checked
     case unChecked
     
