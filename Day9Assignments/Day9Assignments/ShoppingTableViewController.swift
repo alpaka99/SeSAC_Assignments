@@ -92,8 +92,7 @@ final class ShoppingTableViewController:
     private func addItemToTodoList() {
         if let text = textField.text {
             // do something to add new item
-            let newItem = CellState.defaultCell(.unChecked, text, .unChecked)
-            items.append(newItem)
+            items.append(CellState.initialize(text))
             self.tableView.reloadData()
         }
     }
@@ -105,34 +104,23 @@ final class ShoppingTableViewController:
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: shoppingTableViewIdentifier, for: indexPath) as? ShoppingTableViewCell {
-                // 여기서 꺼내올때 out of bound error handling
+            
+            let index = indexPath.row
+            
+            // 여기서 꺼내올때 out of bound error handling
             let item = items[indexPath.row]
             
-            // leadingButton configuration
-            var leadingConfig = UIButton.Configuration.plain()
-            leadingConfig.image = UIImage(systemName: item.leadingButtonImageName)
+            // cell configuration
+            cellConfiguration(cell: cell)
             
-            cell.leadingButton.configuration = leadingConfig
-            cell.leadingButton.tintColor = .black
-            cell.leadingButton.tag = indexPath.row
-            cell.leadingButton.addTarget(self, action: #selector(leadingButtonTapped), for: .touchUpInside)
+            // leadingButton configuration
+            leadingButtonConfiguration(cell: cell, item: item, tag: index)
             
             // mid todoLabel configuration
-            cell.todoLabel.text = item.title
+            midTodoLabelConfiguration(cell: cell, text: item.title)
             
             // trailing button configuration
-            var trailingConfig = UIButton.Configuration.plain()
-            trailingConfig.image = UIImage(systemName: item.trailingButtonImageName)
-            
-            cell.trailingButton.configuration = trailingConfig
-            cell.trailingButton.tintColor = .black
-            cell.trailingButton.tag = indexPath.row
-            cell.trailingButton.addTarget(self, action: #selector(trailingButtonTapped), for: .touchUpInside)
-            
-            // cell configuration
-            cell.selectionStyle = .none
-            cell.backgroundColor = .systemGray5
-            cell.layer.cornerRadius = 8
+            trailingButtonConfiguration(cell: cell, item: item, tag: index)
             
             return cell
             
@@ -141,6 +129,36 @@ final class ShoppingTableViewController:
             cell.textLabel?.text = "Something went wrong...😞"
             return cell
         }
+    }
+    
+    private func cellConfiguration(cell: ShoppingTableViewCell) {
+        cell.selectionStyle = .none
+        cell.backgroundColor = .systemGray5
+        cell.layer.cornerRadius = 8
+    }
+    
+    private func leadingButtonConfiguration(cell: ShoppingTableViewCell, item: CellState, tag: Int) {
+        var leadingConfig = UIButton.Configuration.plain()
+        leadingConfig.image = UIImage(systemName: item.leadingButtonImageName)
+        cell.leadingButton.configuration = leadingConfig
+        
+        cell.leadingButton.tintColor = .black
+        cell.leadingButton.tag = tag
+        cell.leadingButton.addTarget(self, action: #selector(leadingButtonTapped), for: .touchUpInside)
+    }
+    
+    private func midTodoLabelConfiguration(cell: ShoppingTableViewCell, text: String) {
+        cell.todoLabel.text = text
+    }
+    
+    private func trailingButtonConfiguration(cell: ShoppingTableViewCell, item: CellState, tag: Int) {
+        var trailingConfig = UIButton.Configuration.plain()
+        trailingConfig.image = UIImage(systemName: item.trailingButtonImageName)
+        cell.trailingButton.configuration = trailingConfig
+        
+        cell.trailingButton.tintColor = .black
+        cell.trailingButton.tag = tag
+        cell.trailingButton.addTarget(self, action: #selector(trailingButtonTapped), for: .touchUpInside)
     }
     
     // MARK: 삭제전에 alert로 한번 물어보는 로직 구현
@@ -211,6 +229,13 @@ enum CellState {
         switch self {
         case .defaultCell(_, _, let state):
             return state.isChecked ? "star.fill" : "star"
+        }
+    }
+    
+    static func initialize(_ title: String) -> Self {
+        switch self {
+        default:
+            return .defaultCell(.unChecked, title, .unChecked)
         }
     }
     
