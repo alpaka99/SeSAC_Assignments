@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bMN-cc-w3d">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shopping Table View Controller-->
+        <scene sceneID="zGm-X6-Thn">
+            <objects>
+                <tableViewController id="bMN-cc-w3d" customClass="ShoppingTableViewController" customModule="Day9Assignments" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="FsQ-D1-eyv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" id="gLh-MZ-7fI" customClass="ShoppingTableViewCell" customModule="Day9Assignments" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.333332061767578" width="353" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gLh-MZ-7fI" id="Ct3-dS-1JH">
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4N8-yX-9dJ">
+                                            <rect key="frame" x="103" y="12" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jq-BF-gc1">
+                                            <rect key="frame" x="8" y="5" width="75" height="35"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="che-6X-Kkj">
+                                            <rect key="frame" x="268" y="5" width="75" height="35"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4N8-yX-9dJ" firstAttribute="leading" secondItem="5jq-BF-gc1" secondAttribute="trailing" constant="20" id="7Zi-YW-DOG"/>
+                                        <constraint firstItem="che-6X-Kkj" firstAttribute="centerY" secondItem="Ct3-dS-1JH" secondAttribute="centerY" id="GC3-1W-M7l"/>
+                                        <constraint firstItem="5jq-BF-gc1" firstAttribute="centerY" secondItem="Ct3-dS-1JH" secondAttribute="centerY" id="SMP-f2-U5c"/>
+                                        <constraint firstAttribute="trailing" secondItem="che-6X-Kkj" secondAttribute="trailing" constant="10" id="o5T-Mc-0EI"/>
+                                        <constraint firstItem="5jq-BF-gc1" firstAttribute="leading" secondItem="Ct3-dS-1JH" secondAttribute="leading" constant="8" id="uW6-b1-3cS"/>
+                                        <constraint firstItem="4N8-yX-9dJ" firstAttribute="centerY" secondItem="Ct3-dS-1JH" secondAttribute="centerY" id="uuL-TD-7vv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="leadingButton" destination="5jq-BF-gc1" id="nmH-Rn-jzt"/>
+                                    <outlet property="todoLabel" destination="4N8-yX-9dJ" id="zo6-Dy-JfF"/>
+                                    <outlet property="trailingButton" destination="che-6X-Kkj" id="wm2-GU-gTd"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bMN-cc-w3d" id="CJ5-cS-Pdx"/>
+                            <outlet property="delegate" destination="bMN-cc-w3d" id="Da4-gG-31e"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-PD-Fsv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="-313"/>
+        </scene>
+    </scenes>
+</document>
