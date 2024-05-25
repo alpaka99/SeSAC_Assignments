@@ -15,6 +15,7 @@
 		CE53A2712C023AFA00A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2702C023AFA00A2B9BC /* Base */; };
 		CE53A27A2C023B1500A2B9BC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */; };
 		CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2792C023B1500A2B9BC /* Restaurant.swift */; };
+		CE53A27F2C023C8C00A2B9BC /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A27E2C023C8C00A2B9BC /* Magazine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CE53A2722C023AFA00A2B9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
 		CE53A2792C023B1500A2B9BC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		CE53A27E2C023C8C00A2B9BC /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		CE53A2632C023AF900A2B9BC /* TravelMagazineProject */ = {
 			isa = PBXGroup;
 			children = (
+				CE53A27C2C023C4800A2B9BC /* Infomations */,
 				CE53A2642C023AF900A2B9BC /* AppDelegate.swift */,
 				CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */,
 				CE53A2682C023AF900A2B9BC /* ViewController.swift */,
@@ -67,10 +70,26 @@
 				CE53A26D2C023AFA00A2B9BC /* Assets.xcassets */,
 				CE53A26F2C023AFA00A2B9BC /* LaunchScreen.storyboard */,
 				CE53A2722C023AFA00A2B9BC /* Info.plist */,
-				CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */,
-				CE53A2792C023B1500A2B9BC /* Restaurant.swift */,
+				CE53A27D2C023C5C00A2B9BC /* Models */,
 			);
 			path = TravelMagazineProject;
+			sourceTree = "<group>";
+		};
+		CE53A27C2C023C4800A2B9BC /* Infomations */ = {
+			isa = PBXGroup;
+			children = (
+				CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */,
+			);
+			path = Infomations;
+			sourceTree = "<group>";
+		};
+		CE53A27D2C023C5C00A2B9BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE53A2792C023B1500A2B9BC /* Restaurant.swift */,
+				CE53A27E2C023C8C00A2B9BC /* Magazine.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +166,7 @@
 				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
 				CE53A2692C023AF900A2B9BC /* ViewController.swift in Sources */,
 				CE53A27A2C023B1500A2B9BC /* MagazineInfo.swift in Sources */,
+				CE53A27F2C023C8C00A2B9BC /* Magazine.swift in Sources */,
 				CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */,
 				CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */,
 			);
