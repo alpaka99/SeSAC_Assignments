@@ -77,12 +77,12 @@ struct RestaurantList {
             type: 100
         ),
         Restaurant(
-            image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzEyMThfMTgy%2FMDAxNzAyODcxODI2NjIx.WMLXCYtCEu_wHtSZjHfeRxnRuq9QB8ShrajsuldMAfEg.JGXZgl6qxtnjaQVkcp-fLnhfsa4iFxFi-5Sp8X3lKKcg.JPEG%2F8844E8E3-47D7-462A-9936-B659D330071D.jpeg%3Ftype%3Dw1500_60_sharpen"",
+            image: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzEyMThfMTgy%2FMDAxNzAyODcxODI2NjIx.WMLXCYtCEu_wHtSZjHfeRxnRuq9QB8ShrajsuldMAfEg.JGXZgl6qxtnjaQVkcp-fLnhfsa4iFxFi-5Sp8X3lKKcg.JPEG%2F8844E8E3-47D7-462A-9936-B659D330071D.jpeg%3Ftype%3Dw1500_60_sharpen",
             latitude: 37.516912,
             longitude: 126.888908,
             name: "홍대교동짬뽕",
             address: "서울 영등포구 선유로 34",
-            phoneNumber: 02-2679-4559,
+            phoneNumber: "02-2679-4559",
             category: "중식",
             price: 3333,
             type: 200
@@ -90,7 +90,7 @@ struct RestaurantList {
         Restaurant(
             image: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA5MDFfMTc1%2FMDAxNjkzNTY0NTIyNDA4.IblBXWrjeR8ByZJqn6gSnZbL8R_MjgW8Wq8s2Ud_w7og.ICGNMqW7-6lKQVSnH03JMGvqoMXopOVkBbQqdbO24m0g.JPEG.cnsrkfl123%2F20230901%25A3%25DF184347.jpg",
             latitude: 37.519032,
-            longitude: 126.886.547,
+            longitude: 126.886547,
             name: "종로김밥 문래점",
             address: "서울 영등포구 선유로13길 25 에이스하이테크시티2",
             phoneNumber: "02-2257-8191",
@@ -136,7 +136,6 @@ struct RestaurantList {
             latitude: 37.516760,
             longitude: 126.889274,
             name: "문래동 돈까스",
-            aname: "선식당 문래점",
             address: "서울 영등포구 도림로147길 2 문래동돈까스",
             phoneNumber: "0507-1390-1007",
             category: "경양식",
@@ -171,7 +170,7 @@ struct RestaurantList {
             longitude: 126.887853,
             name: "제주올래국수",
             address: "서울 영등포구 선유로11길 12 문래파라곤",
-            phoneNumber: 02-2632-5677,
+            phoneNumber: "02-2632-5677",
             category: "한식",
             price: 7612,
             type: 100

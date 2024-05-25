@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  MagazineProject
+//  TravelMagazineProject
 //
 //  Created by user on 5/26/24.
 //

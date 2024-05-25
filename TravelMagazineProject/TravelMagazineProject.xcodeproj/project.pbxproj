@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE53A23D2C02374600A2B9BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A23C2C02374600A2B9BC /* AppDelegate.swift */; };
-		CE53A23F2C02374600A2B9BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A23E2C02374600A2B9BC /* SceneDelegate.swift */; };
-		CE53A2442C02374600A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2432C02374600A2B9BC /* Base */; };
-		CE53A2462C02374800A2B9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2452C02374800A2B9BC /* Assets.xcassets */; };
-		CE53A2492C02374800A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2482C02374800A2B9BC /* Base */; };
-		CE53A2532C02384800A2B9BC /* MagazineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2522C02384800A2B9BC /* MagazineTableViewController.swift */; };
-		CE53A2552C02389500A2B9BC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2542C02389500A2B9BC /* MagazineInfo.swift */; };
-		CE53A2572C02389800A2B9BC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2562C02389800A2B9BC /* Restaurant.swift */; };
+		CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2642C023AF900A2B9BC /* AppDelegate.swift */; };
+		CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */; };
+		CE53A2692C023AF900A2B9BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2682C023AF900A2B9BC /* ViewController.swift */; };
+		CE53A26C2C023AF900A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A26B2C023AF900A2B9BC /* Base */; };
+		CE53A26E2C023AFA00A2B9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE53A26D2C023AFA00A2B9BC /* Assets.xcassets */; };
+		CE53A2712C023AFA00A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2702C023AFA00A2B9BC /* Base */; };
+		CE53A27A2C023B1500A2B9BC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */; };
+		CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2792C023B1500A2B9BC /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE53A2392C02374600A2B9BC /* MagazineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagazineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE53A23C2C02374600A2B9BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE53A23E2C02374600A2B9BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE53A2432C02374600A2B9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE53A2452C02374800A2B9BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE53A2482C02374800A2B9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CE53A24A2C02374800A2B9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE53A2522C02384800A2B9BC /* MagazineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewController.swift; sourceTree = "<group>"; };
-		CE53A2542C02389500A2B9BC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
-		CE53A2562C02389800A2B9BC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		CE53A2612C023AF900A2B9BC /* TravelMagazineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMagazineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE53A2642C023AF900A2B9BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CE53A2682C023AF900A2B9BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE53A26B2C023AF900A2B9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE53A26D2C023AFA00A2B9BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE53A2702C023AFA00A2B9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE53A2722C023AFA00A2B9BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
+		CE53A2792C023B1500A2B9BC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE53A2362C02374600A2B9BC /* Frameworks */ = {
+		CE53A25E2C023AF900A2B9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,74 +41,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE53A2302C02374600A2B9BC = {
+		CE53A2582C023AF900A2B9BC = {
 			isa = PBXGroup;
 			children = (
-				CE53A23B2C02374600A2B9BC /* MagazineProject */,
-				CE53A23A2C02374600A2B9BC /* Products */,
+				CE53A2632C023AF900A2B9BC /* TravelMagazineProject */,
+				CE53A2622C023AF900A2B9BC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CE53A23A2C02374600A2B9BC /* Products */ = {
+		CE53A2622C023AF900A2B9BC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE53A2392C02374600A2B9BC /* MagazineProject.app */,
+				CE53A2612C023AF900A2B9BC /* TravelMagazineProject.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE53A23B2C02374600A2B9BC /* MagazineProject */ = {
+		CE53A2632C023AF900A2B9BC /* TravelMagazineProject */ = {
 			isa = PBXGroup;
 			children = (
-				CE53A23C2C02374600A2B9BC /* AppDelegate.swift */,
-				CE53A23E2C02374600A2B9BC /* SceneDelegate.swift */,
-				CE53A2422C02374600A2B9BC /* Main.storyboard */,
-				CE53A2522C02384800A2B9BC /* MagazineTableViewController.swift */,
-				CE53A2452C02374800A2B9BC /* Assets.xcassets */,
-				CE53A2472C02374800A2B9BC /* LaunchScreen.storyboard */,
-				CE53A24A2C02374800A2B9BC /* Info.plist */,
-				CE53A2542C02389500A2B9BC /* MagazineInfo.swift */,
-				CE53A2562C02389800A2B9BC /* Restaurant.swift */,
+				CE53A2642C023AF900A2B9BC /* AppDelegate.swift */,
+				CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */,
+				CE53A2682C023AF900A2B9BC /* ViewController.swift */,
+				CE53A26A2C023AF900A2B9BC /* Main.storyboard */,
+				CE53A26D2C023AFA00A2B9BC /* Assets.xcassets */,
+				CE53A26F2C023AFA00A2B9BC /* LaunchScreen.storyboard */,
+				CE53A2722C023AFA00A2B9BC /* Info.plist */,
+				CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */,
+				CE53A2792C023B1500A2B9BC /* Restaurant.swift */,
 			);
-			path = MagazineProject;
+			path = TravelMagazineProject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE53A2382C02374600A2B9BC /* MagazineProject */ = {
+		CE53A2602C023AF900A2B9BC /* TravelMagazineProject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE53A24D2C02374800A2B9BC /* Build configuration list for PBXNativeTarget "MagazineProject" */;
+			buildConfigurationList = CE53A2752C023AFA00A2B9BC /* Build configuration list for PBXNativeTarget "TravelMagazineProject" */;
 			buildPhases = (
-				CE53A2352C02374600A2B9BC /* Sources */,
-				CE53A2362C02374600A2B9BC /* Frameworks */,
-				CE53A2372C02374600A2B9BC /* Resources */,
+				CE53A25D2C023AF900A2B9BC /* Sources */,
+				CE53A25E2C023AF900A2B9BC /* Frameworks */,
+				CE53A25F2C023AF900A2B9BC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MagazineProject;
-			productName = MagazineProject;
-			productReference = CE53A2392C02374600A2B9BC /* MagazineProject.app */;
+			name = TravelMagazineProject;
+			productName = TravelMagazineProject;
+			productReference = CE53A2612C023AF900A2B9BC /* TravelMagazineProject.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CE53A2312C02374600A2B9BC /* Project object */ = {
+		CE53A2592C023AF900A2B9BC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					CE53A2382C02374600A2B9BC = {
+					CE53A2602C023AF900A2B9BC = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = CE53A2342C02374600A2B9BC /* Build configuration list for PBXProject "MagazineProject" */;
+			buildConfigurationList = CE53A25C2C023AF900A2B9BC /* Build configuration list for PBXProject "TravelMagazineProject" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -116,57 +116,57 @@
 				en,
 				Base,
 			);
-			mainGroup = CE53A2302C02374600A2B9BC;
-			productRefGroup = CE53A23A2C02374600A2B9BC /* Products */;
+			mainGroup = CE53A2582C023AF900A2B9BC;
+			productRefGroup = CE53A2622C023AF900A2B9BC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE53A2382C02374600A2B9BC /* MagazineProject */,
+				CE53A2602C023AF900A2B9BC /* TravelMagazineProject */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CE53A2372C02374600A2B9BC /* Resources */ = {
+		CE53A25F2C023AF900A2B9BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE53A2462C02374800A2B9BC /* Assets.xcassets in Resources */,
-				CE53A2492C02374800A2B9BC /* Base in Resources */,
-				CE53A2442C02374600A2B9BC /* Base in Resources */,
+				CE53A26E2C023AFA00A2B9BC /* Assets.xcassets in Resources */,
+				CE53A2712C023AFA00A2B9BC /* Base in Resources */,
+				CE53A26C2C023AF900A2B9BC /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CE53A2352C02374600A2B9BC /* Sources */ = {
+		CE53A25D2C023AF900A2B9BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE53A2572C02389800A2B9BC /* Restaurant.swift in Sources */,
-				CE53A2532C02384800A2B9BC /* MagazineTableViewController.swift in Sources */,
-				CE53A2552C02389500A2B9BC /* MagazineInfo.swift in Sources */,
-				CE53A23D2C02374600A2B9BC /* AppDelegate.swift in Sources */,
-				CE53A23F2C02374600A2B9BC /* SceneDelegate.swift in Sources */,
+				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
+				CE53A2692C023AF900A2B9BC /* ViewController.swift in Sources */,
+				CE53A27A2C023B1500A2B9BC /* MagazineInfo.swift in Sources */,
+				CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */,
+				CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE53A2422C02374600A2B9BC /* Main.storyboard */ = {
+		CE53A26A2C023AF900A2B9BC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE53A2432C02374600A2B9BC /* Base */,
+				CE53A26B2C023AF900A2B9BC /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		CE53A2472C02374800A2B9BC /* LaunchScreen.storyboard */ = {
+		CE53A26F2C023AFA00A2B9BC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE53A2482C02374800A2B9BC /* Base */,
+				CE53A2702C023AFA00A2B9BC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CE53A24B2C02374800A2B9BC /* Debug */ = {
+		CE53A2732C023AFA00A2B9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -237,7 +237,7 @@
 			};
 			name = Debug;
 		};
-		CE53A24C2C02374800A2B9BC /* Release */ = {
+		CE53A2742C023AFA00A2B9BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,7 +293,7 @@
 			};
 			name = Release;
 		};
-		CE53A24E2C02374800A2B9BC /* Debug */ = {
+		CE53A2762C023AFA00A2B9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -301,26 +301,31 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MagazineProject/Info.plist;
+				INFOPLIST_FILE = TravelMagazineProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lets.MagazineProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lets.TravelMagazineProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		CE53A24F2C02374800A2B9BC /* Release */ = {
+		CE53A2772C023AFA00A2B9BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -328,47 +333,52 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MagazineProject/Info.plist;
+				INFOPLIST_FILE = TravelMagazineProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lets.MagazineProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lets.TravelMagazineProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE53A2342C02374600A2B9BC /* Build configuration list for PBXProject "MagazineProject" */ = {
+		CE53A25C2C023AF900A2B9BC /* Build configuration list for PBXProject "TravelMagazineProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE53A24B2C02374800A2B9BC /* Debug */,
-				CE53A24C2C02374800A2B9BC /* Release */,
+				CE53A2732C023AFA00A2B9BC /* Debug */,
+				CE53A2742C023AFA00A2B9BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE53A24D2C02374800A2B9BC /* Build configuration list for PBXNativeTarget "MagazineProject" */ = {
+		CE53A2752C023AFA00A2B9BC /* Build configuration list for PBXNativeTarget "TravelMagazineProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE53A24E2C02374800A2B9BC /* Debug */,
-				CE53A24F2C02374800A2B9BC /* Release */,
+				CE53A2762C023AFA00A2B9BC /* Debug */,
+				CE53A2772C023AFA00A2B9BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CE53A2312C02374600A2B9BC /* Project object */;
+	rootObject = CE53A2592C023AF900A2B9BC /* Project object */;
 }
