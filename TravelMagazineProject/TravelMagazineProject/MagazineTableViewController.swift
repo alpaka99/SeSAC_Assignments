@@ -41,8 +41,9 @@ class MagazineTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let width = UIScreen.main.bounds.width
-        return width * 1.2
+//        let width = UIScreen.main.bounds.width
+//        return width * 1.2
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

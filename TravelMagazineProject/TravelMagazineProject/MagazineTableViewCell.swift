@@ -97,13 +97,14 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
             cellImage.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
             cellImage.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
             cellImage.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: 8),
-            cellImage.bottomAnchor.constraint(equalTo: title.topAnchor, constant: 8),
-            cellImage.heightAnchor.constraint(equalTo: background.heightAnchor, multiplier: 0.4),
-            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.8)
+            cellImage.bottomAnchor.constraint(equalTo: title.topAnchor, constant: -8),
+            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.8),
+            cellImage.heightAnchor.constraint(equalTo: background.widthAnchor, multiplier: 1),
+            
         ])
         
         cellImage.image = UIImage(systemName: "person.fill")
-        cellImage.backgroundColor = .clear
+        cellImage.backgroundColor = .green
     }
     
     
@@ -113,11 +114,13 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: cellImage.topAnchor, constant: 8),
+            title.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: -8),
             title.leadingAnchor.constraint(equalTo: cellImage.leadingAnchor),
             title.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor),
             title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: 8)
         ])
+        
+        title.text = "타이틀타이틀타이틀타이틀"
     }
     
     
@@ -127,11 +130,13 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         subtitle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
+            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: -8),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             subtitle.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            subtitle.bottomAnchor.constraint(equalTo: dateLabel     .topAnchor, constant: 8)
+            subtitle.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -8)
         ])
+        
+        subtitle.text = "서브타이틀서브타이틀서브타이틀서브타이틀"
     }
     
     
@@ -141,11 +146,13 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: 8),
+            dateLabel.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: -8),
             dateLabel.leadingAnchor.constraint(equalTo: subtitle.leadingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: subtitle.trailingAnchor),
-            dateLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: 8),
+            dateLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -8),
         ])
+        
+        dateLabel.text = String(describing: Date.now)
     }
 }
 
