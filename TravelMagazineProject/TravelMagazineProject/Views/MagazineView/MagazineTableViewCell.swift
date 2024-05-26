@@ -166,12 +166,4 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
 }
 
 
-protocol Reusable {
-    static func getReuseIdentifier() -> String
-}
 
-extension Reusable {
-    static func getReuseIdentifier() -> String {
-        return String(describing: Self.self)
-    }
-}

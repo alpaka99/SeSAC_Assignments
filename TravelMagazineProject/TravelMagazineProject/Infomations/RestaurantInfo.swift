@@ -6,7 +6,6 @@
 //  Created by Den on 5/20/24.
 //
 
-import Foundation
 
 struct RestaurantList {
     let restaurantArray: [Restaurant] = [

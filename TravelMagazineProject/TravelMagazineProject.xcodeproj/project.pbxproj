@@ -23,6 +23,7 @@
 		CE53A2972C031ACD00A2B9BC /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2962C031ACD00A2B9BC /* RestaurantViewController.swift */; };
 		CE53A29B2C031C0C00A2B9BC /* RestaurantListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A29A2C031C0C00A2B9BC /* RestaurantListTableViewController.swift */; };
 		CE53A29D2C031CFF00A2B9BC /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A29C2C031CFF00A2B9BC /* RestaurantTableViewCell.swift */; };
+		CE53A2A02C03676400A2B9BC /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A29F2C03676400A2B9BC /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		CE53A2962C031ACD00A2B9BC /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		CE53A29A2C031C0C00A2B9BC /* RestaurantListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListTableViewController.swift; sourceTree = "<group>"; };
 		CE53A29C2C031CFF00A2B9BC /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		CE53A29F2C03676400A2B9BC /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		CE53A2632C023AF900A2B9BC /* TravelMagazineProject */ = {
 			isa = PBXGroup;
 			children = (
+				CE53A29E2C03675400A2B9BC /* Protocols */,
 				CE53A28C2C0312C600A2B9BC /* Views */,
 				CE53A27C2C023C4800A2B9BC /* Infomations */,
 				CE53A2642C023AF900A2B9BC /* AppDelegate.swift */,
@@ -134,6 +137,14 @@
 				CE53A29C2C031CFF00A2B9BC /* RestaurantTableViewCell.swift */,
 			);
 			path = RestaurantView;
+			sourceTree = "<group>";
+		};
+		CE53A29E2C03675400A2B9BC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE53A29F2C03676400A2B9BC /* Reusable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				CE53A2972C031ACD00A2B9BC /* RestaurantViewController.swift in Sources */,
 				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
 				CE53A2902C03143300A2B9BC /* DetailMagazineViewController.swift in Sources */,
+				CE53A2A02C03676400A2B9BC /* Reusable.swift in Sources */,
 				CE53A2832C023DB600A2B9BC /* MagazineTableViewCell.swift in Sources */,
 				CE53A27F2C023C8C00A2B9BC /* Magazine.swift in Sources */,
 				CE53A2812C023DA900A2B9BC /* MagazineTableViewController.swift in Sources */,
