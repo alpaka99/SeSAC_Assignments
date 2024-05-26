@@ -5,6 +5,7 @@
 //  Created by user on 5/26/24.
 //
 
+import Kingfisher
 import UIKit
 
 class MagazineTableViewController: UITableViewController {
@@ -30,7 +31,11 @@ class MagazineTableViewController: UITableViewController {
             
             let data = magazineData.magazine[indexPath.row]
             
-//            cell.cellImage.image = UIImage(named: data.photo_image)
+            // MARK: 이 부분 Cell쪽으로 옮겨서 함수로 작업하기
+            
+            let url = URL(string: data.photo_image)
+            
+            cell.cellImage.kf.setImage(with: url)
             cell.title.text = data.title
             cell.subtitle.text = data.subtitle
             cell.dateLabel.text = data.date

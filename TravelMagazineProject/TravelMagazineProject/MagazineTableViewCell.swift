@@ -94,15 +94,18 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         
         NSLayoutConstraint.activate([
             cellImage.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
-            cellImage.centerXAnchor.constraint(equalTo: background.centerXAnchor),            cellImage.bottomAnchor.constraint(equalTo: title.topAnchor, constant: -8),
-            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.9),
+            cellImage.centerXAnchor.constraint(equalTo: background.centerXAnchor),
+            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.8),
             cellImage.heightAnchor.constraint(equalTo: cellImage.widthAnchor, multiplier: 1),
         ])
     }
     
     private func setCellImageUI() {
-        cellImage.layer.cornerRadius = 12
-        cellImage.image = UIImage(systemName: "exclamationmark.arrow.circlepath")
+        cellImage.layer.cornerRadius = 16
+        cellImage.clipsToBounds = true
+        cellImage.backgroundColor = .systemGray4
+        cellImage.layer.borderColor = UIColor.systemGray4.cgColor
+        cellImage.layer.borderWidth = 1
     }
     
     
@@ -111,17 +114,16 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: -8),
+            title.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: 8),
             title.leadingAnchor.constraint(equalTo: cellImage.leadingAnchor),
             title.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor),
-            title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: -8)
         ])
     }
     
     private func setTitleUI() {
         title.numberOfLines = 0
         title.textAlignment = .left
-        title.font = .systemFont(ofSize: 24, weight: .heavy)
+        title.font = .systemFont(ofSize: 20, weight: .heavy)
         subtitle.textColor = .black
     }
     
@@ -131,10 +133,9 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         subtitle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: -8),
+            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             subtitle.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            subtitle.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -8)
         ])
     }
     
@@ -150,7 +151,7 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: -8),
+            dateLabel.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: 8),
             dateLabel.leadingAnchor.constraint(equalTo: subtitle.leadingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: subtitle.trailingAnchor),
             dateLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -8),
