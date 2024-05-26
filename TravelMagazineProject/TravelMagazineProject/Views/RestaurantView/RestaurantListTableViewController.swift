@@ -8,16 +8,32 @@
 import UIKit
 
 class RestaurantListTableViewController: UITableViewController {
+    static var cellState: CellState = CellState(states: [])
+    static var preloadedImages: [UIImage?] = []
+    
     
     let restaurantList: RestaurantList = RestaurantList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // configure navigation controllers
+        configureNavigationController()
         
+        // configure tableview cells
+        configureCells()
+        
+        // configure data
+        // move to app delegate for image cache
+    }
+    
+    private func configureNavigationController() {
         navigationItem.title = "SeSAC Restaurants"
-        
+    }
+    
+    private func configureCells() {
         self.tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.getReuseIdentifier())
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BasicCell")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,6 +69,9 @@ class RestaurantListTableViewController: UITableViewController {
             return cell
         }
     }
+}
 
-
+protocol RestaurantListTableViewControllerDelegate {
+    var delegate: RestaurantListTableViewController? { get }
+    func favoriteChanged()
 }

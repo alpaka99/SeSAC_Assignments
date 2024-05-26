@@ -9,17 +9,17 @@ import UIKit
 
 class RestaurantTableViewCell: UITableViewCell, Reusable {
 
-    let background: UIView = UIView()
+    internal let background: UIView = UIView()
     
-    let nameLabel: UILabel = UILabel()
-    let categoryLabel: UILabel = UILabel()
-    let favoriteButton: UIButton = UIButton()
+    internal let nameLabel: UILabel = UILabel()
+    internal let categoryLabel: UILabel = UILabel()
+    internal let favoriteButton: UIButton = UIButton()
     
-    let phoneNumberLabel: UILabel = UILabel()
+    internal let phoneNumberLabel: UILabel = UILabel()
     
-    let restaurantImage: UIImageView = UIImageView()
+    internal let restaurantImage: UIImageView = UIImageView()
     
-    private var isFavorite: Bool = false
+    internal var isFavorite: Bool = false
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -197,5 +197,9 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     @objc private func favoriteButtonTapped() {
         isFavorite.toggle()
         setFavoriteButtonUI()
+    }
+    
+    func favoriteChanged() {
+        
     }
 }
