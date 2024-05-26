@@ -56,77 +56,78 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
     
     private func configureCellImage() {
         layoutCellImage()
+        setCellImageUI()
     }
     
     private func configureTitle() {
         layoutTitle()
+        setTitleUI()
     }
     
     private func configureSubtitle() {
         layoutSubtitle()
+        setSubtitleUI()
     }
     
     private func configureDateLabel() {
         layoutDateLabel()
+        setDateLabelUI()
     }
     
     // background configurations
     private func layoutBackground() {
-        
         background.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             background.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             background.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            background.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.9),
-            background.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.9)
+            background.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
+            background.heightAnchor.constraint(equalTo: self.contentView.heightAnchor)
         ])
-        
-        background.backgroundColor = .red
-        contentView.backgroundColor = .purple
     }
     
     
     
     // cellimage configurations
     private func layoutCellImage() {
-        
         cellImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             cellImage.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
-            cellImage.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
-            cellImage.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: 8),
-            cellImage.bottomAnchor.constraint(equalTo: title.topAnchor, constant: -8),
-            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.8),
-            cellImage.heightAnchor.constraint(equalTo: background.widthAnchor, multiplier: 1),
-            
+            cellImage.centerXAnchor.constraint(equalTo: background.centerXAnchor),            cellImage.bottomAnchor.constraint(equalTo: title.topAnchor, constant: -8),
+            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.9),
+            cellImage.heightAnchor.constraint(equalTo: cellImage.widthAnchor, multiplier: 1),
         ])
-        
-        cellImage.image = UIImage(systemName: "person.fill")
-        cellImage.backgroundColor = .green
+    }
+    
+    private func setCellImageUI() {
+        cellImage.layer.cornerRadius = 12
+        cellImage.image = UIImage(systemName: "exclamationmark.arrow.circlepath")
     }
     
     
     // title configurations
     private func layoutTitle() {
-        
         title.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: -8),
             title.leadingAnchor.constraint(equalTo: cellImage.leadingAnchor),
             title.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor),
-            title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: 8)
+            title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: -8)
         ])
-        
-        title.text = "타이틀타이틀타이틀타이틀"
+    }
+    
+    private func setTitleUI() {
+        title.numberOfLines = 0
+        title.textAlignment = .left
+        title.font = .systemFont(ofSize: 24, weight: .heavy)
+        subtitle.textColor = .black
     }
     
     
     // subtitle configurations
     private func layoutSubtitle() {
-        
         subtitle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -135,14 +136,17 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
             subtitle.trailingAnchor.constraint(equalTo: title.trailingAnchor),
             subtitle.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -8)
         ])
-        
-        subtitle.text = "서브타이틀서브타이틀서브타이틀서브타이틀"
     }
     
+    private func setSubtitleUI() {
+        subtitle.numberOfLines = 1
+        subtitle.textAlignment = .left
+        subtitle.font = .systemFont(ofSize: 16, weight: .bold)
+        subtitle.textColor = .systemGray4
+    }
     
     // date configurations
     private func layoutDateLabel() {
-        
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -151,8 +155,13 @@ class MagazineTableViewCell: UITableViewCell, Reusable {
             dateLabel.trailingAnchor.constraint(equalTo: subtitle.trailingAnchor),
             dateLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -8),
         ])
-        
-        dateLabel.text = String(describing: Date.now)
+    }
+    
+    private func setDateLabelUI() {
+        dateLabel.numberOfLines = 1
+        dateLabel.textAlignment = .right
+        dateLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        dateLabel.textColor = .systemGray4
     }
 }
 

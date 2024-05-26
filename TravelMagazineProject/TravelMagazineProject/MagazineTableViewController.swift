@@ -9,10 +9,12 @@ import UIKit
 
 class MagazineTableViewController: UITableViewController {
     
+    private var magazineData: MagazineInfo = MagazineInfo()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "magazine"
+        navigationItem.title = "SeSAC Magazine"
         
         tableView.register(MagazineTableViewCell.self, forCellReuseIdentifier: MagazineTableViewCell.getReuseIdentifier())
     }
@@ -25,6 +27,13 @@ class MagazineTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.getReuseIdentifier(), for: indexPath) as? MagazineTableViewCell {
+            
+            let data = magazineData.magazine[indexPath.row]
+            
+//            cell.cellImage.image = UIImage(named: data.photo_image)
+            cell.title.text = data.title
+            cell.subtitle.text = data.subtitle
+            cell.dateLabel.text = data.date
             
             return cell
         } else {
@@ -41,8 +50,6 @@ class MagazineTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let width = UIScreen.main.bounds.width
-//        return width * 1.2
         return UITableView.automaticDimension
     }
     

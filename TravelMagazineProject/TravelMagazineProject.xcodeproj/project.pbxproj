@@ -17,6 +17,7 @@
 		CE53A27F2C023C8C00A2B9BC /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A27E2C023C8C00A2B9BC /* Magazine.swift */; };
 		CE53A2812C023DA900A2B9BC /* MagazineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2802C023DA900A2B9BC /* MagazineTableViewController.swift */; };
 		CE53A2832C023DB600A2B9BC /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2822C023DB600A2B9BC /* MagazineTableViewCell.swift */; };
+		CE53A2852C03057400A2B9BC /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2842C03057400A2B9BC /* RestaurantInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CE53A27E2C023C8C00A2B9BC /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
 		CE53A2802C023DA900A2B9BC /* MagazineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewController.swift; sourceTree = "<group>"; };
 		CE53A2822C023DB600A2B9BC /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
+		CE53A2842C03057400A2B9BC /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				CE53A2782C023B1500A2B9BC /* MagazineInfo.swift */,
+				CE53A2842C03057400A2B9BC /* RestaurantInfo.swift */,
 			);
 			path = Infomations;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				CE53A27A2C023B1500A2B9BC /* MagazineInfo.swift in Sources */,
 				CE53A2832C023DB600A2B9BC /* MagazineTableViewCell.swift in Sources */,
 				CE53A27F2C023C8C00A2B9BC /* Magazine.swift in Sources */,
+				CE53A2852C03057400A2B9BC /* RestaurantInfo.swift in Sources */,
 				CE53A2812C023DA900A2B9BC /* MagazineTableViewController.swift in Sources */,
 				CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */,
 				CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */,
