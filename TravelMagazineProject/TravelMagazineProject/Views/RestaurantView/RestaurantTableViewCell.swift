@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RestaurantTableViewCell: UITableViewCell, Reusable {
+final class RestaurantTableViewCell: UITableViewCell, Reusable {
 
     internal let background: UIView = UIView()
     

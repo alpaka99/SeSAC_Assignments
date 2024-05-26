@@ -7,14 +7,14 @@
 
 import UIKit
 
-class RestaurantListTableViewController: UITableViewController {
+final class RestaurantListTableViewController: UITableViewController {
     static var cellState: CellState = CellState(states: [])
     static var preloadedImages: [UIImage?] = []
     
     
-    let restaurantList: RestaurantList = RestaurantList()
+    private let restaurantList: RestaurantList = RestaurantList()
     
-    let searchView: UIView = RestaurantSearchView()
+    private let searchView: UIView = RestaurantSearchView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

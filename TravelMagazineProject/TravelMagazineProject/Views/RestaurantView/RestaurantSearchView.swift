@@ -7,10 +7,10 @@
 
 import UIKit
 
-class RestaurantSearchView: UIView {
-    let background: UIView = UIView()
-    let textField: UITextField = UITextField()
-    let searchButton: UIButton = UIButton()
+final class RestaurantSearchView: UIView {
+    private let background: UIView = UIView()
+    private let textField: UITextField = UITextField()
+    private let searchButton: UIButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

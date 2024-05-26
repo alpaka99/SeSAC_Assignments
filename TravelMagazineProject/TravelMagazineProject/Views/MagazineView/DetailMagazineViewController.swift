@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DetailMagazineViewController: UIViewController {
+final class DetailMagazineViewController: UIViewController {
     
-    let textLabel: UILabel = UILabel()
+    private let textLabel: UILabel = UILabel()
     
     override func loadView() {
         self.view = UIView()

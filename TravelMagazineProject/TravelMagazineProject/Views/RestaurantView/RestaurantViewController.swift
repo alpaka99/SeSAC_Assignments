@@ -7,8 +7,8 @@
 
 import UIKit
 
-class RestaurantViewController: UIViewController {
-    let restaurantListViewController = RestaurantListTableViewController()
+final class RestaurantViewController: UIViewController {
+    private let restaurantListViewController = RestaurantListTableViewController()
     
     override func loadView() {
         self.view = UIView()

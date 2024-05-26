@@ -7,12 +7,12 @@
 
 import UIKit
 
-class MagazineTableViewCell: UITableViewCell, Reusable {
-    let background: UIView = UIView()
-    let cellImage: UIImageView = UIImageView()
-    let title: UILabel = UILabel()
-    let subtitle: UILabel = UILabel()
-    let dateLabel: UILabel = UILabel()
+final class MagazineTableViewCell: UITableViewCell, Reusable {
+    internal let background: UIView = UIView()
+    internal let cellImage: UIImageView = UIImageView()
+    internal let title: UILabel = UILabel()
+    internal let subtitle: UILabel = UILabel()
+    internal let dateLabel: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
