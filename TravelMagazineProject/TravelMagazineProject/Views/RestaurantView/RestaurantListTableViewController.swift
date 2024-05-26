@@ -8,6 +8,8 @@
 import UIKit
 
 class RestaurantListTableViewController: UITableViewController {
+    
+    let restaurantList: RestaurantList = RestaurantList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,15 @@ class RestaurantListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.getReuseIdentifier(), for: indexPath) as? RestaurantTableViewCell {
+
+            let restaurantData = restaurantList.restaurantArray[indexPath.row]
+            
+            cell.nameLabel.text = restaurantData.name
+            cell.categoryLabel.text = restaurantData.category
+            cell.phoneNumberLabel.text = restaurantData.phoneNumber
+            
+            let url = URL(string: restaurantData.image)
+            cell.restaurantImage.kf.setImage(with: url)
             
             return cell
         } else {

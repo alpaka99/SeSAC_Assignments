@@ -19,6 +19,8 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     let restaurantImage: UIImageView = UIImageView()
     
+    private var isFavorite: Bool = false
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -58,26 +60,32 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     private func configureBackground() {
         layoutBackground()
+        setBackgroundUI()
     }
     
     private func configureNameLabel() {
         layoutNamelabel()
+        setNameLableUI()
     }
     
     private func configureCategoryLabel() {
         layoutCategoryLabel()
+        setCategoryLabelUI()
     }
     
     private func configureFavoriteButton() {
         layoutFavoriteButton()
+        setFavoriteButtonUI()
     }
     
     private func configurePhoneNumberLabel() {
         layoutPhoneNumberLabel()
+        setPhoneNumerLabelUI()
     }
     
     private func configureRestaurantImage() {
         layoutRestaurantImage()
+        setRestaurantImage()
     }
     
     private func layoutBackground() {
@@ -90,9 +98,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ])
         
-        background.backgroundColor = .gray
     }
-    
     
     
     private func layoutNamelabel() {
@@ -102,7 +108,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             nameLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
             nameLabel.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 8),
         ])
-        nameLabel.text = "음식점 이름"
     }
     
     
@@ -113,7 +118,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             categoryLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
             categoryLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8)
         ])
-        categoryLabel.text = "초밥집"
     }
     
     private func layoutFavoriteButton() {
@@ -121,12 +125,11 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         NSLayoutConstraint.activate([
             favoriteButton.centerYAnchor.constraint(equalTo: categoryLabel.centerYAnchor),
-            favoriteButton.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: 8),
+            favoriteButton.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -8),
             favoriteButton.widthAnchor.constraint(equalToConstant: 44),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.widthAnchor, multiplier: 1),
         ])
         
-        favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
     }
     
     
@@ -139,7 +142,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             phoneNumberLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor)
         ])
         
-        phoneNumberLabel.text = "010-1234-5678"
     }
     
     
@@ -151,9 +153,49 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             restaurantImage.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 8),
             restaurantImage.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -8),
             restaurantImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.25),
-            restaurantImage.heightAnchor.constraint(equalTo: restaurantImage.widthAnchor, multiplier: 1.25)
+            restaurantImage.heightAnchor.constraint(equalTo: restaurantImage.widthAnchor, multiplier: 1)
         ])
-        
-        restaurantImage.backgroundColor = .blue
+    }
+    
+    
+    private func setBackgroundUI() {
+        background.backgroundColor = .systemGray6
+    }
+    
+    private func setNameLableUI() {
+        nameLabel.font = .systemFont(ofSize: 20, weight: .regular)
+        nameLabel.textColor = .systemBlue
+    }
+    
+    private func setCategoryLabelUI() {
+        categoryLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        categoryLabel.textColor = .systemGray4
+    }
+    
+    private func setFavoriteButtonUI() {
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            favoriteButton.tintColor = .systemRed
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+            favoriteButton.tintColor = .systemBlue
+        }
+        self.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setPhoneNumerLabelUI() {
+        phoneNumberLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        phoneNumberLabel.textColor = .black
+    }
+    
+    private func setRestaurantImage() {
+        restaurantImage.layer.cornerRadius = 8
+        restaurantImage.backgroundColor = .systemGray4
+        restaurantImage.clipsToBounds = true
+    }
+    
+    @objc private func favoriteButtonTapped() {
+        isFavorite.toggle()
+        setFavoriteButtonUI()
     }
 }
