@@ -59,6 +59,9 @@ class MagazineTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let detailViewController = DetailMagazineViewController()
+        detailViewController.setTextLabelText(magazineData.magazine[indexPath.row].link)
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

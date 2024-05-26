@@ -8,7 +8,6 @@
 import UIKit
 
 class MagazineTableViewCell: UITableViewCell, Reusable {
-    
     let background: UIView = UIView()
     let cellImage: UIImageView = UIImageView()
     let title: UILabel = UILabel()
