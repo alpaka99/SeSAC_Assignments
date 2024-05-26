@@ -13,9 +13,12 @@ class RestaurantListTableViewController: UITableViewController {
     
     
     let restaurantList: RestaurantList = RestaurantList()
+    
+    let searchView: UIView = RestaurantSearchView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // configure navigation controllers
         configureNavigationController()
@@ -29,6 +32,10 @@ class RestaurantListTableViewController: UITableViewController {
     
     private func configureNavigationController() {
         navigationItem.title = "SeSAC Restaurants"
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return searchView
     }
     
     private func configureCells() {
