@@ -35,56 +35,36 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         self.background.addSubview(restaurantImage)
         
         
-        // configure background
-        configureBackground()
+        // layout
         
-        // configure nameLabel
-        configureNameLabel()
+        layoutRestaurantCell()
         
-        // configure categoryLable
-        configureCategoryLabel()
+        // set UI
+        setRestaurantCellUI()
         
-        // configure favorite button
-        configureFavoriteButton()
+        // configure cell data -> call from RestaurantViewController
         
-        // configure phoneNumberLable
-        configurePhoneNumberLabel()
-        
-        // configure restaurantImage
-        configureRestaurantImage()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureBackground() {
+    private func layoutRestaurantCell() {
         layoutBackground()
-        setBackgroundUI()
-    }
-    
-    private func configureNameLabel() {
         layoutNamelabel()
-        setNameLableUI()
-    }
-    
-    private func configureCategoryLabel() {
         layoutCategoryLabel()
-        setCategoryLabelUI()
-    }
-    
-    private func configureFavoriteButton() {
-        layoutFavoriteButton()
-        setFavoriteButtonUI()
-    }
-    
-    private func configurePhoneNumberLabel() {
         layoutPhoneNumberLabel()
-        setPhoneNumerLabelUI()
+        layoutFavoriteButton()
+        layoutRestaurantImage()
     }
     
-    private func configureRestaurantImage() {
-        layoutRestaurantImage()
+    private func setRestaurantCellUI() {
+        setBackgroundUI()
+        setNameLableUI()
+        setCategoryLabelUI()
+        setFavoriteButtonUI()
+        setPhoneNumerLabelUI()
         setRestaurantImage()
     }
     
@@ -97,7 +77,6 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
             background.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             background.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ])
-        
     }
     
     
@@ -159,7 +138,7 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     
     private func setBackgroundUI() {
-        background.backgroundColor = .systemGray6
+//        background.backgroundColor = .systemGray6
     }
     
     private func setNameLableUI() {
@@ -194,12 +173,19 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         restaurantImage.clipsToBounds = true
     }
     
+    internal func configureCellData(_ data: Restaurant) {
+        nameLabel.text = data.name
+        categoryLabel.text = data.category
+        phoneNumberLabel.text = data.phoneNumber
+        
+        let url = URL(string: data.image)
+        restaurantImage.kf.setImage(with: url)
+    }
+    
     @objc private func favoriteButtonTapped() {
         isFavorite.toggle()
         setFavoriteButtonUI()
     }
     
-    func favoriteChanged() {
-        
-    }
+    
 }

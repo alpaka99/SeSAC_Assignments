@@ -7,14 +7,15 @@
 
 import UIKit
 
-final class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 //    static var cellState: CellState = CellState(states: [])
 //    static var preloadedImages: [UIImage?] = []
     
     private let searchBar: UISearchBar = UISearchBar()
     private let tableView: UITableView = UITableView()
     
-    private let restaurantList: RestaurantList = RestaurantList()
+    private let restaurants: [Restaurant] = RestaurantList().restaurantArray
+    private var filteredRestaurants: [Restaurant] = []
     
     
     
@@ -42,10 +43,18 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         configureCells()
         
         // configure data
+        filteredRestaurants = restaurants
         // move to app delegate for image cache
     }
     
     private func configureSearchBar() {
+        searchBar.delegate = self
+        
+        layoutSearchBar()
+        setSearchBarUI()
+    }
+    
+    private func layoutSearchBar() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -55,10 +64,19 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         ])
     }
     
+    private func setSearchBarUI() {
+        
+    }
+    
     private func configureTableView() {
-        print(#function)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        layoutTableView()
+        setTableViewUI()
+    }
+    
+    private func layoutTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -67,6 +85,10 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
             tableView.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 8),
         ])
+    }
+    
+    private func setTableViewUI() {
+        
     }
     
     private func configureNavigationController() {
@@ -79,7 +101,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantList.restaurantArray.count
+        return filteredRestaurants.count
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -91,17 +113,11 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
         if let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.getReuseIdentifier(), for: indexPath) as? RestaurantTableViewCell {
 
-            let restaurantData = restaurantList.restaurantArray[indexPath.row]
+            let data = filteredRestaurants[indexPath.row]
             
-            cell.nameLabel.text = restaurantData.name
-            cell.categoryLabel.text = restaurantData.category
-            cell.phoneNumberLabel.text = restaurantData.phoneNumber
-            
-            let url = URL(string: restaurantData.image)
-            cell.restaurantImage.kf.setImage(with: url)
+            cell.configureCellData(data)
             
             return cell
         } else {
@@ -111,5 +127,17 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
             
             return cell
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let text = searchBar.text, text.isEmpty == false {
+            filteredRestaurants = restaurants.filter { restaurant in
+                return restaurant.name.contains(text) || restaurant.category.contains(text)
+            }
+        } else {
+            filteredRestaurants = restaurants
+        }
+        
+        tableView.reloadData()
     }
 }
