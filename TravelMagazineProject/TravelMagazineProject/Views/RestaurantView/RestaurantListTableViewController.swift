@@ -8,8 +8,6 @@
 import UIKit
 
 final class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-//    static var cellState: CellState = CellState(states: [])
-//    static var preloadedImages: [UIImage?] = []
     
     private let searchBar: UISearchBar = UISearchBar()
     private let tableView: UITableView = UITableView()
@@ -130,9 +128,9 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let text = searchBar.text, text.isEmpty == false {
+        if searchText.isEmpty == false {
             filteredRestaurants = restaurants.filter { restaurant in
-                return restaurant.name.contains(text) || restaurant.category.contains(text)
+                return restaurant.name.localizedStandardContains(searchText) || restaurant.category.localizedStandardContains(searchText)
             }
         } else {
             filteredRestaurants = restaurants

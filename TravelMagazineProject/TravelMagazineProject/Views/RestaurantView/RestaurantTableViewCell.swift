@@ -186,6 +186,4 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         isFavorite.toggle()
         setFavoriteButtonUI()
     }
-    
-    
 }
