@@ -5,19 +5,10 @@
 //  Created by user on 5/27/24.
 //
 
+import Kingfisher
 import UIKit
 
 class PopularCityTableViewCell: UITableViewCell {
-
-//    struct Travel {
-//        let title: String?
-//        let description: String?
-//        let travel_image: String?
-//        let grade: Double?
-//        let save: Int?
-//        let like: Bool?
-//        let ad: Bool?
-//    }
 
     
     @IBOutlet var titleLabel: UILabel!
@@ -27,7 +18,9 @@ class PopularCityTableViewCell: UITableViewCell {
     @IBOutlet var cityImageView: UIImageView!
     
     
-    @IBOutlet var favoriteButton: UIButton!
+    @IBOutlet var likeButton: UIButton!
+    
+    private var isLike: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +30,11 @@ class PopularCityTableViewCell: UITableViewCell {
         
         // setComponent UI
         setComponentsUI()
+        
+        // configure data -> from viewcontroller
+        
+        // add Component Actions
+        addComponentActions()
     }
     
     private func setComponentsUI() {
@@ -44,6 +42,11 @@ class PopularCityTableViewCell: UITableViewCell {
         setDescriptionLabelUI()
         setGradeLabelUI()
         setCityImageViewUI()
+        setLikeButtonUI()
+    }
+    
+    private func addComponentActions() {
+        addLikeButtonAction()
     }
     
     private func setTitleLabelUI() {
@@ -65,19 +68,57 @@ class PopularCityTableViewCell: UITableViewCell {
     private func setCityImageViewUI() {
         cityImageView.layer.cornerRadius = 8
         cityImageView.clipsToBounds = true
-        cityImageView.backgroundColor = .systemIndigo
+        cityImageView.backgroundColor = .systemGray4
+        cityImageView.contentMode = .scaleAspectFill
     }
     
-    private func setFavoriteButtonUI() {
-        favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-        favoriteButton.tintColor = .black
-        favoriteButton.backgroundColor = .orange
+    private func setLikeButtonUI() {
+        print(#function)
+        if isLike {
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeButton.tintColor = .red
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.tintColor = .white
+        }
     }
     
+    
+    internal func configureData(_ data: Travel) {
+        titleLabel.text = data.title
+        descriptionLabel.text = data.description
+        gradeLabel.text = "\(data.grade.getStars()) (\(data.grade ?? 0)) • 저장 \(data.save?.formatted() ?? "0")"
+        isLike = data.like ?? false
+        setLikeButtonUI() // MARK: 이 부분을 지금 두번씩 불러오고 있는데 한번만 불러올 방법이 없을까?
+        
+        if let photoUrl = data.travel_image {
+            let url = URL(string: photoUrl)
+            cityImageView.kf.setImage(with: url)
+        }
+    }
+    
+    private func addLikeButtonAction() {
+        likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    private func likeButtonTapped() {
+        isLike.toggle()
+        setLikeButtonUI()
+    }
 }
 
-extension Double {
+extension Double? {
     func getStars() -> String {
-        return "⭐️"
+        if let grade = self {
+            let flooredGrade = Int(floor(grade))
+            
+            let filledStars = String(repeating: "★", count: flooredGrade)
+            let emptyStars = String(repeating: "☆", count: 5-flooredGrade)
+            
+            return filledStars + emptyStars
+        } else {
+            return String(repeating: "★", count: 5)
+        }
     }
 }

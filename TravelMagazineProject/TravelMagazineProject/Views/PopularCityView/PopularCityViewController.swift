@@ -45,7 +45,7 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         if data.ad { // ad cell
             if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityAdCell", for: indexPath) as? PopularCityAdCell {
                 
-                cell.adTitleLabel.text = "광고 테스트"
+                cell.configureData(data)
                 
                 return cell
             } else {
@@ -58,8 +58,8 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         } else { // popular city cell
             if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityTableViewCell", for: indexPath) as? PopularCityTableViewCell {
                 
-                cell.titleLabel.text = "텍스트테스트"
-                
+                cell.configureData(data)
+                                
                 return cell
             }
                 else {
@@ -70,7 +70,5 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
                 return cell
             }
         }
-        
-        
     }
 }

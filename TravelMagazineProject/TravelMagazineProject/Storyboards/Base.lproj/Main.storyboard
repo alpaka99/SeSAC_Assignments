@@ -55,11 +55,11 @@
             </objects>
             <point key="canvasLocation" x="-830" y="858"/>
         </scene>
-        <!--Item-->
+        <!--Magazine-->
         <scene sceneID="PtL-H3-g5z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fTr-MY-4W2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="EsW-3f-FK5"/>
+                    <tabBarItem key="tabBarItem" title="Magazine" image="newspaper.fill" catalog="system" id="EsW-3f-FK5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GZG-RW-nYT">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -74,11 +74,11 @@
             </objects>
             <point key="canvasLocation" x="-2037" y="-642"/>
         </scene>
-        <!--Item-->
+        <!--Restaurant-->
         <scene sceneID="Fv0-HE-BWb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y0U-b5-Klv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PjO-ov-GUC"/>
+                    <tabBarItem key="tabBarItem" title="Restaurant" image="fork.knife" catalog="system" id="PjO-ov-GUC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WaR-1O-Ff8">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -93,11 +93,11 @@
             </objects>
             <point key="canvasLocation" x="-1985.4961832061067" y="64.788732394366207"/>
         </scene>
-        <!--Item-->
+        <!--Travel-->
         <scene sceneID="zMF-2Q-6mU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xVe-7C-65H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nbh-fD-V5E"/>
+                    <tabBarItem key="tabBarItem" title="Travel" image="airplane.departure" catalog="system" id="nbh-fD-V5E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zCa-cH-bhN">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -113,4 +113,9 @@
             <point key="canvasLocation" x="-1985" y="858"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="airplane.departure" catalog="system" width="128" height="84"/>
+        <image name="fork.knife" catalog="system" width="94" height="128"/>
+        <image name="newspaper.fill" catalog="system" width="128" height="112"/>
+    </resources>
 </document>

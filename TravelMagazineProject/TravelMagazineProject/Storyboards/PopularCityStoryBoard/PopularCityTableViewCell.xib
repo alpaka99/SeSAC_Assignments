@@ -71,8 +71,8 @@
             <connections>
                 <outlet property="cityImageView" destination="gl7-EN-f10" id="GZO-X8-pSs"/>
                 <outlet property="descriptionLabel" destination="jvy-A8-bVL" id="kec-yd-jQK"/>
-                <outlet property="favoriteButton" destination="hm9-f5-oEs" id="qbs-wq-BI7"/>
                 <outlet property="gradeLabel" destination="q3g-xD-5zb" id="ZBk-3b-l0G"/>
+                <outlet property="likeButton" destination="hm9-f5-oEs" id="RMy-wi-Ayx"/>
                 <outlet property="titleLabel" destination="zTS-QN-1rD" id="iij-TP-Oax"/>
             </connections>
             <point key="canvasLocation" x="97.70992366412213" y="5.9859154929577469"/>

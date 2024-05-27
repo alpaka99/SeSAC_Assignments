@@ -11,7 +11,7 @@
 		CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */; };
 		CE12D7E82C045F6C00DB11B9 /* PopularCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */; };
 		CE12D7E92C045F6C00DB11B9 /* PopularCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7E72C045F6C00DB11B9 /* PopularCityTableViewCell.xib */; };
-		CE12D7EB2C045FC200DB11B9 /* TravelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7EA2C045FC200DB11B9 /* TravelModel.swift */; };
+		CE12D7EB2C045FC200DB11B9 /* TravelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7EA2C045FC200DB11B9 /* TravelInfo.swift */; };
 		CE12D7ED2C045FE500DB11B9 /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7EC2C045FE500DB11B9 /* Travel.swift */; };
 		CE12D7F62C046FB400DB11B9 /* PopularCityAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7F42C046FB400DB11B9 /* PopularCityAdCell.swift */; };
 		CE12D7F72C046FB400DB11B9 /* PopularCityAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7F52C046FB400DB11B9 /* PopularCityAdCell.xib */; };
@@ -43,7 +43,7 @@
 		CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityViewController.swift; sourceTree = "<group>"; };
 		CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityTableViewCell.swift; sourceTree = "<group>"; };
 		CE12D7E72C045F6C00DB11B9 /* PopularCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularCityTableViewCell.xib; sourceTree = "<group>"; };
-		CE12D7EA2C045FC200DB11B9 /* TravelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModel.swift; sourceTree = "<group>"; };
+		CE12D7EA2C045FC200DB11B9 /* TravelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelInfo.swift; sourceTree = "<group>"; };
 		CE12D7EC2C045FE500DB11B9 /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
 		CE12D7F42C046FB400DB11B9 /* PopularCityAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityAdCell.swift; sourceTree = "<group>"; };
 		CE12D7F52C046FB400DB11B9 /* PopularCityAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularCityAdCell.xib; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 		CE12D7E02C045EB100DB11B9 /* PopularCityView */ = {
 			isa = PBXGroup;
 			children = (
-				CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */,
 				CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */,
+				CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */,
 				CE12D7F42C046FB400DB11B9 /* PopularCityAdCell.swift */,
 			);
 			path = PopularCityView;
@@ -157,7 +157,7 @@
 			children = (
 				CE53A2942C0318CB00A2B9BC /* RestaurantInfo.swift */,
 				CE53A2892C03100700A2B9BC /* MagazineInfo.swift */,
-				CE12D7EA2C045FC200DB11B9 /* TravelModel.swift */,
+				CE12D7EA2C045FC200DB11B9 /* TravelInfo.swift */,
 			);
 			path = Informations;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 				CE53A29D2C031CFF00A2B9BC /* RestaurantTableViewCell.swift in Sources */,
 				CE53A2A22C0368DC00A2B9BC /* CellState.swift in Sources */,
 				CE53A29B2C031C0C00A2B9BC /* RestaurantListTableViewController.swift in Sources */,
-				CE12D7EB2C045FC200DB11B9 /* TravelModel.swift in Sources */,
+				CE12D7EB2C045FC200DB11B9 /* TravelInfo.swift in Sources */,
 				CE53A2952C0318CB00A2B9BC /* RestaurantInfo.swift in Sources */,
 				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
 				CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */,

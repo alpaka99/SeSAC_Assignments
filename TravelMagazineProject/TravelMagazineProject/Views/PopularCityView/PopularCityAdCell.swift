@@ -33,6 +33,10 @@ class PopularCityAdCell: UITableViewCell {
         adTitleLabel.textAlignment = .center
         adTitleLabel.font = .systemFont(ofSize: 24, weight: .heavy)
         adTitleLabel.textColor = .black
+        let randomColor = UIColor.getRandomColor()
+        adTitleLabel.backgroundColor = randomColor
+        adTitleLabel.layer.cornerRadius = 8
+        adTitleLabel.clipsToBounds = true
     }
     
     private func setAdBadgeLabelUI() {
@@ -40,6 +44,25 @@ class PopularCityAdCell: UITableViewCell {
         adBadgeLabel.font = .systemFont(ofSize: 12, weight: .bold)
         adBadgeLabel.textAlignment = .center
         adBadgeLabel.textColor = .black
+        adBadgeLabel.layer.cornerRadius = 4
+        adBadgeLabel.backgroundColor = .white
+        adBadgeLabel.clipsToBounds = true
     }
     
+    internal func configureData(_ data: Travel) {
+        adTitleLabel.text = data.title
+    }
+}
+
+
+extension UIColor {
+    static func getRandomColor() -> UIColor { // MARK: 왜 여기서 Self를 못쓸까?
+        print(#function)
+        return UIColor(
+            red: CGFloat.random(in: 0...1),
+            green: CGFloat.random(in: 0...1),
+            blue: CGFloat.random(in: 0...1),
+            alpha: 1
+        )
+    }
 }
