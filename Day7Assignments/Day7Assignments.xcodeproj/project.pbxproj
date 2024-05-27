@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE53A2AB2C0409EB00A2B9BC /* Todo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2AA2C0409EB00A2B9BC /* Todo.storyboard */; };
+		CE53A2AD2C040E3D00A2B9BC /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2AC2C040E3D00A2B9BC /* FoodViewController.swift */; };
+		CE53A2B02C04183000A2B9BC /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2AE2C04183000A2B9BC /* FoodTableViewCell.swift */; };
+		CE53A2B12C04183000A2B9BC /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE53A2AF2C04183000A2B9BC /* FoodTableViewCell.xib */; };
+		CE53A2B32C041FAB00A2B9BC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2B22C041FAB00A2B9BC /* Restaurant.swift */; };
+		CE53A2B62C042B0F00A2B9BC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE53A2B52C042B0F00A2B9BC /* Kingfisher */; };
+		CE53A2B82C0437B100A2B9BC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2B72C0437B100A2B9BC /* UIViewController+Extension.swift */; };
+		CE53A2BA2C0439AB00A2B9BC /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2B92C0439AB00A2B9BC /* UILabel+Extension.swift */; };
 		CE5DF86D2BFDF5F300319C86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF86C2BFDF5F300319C86 /* AppDelegate.swift */; };
 		CE5DF86F2BFDF5F300319C86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF86E2BFDF5F300319C86 /* SceneDelegate.swift */; };
 		CE5DF8712BFDF5F300319C86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DF8702BFDF5F300319C86 /* ViewController.swift */; };
@@ -24,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE53A2AA2C0409EB00A2B9BC /* Todo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Todo.storyboard; sourceTree = "<group>"; };
+		CE53A2AC2C040E3D00A2B9BC /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		CE53A2AE2C04183000A2B9BC /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
+		CE53A2AF2C04183000A2B9BC /* FoodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
+		CE53A2B22C041FAB00A2B9BC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		CE53A2B72C0437B100A2B9BC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CE53A2B92C0439AB00A2B9BC /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		CE5DF8692BFDF5F300319C86 /* Day7Assignments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Day7Assignments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5DF86C2BFDF5F300319C86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5DF86E2BFDF5F300319C86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE53A2B62C042B0F00A2B9BC /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,9 +95,16 @@
 				CE5DF86E2BFDF5F300319C86 /* SceneDelegate.swift */,
 				CE5DF8702BFDF5F300319C86 /* ViewController.swift */,
 				CE5DF8722BFDF5F300319C86 /* Main.storyboard */,
+				CE53A2AA2C0409EB00A2B9BC /* Todo.storyboard */,
+				CE53A2AC2C040E3D00A2B9BC /* FoodViewController.swift */,
+				CE53A2B92C0439AB00A2B9BC /* UILabel+Extension.swift */,
+				CE53A2B72C0437B100A2B9BC /* UIViewController+Extension.swift */,
+				CE53A2AE2C04183000A2B9BC /* FoodTableViewCell.swift */,
+				CE53A2AF2C04183000A2B9BC /* FoodTableViewCell.xib */,
 				CE5DF8752BFDF5F400319C86 /* Assets.xcassets */,
 				CE5DF8772BFDF5F400319C86 /* LaunchScreen.storyboard */,
 				CE5DF87A2BFDF5F400319C86 /* Info.plist */,
+				CE53A2B22C041FAB00A2B9BC /* Restaurant.swift */,
 			);
 			path = Day7Assignments;
 			sourceTree = "<group>";
@@ -147,6 +170,9 @@
 			dependencies = (
 			);
 			name = Day7Assignments;
+			packageProductDependencies = (
+				CE53A2B52C042B0F00A2B9BC /* Kingfisher */,
+			);
 			productName = Day7Assignments;
 			productReference = CE5DF8692BFDF5F300319C86 /* Day7Assignments.app */;
 			productType = "com.apple.product-type.application";
@@ -175,6 +201,9 @@
 				Base,
 			);
 			mainGroup = CE5DF8602BFDF5F300319C86;
+			packageReferences = (
+				CE53A2B42C042B0F00A2B9BC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = CE5DF86A2BFDF5F300319C86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -189,7 +218,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE53A2AB2C0409EB00A2B9BC /* Todo.storyboard in Resources */,
 				CE5DF8762BFDF5F400319C86 /* Assets.xcassets in Resources */,
+				CE53A2B12C04183000A2B9BC /* FoodTableViewCell.xib in Resources */,
 				CE5DF8792BFDF5F400319C86 /* Base in Resources */,
 				CE5DF8742BFDF5F300319C86 /* Base in Resources */,
 			);
@@ -205,13 +236,18 @@
 				CE5DF8712BFDF5F300319C86 /* ViewController.swift in Sources */,
 				CE5DF86D2BFDF5F300319C86 /* AppDelegate.swift in Sources */,
 				CE5DF8862BFDFE2900319C86 /* UserDefaults+Data.swift in Sources */,
+				CE53A2B82C0437B100A2B9BC /* UIViewController+Extension.swift in Sources */,
+				CE53A2B02C04183000A2B9BC /* FoodTableViewCell.swift in Sources */,
 				CE5DF8952BFEC48600319C86 /* CalendarViewController.swift in Sources */,
 				CE5DF8932BFE1F1700319C86 /* UIImage+Resize.swift in Sources */,
 				CE5DF8842BFDF67A00319C86 /* Dictionary+Switch.swift in Sources */,
+				CE53A2BA2C0439AB00A2B9BC /* UILabel+Extension.swift in Sources */,
 				CE5DF86F2BFDF5F300319C86 /* SceneDelegate.swift in Sources */,
 				CE5DF88B2BFE1EAA00319C86 /* EmotionDiaryViewController.swift in Sources */,
 				CE5DF8812BFDF64E00319C86 /* BMICalculatorViewController.swift in Sources */,
+				CE53A2B32C041FAB00A2B9BC /* Restaurant.swift in Sources */,
 				CE5DF88D2BFE1ECC00319C86 /* DetailViewController.swift in Sources */,
+				CE53A2AD2C040E3D00A2B9BC /* FoodViewController.swift in Sources */,
 				CE5DF8902BFE1EF700319C86 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +479,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE53A2B42C042B0F00A2B9BC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE53A2B52C042B0F00A2B9BC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE53A2B42C042B0F00A2B9BC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE5DF8612BFDF5F300319C86 /* Project object */;
 }

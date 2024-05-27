@@ -218,7 +218,7 @@
         <!--Emotion Diary View Controller-->
         <scene sceneID="ftN-CH-eH9">
             <objects>
-                <viewController id="PPf-HQ-N8m" customClass="EmotionDiaryViewController" customModule="Day5Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PPf-HQ-N8m" customClass="EmotionDiaryViewController" customModule="Day7Assignments" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JhF-2D-FcI" userLabel="View" customClass="SlimeView">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,7 +334,7 @@
         <!--Detail View Controller-->
         <scene sceneID="GlX-5O-ljg">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="86y-En-XOT" customClass="DetailViewController" customModule="Day5Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="86y-En-XOT" customClass="DetailViewController" customModule="Day7Assignments" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnv-Fq-hoH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,12 +387,14 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8CL-sX-fSF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nzv-LS-bhy">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Pyl-c8-fE3" kind="relationship" relationship="viewControllers" id="fjQ-Nl-HJ5"/>
                         <segue destination="fgb-HA-Uaj" kind="relationship" relationship="viewControllers" id="jYS-FP-OO7"/>
+                        <segue destination="iHc-Mf-yi4" kind="relationship" relationship="viewControllers" id="WXh-Wr-ngY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofa-Mm-5Hv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -437,8 +439,38 @@
             </objects>
             <point key="canvasLocation" x="1165.6488549618321" y="256.33802816901408"/>
         </scene>
+        <!--Todo-->
+        <scene sceneID="LcF-Pf-ipg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Todo" id="NdB-B7-zxr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4sk-Og-n4t"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OhO-AT-L5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025.9541984732823" y="889.43661971830988"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="rsU-97-IlY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iHc-Mf-yi4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" image="timer" catalog="system" selectedImage="timer" id="VmS-yu-Bx2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dPd-Gb-476">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NdB-B7-zxr" kind="relationship" relationship="rootViewController" id="DCd-W4-ihm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7b-zl-jIv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="889.43661971830988"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="timer" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

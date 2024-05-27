@@ -8,14 +8,18 @@
 import Kingfisher
 import UIKit
 
-final class MagazineTableViewController: UITableViewController {
+final class MagazineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private var magazineData: MagazineInfo = MagazineInfo()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "SeSAC Magazine"
+        
+        
         
         tableView.register(MagazineTableViewCell.self, forCellReuseIdentifier: MagazineTableViewCell.getReuseIdentifier())
     }
