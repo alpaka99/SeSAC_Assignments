@@ -127,15 +127,30 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty == false {
-            filteredRestaurants = restaurants.filter { restaurant in
+            filteredRestaurants = filteredRestaurants.filter { restaurant in
                 return restaurant.name.localizedStandardContains(searchText) || restaurant.category.localizedStandardContains(searchText)
             }
+            tableView.reloadData()
         } else {
-            filteredRestaurants = restaurants
+            tableView.reloadData()
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {[weak self] _,_,_ in
+            self?.deleteItem(at: indexPath.row)
+        }
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
+    private func deleteItem(at index: Int) {
+        filteredRestaurants.remove(at: index)
         tableView.reloadData()
     }
+    
 }

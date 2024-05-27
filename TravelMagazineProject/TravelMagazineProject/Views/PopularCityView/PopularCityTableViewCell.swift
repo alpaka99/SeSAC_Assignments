@@ -92,10 +92,10 @@ class PopularCityTableViewCell: UITableViewCell {
         
         cityImageView.kf.indicatorType = .activity
         if let photoUrl = data.travel_image, let url = URL(string: photoUrl) {
-            DataManager.shared.fetchImage(url) {[weak self] image in
-                self?.cityImageView.image = image
-                //            cityImageView.kf.setImage(with: url)
-            }
+//            DataManager.shared.fetchImage(url) {[weak self] image in
+//                self?.cityImageView.image = image
+//            }
+            cityImageView.kf.setImage(with: url)
         }
     }
     
