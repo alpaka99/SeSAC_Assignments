@@ -13,6 +13,8 @@
 		CE12D7E92C045F6C00DB11B9 /* PopularCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7E72C045F6C00DB11B9 /* PopularCityTableViewCell.xib */; };
 		CE12D7EB2C045FC200DB11B9 /* TravelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7EA2C045FC200DB11B9 /* TravelModel.swift */; };
 		CE12D7ED2C045FE500DB11B9 /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7EC2C045FE500DB11B9 /* Travel.swift */; };
+		CE12D7F62C046FB400DB11B9 /* PopularCityAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7F42C046FB400DB11B9 /* PopularCityAdCell.swift */; };
+		CE12D7F72C046FB400DB11B9 /* PopularCityAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7F52C046FB400DB11B9 /* PopularCityAdCell.xib */; };
 		CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2642C023AF900A2B9BC /* AppDelegate.swift */; };
 		CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */; };
 		CE53A26C2C023AF900A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A26B2C023AF900A2B9BC /* Base */; };
@@ -43,6 +45,8 @@
 		CE12D7E72C045F6C00DB11B9 /* PopularCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularCityTableViewCell.xib; sourceTree = "<group>"; };
 		CE12D7EA2C045FC200DB11B9 /* TravelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModel.swift; sourceTree = "<group>"; };
 		CE12D7EC2C045FE500DB11B9 /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
+		CE12D7F42C046FB400DB11B9 /* PopularCityAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityAdCell.swift; sourceTree = "<group>"; };
+		CE12D7F52C046FB400DB11B9 /* PopularCityAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularCityAdCell.xib; sourceTree = "<group>"; };
 		CE53A2612C023AF900A2B9BC /* TravelMagazineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMagazineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE53A2642C023AF900A2B9BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			children = (
 				CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */,
 				CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */,
+				CE12D7F42C046FB400DB11B9 /* PopularCityAdCell.swift */,
 			);
 			path = PopularCityView;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			children = (
 				CE12D7DE2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard */,
 				CE12D7E72C045F6C00DB11B9 /* PopularCityTableViewCell.xib */,
+				CE12D7F52C046FB400DB11B9 /* PopularCityAdCell.xib */,
 			);
 			path = PopularCityStoryBoard;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 				CE53A2712C023AFA00A2B9BC /* Base in Resources */,
 				CE12D7DF2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard in Resources */,
 				CE53A26C2C023AF900A2B9BC /* Base in Resources */,
+				CE12D7F72C046FB400DB11B9 /* PopularCityAdCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +320,7 @@
 				CE53A2952C0318CB00A2B9BC /* RestaurantInfo.swift in Sources */,
 				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
 				CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */,
+				CE12D7F62C046FB400DB11B9 /* PopularCityAdCell.swift in Sources */,
 				CE12D7ED2C045FE500DB11B9 /* Travel.swift in Sources */,
 				CE53A2902C03143300A2B9BC /* DetailMagazineViewController.swift in Sources */,
 				CE53A2A02C03676400A2B9BC /* Reusable.swift in Sources */,

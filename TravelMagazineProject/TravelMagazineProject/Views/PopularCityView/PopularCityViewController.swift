@@ -22,8 +22,11 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        let xib = UINib(nibName: "PopularCityTableViewCell", bundle: nil)
-        tableView.register(xib, forCellReuseIdentifier: "PopularCityTableViewCell")
+        let cityCellXib = UINib(nibName: "PopularCityTableViewCell", bundle: nil)
+        tableView.register(cityCellXib, forCellReuseIdentifier: "PopularCityTableViewCell")
+        
+        let adCellXib = UINib(nibName: "PopularCityAdCell", bundle: nil)
+        tableView.register(adCellXib, forCellReuseIdentifier: "PopularCityAdCell")
         
         tableView.rowHeight = 100
     }
@@ -36,17 +39,38 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityTableViewCell", for: indexPath) as? PopularCityTableViewCell {
-            
-            cell.titleLabel.text = "텍스트테스트"
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
-            
-            cell.textLabel?.text = "Something went wrong...😞"
-            
-            return cell
+        let data = travels[indexPath.row]
+        
+        
+        if data.ad { // ad cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityAdCell", for: indexPath) as? PopularCityAdCell {
+                
+                cell.adTitleLabel.text = "광고 테스트"
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
+                
+                cell.textLabel?.text = "Something went wrong...😞"
+                
+                return cell
+            }
+        } else { // popular city cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityTableViewCell", for: indexPath) as? PopularCityTableViewCell {
+                
+                cell.titleLabel.text = "텍스트테스트"
+                
+                return cell
+            }
+                else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
+                
+                cell.textLabel?.text = "Something went wrong...😞"
+                
+                return cell
+            }
         }
+        
+        
     }
 }
