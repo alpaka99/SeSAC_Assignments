@@ -7,17 +7,25 @@
 
 import UIKit
 
-final class RestaurantListTableViewController: UITableViewController {
+final class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     static var cellState: CellState = CellState(states: [])
     static var preloadedImages: [UIImage?] = []
     
+    private let tableView: UITableView = UITableView()
     
     private let restaurantList: RestaurantList = RestaurantList()
     
     private let searchView: UIView = RestaurantSearchView()
+    
+    override func loadView() {
+        self.view.addSubview(tableView)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // configure tableView
+        configureTableView()
         
 
         // configure navigation controllers
@@ -30,11 +38,19 @@ final class RestaurantListTableViewController: UITableViewController {
         // move to app delegate for image cache
     }
     
+    private func configureTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            
+        ])
+    }
+    
     private func configureNavigationController() {
         navigationItem.title = "SeSAC Restaurants"
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return searchView
     }
     
@@ -43,19 +59,19 @@ final class RestaurantListTableViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BasicCell")
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.getReuseIdentifier(), for: indexPath) as? RestaurantTableViewCell {
 
             let restaurantData = restaurantList.restaurantArray[indexPath.row]
@@ -76,9 +92,4 @@ final class RestaurantListTableViewController: UITableViewController {
             return cell
         }
     }
-}
-
-protocol RestaurantListTableViewControllerDelegate {
-    var delegate: RestaurantListTableViewController? { get }
-    func favoriteChanged()
 }

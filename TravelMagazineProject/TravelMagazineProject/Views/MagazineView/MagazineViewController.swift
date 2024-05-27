@@ -9,9 +9,9 @@ import Kingfisher
 import UIKit
 
 final class MagazineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var tableView: UITableView!
     
     private var magazineData: MagazineInfo = MagazineInfo()
-    
     
     
     override func viewDidLoad() {
@@ -19,17 +19,18 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
         
         navigationItem.title = "SeSAC Magazine"
         
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         tableView.register(MagazineTableViewCell.self, forCellReuseIdentifier: MagazineTableViewCell.getReuseIdentifier())
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.getReuseIdentifier(), for: indexPath) as? MagazineTableViewCell {
             
@@ -54,15 +55,15 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = DetailMagazineViewController()
         detailViewController.setTextLabelText(magazineData.magazine[indexPath.row].link)
         
