@@ -8,25 +8,32 @@
 import UIKit
 
 final class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    static var cellState: CellState = CellState(states: [])
-    static var preloadedImages: [UIImage?] = []
+//    static var cellState: CellState = CellState(states: [])
+//    static var preloadedImages: [UIImage?] = []
     
+    private let searchBar: UISearchBar = UISearchBar()
     private let tableView: UITableView = UITableView()
     
     private let restaurantList: RestaurantList = RestaurantList()
     
-    private let searchView: UIView = RestaurantSearchView()
+    
     
     override func loadView() {
-        self.view.addSubview(tableView)
+        super.loadView()
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addSubview(searchBar)
+        self.view.addSubview(tableView)
+        
+        // configure searchBar
+        configureSearchBar()
+        
         // configure tableView
         configureTableView()
-        
 
         // configure navigation controllers
         configureNavigationController()
@@ -38,20 +45,32 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         // move to app delegate for image cache
     }
     
+    private func configureSearchBar() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8),
+            searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8),
+        ])
+    }
+    
     private func configureTableView() {
+        print(#function)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
+            tableView.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 8),
         ])
     }
     
     private func configureNavigationController() {
         navigationItem.title = "SeSAC Restaurants"
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return searchView
     }
     
     private func configureCells() {
@@ -60,7 +79,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return restaurantList.restaurantArray.count
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,6 +91,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function)
         if let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.getReuseIdentifier(), for: indexPath) as? RestaurantTableViewCell {
 
             let restaurantData = restaurantList.restaurantArray[indexPath.row]

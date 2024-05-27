@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        loadRestaurantViewData()
         
         return true
     }
@@ -33,18 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // preloading image data(unfinished)
-    private func loadRestaurantViewData() {
-        if let cellState = UserDefaults.standard.loadData(CellState.self) {
-            RestaurantListTableViewController.cellState = cellState
-            
-            let restaurantList = RestaurantList()
-            var imageArray: [UIImage] = Array<UIImage>.init(repeating: UIImage(systemName: "fork.knife")!, count: restaurantList.restaurantArray.count)
-            for i in 0..<restaurantList.restaurantArray.count {
-                imageArray.append(UIImage(named: restaurantList.restaurantArray[i].image) ?? UIImage(systemName: "fork.knife")!)
-            }
-            
-            RestaurantListTableViewController.preloadedImages = imageArray
-        }
-    }
+//    private func loadRestaurantViewData() {
+//        if let cellState = UserDefaults.standard.loadData(CellState.self) {
+//            RestaurantListTableViewController.cellState = cellState
+//            
+//            let restaurantList = RestaurantList()
+//            var imageArray: [UIImage] = Array<UIImage>.init(repeating: UIImage(systemName: "fork.knife")!, count: restaurantList.restaurantArray.count)
+//            for i in 0..<restaurantList.restaurantArray.count {
+//                imageArray.append(UIImage(named: restaurantList.restaurantArray[i].image) ?? UIImage(systemName: "fork.knife")!)
+//            }
+//            
+//            RestaurantListTableViewController.preloadedImages = imageArray
+//        }
+//    }
 }
 
