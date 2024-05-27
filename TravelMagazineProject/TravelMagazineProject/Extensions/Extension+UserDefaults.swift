@@ -14,7 +14,7 @@ extension UserDefaults {
         }
     }
     
-    func loadData<T: UserDefaultable>(_: T.Type) -> T? {
+    func loadData<T: UserDefaultable>(_ data: T) -> T? {
         if let jsonData = UserDefaults.standard.data(forKey: T.getUserDefaultKey()) {
             if let data = try? JSONDecoder().decode(T.self, from: jsonData) {
                 return data

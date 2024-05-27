@@ -42,7 +42,8 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         let data = travels[indexPath.row]
         
         
-        if data.ad { // ad cell
+        // MARK: deque reusable cell을 좀 더 간단하게 초기화 하는 방법은 없을까...?
+        if data.ad == true { // ad cell
             if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityAdCell", for: indexPath) as? PopularCityAdCell {
                 
                 cell.configureData(data)

@@ -178,8 +178,12 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         categoryLabel.text = data.category
         phoneNumberLabel.text = data.phoneNumber
         
-        let url = URL(string: data.image)
-        restaurantImage.kf.setImage(with: url)
+        if let url = URL(string: data.image) {
+            DataManager.shared.fetchImage(url) { [weak self] image in
+                self?.restaurantImage.image = image
+            }
+//            restaurantImage.kf.setImage(with: url)
+        }
     }
     
     @objc private func favoriteButtonTapped() {

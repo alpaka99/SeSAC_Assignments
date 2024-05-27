@@ -9,7 +9,7 @@ import Kingfisher
 import UIKit
 
 class PopularCityTableViewCell: UITableViewCell {
-
+    
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -64,7 +64,7 @@ class PopularCityTableViewCell: UITableViewCell {
         gradeLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         gradeLabel.textColor = .systemGray4
     }
-
+    
     private func setCityImageViewUI() {
         cityImageView.layer.cornerRadius = 8
         cityImageView.clipsToBounds = true
@@ -73,7 +73,6 @@ class PopularCityTableViewCell: UITableViewCell {
     }
     
     private func setLikeButtonUI() {
-        print(#function)
         if isLike {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             likeButton.tintColor = .red
@@ -91,9 +90,12 @@ class PopularCityTableViewCell: UITableViewCell {
         isLike = data.like ?? false
         setLikeButtonUI() // MARK: 이 부분을 지금 두번씩 불러오고 있는데 한번만 불러올 방법이 없을까?
         
-        if let photoUrl = data.travel_image {
-            let url = URL(string: photoUrl)
-            cityImageView.kf.setImage(with: url)
+        cityImageView.kf.indicatorType = .activity
+        if let photoUrl = data.travel_image, let url = URL(string: photoUrl) {
+            DataManager.shared.fetchImage(url) {[weak self] image in
+                self?.cityImageView.image = image
+                //            cityImageView.kf.setImage(with: url)
+            }
         }
     }
     
@@ -105,20 +107,5 @@ class PopularCityTableViewCell: UITableViewCell {
     private func likeButtonTapped() {
         isLike.toggle()
         setLikeButtonUI()
-    }
-}
-
-extension Double? {
-    func getStars() -> String {
-        if let grade = self {
-            let flooredGrade = Int(floor(grade))
-            
-            let filledStars = String(repeating: "★", count: flooredGrade)
-            let emptyStars = String(repeating: "☆", count: 5-flooredGrade)
-            
-            return filledStars + emptyStars
-        } else {
-            return String(repeating: "★", count: 5)
-        }
     }
 }
