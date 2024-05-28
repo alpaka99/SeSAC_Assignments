@@ -25,7 +25,6 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
         self.background.addSubview(title)
         self.background.addSubview(subtitle)
         self.background.addSubview(dateLabel)
-        
        
         
         // configure background

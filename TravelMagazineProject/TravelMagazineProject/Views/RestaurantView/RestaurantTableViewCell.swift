@@ -182,7 +182,6 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
             DataManager.shared.fetchImage(url) { [weak self] image in
                 self?.restaurantImage.image = image
             }
-//            restaurantImage.kf.setImage(with: url)
         }
     }
     

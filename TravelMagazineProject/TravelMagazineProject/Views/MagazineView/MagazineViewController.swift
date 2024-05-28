@@ -31,18 +31,14 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.getReuseIdentifier(), for: indexPath) as? MagazineTableViewCell {
             
             let data = magazineData.magazine[indexPath.row]
-            
-            // MARK: 이 부분 Cell쪽으로 옮겨서 함수로 작업하기
             
             if let url = URL(string: data.photo_image) {
                 DataManager.shared.fetchImage(url) { [weak cell] image in
                     cell?.cellImage.image = image
                 }
-//                cell.cellImage.kf.setImage(with: url)
             }
             cell.title.text = data.title
             cell.subtitle.text = data.subtitle

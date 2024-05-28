@@ -86,8 +86,8 @@ class PopularCityTableViewCell: UITableViewCell {
     internal func configureData(_ data: Travel) {
         titleLabel.text = data.title
         descriptionLabel.text = data.description
-        gradeLabel.text = "\(data.grade.getStars()) (\(data.grade ?? 0)) • 저장 \(data.save?.formatted() ?? "0")"
-        isLike = data.like ?? false
+        gradeLabel.text = data.gradeLabel
+        isLike = data.isLike
         setLikeButtonUI() // MARK: 이 부분을 지금 두번씩 불러오고 있는데 한번만 불러올 방법이 없을까?
         
         cityImageView.kf.indicatorType = .activity

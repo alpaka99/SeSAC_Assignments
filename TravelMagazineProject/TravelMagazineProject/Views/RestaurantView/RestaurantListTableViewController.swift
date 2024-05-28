@@ -12,7 +12,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     private let searchBar: UISearchBar = UISearchBar()
     private let tableView: UITableView = UITableView()
     
-    private let restaurants: [Restaurant] = RestaurantList().restaurantArray
+    private var restaurants: [Restaurant] = RestaurantList().restaurantArray
     private var filteredRestaurants: [Restaurant] = []
     
     
@@ -128,29 +128,50 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty == false {
-            filteredRestaurants = filteredRestaurants.filter { restaurant in
-                return restaurant.name.localizedStandardContains(searchText) || restaurant.category.localizedStandardContains(searchText)
-            }
-            tableView.reloadData()
+        if searchText.isEmpty {
+            filteredRestaurants = restaurants
         } else {
-            tableView.reloadData()
+            filteredRestaurants = restaurants.filter { restaurant in
+                return filterRestaurant(for: restaurant, with: searchText)
+            }
         }
         
+        tableView.reloadData()
     }
+    
+    
+    private func filterRestaurant(for restaurant: Restaurant, with searchText: String) -> Bool {
+        return restaurant.name.localizedCaseInsensitiveContains(searchText) || restaurant.category.localizedCaseInsensitiveContains(searchText)
+    }
+    
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {[weak self] _,_,_ in
-            self?.deleteItem(at: indexPath.row)
+            self?.showDeleteAlert(for: indexPath.row)
         }
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }
     
+    private func showDeleteAlert(for index: Int) {
+        let alertController = UIAlertController(title: "정말 삭제하실래요?", message: "삭제된 데이터는 복원되지 않습니다", preferredStyle: .alert)
+        let deleteButton = UIAlertAction(title: "삭제하기", style: .destructive) { [weak self] _ in
+            self?.deleteItem(at: index)
+        }
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel)
+        
+        alertController.addAction(deleteButton)
+        alertController.addAction(cancelButton)
+        
+        present(alertController, animated: true)
+    }
+    
     private func deleteItem(at index: Int) {
-        filteredRestaurants.remove(at: index)
+        restaurants.remove(at: index)
+        filteredRestaurants = restaurants
         tableView.reloadData()
+        
     }
     
 }
