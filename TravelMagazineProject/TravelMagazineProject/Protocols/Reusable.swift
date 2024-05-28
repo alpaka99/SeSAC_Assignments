@@ -8,11 +8,11 @@
 import UIKit
 
 protocol Reusable {
-    static func getReuseIdentifier() -> String
+    static var reuseIdentifier: String { get }
 }
 
 extension Reusable {
-    static func getReuseIdentifier() -> String {
+    static var reuseIdentifier: String {
         return String(describing: Self.self)
     }
 }

@@ -17,18 +17,23 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "도시 상세 정보"
+        setNavigationItemUI(.travel)
+        
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        let cityCellXib = UINib(nibName: "PopularCityTableViewCell", bundle: nil)
-        tableView.register(cityCellXib, forCellReuseIdentifier: "PopularCityTableViewCell")
+        let cityCellXib = UINib(nibName: PopularCityTableViewCell.reuseIdentifier, bundle: nil)
+        tableView.register(cityCellXib, forCellReuseIdentifier: PopularCityTableViewCell.reuseIdentifier)
         
-        let adCellXib = UINib(nibName: "PopularCityAdCell", bundle: nil)
-        tableView.register(adCellXib, forCellReuseIdentifier: "PopularCityAdCell")
+        let adCellXib = UINib(nibName: PopularCityAdCell.reuseIdentifier, bundle: nil)
+        tableView.register(adCellXib, forCellReuseIdentifier: PopularCityAdCell.reuseIdentifier)
         
         tableView.rowHeight = 100
+    }
+    
+    private func setNavigationItemUI(_ type: NavigationItemType) {
+        navigationItem.title = type.title
     }
     
     
@@ -44,27 +49,27 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         
         // MARK: deque reusable cell을 좀 더 간단하게 초기화 하는 방법은 없을까...?
         if data.ad == true { // ad cell
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityAdCell", for: indexPath) as? PopularCityAdCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: PopularCityAdCell.reuseIdentifier, for: indexPath) as? PopularCityAdCell {
                 
                 cell.configureData(data)
                 
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
                 
                 cell.textLabel?.text = "Something went wrong...😞"
                 
                 return cell
             }
         } else { // popular city cell
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "PopularCityTableViewCell", for: indexPath) as? PopularCityTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: PopularCityTableViewCell.reuseIdentifier, for: indexPath) as? PopularCityTableViewCell {
                 
                 cell.configureData(data)
                                 
                 return cell
             }
                 else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
                 
                 cell.textLabel?.text = "Something went wrong...😞"
                 

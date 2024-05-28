@@ -14,6 +14,12 @@ class PopularCityTableViewCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var gradeLabel: UILabel!
     
+    lazy var labels: [LabelType : UILabel] = [
+        .popularCityTitle : titleLabel,
+        .popularCityDescription : descriptionLabel,
+        .popularCityGrade : gradeLabel
+    ]
+    
     @IBOutlet var cityImageView: UIImageView!
     
     @IBOutlet var likeButton: UIButton!
@@ -36,10 +42,8 @@ class PopularCityTableViewCell: UITableViewCell {
     }
     
     private func setComponentsUI() {
-        setTitleLabelUI()
-        setDescriptionLabelUI()
-        setGradeLabelUI()
-        setCityImageViewUI()
+        setLabelsUI()
+        setCityImageViewUI(.popularCity)
         setLikeButtonUI()
     }
     
@@ -47,27 +51,23 @@ class PopularCityTableViewCell: UITableViewCell {
         addLikeButtonAction()
     }
     
-    private func setTitleLabelUI() {
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        titleLabel.textColor = .black
+    
+    private func setLabelsUI() {
+        labels.keys.forEach { type in
+            if let label = labels[type] {
+                label.numberOfLines = type.numberOfLines
+                label.textAlignment = type.textAlignment
+                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
+                label.textColor = type.textColor
+            }
+        }
     }
     
-    private func setDescriptionLabelUI() {
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        descriptionLabel.textColor = .systemGray3
-    }
-    
-    private func setGradeLabelUI() {
-        gradeLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        gradeLabel.textColor = .systemGray4
-    }
-    
-    private func setCityImageViewUI() {
-        cityImageView.layer.cornerRadius = 8
-        cityImageView.clipsToBounds = true
-        cityImageView.backgroundColor = .systemGray4
-        cityImageView.contentMode = .scaleAspectFill
+    private func setCityImageViewUI(_ type: ImageViewType) {
+        cityImageView.layer.cornerRadius = type.cornerRadius
+        cityImageView.clipsToBounds = type.clipsToBounds
+        cityImageView.backgroundColor = type.backgroundColor
+        cityImageView.contentMode = type.contentMode
     }
     
     private func setLikeButtonUI() {

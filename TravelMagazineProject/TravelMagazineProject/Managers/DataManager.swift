@@ -27,6 +27,7 @@ struct DataManager {
         }
     }
     
+    // MARK: 이렇게 코드를 짜는것의 이점이 무엇일까에 대한 고민을 해보자(feat. UserDefaults는 thread safe하다 by 공식문서)
     // asynchronously complete user default sync process
     internal func syncData<T: UserDefaultable>(_ data: T, completion: @escaping(T?) -> ()) {
         DispatchQueue.global(qos: .userInitiated).async {

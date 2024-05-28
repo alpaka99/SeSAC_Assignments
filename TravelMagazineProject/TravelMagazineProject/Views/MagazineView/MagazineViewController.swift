@@ -17,24 +17,37 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "SeSAC Magazine"
+        setNavigationUI(.magazine)
         
+        setDelegate()
+        registerCells()
+        
+    }
+    
+    private func setDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableView.register(MagazineTableViewCell.self, forCellReuseIdentifier: MagazineTableViewCell.getReuseIdentifier())
+    }
+    
+    private func registerCells() {
+        tableView.register(MagazineTableViewCell.self, forCellReuseIdentifier: MagazineTableViewCell.reuseIdentifier)
+    }
+    
+    private func setNavigationUI(_ type: NavigationItemType) {
+        navigationItem.title = type.title
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return magazineData.magazine.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.getReuseIdentifier(), for: indexPath) as? MagazineTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.reuseIdentifier, for: indexPath) as? MagazineTableViewCell {
             
             let data = magazineData.magazine[indexPath.row]
             
+            // MARK: 이 부분 cell에 넣기
             if let url = URL(string: data.photo_image) {
                 DataManager.shared.fetchImage(url) { [weak cell] image in
                     cell?.cellImage.image = image
@@ -46,7 +59,7 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
             
             cell.textLabel?.text = "Something went wrong...😞"
             

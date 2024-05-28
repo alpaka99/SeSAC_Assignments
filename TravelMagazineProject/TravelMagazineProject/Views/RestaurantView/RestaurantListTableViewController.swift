@@ -45,14 +45,14 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func setComponentsUI() {
-        configureNavigationController()
+        setNavigationItemUI(.restaurant)
         setSearchBarUI()
         setTableViewUI()
     }
     
     private func registerCells() {
-        tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.getReuseIdentifier())
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.getReuseIdentifier())
+        tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.reuseIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
     }
     
     private func configureSearchBar() {
@@ -99,8 +99,8 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         
     }
     
-    private func configureNavigationController() {
-        navigationItem.title = "SeSAC Restaurants"
+    private func setNavigationItemUI(_ type: NavigationItemType) {
+        navigationItem.title = type.title
     }
     
 
@@ -117,7 +117,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.getReuseIdentifier(), for: indexPath) as? RestaurantTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.reuseIdentifier, for: indexPath) as? RestaurantTableViewCell {
 
             let data = filteredRestaurants[indexPath.row]
             
@@ -125,7 +125,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.getReuseIdentifier(), for: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
             
             cell.textLabel?.text = "Something went wrong... 😞"
             
@@ -181,3 +181,16 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
 }
+
+
+
+// 프로토콜로 builder를 선언해놔서 boilerplate를 줄일 수 있을까...?
+// 아 근데 rendering 관련된 ui는 layout 잡은 이후에 렌더링 되는데 이건 그럼 어느 시점에 작동해야하는거지..?
+protocol UIBuilder {
+    // RawValue가 String인 enum을 선언해야함. 이 안에서 enum으로 type들을
+    associatedtype BuilderType: RawRepresentable where BuilderType.RawValue == String
+    
+    
+}
+
+

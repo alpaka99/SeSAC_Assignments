@@ -17,6 +17,12 @@ final class RestaurantTableViewCell: UITableViewCell {
     
     internal let phoneNumberLabel: UILabel = UILabel()
     
+    lazy var labels: [LabelType : UILabel] = [
+        .restaurantName : nameLabel,
+        .restaurantCategory : categoryLabel,
+        .restaurantPhoneNumber : phoneNumberLabel
+    ]
+    
     internal let restaurantImage: UIImageView = UIImageView()
     
     internal var isFavorite: Bool = false
@@ -66,13 +72,25 @@ final class RestaurantTableViewCell: UITableViewCell {
     private func setRestaurantCellUI() {
         setBackgroundUI()
         
-        setNameLableUI()
-        setCategoryLabelUI()
-        setPhoneNumerLabelUI()
+//        setNameLableUI()
+//        setCategoryLabelUI()
+//        setPhoneNumerLabelUI()
+        setLabelsUI()
         
         setFavoriteButtonUI()
         
-        setRestaurantImage()
+        setRestaurantImage(.restaurant)
+    }
+    
+    private func setLabelsUI() {
+        labels.keys.forEach { type in
+            if let label = labels[type] {
+                label.numberOfLines = type.numberOfLines
+                label.textAlignment = type.textAlignment
+                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
+                label.textColor = type.textColor
+            }
+        }
     }
     
     private func layoutBackground() {
@@ -147,15 +165,7 @@ final class RestaurantTableViewCell: UITableViewCell {
 //        background.backgroundColor = .systemGray6
     }
     
-    private func setNameLableUI() {
-        nameLabel.font = .systemFont(ofSize: 20, weight: .regular)
-        nameLabel.textColor = .systemBlue
-    }
     
-    private func setCategoryLabelUI() {
-        categoryLabel.font = .systemFont(ofSize: 16, weight: .medium)
-        categoryLabel.textColor = .systemGray4
-    }
     
     private func setFavoriteButtonUI() {
         if isFavorite {
@@ -168,15 +178,10 @@ final class RestaurantTableViewCell: UITableViewCell {
         self.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
     }
     
-    private func setPhoneNumerLabelUI() {
-        phoneNumberLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        phoneNumberLabel.textColor = .black
-    }
-    
-    private func setRestaurantImage() {
-        restaurantImage.layer.cornerRadius = 8
-        restaurantImage.backgroundColor = .systemGray4
-        restaurantImage.clipsToBounds = true
+    private func setRestaurantImage(_ type: ImageViewType) {
+        restaurantImage.layer.cornerRadius = type.cornerRadius
+        restaurantImage.backgroundColor = type.backgroundColor
+        restaurantImage.clipsToBounds = type.clipsToBounds
     }
     
     internal func configureCellData(_ data: Restaurant) {

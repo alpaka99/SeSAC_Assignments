@@ -14,18 +14,16 @@ final class MagazineTableViewCell: UITableViewCell {
     internal let subtitle: UILabel = UILabel()
     internal let dateLabel: UILabel = UILabel()
     
+    // MARK: 아 이것도 dictionary 마음에 안듬... 어떻게 바꾸는 방법 없나 -> UILabelExtension으로 받아서 바꾸기?
+    lazy var labels: [LabelType : UILabel] = [
+        .magazineTitle : title,
+        .magazineSubtitle : subtitle,
+        .magazineDate : dateLabel
+    ]
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         // 이부분에서 cell 초기화
-        
-        self.contentView.addSubview(background)
-        
-        self.background.addSubview(cellImage)
-        self.background.addSubview(title)
-        self.background.addSubview(subtitle)
-        self.background.addSubview(dateLabel)
-       
         
         // layout Views
         layoutComponents()
@@ -39,18 +37,23 @@ final class MagazineTableViewCell: UITableViewCell {
     }
     
     private func layoutComponents() {
+        self.contentView.addSubview(background)
+        
+        self.background.addSubview(cellImage)
+        self.background.addSubview(title)
+        self.background.addSubview(subtitle)
+        self.background.addSubview(dateLabel)
+        
         layoutBackground()
         layoutTitle()
         layoutSubtitle()
-        layoutCellImage()
+        layoutMagazineImage()
         layoutDateLabel()
     }
     
     private func setComponentsUI() {
-        setTitleUI()
-        setSubtitleUI()
-        setCellImageUI()
-        setDateLabelUI()
+        setLabels()
+        setMagazineImageUI(.magazine)
     }
     
     
@@ -69,7 +72,7 @@ final class MagazineTableViewCell: UITableViewCell {
     
     
     // cellimage configurations
-    private func layoutCellImage() {
+    private func layoutMagazineImage() {
         cellImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -115,7 +118,7 @@ final class MagazineTableViewCell: UITableViewCell {
         ])
     }
     
-    private func setCellImageUI() {
+    private func setMagazineImageUI(_ type: ImageViewType) {
         cellImage.layer.cornerRadius = 16
         cellImage.clipsToBounds = true
         cellImage.backgroundColor = .systemGray4
@@ -123,25 +126,14 @@ final class MagazineTableViewCell: UITableViewCell {
         cellImage.layer.borderWidth = 1
     }
     
-    private func setTitleUI() {
-        title.numberOfLines = 0
-        title.textAlignment = .left
-        title.font = .systemFont(ofSize: 20, weight: .heavy)
-        subtitle.textColor = .black
-    }
-    
-    private func setSubtitleUI() {
-        subtitle.numberOfLines = 1
-        subtitle.textAlignment = .left
-        subtitle.font = .systemFont(ofSize: 16, weight: .bold)
-        subtitle.textColor = .systemGray4
-    }
-    
-    private func setDateLabelUI() {
-        dateLabel.numberOfLines = 1
-        dateLabel.textAlignment = .right
-        dateLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        dateLabel.textColor = .systemGray4
+    private func setLabels() {
+        labels.keys.forEach { type in
+            if let label = labels[type] {
+                label.numberOfLines = type.numberOfLines
+                label.textAlignment = type.textAlignment
+                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
+                label.textColor = type.textColor
+            }
+        }
     }
 }
-
