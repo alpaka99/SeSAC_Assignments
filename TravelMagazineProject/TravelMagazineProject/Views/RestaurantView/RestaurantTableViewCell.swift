@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RestaurantTableViewCell: UITableViewCell, BackgroundBuildable, LabelBuildable, ImageViewBuildable, ButtonBuildable {
+final class RestaurantTableViewCell: RestaurantBuildableCell {
 
     internal let background: UIView = UIView()
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopularCityAdCell: UITableViewCell, LabelBuildable {
+class PopularCityAdCell: PopularCityBuildableAdCell {
 
     @IBOutlet var adTitleLabel: UILabel!
     @IBOutlet var adBadgeLabel: UILabel!

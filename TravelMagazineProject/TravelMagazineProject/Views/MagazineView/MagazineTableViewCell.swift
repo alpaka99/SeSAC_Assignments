@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MagazineTableViewCell: UITableViewCell, BackgroundBuildable, LabelBuildable, ImageViewBuildable {
+final class MagazineTableViewCell: MagazineBuildableCell {
     internal let background: UIView = UIView()
     
     lazy var backgrounds: [BackgroundType : UIView] = [:]

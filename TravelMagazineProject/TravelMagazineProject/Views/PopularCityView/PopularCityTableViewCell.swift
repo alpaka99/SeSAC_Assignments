@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-final class PopularCityTableViewCell: UITableViewCell, LabelBuildable, ButtonBuildable, ImageViewBuildable {
+final class PopularCityTableViewCell: PopularCityBuildableCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
