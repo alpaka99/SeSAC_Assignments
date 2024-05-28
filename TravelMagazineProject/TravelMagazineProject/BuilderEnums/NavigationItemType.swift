@@ -12,7 +12,7 @@ enum NavigationItemType: String {
     case travel
     case restaurant
     
-    var title: String {
+    private var title: String {
         switch self {
         case .magazine, .restaurant:
             return "SeSAC " + self.rawValue
