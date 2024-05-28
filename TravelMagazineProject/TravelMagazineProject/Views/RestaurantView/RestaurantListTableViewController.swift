@@ -25,34 +25,44 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(searchBar)
-        self.view.addSubview(tableView)
         
-        // configure searchBar
-        configureSearchBar()
+        layoutComponents()
+        setComponentsUI()
         
-        // configure tableView
-        configureTableView()
-
-        // configure navigation controllers
-        configureNavigationController()
-        
-        // configure tableview cells
-        configureCells()
+        registerCells()
         
         // configure data
         filteredRestaurants = restaurants
         // move to app delegate for image cache
     }
     
-    private func configureSearchBar() {
-        searchBar.delegate = self
+    private func layoutComponents() {
+        self.view.addSubview(searchBar)
+        self.view.addSubview(tableView)
         
+        layoutSearchBar()
+        layoutTableView()
+    }
+    
+    private func setComponentsUI() {
+        configureNavigationController()
+        setSearchBarUI()
+        setTableViewUI()
+    }
+    
+    private func registerCells() {
+        tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.getReuseIdentifier())
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.getReuseIdentifier())
+    }
+    
+    private func configureSearchBar() {
         layoutSearchBar()
         setSearchBarUI()
     }
     
     private func layoutSearchBar() {
+        searchBar.delegate = self
+        
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -67,14 +77,14 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         layoutTableView()
         setTableViewUI()
     }
     
     private func layoutTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -93,10 +103,6 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         navigationItem.title = "SeSAC Restaurants"
     }
     
-    private func configureCells() {
-        self.tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.getReuseIdentifier())
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BasicCell")
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRestaurants.count
@@ -119,7 +125,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.getReuseIdentifier(), for: indexPath) as UITableViewCell
             
             cell.textLabel?.text = "Something went wrong... 😞"
             

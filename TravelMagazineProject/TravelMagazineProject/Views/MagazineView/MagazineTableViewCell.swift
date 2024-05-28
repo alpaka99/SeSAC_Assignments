@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MagazineTableViewCell: UITableViewCell, Reusable {
+final class MagazineTableViewCell: UITableViewCell {
     internal let background: UIView = UIView()
     internal let cellImage: UIImageView = UIImageView()
     internal let title: UILabel = UILabel()

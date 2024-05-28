@@ -10,13 +10,11 @@ import UIKit
 
 class PopularCityTableViewCell: UITableViewCell {
     
-    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var gradeLabel: UILabel!
     
     @IBOutlet var cityImageView: UIImageView!
-    
     
     @IBOutlet var likeButton: UIButton!
     
@@ -95,7 +93,6 @@ class PopularCityTableViewCell: UITableViewCell {
             DataManager.shared.fetchImage(url) {[weak self] image in
                 self?.cityImageView.image = image
             }
-//            cityImageView.kf.setImage(with: url)
         }
     }
     
@@ -108,4 +105,18 @@ class PopularCityTableViewCell: UITableViewCell {
         isLike.toggle()
         setLikeButtonUI()
     }
+}
+
+
+
+
+protocol ButtonBuildable {
+    var buttons: [UIButton] { get set }
+    
+    func buildButton(_ type: ButtonType)
+}
+
+
+enum ButtonType {
+    
 }

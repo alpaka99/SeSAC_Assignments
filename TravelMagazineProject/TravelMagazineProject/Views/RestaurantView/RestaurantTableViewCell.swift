@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RestaurantTableViewCell: UITableViewCell, Reusable {
+final class RestaurantTableViewCell: UITableViewCell {
 
     internal let background: UIView = UIView()
     
@@ -33,7 +33,6 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         self.background.addSubview(phoneNumberLabel)
         
         self.background.addSubview(restaurantImage)
-        
         
         // layout
         
@@ -197,5 +196,11 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
     @objc private func favoriteButtonTapped() {
         isFavorite.toggle()
         setFavoriteButtonUI()
+    }
+}
+
+extension ButtonBuildable {
+    func buildButton(_ type: ButtonType) {
+        
     }
 }
