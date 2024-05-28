@@ -44,7 +44,8 @@ class PopularCityTableViewCell: UITableViewCell {
     private func setComponentsUI() {
         setLabelsUI()
         setCityImageViewUI(.popularCity)
-        setLikeButtonUI()
+//        setLikeButtonUI()
+        
     }
     
     private func addComponentActions() {
@@ -70,15 +71,22 @@ class PopularCityTableViewCell: UITableViewCell {
         cityImageView.contentMode = type.contentMode
     }
     
-    private func setLikeButtonUI() {
-        if isLike {
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            likeButton.tintColor = .red
-        } else {
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            likeButton.tintColor = .white
-        }
+    private func setButtonUI(_ type: ButtonType) {
+        likeButton.setImage(UIImage(systemName: type.systemName), for: .normal)
+        likeButton.tintColor = type.tintColor
     }
+    
+//    private func setLikeButtonUI() {
+//        if isLike {
+//            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//            likeButton.tintColor = .red
+//        } else {
+//            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+//            likeButton.tintColor = .white
+//        }
+//    }
+    
+    
     
     
     internal func configureData(_ data: Travel) {
@@ -86,7 +94,13 @@ class PopularCityTableViewCell: UITableViewCell {
         descriptionLabel.text = data.description
         gradeLabel.text = data.gradeLabel
         isLike = data.isLike
-        setLikeButtonUI() // MARK: 이 부분을 지금 두번씩 불러오고 있는데 한번만 불러올 방법이 없을까?
+         // MARK: 이 부분을 지금 두번씩 불러오고 있는데 한번만 불러올 방법이 없을까?
+        switch isLike {
+        case true:
+            setButtonUI(.likeButton(.pressed))
+        case false:
+            setButtonUI(.likeButton(.normal))
+        }
         
         cityImageView.kf.indicatorType = .activity
         if let photoUrl = data.travel_image, let url = URL(string: photoUrl) {
@@ -103,20 +117,16 @@ class PopularCityTableViewCell: UITableViewCell {
     @objc
     private func likeButtonTapped() {
         isLike.toggle()
-        setLikeButtonUI()
+        switch isLike {
+        case true:
+            setButtonUI(.likeButton(.pressed))
+        case false:
+            setButtonUI(.likeButton(.normal))
+        }
+        
     }
 }
 
 
 
 
-protocol ButtonBuildable {
-    var buttons: [UIButton] { get set }
-    
-    func buildButton(_ type: ButtonType)
-}
-
-
-enum ButtonType {
-    
-}

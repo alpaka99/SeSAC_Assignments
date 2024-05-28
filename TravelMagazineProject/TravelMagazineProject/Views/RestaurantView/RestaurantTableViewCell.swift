@@ -77,9 +77,12 @@ final class RestaurantTableViewCell: UITableViewCell {
 //        setPhoneNumerLabelUI()
         setLabelsUI()
         
-        setFavoriteButtonUI()
+//        setFavoriteButtonUI()
+        setButtonUI(.favoriteButton(.normal))
         
         setRestaurantImage(.restaurant)
+        
+        addActions()
     }
     
     private func setLabelsUI() {
@@ -165,18 +168,22 @@ final class RestaurantTableViewCell: UITableViewCell {
 //        background.backgroundColor = .systemGray6
     }
     
-    
-    
-    private func setFavoriteButtonUI() {
-        if isFavorite {
-            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            favoriteButton.tintColor = .systemRed
-        } else {
-            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-            favoriteButton.tintColor = .systemBlue
-        }
-        self.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+    private func setButtonUI(_ type: ButtonType) {
+        favoriteButton.setImage(UIImage(systemName: type.systemName), for: .normal)
+        favoriteButton.tintColor = type.tintColor
     }
+    
+    
+//    private func setFavoriteButtonUI() {
+//        if isFavorite {
+//            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+//            favoriteButton.tintColor = .systemRed
+//        } else {
+//            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+//            favoriteButton.tintColor = .systemBlue
+//        }
+//        self.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+//    }
     
     private func setRestaurantImage(_ type: ImageViewType) {
         restaurantImage.layer.cornerRadius = type.cornerRadius
@@ -189,7 +196,8 @@ final class RestaurantTableViewCell: UITableViewCell {
         categoryLabel.text = data.category
         phoneNumberLabel.text = data.phoneNumber
         
-        setFavoriteButtonUI()
+        
+        setButtonUI(.favoriteButton(.normal))
         
         if let url = URL(string: data.image) {
             DataManager.shared.fetchImage(url) { [weak self] image in
@@ -198,14 +206,21 @@ final class RestaurantTableViewCell: UITableViewCell {
         }
     }
     
+    private func addActions() {
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+    }
+    
     @objc private func favoriteButtonTapped() {
         isFavorite.toggle()
-        setFavoriteButtonUI()
-    }
-}
-
-extension ButtonBuildable {
-    func buildButton(_ type: ButtonType) {
+        let type: ButtonType = {
+            switch isFavorite {
+            case true:
+                return .favoriteButton(.pressed)
+            case false:
+                return .favoriteButton(.normal)
+            }
+        }()
         
+        setButtonUI(type)
     }
 }
