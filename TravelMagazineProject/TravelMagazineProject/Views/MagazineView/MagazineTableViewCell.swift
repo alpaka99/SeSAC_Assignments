@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MagazineTableViewCell: UITableViewCell {
+final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
     internal let background: UIView = UIView()
     internal let cellImage: UIImageView = UIImageView()
     internal let title: UILabel = UILabel()
@@ -52,7 +52,7 @@ final class MagazineTableViewCell: UITableViewCell {
     }
     
     private func setComponentsUI() {
-        setLabels()
+        buildLabelsUI()
         setMagazineImageUI(.magazine)
     }
     
@@ -126,14 +126,14 @@ final class MagazineTableViewCell: UITableViewCell {
         cellImage.layer.borderWidth = 1
     }
     
-    private func setLabels() {
-        labels.keys.forEach { type in
-            if let label = labels[type] {
-                label.numberOfLines = type.numberOfLines
-                label.textAlignment = type.textAlignment
-                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
-                label.textColor = type.textColor
-            }
-        }
-    }
+//    private func setLabels() {
+//        labels.keys.forEach { type in
+//            if let label = labels[type] {
+//                label.numberOfLines = type.numberOfLines
+//                label.textAlignment = type.textAlignment
+//                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
+//                label.textColor = type.textColor
+//            }
+//        }
+//    }
 }
