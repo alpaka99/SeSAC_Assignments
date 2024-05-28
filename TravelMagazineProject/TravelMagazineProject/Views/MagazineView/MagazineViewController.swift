@@ -39,7 +39,7 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return magazineData.magazine.count
+        return magazineData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +50,7 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
             // MARK: 이 부분 cell에 넣기
             if let url = URL(string: data.photo_image) {
                 DataManager.shared.fetchImage(url) { [weak cell] image in
-                    cell?.cellImage.image = image
+                    cell?.magazineImage.image = image
                 }
             }
             cell.title.text = data.title
@@ -61,7 +61,7 @@ final class MagazineViewController: UIViewController, UITableViewDelegate, UITab
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
             
-            cell.textLabel?.text = "Something went wrong...😞"
+            cell.textLabel?.text = BasicCellInfo.text
             
             return cell
         }

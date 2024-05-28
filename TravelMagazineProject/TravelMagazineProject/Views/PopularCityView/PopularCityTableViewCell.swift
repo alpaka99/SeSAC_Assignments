@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-class PopularCityTableViewCell: UITableViewCell {
+final class PopularCityTableViewCell: UITableViewCell, LabelBuildable, ButtonBuildable, ImageViewBuildable {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -21,8 +21,10 @@ class PopularCityTableViewCell: UITableViewCell {
     ]
     
     @IBOutlet var cityImageView: UIImageView!
+    lazy var imageViews: [ImageViewType : UIImageView] = [ .popularCity : cityImageView ]
     
     @IBOutlet var likeButton: UIButton!
+    lazy var buttons: [ButtonType : UIButton] = [ .likeButton(.normal) : likeButton ]
     
     private var isLike: Bool = false
     
@@ -42,52 +44,14 @@ class PopularCityTableViewCell: UITableViewCell {
     }
     
     private func setComponentsUI() {
-        setLabelsUI()
-        setCityImageViewUI(.popularCity)
-//        setLikeButtonUI()
-        
+        buildLabelsUI()
+        buildImageViewsUI()
+        buildButtonsUI()
     }
     
     private func addComponentActions() {
         addLikeButtonAction()
     }
-    
-    
-    private func setLabelsUI() {
-        labels.keys.forEach { type in
-            if let label = labels[type] {
-                label.numberOfLines = type.numberOfLines
-                label.textAlignment = type.textAlignment
-                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
-                label.textColor = type.textColor
-            }
-        }
-    }
-    
-    private func setCityImageViewUI(_ type: ImageViewType) {
-        cityImageView.layer.cornerRadius = type.cornerRadius
-        cityImageView.clipsToBounds = type.clipsToBounds
-        cityImageView.backgroundColor = type.backgroundColor
-        cityImageView.contentMode = type.contentMode
-    }
-    
-    private func setButtonUI(_ type: ButtonType) {
-        likeButton.setImage(UIImage(systemName: type.systemName), for: .normal)
-        likeButton.tintColor = type.tintColor
-    }
-    
-//    private func setLikeButtonUI() {
-//        if isLike {
-//            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//            likeButton.tintColor = .red
-//        } else {
-//            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-//            likeButton.tintColor = .white
-//        }
-//    }
-    
-    
-    
     
     internal func configureData(_ data: Travel) {
         titleLabel.text = data.title
@@ -95,12 +59,7 @@ class PopularCityTableViewCell: UITableViewCell {
         gradeLabel.text = data.gradeLabel
         isLike = data.isLike
          // MARK: 이 부분을 지금 두번씩 불러오고 있는데 한번만 불러올 방법이 없을까?
-        switch isLike {
-        case true:
-            setButtonUI(.likeButton(.pressed))
-        case false:
-            setButtonUI(.likeButton(.normal))
-        }
+        isLike ? buildButtonUI(.likeButton(.pressed)) : buildButtonUI(.likeButton(.normal))
         
         cityImageView.kf.indicatorType = .activity
         if let photoUrl = data.travel_image, let url = URL(string: photoUrl) {
@@ -116,14 +75,22 @@ class PopularCityTableViewCell: UITableViewCell {
     
     @objc
     private func likeButtonTapped() {
+        //MARK: 여기에서 key도 toggle 해줘야함
         isLike.toggle()
         switch isLike {
         case true:
-            setButtonUI(.likeButton(.pressed))
+            buildButtonUI(.likeButton(.pressed))
+//            buttons.switchKey(for: .favoriteButton(.normal), with: .favoriteButton(.pressed))
         case false:
-            setButtonUI(.likeButton(.normal))
+            buildButtonUI(.likeButton(.normal))
         }
         
+    }
+}
+
+extension Dictionary {
+    mutating func switchKey(for originalKey: Self.Key, with newKey: Self.Key) {
+        self[newKey] = self.removeValue(forKey: originalKey)
     }
 }
 

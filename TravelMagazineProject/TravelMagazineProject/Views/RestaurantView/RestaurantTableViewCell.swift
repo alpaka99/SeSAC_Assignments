@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class RestaurantTableViewCell: UITableViewCell {
+final class RestaurantTableViewCell: UITableViewCell, BackgroundBuildable, LabelBuildable, ImageViewBuildable, ButtonBuildable {
 
     internal let background: UIView = UIView()
     
+    lazy var backgrounds: [BackgroundType : UIView] = [:]
+    
     internal let nameLabel: UILabel = UILabel()
     internal let categoryLabel: UILabel = UILabel()
-    internal let favoriteButton: UIButton = UIButton()
-    
     internal let phoneNumberLabel: UILabel = UILabel()
     
     lazy var labels: [LabelType : UILabel] = [
@@ -23,7 +23,14 @@ final class RestaurantTableViewCell: UITableViewCell {
         .restaurantPhoneNumber : phoneNumberLabel
     ]
     
+    
+    internal let favoriteButton: UIButton = UIButton()
+    
+    lazy var buttons: [ButtonType : UIButton] = [ .favoriteButton(.normal) : favoriteButton ]
+    
     internal let restaurantImage: UIImageView = UIImageView()
+    
+    lazy var imageViews: [ImageViewType : UIImageView] = [ .restaurant : restaurantImage ]
     
     internal var isFavorite: Bool = false
     
@@ -45,7 +52,7 @@ final class RestaurantTableViewCell: UITableViewCell {
         layoutRestaurantCell()
         
         // set UI
-        setRestaurantCellUI()
+        buildCellUI()
         
         // configure cell data -> call from RestaurantViewController
         
@@ -69,31 +76,13 @@ final class RestaurantTableViewCell: UITableViewCell {
         layoutRestaurantImage()
     }
     
-    private func setRestaurantCellUI() {
-        setBackgroundUI()
-        
-//        setNameLableUI()
-//        setCategoryLabelUI()
-//        setPhoneNumerLabelUI()
-        setLabelsUI()
-        
-//        setFavoriteButtonUI()
-        setButtonUI(.favoriteButton(.normal))
-        
-        setRestaurantImage(.restaurant)
+    private func buildCellUI() {
+        buildBackgroundsUI()
+        buildLabelsUI()
+        buildButtonsUI()
+        buildImageViewsUI()
         
         addActions()
-    }
-    
-    private func setLabelsUI() {
-        labels.keys.forEach { type in
-            if let label = labels[type] {
-                label.numberOfLines = type.numberOfLines
-                label.textAlignment = type.textAlignment
-                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
-                label.textColor = type.textColor
-            }
-        }
     }
     
     private func layoutBackground() {
@@ -163,41 +152,13 @@ final class RestaurantTableViewCell: UITableViewCell {
         ])
     }
     
-    
-    private func setBackgroundUI() {
-//        background.backgroundColor = .systemGray6
-    }
-    
-    private func setButtonUI(_ type: ButtonType) {
-        favoriteButton.setImage(UIImage(systemName: type.systemName), for: .normal)
-        favoriteButton.tintColor = type.tintColor
-    }
-    
-    
-//    private func setFavoriteButtonUI() {
-//        if isFavorite {
-//            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-//            favoriteButton.tintColor = .systemRed
-//        } else {
-//            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
-//            favoriteButton.tintColor = .systemBlue
-//        }
-//        self.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-//    }
-    
-    private func setRestaurantImage(_ type: ImageViewType) {
-        restaurantImage.layer.cornerRadius = type.cornerRadius
-        restaurantImage.backgroundColor = type.backgroundColor
-        restaurantImage.clipsToBounds = type.clipsToBounds
-    }
-    
     internal func configureCellData(_ data: Restaurant) {
         nameLabel.text = data.name
         categoryLabel.text = data.category
         phoneNumberLabel.text = data.phoneNumber
         
         
-        setButtonUI(.favoriteButton(.normal))
+        buildButtonUI(.favoriteButton(.normal))
         
         if let url = URL(string: data.image) {
             DataManager.shared.fetchImage(url) { [weak self] image in
@@ -221,6 +182,6 @@ final class RestaurantTableViewCell: UITableViewCell {
             }
         }()
         
-        setButtonUI(type)
+        buildButtonUI(type)
     }
 }

@@ -57,7 +57,7 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
                 
-                cell.textLabel?.text = "Something went wrong...😞"
+                cell.textLabel?.text = BasicCellInfo.text
                 
                 return cell
             }
@@ -71,7 +71,7 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
                 else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
                 
-                cell.textLabel?.text = "Something went wrong...😞"
+                    cell.textLabel?.text = BasicCellInfo.text
                 
                 return cell
             }

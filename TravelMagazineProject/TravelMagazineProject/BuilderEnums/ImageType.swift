@@ -8,40 +8,17 @@
 import Foundation
 import UIKit
 
+//MARK: 연산 프로퍼티 순서를 어떻게 할까? 알파벳순?
 enum ImageViewType {
     case magazine
     case restaurant
     case popularCity
     
     
-    
-    var cornerRadius: CGFloat {
-        switch self {
-        case .magazine:
-            return 16
-        case .restaurant, .popularCity:
-            return 8
-        }
-    }
-    
-    var clipsToBounds: Bool {
-        switch self {
-        case .magazine, .restaurant, .popularCity:
-            return true
-        }
-    }
-    
     var backgroundColor: UIColor {
         switch self {
         case .magazine, .restaurant, .popularCity:
             return .systemGray4
-        }
-    }
-    
-    var contentMode: UIView.ContentMode {
-        switch self {
-        case .magazine, .restaurant, .popularCity:
-            return .scaleAspectFill
         }
     }
     
@@ -60,6 +37,29 @@ enum ImageViewType {
             return 1
         case .restaurant, .popularCity:
             return 0
+        }
+    }
+    
+    var clipsToBounds: Bool {
+        switch self {
+        case .magazine, .restaurant, .popularCity:
+            return true
+        }
+    }
+    
+    var cornerRadius: CGFloat {
+        switch self {
+        case .magazine:
+            return 16
+        case .restaurant, .popularCity:
+            return 8
+        }
+    }
+    
+    var contentMode: UIView.ContentMode {
+        switch self {
+        case .magazine, .restaurant, .popularCity:
+            return .scaleAspectFill
         }
     }
 }

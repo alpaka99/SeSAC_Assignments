@@ -7,19 +7,25 @@
 
 import UIKit
 
-final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
+final class MagazineTableViewCell: UITableViewCell, BackgroundBuildable, LabelBuildable, ImageViewBuildable {
     internal let background: UIView = UIView()
-    internal let cellImage: UIImageView = UIImageView()
+    
+    lazy var backgrounds: [BackgroundType : UIView] = [:]
+    
     internal let title: UILabel = UILabel()
     internal let subtitle: UILabel = UILabel()
     internal let dateLabel: UILabel = UILabel()
     
-    // MARK: 아 이것도 dictionary 마음에 안듬... 어떻게 바꾸는 방법 없나 -> UILabelExtension으로 받아서 바꾸기?
+    // MARK: 더 깔끔하게 바꿀 수 있는 방법 생각하기
     lazy var labels: [LabelType : UILabel] = [
         .magazineTitle : title,
         .magazineSubtitle : subtitle,
         .magazineDate : dateLabel
     ]
+    
+    internal let magazineImage: UIImageView = UIImageView()
+    
+    lazy var imageViews: [ImageViewType : UIImageView] = [ .magazine : magazineImage ]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,7 +35,7 @@ final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
         layoutComponents()
         
         // set components UI
-        setComponentsUI()
+        buildUIs()
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +45,7 @@ final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
     private func layoutComponents() {
         self.contentView.addSubview(background)
         
-        self.background.addSubview(cellImage)
+        self.background.addSubview(magazineImage)
         self.background.addSubview(title)
         self.background.addSubview(subtitle)
         self.background.addSubview(dateLabel)
@@ -49,11 +55,6 @@ final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
         layoutSubtitle()
         layoutMagazineImage()
         layoutDateLabel()
-    }
-    
-    private func setComponentsUI() {
-        buildLabelsUI()
-        setMagazineImageUI(.magazine)
     }
     
     
@@ -73,13 +74,13 @@ final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
     
     // cellimage configurations
     private func layoutMagazineImage() {
-        cellImage.translatesAutoresizingMaskIntoConstraints = false
+        magazineImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            cellImage.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
-            cellImage.centerXAnchor.constraint(equalTo: background.centerXAnchor),
-            cellImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.8),
-            cellImage.heightAnchor.constraint(equalTo: cellImage.widthAnchor, multiplier: 1),
+            magazineImage.topAnchor.constraint(equalTo: background.topAnchor, constant: 8),
+            magazineImage.centerXAnchor.constraint(equalTo: background.centerXAnchor),
+            magazineImage.widthAnchor.constraint(equalTo: background.widthAnchor, multiplier: 0.8),
+            magazineImage.heightAnchor.constraint(equalTo: magazineImage.widthAnchor, multiplier: 1),
         ])
     }
     
@@ -88,9 +89,9 @@ final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: 8),
-            title.leadingAnchor.constraint(equalTo: cellImage.leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor),
+            title.topAnchor.constraint(equalTo: magazineImage.bottomAnchor, constant: 8),
+            title.leadingAnchor.constraint(equalTo: magazineImage.leadingAnchor),
+            title.trailingAnchor.constraint(equalTo: magazineImage.trailingAnchor),
         ])
     }
     
@@ -118,22 +119,9 @@ final class MagazineTableViewCell: UITableViewCell, LabelBuildable {
         ])
     }
     
-    private func setMagazineImageUI(_ type: ImageViewType) {
-        cellImage.layer.cornerRadius = 16
-        cellImage.clipsToBounds = true
-        cellImage.backgroundColor = .systemGray4
-        cellImage.layer.borderColor = UIColor.systemGray4.cgColor
-        cellImage.layer.borderWidth = 1
+    private func buildUIs() {
+        buildBackgroundsUI()
+        buildLabelsUI()
+        buildImageViewsUI()
     }
-    
-//    private func setLabels() {
-//        labels.keys.forEach { type in
-//            if let label = labels[type] {
-//                label.numberOfLines = type.numberOfLines
-//                label.textAlignment = type.textAlignment
-//                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
-//                label.textColor = type.textColor
-//            }
-//        }
-//    }
 }

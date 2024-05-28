@@ -46,8 +46,6 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     
     private func setComponentsUI() {
         setNavigationItemUI(.restaurant)
-        setSearchBarUI()
-        setTableViewUI()
     }
     
     private func registerCells() {
@@ -57,7 +55,6 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     
     private func configureSearchBar() {
         layoutSearchBar()
-        setSearchBarUI()
     }
     
     private func layoutSearchBar() {
@@ -72,15 +69,6 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         ])
     }
     
-    private func setSearchBarUI() {
-        
-    }
-    
-    private func configureTableView() {
-        layoutTableView()
-        setTableViewUI()
-    }
-    
     private func layoutTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -93,10 +81,6 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
             tableView.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 8),
         ])
-    }
-    
-    private func setTableViewUI() {
-        
     }
     
     private func setNavigationItemUI(_ type: NavigationItemType) {
@@ -127,7 +111,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
             
-            cell.textLabel?.text = "Something went wrong... 😞"
+            cell.textLabel?.text = BasicCellInfo.text
             
             return cell
         }
@@ -161,11 +145,18 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func showDeleteAlert(for index: Int) {
-        let alertController = UIAlertController(title: "정말 삭제하실래요?", message: "삭제된 데이터는 복원되지 않습니다", preferredStyle: .alert)
-        let deleteButton = UIAlertAction(title: "삭제하기", style: .destructive) { [weak self] _ in
-            self?.deleteItem(at: index)
-        }
-        let cancelButton = UIAlertAction(title: "취소", style: .cancel)
+//        let alertController = UIAlertController(title: "정말 삭제하실래요?", message: "삭제된 데이터는 복원되지 않습니다", preferredStyle: .alert)
+        let alertController = UIAlertController()
+        alertController.title = AlertType.restaurantDelete.title
+        alertController.message = AlertType.restaurantDelete.message
+        
+        
+        // MARK: action도 builder를 사용해서 만드는 방법 없을까? -> handler로 self의 method를 트리거하려면 delegate를 쓴다던가...?
+        let deleteButton = UIAlertAction(title: AlertActionType.delete.title, style: .destructive) { [weak self] _ in
+        self?.deleteItem(at: index)
+    }
+        
+        let cancelButton = UIAlertAction(title: AlertActionType.cancel.title, style: AlertActionType.cancel.style)
         
         alertController.addAction(deleteButton)
         alertController.addAction(cancelButton)
