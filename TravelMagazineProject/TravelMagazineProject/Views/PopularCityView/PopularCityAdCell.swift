@@ -12,6 +12,11 @@ class PopularCityAdCell: UITableViewCell {
     @IBOutlet var adTitleLabel: UILabel!
     @IBOutlet var adBadgeLabel: UILabel!
     
+    lazy var labels: [LabelType : UILabel] = [
+        .popularCityAdTitle : adTitleLabel,
+        .popularCityAdBadge : adBadgeLabel
+    ]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,32 +29,27 @@ class PopularCityAdCell: UITableViewCell {
     }
 
     private func setComponentsUI() {
-        setAdTitleLabelUI()
-        setAdBadgeLabelUI()
+//        setAdTitleLabelUI()
+//        setAdBadgeLabelUI()
+        setLabelsUI()
     }
     
-    private func setAdTitleLabelUI() {
-        adTitleLabel.numberOfLines = 0
-        adTitleLabel.textAlignment = .center
-        adTitleLabel.font = .systemFont(ofSize: 24, weight: .heavy)
-        adTitleLabel.textColor = .black
-        let randomColor = UIColor.getRandomColor()
-        adTitleLabel.backgroundColor = randomColor
-        adTitleLabel.layer.cornerRadius = 8
-        adTitleLabel.clipsToBounds = true
-    }
-    
-    private func setAdBadgeLabelUI() {
-        adBadgeLabel.text = "Ad"
-        adBadgeLabel.font = .systemFont(ofSize: 12, weight: .bold)
-        adBadgeLabel.textAlignment = .center
-        adBadgeLabel.textColor = .black
-        adBadgeLabel.layer.cornerRadius = 4
-        adBadgeLabel.backgroundColor = .white
-        adBadgeLabel.clipsToBounds = true
+    private func setLabelsUI() {
+        labels.keys.forEach { type in
+            if let label = labels[type] {
+                label.numberOfLines = type.numberOfLines
+                label.textAlignment = type.textAlignment
+                label.font = UIFont.systemFont(ofSize: type.fontSize, weight: type.fontWeight)
+                label.textColor = type.textColor
+                label.backgroundColor = type.backgroundColor
+                label.layer.cornerRadius = type.cornerRadius
+                label.clipsToBounds = type.clipsToBounds
+            }
+        }
     }
     
     internal func configureData(_ data: Travel) {
         adTitleLabel.text = data.title
+        adBadgeLabel.text = "Ad"
     }
 }

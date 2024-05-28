@@ -42,6 +42,7 @@
 		CEAB974E2C05E08500F5C077 /* ImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB974D2C05E08500F5C077 /* ImageType.swift */; };
 		CEAB97502C05E0C100F5C077 /* NavigationItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB974F2C05E0C100F5C077 /* NavigationItemType.swift */; };
 		CEAB97522C05E5B300F5C077 /* LabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB97512C05E5B300F5C077 /* LabelType.swift */; };
+		CEAB97542C05F1B200F5C077 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB97532C05F1B200F5C077 /* ButtonType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		CEAB974D2C05E08500F5C077 /* ImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageType.swift; sourceTree = "<group>"; };
 		CEAB974F2C05E0C100F5C077 /* NavigationItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemType.swift; sourceTree = "<group>"; };
 		CEAB97512C05E5B300F5C077 /* LabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelType.swift; sourceTree = "<group>"; };
+		CEAB97532C05F1B200F5C077 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				CEAB974D2C05E08500F5C077 /* ImageType.swift */,
 				CEAB974F2C05E0C100F5C077 /* NavigationItemType.swift */,
 				CEAB97512C05E5B300F5C077 /* LabelType.swift */,
+				CEAB97532C05F1B200F5C077 /* ButtonType.swift */,
 			);
 			path = BuilderEnums;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
 				CEAB974E2C05E08500F5C077 /* ImageType.swift in Sources */,
 				CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */,
+				CEAB97542C05F1B200F5C077 /* ButtonType.swift in Sources */,
 				CE12D7F62C046FB400DB11B9 /* PopularCityAdCell.swift in Sources */,
 				CE12D7ED2C045FE500DB11B9 /* Travel.swift in Sources */,
 				CE53A2902C03143300A2B9BC /* DetailMagazineViewController.swift in Sources */,

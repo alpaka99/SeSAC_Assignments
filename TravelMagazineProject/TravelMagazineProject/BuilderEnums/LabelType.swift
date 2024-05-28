@@ -21,11 +21,14 @@ enum LabelType {
     case popularCityDescription
     case popularCityGrade
     
+    case popularCityAdTitle
+    case popularCityAdBadge
+    
     var numberOfLines: Int {
         switch self {
-        case .magazineTitle, .popularCityDescription:
+        case .magazineTitle, .popularCityDescription, .popularCityAdTitle:
             return 0
-        case .magazineSubtitle, .magazineDate, .restaurantName, .restaurantCategory, .restaurantPhoneNumber, .popularCityTitle, .popularCityGrade:
+        case .magazineSubtitle, .magazineDate, .restaurantName, .restaurantCategory, .restaurantPhoneNumber, .popularCityTitle, .popularCityGrade, .popularCityAdBadge:
             return 1
         }
     }
@@ -34,6 +37,8 @@ enum LabelType {
         switch self {
         case .magazineTitle, .magazineSubtitle, .restaurantName, .restaurantPhoneNumber, .restaurantCategory, .popularCityTitle, .popularCityDescription, .popularCityGrade:
             return .left
+        case .popularCityAdTitle, .popularCityAdBadge:
+            return .center
         case .magazineDate:
             return .right
         }
@@ -41,22 +46,24 @@ enum LabelType {
     
     var fontSize: CGFloat {
         switch self {
+        case .popularCityAdTitle:
+            return 24
         case .magazineTitle, .restaurantName:
             return 20
         case .magazineSubtitle, .restaurantCategory, .popularCityTitle:
             return 16
         case .popularCityDescription:
             return 14
-        case .magazineDate, .restaurantPhoneNumber, .popularCityGrade:
+        case .magazineDate, .restaurantPhoneNumber, .popularCityGrade, .popularCityAdBadge:
             return 12
         }
     }
     
     var fontWeight: UIFont.Weight {
         switch self {
-        case .magazineTitle:
+        case .magazineTitle, .popularCityAdTitle:
             return .heavy
-        case .magazineSubtitle, .popularCityTitle:
+        case .magazineSubtitle, .popularCityTitle, .popularCityAdBadge:
             return .bold
         case .magazineDate, .restaurantPhoneNumber, .popularCityDescription, .popularCityGrade:
             return .semibold
@@ -69,7 +76,7 @@ enum LabelType {
     
     var textColor: UIColor {
         switch self {
-        case .magazineTitle, .restaurantPhoneNumber, .popularCityTitle:
+        case .magazineTitle, .restaurantPhoneNumber, .popularCityTitle, .popularCityAdTitle, .popularCityAdBadge:
             return .black
         case .popularCityDescription:
             return .systemGray2
@@ -77,6 +84,41 @@ enum LabelType {
             return .systemGray4
         case .restaurantName:
             return .systemBlue
+        }
+    }
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .popularCityAdTitle:
+            return UIColor.getRandomColor()
+        case .popularCityAdBadge:
+            return .white
+            
+        case .magazineTitle, .magazineSubtitle, .magazineDate, .restaurantName, .restaurantCategory, .restaurantPhoneNumber, .popularCityTitle, .popularCityDescription,
+                .popularCityGrade:
+            return .clear
+        }
+    }
+    
+    var cornerRadius: CGFloat {
+        switch self {
+        case .popularCityAdTitle:
+            return 8
+        case .popularCityAdBadge:
+            return 4
+        case .magazineTitle, .magazineSubtitle, .magazineDate, .restaurantName, .restaurantCategory, .restaurantPhoneNumber, .popularCityTitle, .popularCityDescription,
+                .popularCityGrade:
+            return 0
+        }
+    }
+    
+    var clipsToBounds: Bool {
+        switch self {
+        case .popularCityAdTitle, .popularCityAdBadge:
+            return true
+        case .magazineTitle, .magazineSubtitle, .magazineDate, .restaurantName, .restaurantCategory, .restaurantPhoneNumber, .popularCityTitle, .popularCityDescription,
+                .popularCityGrade:
+            return false
         }
     }
 }
