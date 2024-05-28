@@ -50,6 +50,11 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
+    
     private func layoutRestaurantCell() {
         layoutBackground()
         layoutNamelabel()
@@ -61,10 +66,13 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     private func setRestaurantCellUI() {
         setBackgroundUI()
+        
         setNameLableUI()
         setCategoryLabelUI()
-        setFavoriteButtonUI()
         setPhoneNumerLabelUI()
+        
+        setFavoriteButtonUI()
+        
         setRestaurantImage()
     }
     
@@ -120,7 +128,6 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
             phoneNumberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             phoneNumberLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor)
         ])
-        
     }
     
     
@@ -177,6 +184,8 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         nameLabel.text = data.name
         categoryLabel.text = data.category
         phoneNumberLabel.text = data.phoneNumber
+        
+        setFavoriteButtonUI()
         
         if let url = URL(string: data.image) {
             DataManager.shared.fetchImage(url) { [weak self] image in

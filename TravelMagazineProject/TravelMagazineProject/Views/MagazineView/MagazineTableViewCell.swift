@@ -27,50 +27,32 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
         self.background.addSubview(dateLabel)
        
         
-        // configure background
-        configureBackground()
+        // layout Views
+        layoutComponents()
         
-        // configure cell image
-        configureCellImage()
-        
-        // configure titile
-        configureTitle()
-        
-        // configure subTitle
-        configureSubtitle()
-        
-        // configure dateLabel
-        configureDateLabel()
+        // set components UI
+        setComponentsUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private func configureBackground() {
+    private func layoutComponents() {
         layoutBackground()
-    }
-    
-    private func configureCellImage() {
-        layoutCellImage()
-        setCellImageUI()
-    }
-    
-    private func configureTitle() {
         layoutTitle()
-        setTitleUI()
-    }
-    
-    private func configureSubtitle() {
         layoutSubtitle()
-        setSubtitleUI()
+        layoutCellImage()
+        layoutDateLabel()
     }
     
-    private func configureDateLabel() {
-        layoutDateLabel()
+    private func setComponentsUI() {
+        setTitleUI()
+        setSubtitleUI()
+        setCellImageUI()
         setDateLabelUI()
     }
+    
     
     // background configurations
     private func layoutBackground() {
@@ -98,15 +80,6 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
         ])
     }
     
-    private func setCellImageUI() {
-        cellImage.layer.cornerRadius = 16
-        cellImage.clipsToBounds = true
-        cellImage.backgroundColor = .systemGray4
-        cellImage.layer.borderColor = UIColor.systemGray4.cgColor
-        cellImage.layer.borderWidth = 1
-    }
-    
-    
     // title configurations
     private func layoutTitle() {
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -117,14 +90,6 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
             title.trailingAnchor.constraint(equalTo: cellImage.trailingAnchor),
         ])
     }
-    
-    private func setTitleUI() {
-        title.numberOfLines = 0
-        title.textAlignment = .left
-        title.font = .systemFont(ofSize: 20, weight: .heavy)
-        subtitle.textColor = .black
-    }
-    
     
     // subtitle configurations
     private func layoutSubtitle() {
@@ -137,12 +102,6 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
         ])
     }
     
-    private func setSubtitleUI() {
-        subtitle.numberOfLines = 1
-        subtitle.textAlignment = .left
-        subtitle.font = .systemFont(ofSize: 16, weight: .bold)
-        subtitle.textColor = .systemGray4
-    }
     
     // date configurations
     private func layoutDateLabel() {
@@ -154,6 +113,28 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
             dateLabel.trailingAnchor.constraint(equalTo: subtitle.trailingAnchor),
             dateLabel.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -8),
         ])
+    }
+    
+    private func setCellImageUI() {
+        cellImage.layer.cornerRadius = 16
+        cellImage.clipsToBounds = true
+        cellImage.backgroundColor = .systemGray4
+        cellImage.layer.borderColor = UIColor.systemGray4.cgColor
+        cellImage.layer.borderWidth = 1
+    }
+    
+    private func setTitleUI() {
+        title.numberOfLines = 0
+        title.textAlignment = .left
+        title.font = .systemFont(ofSize: 20, weight: .heavy)
+        subtitle.textColor = .black
+    }
+    
+    private func setSubtitleUI() {
+        subtitle.numberOfLines = 1
+        subtitle.textAlignment = .left
+        subtitle.font = .systemFont(ofSize: 16, weight: .bold)
+        subtitle.textColor = .systemGray4
     }
     
     private func setDateLabelUI() {
