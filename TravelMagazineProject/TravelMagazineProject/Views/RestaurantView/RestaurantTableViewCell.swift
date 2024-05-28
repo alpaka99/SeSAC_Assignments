@@ -179,10 +179,10 @@ final class RestaurantTableViewCell: UITableViewCell, Reusable {
         phoneNumberLabel.text = data.phoneNumber
         
         if let url = URL(string: data.image) {
-//            DataManager.shared.fetchImage(url) { [weak self] image in
-//                self?.restaurantImage.image = image
-//            }
-            restaurantImage.kf.setImage(with: url)
+            DataManager.shared.fetchImage(url) { [weak self] image in
+                self?.restaurantImage.image = image
+            }
+//            restaurantImage.kf.setImage(with: url)
         }
     }
     

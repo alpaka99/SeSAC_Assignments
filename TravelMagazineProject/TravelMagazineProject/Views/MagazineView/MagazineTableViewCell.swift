@@ -165,5 +165,3 @@ final class MagazineTableViewCell: UITableViewCell, Reusable {
     }
 }
 
-
-

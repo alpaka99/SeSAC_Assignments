@@ -11,20 +11,18 @@ import UIKit
 
 struct DataManager {
     // MARK: Kingfisher도 싱글톤으로 작동하는데 또 싱글톤인 NetworkManager를 사용하는게 맞을까..?
+    // 이건 다시 비동기 처리를 안해도 될것 같음. Kingfisher 내부적으로 처리를 하는듯?
     static let shared: DataManager = DataManager()
     
+    
+    // 어짜피 kingfisher가 비동기 처리를 해주는데 여기서 datamanager로 굳이 감싸서 다시 처리하는게 맞나...?
     internal func fetchImage(_ url: URL, completion: @escaping (UIImage) -> ())  {
-        DispatchQueue.global(qos: .userInteractive).async { // fetch image asynchronously with kingfisermanager
-            KingfisherManager.shared.retrieveImage(with: url) { result in
-                switch result {
-                case .success(let responseImage):
-                    let resultImage = responseImage.image.withRenderingMode(.alwaysOriginal)
-                    DispatchQueue.main.async { // update image in outer closure
-                        completion(resultImage)
-                    }
-                case .failure(let error):
-                    print("KingFisherError: \(error.localizedDescription)")
-                }
+        KingfisherManager.shared.retrieveImage(with: url) { kingfisherResult in
+            switch kingfisherResult {
+            case .success(let successResult):
+                completion(successResult.image)
+            case .failure(let failResult):
+                print("KingFisher RetrieveImage error: \(failResult.localizedDescription)")
             }
         }
     }
