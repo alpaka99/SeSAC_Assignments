@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class PopularCityViewController: UIViewController {
     
     @IBOutlet var popularCitySearchBar: UISearchBar!
     
@@ -22,21 +22,33 @@ class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        configureSegmentedControl()
+        configureSearchBar()
+        configurePopularCityCollectionView()
+    }
+    
+    private func configureSegmentedControl() {
         popularCitySegmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
-        
-        popularCityCollectionView.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.reuseIdentifier)
-        
+    }
+    
+    private func configureSearchBar() {
+        popularCitySearchBar.delegate = self
+    }
+    
+    private func configurePopularCityCollectionView() {
         popularCityCollectionView.delegate = self
         popularCityCollectionView.dataSource = self
-        popularCitySearchBar.delegate = self
         
         popularCityCollectionView.showsHorizontalScrollIndicator = false
         popularCityCollectionView.showsVerticalScrollIndicator = false
         
+        popularCityCollectionView.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.reuseIdentifier)
     }
     
     @objc
-    func segmentedControlChanged(_ sender: UISegmentedControl) {
+    private func segmentedControlChanged(_ sender: UISegmentedControl) {
         let segment = sender.selectedSegmentIndex
         filterPopularCities(by: segment)
     }
@@ -59,7 +71,9 @@ class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UIC
         
         popularCityCollectionView.reloadData()
     }
-    
+}
+
+extension PopularCityViewController: UISearchBarDelegate {
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             filterPopularCities(by: popularCitySegmentedControl.selectedSegmentIndex)
@@ -70,14 +84,15 @@ class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UIC
         }
         popularCityCollectionView.reloadData()
     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+}
+
+extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+    internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredPopularCitys.count
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCell.reuseIdentifier, for: indexPath) as? TestCollectionViewCell {
             let data = filteredPopularCitys[indexPath.row]
