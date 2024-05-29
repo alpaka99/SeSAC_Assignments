@@ -87,5 +87,13 @@ class TestCollectionViewCell: UICollectionViewCell, Reusable {
         cityFooter.backgroundColor = .black.withAlphaComponent(0.5)
         cityFooter.font = UIFont.systemFont(ofSize: 12, weight: .regular)
     }
+    
+    func configureData(_ data: City) {
+        if let url = URL(string: data.city_image) {
+            cityImage.kf.setImage(with: url)
+        }
+        cityHeader.text = data.cityHeaderText
+        cityFooter.text = data.city_explain
+    }
 }
 
