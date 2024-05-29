@@ -77,4 +77,27 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = travels[indexPath.row]
+        
+        
+        
+        
+        if data.ad {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: DetailAdViewController.reuseIdentifier) as? DetailAdViewController {
+                
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        } else {
+            if let vc = storyboard?.instantiateViewController(identifier: DetailCityViewController.reuseIdentifier) as? DetailCityViewController {
+                
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                present(nav, animated: true)
+            }
+            
+        }
+    }
 }
