@@ -1,5 +1,5 @@
 //
-//  PopularCityViewController.swift
+//  TravelCityViewController.swift
 //  TravelMagazineProject
 //
 //  Created by user on 5/27/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopularCityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TravelCityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let travels = TravelInfo().travel
     
@@ -23,11 +23,11 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        let cityCellXib = UINib(nibName: PopularCityTableViewCell.reuseIdentifier, bundle: nil)
-        tableView.register(cityCellXib, forCellReuseIdentifier: PopularCityTableViewCell.reuseIdentifier)
+        let cityCellXib = UINib(nibName: TravelCityTableViewCell.reuseIdentifier, bundle: nil)
+        tableView.register(cityCellXib, forCellReuseIdentifier: TravelCityTableViewCell.reuseIdentifier)
         
-        let adCellXib = UINib(nibName: PopularCityAdCell.reuseIdentifier, bundle: nil)
-        tableView.register(adCellXib, forCellReuseIdentifier: PopularCityAdCell.reuseIdentifier)
+        let adCellXib = UINib(nibName: TravelCityAdCell.reuseIdentifier, bundle: nil)
+        tableView.register(adCellXib, forCellReuseIdentifier: TravelCityAdCell.reuseIdentifier)
         
         tableView.rowHeight = 100
     }
@@ -49,7 +49,7 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
         
         // MARK: deque reusable cell을 좀 더 간단하게 초기화 하는 방법은 없을까...?
         if data.ad == true { // ad cell
-            if let cell = tableView.dequeueReusableCell(withIdentifier: PopularCityAdCell.reuseIdentifier, for: indexPath) as? PopularCityAdCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TravelCityAdCell.reuseIdentifier, for: indexPath) as? TravelCityAdCell {
                 
                 cell.configureData(data)
                 
@@ -61,8 +61,8 @@ class PopularCityViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 return cell
             }
-        } else { // popular city cell
-            if let cell = tableView.dequeueReusableCell(withIdentifier: PopularCityTableViewCell.reuseIdentifier, for: indexPath) as? PopularCityTableViewCell {
+        } else { // travel city cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TravelCityTableViewCell.reuseIdentifier, for: indexPath) as? TravelCityTableViewCell {
                 
                 cell.configureData(data)
                                 

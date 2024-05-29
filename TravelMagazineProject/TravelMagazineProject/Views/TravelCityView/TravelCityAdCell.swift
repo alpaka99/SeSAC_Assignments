@@ -1,5 +1,5 @@
 //
-//  PopularCityAdCell.swift
+//  TravelCityAdCell.swift
 //  TravelMagazineProject
 //
 //  Created by user on 5/27/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class PopularCityAdCell: UITableViewCell, LabelBuildable {
+class TravelCityAdCell: UITableViewCell, LabelBuildable {
 
     @IBOutlet var adTitleLabel: UILabel!
     @IBOutlet var adBadgeLabel: UILabel!
     
     lazy var labels: [LabelType : UILabel] = [
-        .popularCityAdTitle : adTitleLabel,
-        .popularCityAdBadge : adBadgeLabel
+        .travelCityAdTitle : adTitleLabel,
+        .travelCityAdBadge : adBadgeLabel
     ]
     
     override func awakeFromNib() {

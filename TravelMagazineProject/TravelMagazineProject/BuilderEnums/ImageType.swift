@@ -12,12 +12,12 @@ import UIKit
 internal enum ImageViewType {
     case magazine
     case restaurant
-    case popularCity
+    case travelCity
     
     
     var backgroundColor: UIColor {
         switch self {
-        case .magazine, .restaurant, .popularCity:
+        case .magazine, .restaurant, .travelCity:
             return .systemGray4
         }
     }
@@ -26,7 +26,7 @@ internal enum ImageViewType {
         switch self {
         case .magazine:
             return UIColor.systemGray4.cgColor
-        case .restaurant, .popularCity:
+        case .restaurant, .travelCity:
             return UIColor.clear.cgColor
         }
     }
@@ -35,14 +35,14 @@ internal enum ImageViewType {
         switch self {
         case .magazine:
             return 1
-        case .restaurant, .popularCity:
+        case .restaurant, .travelCity:
             return 0
         }
     }
     
     var clipsToBounds: Bool {
         switch self {
-        case .magazine, .restaurant, .popularCity:
+        case .magazine, .restaurant, .travelCity:
             return true
         }
     }
@@ -51,14 +51,14 @@ internal enum ImageViewType {
         switch self {
         case .magazine:
             return 16
-        case .restaurant, .popularCity:
+        case .restaurant, .travelCity:
             return 8
         }
     }
     
     var contentMode: UIView.ContentMode {
         switch self {
-        case .magazine, .restaurant, .popularCity:
+        case .magazine, .restaurant, .travelCity:
             return .scaleAspectFill
         }
     }

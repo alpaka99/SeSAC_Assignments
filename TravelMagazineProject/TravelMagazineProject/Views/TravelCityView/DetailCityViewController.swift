@@ -1,5 +1,5 @@
 //
-//  PopularCityDetailViewController.swift
+//  TravelCityDetailViewController.swift
 //  TravelMagazineProject
 //
 //  Created by user on 5/29/24.

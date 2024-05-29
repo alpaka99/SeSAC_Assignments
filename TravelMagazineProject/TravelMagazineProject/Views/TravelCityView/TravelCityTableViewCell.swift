@@ -1,5 +1,5 @@
 //
-//  PopularCityTableViewCell.swift
+//  TravelCityTableViewCell.swift
 //  TravelMagazineProject
 //
 //  Created by user on 5/27/24.
@@ -8,20 +8,20 @@
 import Kingfisher
 import UIKit
 
-final class PopularCityTableViewCell: UITableViewCell, LabelBuildable, ButtonBuildable, ImageViewBuildable {
+final class TravelCityTableViewCell: UITableViewCell, LabelBuildable, ButtonBuildable, ImageViewBuildable {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var gradeLabel: UILabel!
     
     lazy var labels: [LabelType : UILabel] = [
-        .popularCityTitle : titleLabel,
-        .popularCityDescription : descriptionLabel,
-        .popularCityGrade : gradeLabel
+        .travelCityTitle : titleLabel,
+        .travelCityDescription : descriptionLabel,
+        .travelCityGrade : gradeLabel
     ]
     
     @IBOutlet var cityImageView: UIImageView!
-    lazy var imageViews: [ImageViewType : UIImageView] = [ .popularCity : cityImageView ]
+    lazy var imageViews: [ImageViewType : UIImageView] = [ .travelCity : cityImageView ]
     
     @IBOutlet var likeButton: UIButton!
     lazy var buttons: [ButtonType : UIButton] = [ .likeButton(.normal) : likeButton ]
