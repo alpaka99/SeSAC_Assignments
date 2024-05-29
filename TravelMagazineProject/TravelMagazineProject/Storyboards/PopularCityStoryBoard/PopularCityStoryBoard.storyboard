@@ -15,13 +15,58 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="skt-k8-ytT">
+                                <rect key="frame" x="39.333333333333343" y="186" width="314.33333333333326" height="612"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IFG-Eb-2Sy">
+                                    <size key="itemSize" width="314.33333333333326" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MiE-7u-OmG">
+                                <rect key="frame" x="39.333333333333343" y="135" width="314.33333333333326" height="32"/>
+                                <segments>
+                                    <segment title="전체"/>
+                                    <segment title="국내"/>
+                                    <segment title="국외"/>
+                                </segments>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tiS-7Q-jRO">
+                                <rect key="frame" x="0.0" y="69" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="pxh-w3-DRJ"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MiE-7u-OmG" firstAttribute="top" secondItem="tiS-7Q-jRO" secondAttribute="bottom" constant="10" id="FRy-Rw-Bdi"/>
+                            <constraint firstItem="MiE-7u-OmG" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="OHT-Zb-ECK"/>
+                            <constraint firstItem="skt-k8-ytT" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Rj2-1E-gnn"/>
+                            <constraint firstItem="skt-k8-ytT" firstAttribute="top" secondItem="MiE-7u-OmG" secondAttribute="bottom" constant="20" id="aQ3-W3-iw5"/>
+                            <constraint firstItem="MiE-7u-OmG" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="fOL-Uw-jnQ"/>
+                            <constraint firstItem="skt-k8-ytT" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="jcN-q2-hlF"/>
+                            <constraint firstItem="tiS-7Q-jRO" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="lfl-QO-4Jz"/>
+                            <constraint firstItem="tiS-7Q-jRO" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="m2s-az-enf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="skt-k8-ytT" secondAttribute="bottom" constant="20" id="mdD-sY-KkE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="tiS-7Q-jRO" secondAttribute="top" constant="-10" id="wr9-6S-UxZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="popularCityCollectionView" destination="skt-k8-ytT" id="WUx-KP-GT6"/>
+                        <outlet property="popularCitySearchBar" destination="tiS-7Q-jRO" id="ySz-0Y-xmc"/>
+                        <outlet property="popularCitySegmentedControl" destination="MiE-7u-OmG" id="pt7-ox-twe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="-2"/>
+            <point key="canvasLocation" x="135.1145038167939" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
