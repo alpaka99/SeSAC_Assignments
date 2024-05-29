@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		CE061D1C2C064070007C8248 /* BackgroundBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D1B2C064070007C8248 /* BackgroundBuildable.swift */; };
 		CE061D1F2C064A3D007C8248 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D1E2C064A3D007C8248 /* Constants.swift */; };
-		CE061D212C064F63007C8248 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D202C064F63007C8248 /* Typealias.swift */; };
-		CE061D232C0696E0007C8248 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D222C0696E0007C8248 /* AlertType.swift */; };
-		CE061D252C069702007C8248 /* AlertActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D242C069702007C8248 /* AlertActionType.swift */; };
 		CE12D7DF2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7DE2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard */; };
 		CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */; };
 		CE12D7E82C045F6C00DB11B9 /* PopularCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */; };
@@ -57,9 +54,12 @@
 /* Begin PBXFileReference section */
 		CE061D1B2C064070007C8248 /* BackgroundBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildable.swift; sourceTree = "<group>"; };
 		CE061D1E2C064A3D007C8248 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CE061D202C064F63007C8248 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		CE061D222C0696E0007C8248 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		CE061D242C069702007C8248 /* AlertActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionType.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> parent of 9e734de (Refactor: 너무 긴 상속 및 프로토콜 채택 typealias로 정리)
 		CE12D7DE2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopularCityStoryBoard.storyboard; sourceTree = "<group>"; };
 		CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityViewController.swift; sourceTree = "<group>"; };
 		CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityTableViewCell.swift; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				CE061D1E2C064A3D007C8248 /* Constants.swift */,
-				CE061D202C064F63007C8248 /* Typealias.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -425,7 +424,6 @@
 				CE53A27F2C023C8C00A2B9BC /* Magazine.swift in Sources */,
 				CEAB97562C06058E00F5C077 /* LabelBuildable.swift in Sources */,
 				CE53A2812C023DA900A2B9BC /* MagazineViewController.swift in Sources */,
-				CE061D212C064F63007C8248 /* Typealias.swift in Sources */,
 				CE53A28A2C03100700A2B9BC /* MagazineInfo.swift in Sources */,
 				CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */,
 				CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */,
