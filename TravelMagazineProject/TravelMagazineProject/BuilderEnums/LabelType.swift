@@ -25,7 +25,7 @@ enum LabelType {
     case popularCityAdBadge
     
         
-    private var backgroundColor: UIColor {
+    var backgroundColor: UIColor {
         switch self {
         case .popularCityAdTitle:
             return UIColor.getRandomColor()
@@ -38,7 +38,7 @@ enum LabelType {
         }
     }
     
-    private var cornerRadius: CGFloat {
+    var cornerRadius: CGFloat {
         switch self {
         case .popularCityAdTitle:
             return 8
@@ -50,7 +50,7 @@ enum LabelType {
         }
     }
     
-    private var clipsToBounds: Bool {
+    var clipsToBounds: Bool {
         switch self {
         case .popularCityAdTitle, .popularCityAdBadge:
             return true
@@ -60,7 +60,7 @@ enum LabelType {
         }
     }
     
-    private var fontSize: CGFloat {
+    var fontSize: CGFloat {
         switch self {
         case .popularCityAdTitle:
             return 24
@@ -75,7 +75,7 @@ enum LabelType {
         }
     }
     
-    private var fontWeight: UIFont.Weight {
+    var fontWeight: UIFont.Weight {
         switch self {
         case .magazineTitle, .popularCityAdTitle:
             return .heavy
@@ -90,7 +90,7 @@ enum LabelType {
         }
     }
     
-    private var numberOfLines: Int {
+    var numberOfLines: Int {
         switch self {
         case .magazineTitle, .popularCityDescription, .popularCityAdTitle:
             return 0
@@ -99,7 +99,7 @@ enum LabelType {
         }
     }
     
-    private var textAlignment: NSTextAlignment {
+    var textAlignment: NSTextAlignment {
         switch self {
         case .magazineTitle, .magazineSubtitle, .restaurantName, .restaurantPhoneNumber, .restaurantCategory, .popularCityTitle, .popularCityDescription, .popularCityGrade:
             return .left
@@ -110,7 +110,7 @@ enum LabelType {
         }
     }
     
-    private var textColor: UIColor {
+    var textColor: UIColor {
         switch self {
         case .magazineTitle, .restaurantPhoneNumber, .popularCityTitle, .popularCityAdTitle, .popularCityAdBadge:
             return .black

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE061D1C2C064070007C8248 /* BackgroundBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D1B2C064070007C8248 /* BackgroundBuildable.swift */; };
 		CE061D1F2C064A3D007C8248 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D1E2C064A3D007C8248 /* Constants.swift */; };
+		CE061D312C06EAEE007C8248 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D302C06EAEE007C8248 /* AlertType.swift */; };
+		CE061D332C06EAF5007C8248 /* AlertActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D322C06EAF5007C8248 /* AlertActionType.swift */; };
 		CE12D7DF2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7DE2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard */; };
 		CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */; };
 		CE12D7E82C045F6C00DB11B9 /* PopularCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		CE061D1B2C064070007C8248 /* BackgroundBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildable.swift; sourceTree = "<group>"; };
 		CE061D1E2C064A3D007C8248 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE061D302C06EAEE007C8248 /* AlertType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		CE061D322C06EAF5007C8248 /* AlertActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertActionType.swift; sourceTree = "<group>"; };
 		CE12D7DE2C045E5300DB11B9 /* PopularCityStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopularCityStoryBoard.storyboard; sourceTree = "<group>"; };
 		CE12D7E12C045ECA00DB11B9 /* PopularCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityViewController.swift; sourceTree = "<group>"; };
 		CE12D7E62C045F6C00DB11B9 /* PopularCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityTableViewCell.swift; sourceTree = "<group>"; };
@@ -285,9 +289,9 @@
 				CEAB974D2C05E08500F5C077 /* ImageType.swift */,
 				CEAB974F2C05E0C100F5C077 /* NavigationItemType.swift */,
 				CEAB97512C05E5B300F5C077 /* LabelType.swift */,
+				CE061D302C06EAEE007C8248 /* AlertType.swift */,
+				CE061D322C06EAF5007C8248 /* AlertActionType.swift */,
 				CEAB97532C05F1B200F5C077 /* ButtonType.swift */,
-				CE061D222C0696E0007C8248 /* AlertType.swift */,
-				CE061D242C069702007C8248 /* AlertActionType.swift */,
 			);
 			path = BuilderEnums;
 			sourceTree = "<group>";
@@ -386,18 +390,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE061D252C069702007C8248 /* AlertActionType.swift in Sources */,
 				CE53A29D2C031CFF00A2B9BC /* RestaurantTableViewCell.swift in Sources */,
 				CE53A2A22C0368DC00A2B9BC /* CellState.swift in Sources */,
 				CEAB975D2C063ABC00F5C077 /* ButtonBuildable.swift in Sources */,
 				CEAB97522C05E5B300F5C077 /* LabelType.swift in Sources */,
 				CEAB97582C06082B00F5C077 /* UIBuildable.swift in Sources */,
 				CE53A29B2C031C0C00A2B9BC /* RestaurantListTableViewController.swift in Sources */,
-				CE061D232C0696E0007C8248 /* AlertType.swift in Sources */,
+				CE061D312C06EAEE007C8248 /* AlertType.swift in Sources */,
 				CE12D7F92C04CAEE00DB11B9 /* DataManager.swift in Sources */,
 				CE12D7EB2C045FC200DB11B9 /* TravelInfo.swift in Sources */,
 				CE53A2952C0318CB00A2B9BC /* RestaurantInfo.swift in Sources */,
 				CE53A27B2C023B1500A2B9BC /* Restaurant.swift in Sources */,
+				CE061D332C06EAF5007C8248 /* AlertActionType.swift in Sources */,
 				CEAB974E2C05E08500F5C077 /* ImageType.swift in Sources */,
 				CE12D7E22C045ECA00DB11B9 /* PopularCityViewController.swift in Sources */,
 				CEAB97542C05F1B200F5C077 /* ButtonType.swift in Sources */,

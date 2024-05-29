@@ -11,7 +11,7 @@ internal enum AlertActionType {
     case delete
     case cancel
     
-    private var style: UIAlertAction.Style {
+    var style: UIAlertAction.Style {
         switch self {
         case .cancel:
             return .cancel
@@ -20,7 +20,7 @@ internal enum AlertActionType {
         }
     }
     
-    private var title: String {
+    var title: String {
         switch self {
         case .cancel:
             return "취소"

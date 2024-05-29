@@ -15,7 +15,7 @@ internal enum ButtonType: Hashable {
     case favoriteButton(ButtonState)
     case likeButton(ButtonState)
     
-    private var systemName: String {
+    var systemName: String {
         switch self {
         case .favoriteButton(.pressed):
             return "star.fill"
@@ -28,7 +28,7 @@ internal enum ButtonType: Hashable {
         }
     }
     
-    private var tintColor: UIColor {
+    var tintColor: UIColor {
         switch self {
         case .favoriteButton(.pressed), .likeButton(.pressed):
             return .red

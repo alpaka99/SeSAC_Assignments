@@ -15,14 +15,14 @@ internal enum ImageViewType {
     case popularCity
     
     
-    private var backgroundColor: UIColor {
+    var backgroundColor: UIColor {
         switch self {
         case .magazine, .restaurant, .popularCity:
             return .systemGray4
         }
     }
     
-    private var borderColor: CGColor {
+    var borderColor: CGColor {
         switch self {
         case .magazine:
             return UIColor.systemGray4.cgColor
@@ -31,7 +31,7 @@ internal enum ImageViewType {
         }
     }
     
-    private var borderWidth: CGFloat {
+    var borderWidth: CGFloat {
         switch self {
         case .magazine:
             return 1
@@ -40,14 +40,14 @@ internal enum ImageViewType {
         }
     }
     
-    private var clipsToBounds: Bool {
+    var clipsToBounds: Bool {
         switch self {
         case .magazine, .restaurant, .popularCity:
             return true
         }
     }
     
-    private var cornerRadius: CGFloat {
+    var cornerRadius: CGFloat {
         switch self {
         case .magazine:
             return 16
@@ -56,7 +56,7 @@ internal enum ImageViewType {
         }
     }
     
-    private var contentMode: UIView.ContentMode {
+    var contentMode: UIView.ContentMode {
         switch self {
         case .magazine, .restaurant, .popularCity:
             return .scaleAspectFill
