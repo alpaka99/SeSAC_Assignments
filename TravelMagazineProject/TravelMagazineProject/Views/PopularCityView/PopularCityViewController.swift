@@ -28,6 +28,7 @@ class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UIC
         
         popularCityCollectionView.delegate = self
         popularCityCollectionView.dataSource = self
+        popularCitySearchBar.delegate = self
         
         popularCityCollectionView.showsHorizontalScrollIndicator = false
         popularCityCollectionView.showsVerticalScrollIndicator = false
@@ -59,6 +60,17 @@ class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UIC
         popularCityCollectionView.reloadData()
     }
     
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filterPopularCities(by: popularCitySegmentedControl.selectedSegmentIndex)
+        } else {
+            filteredPopularCitys = filteredPopularCitys.filter { city in
+                return city.city_name.localizedStandardContains(searchText) || city.city_english_name.localizedStandardContains(searchText) || city.city_explain.localizedStandardContains(searchText)
+            }
+        }
+        popularCityCollectionView.reloadData()
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredPopularCitys.count
@@ -87,20 +99,19 @@ class PopularCityViewController: UIViewController ,UICollectionViewDelegate, UIC
     }
 }
 
-extension UILabel {
-    func highlight(searchedText: [String], color: UIColor = .red) {
-        guard let txtLabel = self.text else { return }
-        
-        let attributeText = NSMutableAttributedString(string: txtLabel)
-        
-        searchedText.forEach {
-            let searchedText = $0.lowercased()
-            let range = attributeText.mutableString.range(of: searchedText, options: .caseInsensitive)
-            
-            attributeText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
-//            attributeText.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: self.font.pointSize), range: range)
-        }
-        
-        self.attributedText = attributeText
-    }
-}
+//extension UILabel {
+//    func highlight(searchedText: [String], color: UIColor = .red) {
+//        guard let txtLabel = self.text else { return }
+//        
+//        let attributeText = NSMutableAttributedString(string: txtLabel)
+//        
+//        searchedText.forEach {
+//            let searchedText = $0.lowercased()
+//            let range = attributeText.mutableString.range(of: searchedText, options: .caseInsensitive)
+//            
+//            attributeText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+//        }
+//        
+//        self.attributedText = attributeText
+//    }
+//}
