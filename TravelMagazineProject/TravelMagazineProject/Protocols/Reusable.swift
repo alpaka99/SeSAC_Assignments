@@ -17,6 +17,3 @@ extension Reusable {
     }
 }
 
-extension UITableViewCell: Reusable {
-    
-}

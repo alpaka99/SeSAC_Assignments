@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-class PopularCityViewController: UIViewController {
+final class PopularCityViewController: UIViewController {
     
     @IBOutlet var popularCitySearchBar: UISearchBar!
     
@@ -19,10 +19,9 @@ class PopularCityViewController: UIViewController {
     let popularCitys: [City] = CityInfo().city
     lazy var filteredPopularCitys: [City] = popularCitys
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         configureSegmentedControl()
         configureSearchBar()
@@ -48,10 +47,8 @@ class PopularCityViewController: UIViewController {
         popularCityCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reuseIdentifier)
     }
     
-    @objc
-    private func segmentedControlChanged(_ sender: UISegmentedControl) {
-        let segment = sender.selectedSegmentIndex
-        filterPopularCities(by: segment)
+    private func configurePopularCitySearchBar() {
+        self.popularCitySearchBar.searchTextField.addTarget(self, action: #selector(slideDownKeyboard), for: .editingDidEndOnExit)
     }
     
     private func filterPopularCities(by segment: Int) {
@@ -72,14 +69,33 @@ class PopularCityViewController: UIViewController {
         
         popularCityCollectionView.reloadData()
     }
+    
+    @objc
+    private func segmentedControlChanged(_ sender: UISegmentedControl) {
+        let segment = sender.selectedSegmentIndex
+        filterPopularCities(by: segment)
+    }
+    
+    @objc func slideDownKeyboard(_ sender: UISearchBar) {
+        popularCitySearchBar.resignFirstResponder()
+    }
 }
 
-// MARK: 연산프로퍼티를 이용해서 viewcontroller의 연산 최대한 줄여주기
+
 extension PopularCityViewController: UISearchBarDelegate {
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            filterPopularCities(by: popularCitySegmentedControl.selectedSegmentIndex)
-        } else {
+        searchTextEntered(searchText)
+    }
+    
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            searchTextEntered(searchText)
+        }
+    }
+    
+    private func searchTextEntered(_ searchText: String) {
+        filterPopularCities(by: popularCitySegmentedControl.selectedSegmentIndex)
+        if searchText.isEmpty == false {
             filteredPopularCitys = filteredPopularCitys.filter { city in
                 return city.containsSearchText(searchText)
             }
@@ -92,7 +108,6 @@ extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewD
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredPopularCitys.count
     }
-    
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCell.reuseIdentifier, for: indexPath) as? TestCollectionViewCell {
@@ -109,11 +124,6 @@ extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
-extension UICollectionViewCell: Reusable {
-    func configureData(_ errorMessage: String) {
-        self.backgroundColor = .systemGray4
-    }
-}
 
 //extension UILabel {
 //    func highlight(searchedText: [String], color: UIColor = .red) {

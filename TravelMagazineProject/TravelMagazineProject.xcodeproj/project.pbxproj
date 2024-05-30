@@ -18,6 +18,7 @@
 		CE061D402C071660007C8248 /* PopularCityStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE061D3F2C071660007C8248 /* PopularCityStoryBoard.storyboard */; };
 		CE061D432C071688007C8248 /* PopularCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D422C071688007C8248 /* PopularCityViewController.swift */; };
 		CE061D452C077377007C8248 /* PopularCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D442C077377007C8248 /* PopularCityCell.swift */; };
+		CE061D472C07EC99007C8248 /* Extension+Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE061D462C07EC99007C8248 /* Extension+Reuseable.swift */; };
 		CE12D7DF2C045E5300DB11B9 /* TravelCityStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE12D7DE2C045E5300DB11B9 /* TravelCityStoryBoard.storyboard */; };
 		CE12D7E22C045ECA00DB11B9 /* TravelCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E12C045ECA00DB11B9 /* TravelCityViewController.swift */; };
 		CE12D7E82C045F6C00DB11B9 /* TravelCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7E62C045F6C00DB11B9 /* TravelCityTableViewCell.swift */; };
@@ -72,6 +73,7 @@
 		CE061D3F2C071660007C8248 /* PopularCityStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopularCityStoryBoard.storyboard; sourceTree = "<group>"; };
 		CE061D422C071688007C8248 /* PopularCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityViewController.swift; sourceTree = "<group>"; };
 		CE061D442C077377007C8248 /* PopularCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCityCell.swift; sourceTree = "<group>"; };
+		CE061D462C07EC99007C8248 /* Extension+Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Reuseable.swift"; sourceTree = "<group>"; };
 		CE12D7DE2C045E5300DB11B9 /* TravelCityStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelCityStoryBoard.storyboard; sourceTree = "<group>"; };
 		CE12D7E12C045ECA00DB11B9 /* TravelCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCityViewController.swift; sourceTree = "<group>"; };
 		CE12D7E62C045F6C00DB11B9 /* TravelCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCityTableViewCell.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				CE53A2A42C036CAF00A2B9BC /* Extension+UserDefaults.swift */,
 				CE12D7FA2C04D1A700DB11B9 /* Extension+Double?.swift */,
 				CE12D7FC2C04D1E500DB11B9 /* Extension+UIColor.swift */,
+				CE061D462C07EC99007C8248 /* Extension+Reuseable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				CE12D7E22C045ECA00DB11B9 /* TravelCityViewController.swift in Sources */,
 				CEAB97542C05F1B200F5C077 /* ButtonType.swift in Sources */,
 				CEAB975A2C0635AB00F5C077 /* ImageViewBuildable.swift in Sources */,
+				CE061D472C07EC99007C8248 /* Extension+Reuseable.swift in Sources */,
 				CE12D7F62C046FB400DB11B9 /* TravelCityAdCell.swift in Sources */,
 				CE12D7ED2C045FE500DB11B9 /* Travel.swift in Sources */,
 				CE061D352C06EBB9007C8248 /* DetailCityViewController.swift in Sources */,
