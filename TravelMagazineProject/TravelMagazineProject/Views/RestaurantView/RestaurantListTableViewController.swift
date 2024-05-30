@@ -19,6 +19,9 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     
     override func loadView() {
         super.loadView()
+        let view = UIView()
+        view.backgroundColor = .white
+        self.view = view
         
     }
 

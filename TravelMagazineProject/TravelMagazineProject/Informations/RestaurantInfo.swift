@@ -186,6 +186,23 @@ struct RestaurantList {
             type: 300
         )
     ]
+    
+    static var shared: RestaurantList = RestaurantList()
+    
+    var categories: [String] {
+        var categorySet: Set<String> = Set()
+        RestaurantList.shared.restaurantArray.forEach { restaurant in
+            
+            categorySet.insert(restaurant.category)
+        }
+        var categories = Array(categorySet).sorted { $0 > $1 }
+        categories.insert("전체", at: 0)
+        return categories
+    }
+    
+    var numberOfCategories: Int {
+        return categories.count
+    }
 }
 
 

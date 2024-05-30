@@ -30,6 +30,7 @@
 		CE12D7F92C04CAEE00DB11B9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7F82C04CAEE00DB11B9 /* DataManager.swift */; };
 		CE12D7FB2C04D1A700DB11B9 /* Extension+Double?.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7FA2C04D1A700DB11B9 /* Extension+Double?.swift */; };
 		CE12D7FD2C04D1E500DB11B9 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE12D7FC2C04D1E500DB11B9 /* Extension+UIColor.swift */; };
+		CE348DE22C08851F00DDAAEC /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DE12C08851F00DDAAEC /* RestaurantMapViewController.swift */; };
 		CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2642C023AF900A2B9BC /* AppDelegate.swift */; };
 		CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */; };
 		CE53A26C2C023AF900A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A26B2C023AF900A2B9BC /* Base */; };
@@ -85,6 +86,7 @@
 		CE12D7F82C04CAEE00DB11B9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CE12D7FA2C04D1A700DB11B9 /* Extension+Double?.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Double?.swift"; sourceTree = "<group>"; };
 		CE12D7FC2C04D1E500DB11B9 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		CE348DE12C08851F00DDAAEC /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
 		CE53A2612C023AF900A2B9BC /* TravelMagazineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMagazineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE53A2642C023AF900A2B9BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				CE53A29A2C031C0C00A2B9BC /* RestaurantListTableViewController.swift */,
 				CE53A29C2C031CFF00A2B9BC /* RestaurantTableViewCell.swift */,
+				CE348DE12C08851F00DDAAEC /* RestaurantMapViewController.swift */,
 			);
 			path = RestaurantView;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				CE12D7E82C045F6C00DB11B9 /* TravelCityTableViewCell.swift in Sources */,
 				CE53A2A52C036CAF00A2B9BC /* Extension+UserDefaults.swift in Sources */,
 				CE061D1F2C064A3D007C8248 /* Constants.swift in Sources */,
+				CE348DE22C08851F00DDAAEC /* RestaurantMapViewController.swift in Sources */,
 				CEAB97502C05E0C100F5C077 /* NavigationItemType.swift in Sources */,
 				CE061D432C071688007C8248 /* PopularCityViewController.swift in Sources */,
 				CE061D1C2C064070007C8248 /* BackgroundBuildable.swift in Sources */,
@@ -626,6 +630,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelMagazineProject/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보가 필요해요 :)";
+				INFOPLIST_KEY_NSLocationUsageDescription = "위치정보가 필요해요 :)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -658,6 +664,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelMagazineProject/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보가 필요해요 :)";
+				INFOPLIST_KEY_NSLocationUsageDescription = "위치정보가 필요해요 :)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -37,3 +37,8 @@ struct ScreenSize {
     static let height: CGFloat = UIScreen.main.bounds.height
     static let navigationBarConstant: CGFloat = 90
 }
+
+struct Coordinate {
+    static let dummyLatitude = 37.554921
+    static let dummyLongitude = 126.970345
+}
