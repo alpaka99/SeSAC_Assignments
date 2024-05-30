@@ -39,8 +39,9 @@ final class DetailAdViewController: UIViewController, Reusable {
             detailAdTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
         
-        detailAdTitle.text = "광고 화면"
         detailAdTitle.textAlignment = .center
+        detailAdTitle.numberOfLines = 0
+        detailAdTitle.font = UIFont.systemFont(ofSize: 36, weight: .heavy)
     }
     
     private func configureNavigationItems() {
@@ -48,5 +49,10 @@ final class DetailAdViewController: UIViewController, Reusable {
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(pop))
         leftBarButtonItem.tintColor = .black
         navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    internal func configureData(_ data: Travel, backgroundColor: UIColor) {
+        self.view.backgroundColor = backgroundColor
+        detailAdTitle.text = data.title
     }
 }

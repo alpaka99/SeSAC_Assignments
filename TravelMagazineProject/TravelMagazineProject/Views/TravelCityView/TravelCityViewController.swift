@@ -81,17 +81,22 @@ class TravelCityViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = travels[indexPath.row]
         
-        
-        
-        
         if data.ad {
             if let vc = storyboard?.instantiateViewController(withIdentifier: DetailAdViewController.reuseIdentifier) as? DetailAdViewController {
                 
-                navigationController?.pushViewController(vc, animated: true)
+                if let cell = tableView.cellForRow(at: indexPath) as? TravelCityAdCell {
+                    let cellColor = cell.adTitleLabel.backgroundColor
+                    
+                    vc.configureData(data, backgroundColor: cellColor ?? UIColor.getRandomColor())
+                    
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
             
         } else {
             if let vc = storyboard?.instantiateViewController(identifier: DetailCityViewController.reuseIdentifier) as? DetailCityViewController {
+                
+                vc.configureData(data)
                 
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen

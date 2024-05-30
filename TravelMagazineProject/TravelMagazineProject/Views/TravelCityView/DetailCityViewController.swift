@@ -5,6 +5,7 @@
 //  Created by user on 5/29/24.
 //
 
+import Kingfisher
 import UIKit
 
 final class DetailCityViewController: UIViewController, Reusable {
@@ -21,6 +22,8 @@ final class DetailCityViewController: UIViewController, Reusable {
     let detailMessageButton: UIButton = UIButton()
     let detailBookMarkButton: UIButton = UIButton()
     
+    let detailGrade: UILabel = UILabel()
+    
     let detailDescription: UILabel = UILabel()
     
     override func viewDidLoad() {
@@ -35,6 +38,7 @@ final class DetailCityViewController: UIViewController, Reusable {
         layoutDetailHeader()
         layoutDetailMainImage()
         layoutButtons()
+        layoutDetailGrade()
         layoutDetailDescription()
     }
     
@@ -61,10 +65,13 @@ final class DetailCityViewController: UIViewController, Reusable {
             detailHeaderImage.heightAnchor.constraint(equalTo: detailHeaderImage.widthAnchor, multiplier: 1)
         ])
         
-        detailHeaderImage.image = UIImage(systemName: "person.fill")
-        detailHeaderImage.layer.cornerRadius = ScreenSize.width * 0.025
+        
+        detailHeaderImage.tintColor = .white
+        detailHeaderImage.layer.cornerRadius = ScreenSize.width * 0.045
         detailHeaderImage.clipsToBounds = true
-        detailHeaderImage.backgroundColor = .red
+        detailHeaderImage.contentMode = .scaleAspectFill
+        detailHeaderImage.layer.borderColor = UIColor.getRandomColor().cgColor
+        detailHeaderImage.layer.borderWidth = 2
     }
     
     private func layoutDetailHeaderLabel() {
@@ -79,7 +86,8 @@ final class DetailCityViewController: UIViewController, Reusable {
             detailHeaderLabel.bottomAnchor.constraint(equalTo: detailHeaderImage.bottomAnchor)
         ])
         
-        detailHeaderLabel.text = "제목제목제목제목제목제목"
+        
+        detailHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     private func layoutDetailMainImage() {
@@ -95,8 +103,12 @@ final class DetailCityViewController: UIViewController, Reusable {
         ])
         
         detailMainImage.backgroundColor = .systemGray4
-        detailMainImage.image = UIImage(systemName: "camera.fill")
-        detailMainImage.contentMode = .scaleAspectFit
+        detailMainImage.tintColor = .white
+        detailMainImage.contentMode = .scaleToFill
+        
+        detailMainImage.layer.borderColor = UIColor.systemGray4.cgColor
+        detailMainImage.layer.borderWidth = 1
+
     }
     
     private func layoutThreeButtons() {
@@ -150,34 +162,54 @@ final class DetailCityViewController: UIViewController, Reusable {
         detailBookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: SFSymbolConfig.large), for: .normal)
     }
     
+    private func layoutDetailGrade() {
+        self.view.addSubview(detailGrade)
+        
+        detailGrade.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            detailGrade.topAnchor.constraint(equalTo: detailButtonStackView.bottomAnchor, constant: 8),
+            detailGrade.leadingAnchor.constraint(equalTo: detailButtonStackView.leadingAnchor),
+            detailGrade.trailingAnchor.constraint(equalTo: detailBookMarkButton.trailingAnchor),
+            
+        ])
+    }
+    
     private func layoutDetailDescription() {
         self.view.addSubview(detailDescription)
         
         detailDescription.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            detailDescription.topAnchor.constraint(equalTo: detailButtonStackView.bottomAnchor, constant: 8),
+            detailDescription.topAnchor.constraint(equalTo: detailGrade.bottomAnchor, constant: 8),
             detailDescription.leadingAnchor.constraint(equalTo: detailButtonStackView.leadingAnchor),
             detailDescription.trailingAnchor.constraint(equalTo: detailBookMarkButton.trailingAnchor),
             detailDescription.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor)
         ])
         
-        detailDescription.text = "설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들 설명들. "
-        
         detailDescription.numberOfLines = 0
+        detailDescription.font = .systemFont(ofSize: 16, weight: .medium)
     }
     
     
     private func configureNavigationItems() {
         navigationItem.title = "관광지 화면"
-        
+        navigationItem.titleView?.layer.borderColor = UIColor.systemGray4.cgColor
+        navigationItem.titleView?.layer.borderWidth = 1
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(dismissModal))
         leftBarButtonItem.tintColor = .black
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
-    private func configureData() {
+    internal func configureData(_ data: Travel) {
+        if let url = URL(string: data.travel_image ?? "") {
+            detailMainImage.kf.setImage(with: url)
+            detailHeaderImage.kf.setImage(with: url)
+        }
         
+        detailHeaderLabel.text = data.title
+        detailGrade.text = data.gradeLabel
+        detailDescription.text = data.description
     }
 }
 
