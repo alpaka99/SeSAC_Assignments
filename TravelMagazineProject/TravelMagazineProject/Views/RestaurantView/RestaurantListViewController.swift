@@ -123,6 +123,20 @@ final class RestaurantListViewController: UIViewController, UITableViewDelegate,
         }
     }
     
+    // MARK: 여기서 annotation을 만들어서 넘겨주는게 나은지, 아니면 mapview 쪽에서 annotation을 만들어서 넣는게 나은지 궁금
+    /* 
+     여기서 만들어서 보내주는게 낫다는 생각: 안그래도 mapview에서 처리할 일들이 많은데 최대한 mapview쪽의 부담을 줄여주는게 낫지 않을까?
+     그리고 여기서 만들어서 보내주면 mapview에서도 이 메서드를 그냥 map annotation을 넣는 형식으로 사용할 수 있음
+     
+     mapView쪽에서 만드는게 낫다는 생각: annotation은 mapview에서만 사용하는 객체인데 왜 여기서 만들어서 넘겨주는가? 그리고 여기서 만들려면 mapkit도 import 해야하는데, 그러면 이거 하나를 위해서 mapkit 프레임워크를 전부 다 들고와야함 흠...
+     
+     결정: 저쪽에서 만들자. 인스턴스 하나 만드는게 뭐 부담도 아니고, 역할 분리를 철저히 하고, import도 가능한 적게 하고 싶음
+     */
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = filteredRestaurants[indexPath.row]
+        delegate?.moveToAnnotation(for: data)
+    }
+    
 //    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        if searchText.isEmpty {
 //            filteredRestaurants = restaurants

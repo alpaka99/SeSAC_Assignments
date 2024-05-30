@@ -10,7 +10,7 @@ import UIKit
 
 final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, RestaurantListDelegate {
     
-    let restuaurantMapView: MKMapView = MKMapView()
+    let restaurantMapView: MKMapView = MKMapView()
     
     let searchBar: UISearchBar = UISearchBar()
     let searchButton: UIButton = UIButton()
@@ -42,21 +42,21 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
         
         sheetVC.delegate = self
         
-        restuaurantMapView.region = initialMapCenter
+        restaurantMapView.region = initialMapCenter
         
         showRestaurantList()
     }
     
     private func layoutMapView() {
-        self.view.addSubview(restuaurantMapView)
+        self.view.addSubview(restaurantMapView)
         
-        restuaurantMapView.translatesAutoresizingMaskIntoConstraints = false
+        restaurantMapView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            restuaurantMapView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            restuaurantMapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            restuaurantMapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            restuaurantMapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            restaurantMapView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            restaurantMapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            restaurantMapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            restaurantMapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
     
@@ -68,23 +68,23 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     private func layoutSearchBar() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
-        restuaurantMapView.addSubview(searchBar)
+        restaurantMapView.addSubview(searchBar)
         
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: restuaurantMapView.topAnchor, constant: ScreenSize.navigationBarConstant),
-            searchBar.leadingAnchor.constraint(equalTo: restuaurantMapView.leadingAnchor, constant: 16),
+            searchBar.topAnchor.constraint(equalTo: restaurantMapView.topAnchor, constant: ScreenSize.navigationBarConstant),
+            searchBar.leadingAnchor.constraint(equalTo: restaurantMapView.leadingAnchor, constant: 16),
         ])
     }
     
     private func layoutSearchButton() {
-        restuaurantMapView.addSubview(searchButton)
+        restaurantMapView.addSubview(searchButton)
         
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             searchButton.centerYAnchor.constraint(equalTo: searchBar.centerYAnchor),
             searchButton.leadingAnchor.constraint(equalTo: searchBar.trailingAnchor, constant: 16),
-            searchButton.trailingAnchor.constraint(equalTo: restuaurantMapView.trailingAnchor, constant: -16),
+            searchButton.trailingAnchor.constraint(equalTo: restaurantMapView.trailingAnchor, constant: -16),
             searchButton.heightAnchor.constraint(equalTo: searchBar.heightAnchor, multiplier: 1),
             searchButton.widthAnchor.constraint(equalTo: searchButton.heightAnchor, multiplier: 1)
         ])
@@ -144,15 +144,15 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
         
         buttonScrollView.addSubview(buttonStackView)
         
-        restuaurantMapView.addSubview(buttonScrollView)
+        restaurantMapView.addSubview(buttonScrollView)
         
         buttonScrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             buttonScrollView.frameLayoutGuide.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
             buttonScrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor),
-            buttonScrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: restuaurantMapView.trailingAnchor),
-            buttonScrollView.heightAnchor.constraint(equalTo: restuaurantMapView.heightAnchor, multiplier: 0.1),
+            buttonScrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: restaurantMapView.trailingAnchor),
+            buttonScrollView.heightAnchor.constraint(equalTo: restaurantMapView.heightAnchor, multiplier: 0.1),
             
             
             buttonScrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: buttonStackView.leadingAnchor),
@@ -170,7 +170,7 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     }
     
     private func configureAnnotations() {
-        restuaurantMapView.removeAnnotations(filteredAnnotations)
+        restaurantMapView.removeAnnotations(filteredAnnotations)
         filteredAnnotations = []
         filteredRestaurantList.forEach { restaurant in
             let annotation = MKPointAnnotation()
@@ -181,7 +181,7 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     
     private func addAnnotationsToMap() {
         filteredAnnotations.forEach { annotation in
-            restuaurantMapView.addAnnotation(annotation)
+            restaurantMapView.addAnnotation(annotation)
         }
     }
     
@@ -224,6 +224,11 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     internal func fetchFilteredList() -> [Restaurant] {
         return filteredRestaurantList
     }
+    
+    internal func moveToAnnotation(for restaurant: Restaurant) {
+        let coordinate = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
+        restaurantMapView.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+    }
 }
 
 
@@ -245,4 +250,6 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
 */
 protocol RestaurantListDelegate: NSObject {
     func fetchFilteredList() -> [Restaurant]
+    
+    func moveToAnnotation(for annotation: Restaurant)
 }
