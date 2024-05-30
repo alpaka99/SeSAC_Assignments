@@ -62,4 +62,5 @@ internal enum ImageViewType {
             return .scaleAspectFill
         }
     }
+    
 }

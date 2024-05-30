@@ -35,7 +35,7 @@
                                     <segment title="국외"/>
                                 </segments>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tiS-7Q-jRO">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiS-7Q-jRO">
                                 <rect key="frame" x="0.0" y="69" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>

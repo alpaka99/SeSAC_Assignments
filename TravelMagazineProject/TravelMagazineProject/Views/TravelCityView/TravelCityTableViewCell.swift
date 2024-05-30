@@ -80,11 +80,9 @@ final class TravelCityTableViewCell: UITableViewCell, LabelBuildable, ButtonBuil
         switch isLike {
         case true:
             buildButtonUI(.likeButton(.pressed))
-//            buttons.switchKey(for: .favoriteButton(.normal), with: .favoriteButton(.pressed))
         case false:
             buildButtonUI(.likeButton(.normal))
         }
-        
     }
 }
 

@@ -26,6 +26,12 @@ final class PopularCityViewController: UIViewController {
         configureSegmentedControl()
         configureSearchBar()
         configurePopularCityCollectionView()
+        
+        
+    }
+    
+    func customFunction(completion: () -> ()) {
+        
     }
     
     private func configureSegmentedControl() {

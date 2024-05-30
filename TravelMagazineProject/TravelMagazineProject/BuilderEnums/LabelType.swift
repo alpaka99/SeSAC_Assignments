@@ -4,7 +4,7 @@
 //
 //  Created by user on 5/28/24.
 //
-
+// MARK: 지금처럼 모든 case를 만드는것보다, 비슷한 생김새, 용도에 따라 case를 나눈 다음, 약간씩의 커스텀이 가능한 함수를 만들어보자 - by 댄님
 import Foundation
 import UIKit
 

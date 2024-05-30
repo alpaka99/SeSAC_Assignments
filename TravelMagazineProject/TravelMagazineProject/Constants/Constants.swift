@@ -26,3 +26,14 @@ struct PopularCityCell {
         return width / 1.3
     }
 }
+
+struct SFSymbolConfig {
+    static let large: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24, weight: .semibold))
+}
+
+
+struct ScreenSize {
+    static let width: CGFloat = UIScreen.main.bounds.width
+    static let height: CGFloat = UIScreen.main.bounds.height
+    static let navigationBarConstant: CGFloat = 90
+}
