@@ -76,8 +76,9 @@ final class PopularCityViewController: UIViewController {
         filterPopularCities(by: segment)
     }
     
-    @objc func slideDownKeyboard(_ sender: UISearchBar) {
-        popularCitySearchBar.resignFirstResponder()
+    @objc
+    func slideDownKeyboard(target: UIView) {
+        target.resignFirstResponder()
     }
 }
 
@@ -121,6 +122,10 @@ extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewD
             
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        slideDownKeyboard(target: self.popularCitySearchBar)
     }
 }
 
