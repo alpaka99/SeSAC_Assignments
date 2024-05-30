@@ -131,8 +131,10 @@ extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = popularCityCollectionView.bounds.width / 2.5
-        let height = width / 1.5
+        PopularCityCell.collectionViewWidth = collectionView.frame.width
+        
+        let width = PopularCityCell.width
+        let height = PopularCityCell.height
         return CGSize(width: width, height: height)
     }
 }

@@ -15,3 +15,14 @@ struct BasicCellInfo {
 struct AdBadgeCell {
     static let text: String = "Ad"
 }
+
+
+struct PopularCityCell {
+    static var collectionViewWidth: CGFloat = 0
+    static var width: CGFloat {
+        return collectionViewWidth / 2.5
+    }
+    static var height: CGFloat {
+        return width / 1.3
+    }
+}
