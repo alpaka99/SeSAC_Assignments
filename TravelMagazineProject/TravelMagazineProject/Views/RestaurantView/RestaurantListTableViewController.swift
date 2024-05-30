@@ -66,7 +66,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            searchBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 16),
             searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8),
             searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8),
         ])

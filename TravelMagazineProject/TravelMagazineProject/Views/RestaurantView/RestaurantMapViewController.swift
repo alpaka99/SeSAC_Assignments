@@ -203,9 +203,11 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
     
     private func showRestaurantList() {
         let vc = RestaurantViewController()
-        
+        vc.isModalInPresentation = true
         if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+            sheet.detents = [.medium(), .large(), .custom(resolver: {context in 
+                return 50
+            })]
             sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersGrabberVisible = true
             sheet.prefersScrollingExpandsWhenScrolledToEdge = true
