@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+final class RestaurantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     private let searchBar: UISearchBar = UISearchBar()
     private let tableView: UITableView = UITableView()
@@ -15,6 +15,7 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     private var restaurants: [Restaurant] = RestaurantList().restaurantArray
     private var filteredRestaurants: [Restaurant] = []
     
+    weak var delegate: RestaurantListDelegate?
     
     
     override func loadView() {
@@ -35,7 +36,9 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         registerCells()
         
         // configure data
-        filteredRestaurants = restaurants
+//        filteredRestaurants = restaurants
+        fetchRestaurantListFromDelegate()
+        
         // move to app delegate for image cache
     }
     
@@ -120,22 +123,22 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            filteredRestaurants = restaurants
-        } else {
-            filteredRestaurants = restaurants.filter { restaurant in
-                return filterRestaurant(for: restaurant, with: searchText)
-            }
-        }
-        
-        tableView.reloadData()
-    }
+//    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText.isEmpty {
+//            filteredRestaurants = restaurants
+//        } else {
+//            filteredRestaurants = restaurants.filter { restaurant in
+//                return filterRestaurant(for: restaurant, with: searchText)
+//            }
+//        }
+//        
+//        tableView.reloadData()
+//    }
     
-    
-    private func filterRestaurant(for restaurant: Restaurant, with searchText: String) -> Bool {
-        return restaurant.name.localizedCaseInsensitiveContains(searchText) || restaurant.category.localizedCaseInsensitiveContains(searchText)
-    }
+//    
+//    private func filterRestaurant(for restaurant: Restaurant, with searchText: String) -> Bool {
+//        return restaurant.name.localizedCaseInsensitiveContains(searchText) || restaurant.category.localizedCaseInsensitiveContains(searchText)
+//    }
     
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -148,7 +151,6 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func showDeleteAlert(for index: Int) {
-//        let alertController = UIAlertController(title: "정말 삭제하실래요?", message: "삭제된 데이터는 복원되지 않습니다", preferredStyle: .alert)
         let alertController = UIAlertController()
         alertController.title = AlertType.restaurantDelete.title
         alertController.message = AlertType.restaurantDelete.message
@@ -172,6 +174,13 @@ final class RestaurantViewController: UIViewController, UITableViewDelegate, UIT
         filteredRestaurants = restaurants
         tableView.reloadData()
         
+    }
+    
+    internal func fetchRestaurantListFromDelegate() {
+        if let fetchedRestaurantList = delegate?.fetchFilteredList() {
+            filteredRestaurants = fetchedRestaurantList
+            tableView.reloadData()
+        }
     }
     
 }

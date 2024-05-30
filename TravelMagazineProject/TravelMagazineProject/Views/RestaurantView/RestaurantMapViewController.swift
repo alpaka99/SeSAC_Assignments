@@ -8,7 +8,7 @@
 import MapKit
 import UIKit
 
-final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
+final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, RestaurantListDelegate {
     
     let restuaurantMapView: MKMapView = MKMapView()
     
@@ -25,6 +25,8 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
     
     lazy var initialMapCenter = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: Coordinate.sesacLatitude, longitude: Coordinate.sesacLongitude), latitudinalMeters: 1000, longitudinalMeters: 1000)
     
+    let sheetVC = RestaurantListViewController()
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
         
         
         configureMapData()
+        
+        sheetVC.delegate = self
         
         restuaurantMapView.region = initialMapCenter
         
@@ -199,13 +203,14 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
         }
         
         configureMapData()
+        sheetVC.fetchRestaurantListFromDelegate()
     }
     
+    // MARK: 왜 storyboard로 init한게 아닌 그냥 init한 viewController들은 background들이 없지
     private func showRestaurantList() {
-        let vc = RestaurantViewController()
-        vc.isModalInPresentation = true
-        if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium(), .large(), .custom(resolver: {context in 
+        sheetVC.isModalInPresentation = true
+        if let sheet = sheetVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large(), .custom(resolver: {context in
                 return 50
             })]
             sheet.largestUndimmedDetentIdentifier = .medium
@@ -213,7 +218,31 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
             sheet.prefersScrollingExpandsWhenScrolledToEdge = true
         }
         
-        self.present(vc, animated: true)
+        self.present(sheetVC, animated: true)
+    }
+    
+    internal func fetchFilteredList() -> [Restaurant] {
+        return filteredRestaurantList
     }
 }
 
+
+
+// Delegate 패턴 이해를 위한 스스로 delegate 구현해보기
+/*
+ RestaurantMapViewController에서 RestaurantListViewController 인스턴스를 생성하지만,
+ RestaurantListViewController의 레스토랑 리스트에 대한 작업을 대신해주는게 restaurantmapviewcontroller이기 때문에
+ 
+ restaurantList.delegate = self
+ '레스토랑 리스트의 일을 대신해주는 부하직원 = 나(RestuaurantMapViewController)다'
+ 
+ 라는 방향으로 delegate를 설정해줘야함(like tableviewdelegate)
+ 
+ 0. 프로토콜 선언
+ 1. 명령을 내리는 뷰컨트롤러에 일을 대신할 대리자(delegate)변수를 선언
+ 2. delegate 쪽에서는 0번의 프로토콜 채택
+ 3. 또한 '내가 일을 대신할거야'라는 delegate = self 선언
+*/
+protocol RestaurantListDelegate: NSObject {
+    func fetchFilteredList() -> [Restaurant]
+}
