@@ -23,7 +23,7 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
     
     lazy var filteredAnnotations: [MKAnnotation] = []
     
-    lazy var initialMapCenter = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: Coordinate.dummyLatitude, longitude: Coordinate.dummyLongitude), latitudinalMeters: 1000, longitudinalMeters: 1000)
+    lazy var initialMapCenter = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: Coordinate.sesacLatitude, longitude: Coordinate.sesacLongitude), latitudinalMeters: 1000, longitudinalMeters: 1000)
     
         
     override func viewDidLoad() {
