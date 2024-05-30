@@ -80,6 +80,8 @@ final class PopularCityViewController: UIViewController {
     func slideDownKeyboard(target: UIView) {
         target.resignFirstResponder()
     }
+    
+    
 }
 
 
@@ -105,7 +107,7 @@ extension PopularCityViewController: UISearchBarDelegate {
     }
 }
 
-extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredPopularCitys.count
     }
@@ -124,8 +126,14 @@ extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewD
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         slideDownKeyboard(target: self.popularCitySearchBar)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = popularCityCollectionView.bounds.width / 2.5
+        let height = width / 1.5
+        return CGSize(width: width, height: height)
     }
 }
 
