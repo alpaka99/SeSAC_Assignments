@@ -202,9 +202,12 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, UI
     private func showRestaurantList() {
         sheetVC.isModalInPresentation = true
         if let sheet = sheetVC.sheetPresentationController {
-            sheet.detents = [.medium(), .large(), .custom(resolver: {context in
-                return 50
-            })]
+            sheet.detents = [
+                .medium(),
+                .large(),
+                .custom(resolver: { _ in return 50 }),
+                .custom(resolver: {_ in return 10 })
+            ]
             sheet.largestUndimmedDetentIdentifier = .large
             sheet.prefersGrabberVisible = true
             sheet.prefersScrollingExpandsWhenScrolledToEdge = true
@@ -227,5 +230,11 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, UI
             filterRestaurant(with: text)
         }
         searchBar.resignFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        sheetVC.dismiss(animated: true)
     }
 }
