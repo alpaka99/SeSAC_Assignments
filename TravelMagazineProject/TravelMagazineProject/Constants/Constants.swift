@@ -39,9 +39,13 @@ struct ScreenSize {
 }
 
 struct Coordinate {
-    static let dummyLatitude = 37.554921
-    static let dummyLongitude = 126.970345
+    static let dummyLatitude: Double = 37.554921
+    static let dummyLongitude: Double = 126.970345
     
-    static let sesacLatitude = 37.517800
-    static let sesacLongitude = 126.886288
+    static let sesacLatitude: Double = 37.517800
+    static let sesacLongitude: Double = 126.886288
+    
+    static let defaultLatitudinalMeters: Double = 500
+    static let defaultLongitudinalMeters: Double = 500
+    
 }

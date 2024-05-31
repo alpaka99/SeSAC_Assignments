@@ -8,7 +8,7 @@
 import MapKit
 import UIKit
 
-final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, RestaurantListDelegate {
+final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, RestaurantListDelegate, UISheetPresentationControllerDelegate {
     
     let restaurantMapView: MKMapView = MKMapView()
     
@@ -23,7 +23,7 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     
     lazy var filteredAnnotations: [MKAnnotation] = []
     
-    lazy var initialMapCenter = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: Coordinate.sesacLatitude, longitude: Coordinate.sesacLongitude), latitudinalMeters: 1000, longitudinalMeters: 1000)
+    lazy var initialMapCenter = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: Coordinate.sesacLatitude, longitude: Coordinate.sesacLongitude), latitudinalMeters: Coordinate.defaultLatitudinalMeters, longitudinalMeters: Coordinate.defaultLongitudinalMeters)
     
     let sheetVC = RestaurantListViewController()
     
@@ -31,16 +31,16 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
         layoutMapView()
         layoutSearchBarArea()
-        
         layoutButtonScrollView()
-        
         
         configureMapData()
         
+        
+        searchBar.delegate = self
         sheetVC.delegate = self
+        sheetVC.sheetPresentationController?.delegate = self
         
         restaurantMapView.region = initialMapCenter
         
@@ -89,11 +89,6 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
             searchButton.widthAnchor.constraint(equalTo: searchButton.heightAnchor, multiplier: 1)
         ])
         
-        
-//        searchButton.backgroundColor = .systemBlue
-//        searchButton.setImage(UIImage(systemName: "arrow.turn.up.right"), for: .normal)
-//        searchButton.setTitle("길찾기", for: .normal)
-        
         var config = UIButton.Configuration.plain()
         config.imagePlacement = .top
         config.image = UIImage(systemName: "arrow.turn.up.right")
@@ -106,10 +101,9 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
         searchButton.tintColor = .white
         searchButton.backgroundColor = .systemBlue
         searchButton.layer.cornerRadius = 8
-        
     }
     
-    // MARK: 버튼 스크롤뷰 우측 끝으로 이동하면 버튼들이 튕기는 현상
+    // MARK: 버튼 스크롤뷰 우측 끝으로 이동하면 버튼들이 튕기는 현상 -> CollectionView로 해결
     // MARK: 연산 줄이기
     private func layoutButtonScrollView() {
         for i in 0..<RestaurantList.shared.numberOfCategories {
@@ -122,8 +116,6 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
             button.layer.borderColor = UIColor.systemGray5.cgColor
             button.setTitle(category, for: .normal)
             button.setTitleColor(.black, for: .normal)
-            
-            
             
             button.addTarget(self, action: #selector(filterButtonTapepd), for: .touchUpInside)
             button.tag = i
@@ -213,7 +205,7 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
             sheet.detents = [.medium(), .large(), .custom(resolver: {context in
                 return 50
             })]
-            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.largestUndimmedDetentIdentifier = .large
             sheet.prefersGrabberVisible = true
             sheet.prefersScrollingExpandsWhenScrolledToEdge = true
         }
@@ -227,29 +219,13 @@ final class RestaurantMapViewController: UIViewController, MKMapViewDelegate, Re
     
     internal func moveToAnnotation(for restaurant: Restaurant) {
         let coordinate = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
-        restaurantMapView.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        restaurantMapView.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: Coordinate.defaultLatitudinalMeters, longitudinalMeters: Coordinate.defaultLongitudinalMeters)
     }
-}
-
-
-
-// Delegate 패턴 이해를 위한 스스로 delegate 구현해보기
-/*
- RestaurantMapViewController에서 RestaurantListViewController 인스턴스를 생성하지만,
- RestaurantListViewController의 레스토랑 리스트에 대한 작업을 대신해주는게 restaurantmapviewcontroller이기 때문에
- 
- restaurantList.delegate = self
- '레스토랑 리스트의 일을 대신해주는 부하직원 = 나(RestuaurantMapViewController)다'
- 
- 라는 방향으로 delegate를 설정해줘야함(like tableviewdelegate)
- 
- 0. 프로토콜 선언
- 1. 명령을 내리는 뷰컨트롤러에 일을 대신할 대리자(delegate)변수를 선언
- 2. delegate 쪽에서는 0번의 프로토콜 채택
- 3. 또한 '내가 일을 대신할거야'라는 delegate = self 선언
-*/
-protocol RestaurantListDelegate: NSObject {
-    func fetchFilteredList() -> [Restaurant]
     
-    func moveToAnnotation(for annotation: Restaurant)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            filterRestaurant(with: text)
+        }
+        searchBar.resignFirstResponder()
+    }
 }

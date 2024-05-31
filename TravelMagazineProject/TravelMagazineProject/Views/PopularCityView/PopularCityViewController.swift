@@ -86,8 +86,6 @@ final class PopularCityViewController: UIViewController {
     func slideDownKeyboard(target: UIView) {
         target.resignFirstResponder()
     }
-    
-    
 }
 
 
