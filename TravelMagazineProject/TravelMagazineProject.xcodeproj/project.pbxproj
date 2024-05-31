@@ -37,7 +37,8 @@
 		CE348DF42C09A47700DDAAEC /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DF32C09A47700DDAAEC /* ChattingData.swift */; };
 		CE348DF62C09A48E00DDAAEC /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DF52C09A48E00DDAAEC /* ChatRoom.swift */; };
 		CE348DF82C09A4AD00DDAAEC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DF72C09A4AD00DDAAEC /* Chat.swift */; };
-		CE348DFA2C09A93500DDAAEC /* ChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DF92C09A93500DDAAEC /* ChatRoomCell.swift */; };
+		CE348DFA2C09A93500DDAAEC /* TalkRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DF92C09A93500DDAAEC /* TalkRoomCell.swift */; };
+		CE348DFC2C09AE4400DDAAEC /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348DFB2C09AE4400DDAAEC /* ChatRoomViewController.swift */; };
 		CE53A2652C023AF900A2B9BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2642C023AF900A2B9BC /* AppDelegate.swift */; };
 		CE53A2672C023AF900A2B9BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */; };
 		CE53A26C2C023AF900A2B9BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE53A26B2C023AF900A2B9BC /* Base */; };
@@ -100,7 +101,8 @@
 		CE348DF32C09A47700DDAAEC /* ChattingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 		CE348DF52C09A48E00DDAAEC /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		CE348DF72C09A4AD00DDAAEC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		CE348DF92C09A93500DDAAEC /* ChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
+		CE348DF92C09A93500DDAAEC /* TalkRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkRoomCell.swift; sourceTree = "<group>"; };
+		CE348DFB2C09AE4400DDAAEC /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		CE53A2612C023AF900A2B9BC /* TravelMagazineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMagazineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE53A2642C023AF900A2B9BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE53A2662C023AF900A2B9BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,7 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				CE348DF12C09A2C800DDAAEC /* TravelTalkViewController.swift */,
-				CE348DF92C09A93500DDAAEC /* ChatRoomCell.swift */,
+				CE348DF92C09A93500DDAAEC /* TalkRoomCell.swift */,
+				CE348DFB2C09AE4400DDAAEC /* ChatRoomViewController.swift */,
 			);
 			path = TravelTalkView;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				CE061D3D2C0712C0007C8248 /* City.swift in Sources */,
 				CE061D332C06EAF5007C8248 /* AlertActionType.swift in Sources */,
 				CEAB974E2C05E08500F5C077 /* ImageType.swift in Sources */,
+				CE348DFC2C09AE4400DDAAEC /* ChatRoomViewController.swift in Sources */,
 				CE348DEC2C0992C900DDAAEC /* RestaurantListDelegate.swift in Sources */,
 				CE12D7E22C045ECA00DB11B9 /* TravelCityViewController.swift in Sources */,
 				CE348DF22C09A2C800DDAAEC /* TravelTalkViewController.swift in Sources */,
@@ -497,7 +501,7 @@
 				CE061D472C07EC99007C8248 /* Extension+Reuseable.swift in Sources */,
 				CE12D7F62C046FB400DB11B9 /* TravelCityAdCell.swift in Sources */,
 				CE12D7ED2C045FE500DB11B9 /* Travel.swift in Sources */,
-				CE348DFA2C09A93500DDAAEC /* ChatRoomCell.swift in Sources */,
+				CE348DFA2C09A93500DDAAEC /* TalkRoomCell.swift in Sources */,
 				CE061D352C06EBB9007C8248 /* DetailCityViewController.swift in Sources */,
 				CE53A2902C03143300A2B9BC /* DetailMagazineViewController.swift in Sources */,
 				CE53A2A02C03676400A2B9BC /* Reusable.swift in Sources */,

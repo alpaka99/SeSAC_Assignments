@@ -37,7 +37,7 @@ final class TravelTalkViewController: UIViewController, UITableViewDelegate, UIT
         
         talkTableView.rowHeight = 100
         
-        talkTableView.register(ChatRoomCell.self, forCellReuseIdentifier: ChatRoomCell.reuseIdentifier)
+        talkTableView.register(TalkRoomCell.self, forCellReuseIdentifier: TalkRoomCell.reuseIdentifier)
         talkTableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
     }
     
@@ -73,7 +73,7 @@ final class TravelTalkViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: ChatRoomCell.reuseIdentifier, for: indexPath) as? ChatRoomCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: TalkRoomCell.reuseIdentifier, for: indexPath) as? TalkRoomCell {
             
             return cell
         } else {
@@ -83,5 +83,11 @@ final class TravelTalkViewController: UIViewController, UITableViewDelegate, UIT
             
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ChatRoomViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
