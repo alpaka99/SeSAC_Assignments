@@ -17,6 +17,7 @@
 		CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E512C0B41BD00DDAAEC /* RestaurantViewController.swift */; };
 		CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E532C0B41F600DDAAEC /* TravelViewController.swift */; };
 		CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E552C0B421A00DDAAEC /* TalkViewController.swift */; };
+		CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CE348E512C0B41BD00DDAAEC /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		CE348E532C0B41F600DDAAEC /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
 		CE348E552C0B421A00DDAAEC /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
+		CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				CE348E4F2C0B419100DDAAEC /* MagazineViewController.swift */,
+				CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */,
 			);
 			path = Magazine;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
 				CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */,
 				CE348E3A2C0B407600DDAAEC /* AppDelegate.swift in Sources */,
+				CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */,
 				CE348E502C0B419100DDAAEC /* MagazineViewController.swift in Sources */,
 				CE348E3C2C0B407600DDAAEC /* SceneDelegate.swift in Sources */,
 			);

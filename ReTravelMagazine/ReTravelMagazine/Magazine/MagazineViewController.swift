@@ -52,7 +52,7 @@ final class MagazineViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
-        
+        tableView.register(MagazineTableViewCell.self, forCellReuseIdentifier: MagazineTableViewCell.reuseIdentifier)
     }
 }
 
@@ -62,11 +62,21 @@ extension MagazineViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = "Magazine"
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.reuseIdentifier, for: indexPath) as? MagazineTableViewCell {
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
+            
+            cell.textLabel?.text = "Magazine"
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
