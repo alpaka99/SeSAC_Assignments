@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  re:TravelMagazine
+//  ReTravelMagazine
 //
 //  Created by user on 6/1/24.
 //
