@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		CE348E0A2C0B069C00DDAAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E092C0B069C00DDAAEC /* AppDelegate.swift */; };
 		CE348E0C2C0B069C00DDAAEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E0B2C0B069C00DDAAEC /* SceneDelegate.swift */; };
-		CE348E0E2C0B069C00DDAAEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E0D2C0B069C00DDAAEC /* ViewController.swift */; };
 		CE348E112C0B069C00DDAAEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE348E102C0B069C00DDAAEC /* Base */; };
 		CE348E132C0B069D00DDAAEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE348E122C0B069D00DDAAEC /* Assets.xcassets */; };
 		CE348E162C0B069D00DDAAEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE348E152C0B069D00DDAAEC /* Base */; };
+		CE348E242C0B0B3B00DDAAEC /* MagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E232C0B0B3B00DDAAEC /* MagazineViewController.swift */; };
+		CE348E262C0B0B5B00DDAAEC /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E252C0B0B5B00DDAAEC /* RestaurantViewController.swift */; };
+		CE348E282C0B0B6900DDAAEC /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E272C0B0B6900DDAAEC /* TravelViewController.swift */; };
+		CE348E2A2C0B0B7700DDAAEC /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E292C0B0B7700DDAAEC /* PopularViewController.swift */; };
+		CE348E2C2C0B0B8200DDAAEC /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E2B2C0B0B8200DDAAEC /* TalkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE348E062C0B069C00DDAAEC /* re:TravelMagazine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "re:TravelMagazine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE348E092C0B069C00DDAAEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE348E0B2C0B069C00DDAAEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE348E0D2C0B069C00DDAAEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE348E102C0B069C00DDAAEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE348E122C0B069D00DDAAEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE348E152C0B069D00DDAAEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE348E172C0B069D00DDAAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE348E232C0B0B3B00DDAAEC /* MagazineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineViewController.swift; sourceTree = "<group>"; };
+		CE348E252C0B0B5B00DDAAEC /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		CE348E272C0B0B6900DDAAEC /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
+		CE348E292C0B0B7700DDAAEC /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
+		CE348E2B2C0B0B8200DDAAEC /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,59 @@
 		CE348E082C0B069C00DDAAEC /* re:TravelMagazine */ = {
 			isa = PBXGroup;
 			children = (
+				CE348E212C0B0B2000DDAAEC /* Talk */,
+				CE348E202C0B0B1A00DDAAEC /* Popular */,
+				CE348E1F2C0B0B1300DDAAEC /* Travel */,
+				CE348E1E2C0B0B0B00DDAAEC /* Restaurant */,
+				CE348E1D2C0B0B0100DDAAEC /* Magazine */,
 				CE348E092C0B069C00DDAAEC /* AppDelegate.swift */,
 				CE348E0B2C0B069C00DDAAEC /* SceneDelegate.swift */,
-				CE348E0D2C0B069C00DDAAEC /* ViewController.swift */,
 				CE348E0F2C0B069C00DDAAEC /* Main.storyboard */,
 				CE348E122C0B069D00DDAAEC /* Assets.xcassets */,
 				CE348E142C0B069D00DDAAEC /* LaunchScreen.storyboard */,
 				CE348E172C0B069D00DDAAEC /* Info.plist */,
 			);
 			path = "re:TravelMagazine";
+			sourceTree = "<group>";
+		};
+		CE348E1D2C0B0B0100DDAAEC /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E232C0B0B3B00DDAAEC /* MagazineViewController.swift */,
+			);
+			path = Magazine;
+			sourceTree = "<group>";
+		};
+		CE348E1E2C0B0B0B00DDAAEC /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E252C0B0B5B00DDAAEC /* RestaurantViewController.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		CE348E1F2C0B0B1300DDAAEC /* Travel */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E272C0B0B6900DDAAEC /* TravelViewController.swift */,
+			);
+			path = Travel;
+			sourceTree = "<group>";
+		};
+		CE348E202C0B0B1A00DDAAEC /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E292C0B0B7700DDAAEC /* PopularViewController.swift */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		CE348E212C0B0B2000DDAAEC /* Talk */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E2B2C0B0B8200DDAAEC /* TalkViewController.swift */,
+			);
+			path = Talk;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE348E0E2C0B069C00DDAAEC /* ViewController.swift in Sources */,
+				CE348E2A2C0B0B7700DDAAEC /* PopularViewController.swift in Sources */,
 				CE348E0A2C0B069C00DDAAEC /* AppDelegate.swift in Sources */,
+				CE348E262C0B0B5B00DDAAEC /* RestaurantViewController.swift in Sources */,
+				CE348E2C2C0B0B8200DDAAEC /* TalkViewController.swift in Sources */,
 				CE348E0C2C0B069C00DDAAEC /* SceneDelegate.swift in Sources */,
+				CE348E242C0B0B3B00DDAAEC /* MagazineViewController.swift in Sources */,
+				CE348E282C0B0B6900DDAAEC /* TravelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +355,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,6 +387,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
