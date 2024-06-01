@@ -28,8 +28,6 @@ final class RestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "SeSAC Restaurant"
-        
         layoutComponents()
         
         configureComponents()
@@ -40,7 +38,16 @@ final class RestaurantViewController: UIViewController {
     }
     
     private func configureComponents() {
+        configureNavigationItem()
         configureMap()
+    }
+    
+    private func configureNavigationItem() {
+        navigationItem.title = "SeSAC Restaurant"
+        
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(annotationListButtonTapped))
+        
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     private func configureMap() {
@@ -69,5 +76,37 @@ final class RestaurantViewController: UIViewController {
         annotation.title = "SeSAC iOS"
         
         map.addAnnotation(annotation)
+    }
+    
+    @objc
+    func annotationListButtonTapped() {
+        let annotationAlert = UIAlertController(title: "filter options", message: "choose filter option", preferredStyle: .actionSheet)
+        
+        let option1 = UIAlertAction(title: "option1", style: .default) { _ in
+            print("option1")
+        }
+        annotationAlert.addAction(option1)
+        
+        let option2 = UIAlertAction(title: "option2", style: .default) { _ in
+            print("option2")
+        }
+        annotationAlert.addAction(option2)
+        
+        let option3 = UIAlertAction(title: "option3", style: .default) { _ in
+            print("option3")
+        }
+        annotationAlert.addAction(option3)
+        
+        let option4 = UIAlertAction(title: "option4", style: .default) { _ in
+            print("option4")
+        }
+        annotationAlert.addAction(option4)
+        
+        let option5 = UIAlertAction(title: "option5", style: .default) { _ in
+            print("option5")
+        }
+        annotationAlert.addAction(option5)
+        
+        present(annotationAlert, animated: true)
     }
 }
