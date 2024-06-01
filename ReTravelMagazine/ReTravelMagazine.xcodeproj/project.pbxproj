@@ -20,6 +20,7 @@
 		CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */; };
 		CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */; };
 		CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */; };
+		CE348E642C0B842400DDAAEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E632C0B842400DDAAEC /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
 		CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewCell.swift"; sourceTree = "<group>"; };
 		CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
+		CE348E632C0B842400DDAAEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		CE348E382C0B407600DDAAEC /* ReTravelMagazine */ = {
 			isa = PBXGroup;
 			children = (
+				CE348E622C0B841A00DDAAEC /* Constants */,
 				CE348E5D2C0B80BA00DDAAEC /* Extensions */,
 				CE348E5A2C0B447400DDAAEC /* Talk */,
 				CE348E592C0B446E00DDAAEC /* Travel */,
@@ -126,6 +129,14 @@
 				CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE348E622C0B841A00DDAAEC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E632C0B842400DDAAEC /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */,
+				CE348E642C0B842400DDAAEC /* Constants.swift in Sources */,
 				CE348E4E2C0B40FB00DDAAEC /* TabBarController.swift in Sources */,
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
 				CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */,
