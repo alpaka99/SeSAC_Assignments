@@ -12,6 +12,8 @@ final class TravelTalkViewController: UIViewController, UITableViewDelegate, UIT
     let talkSearchBar: UISearchBar = UISearchBar()
     let talkTableView: UITableView = UITableView()
     
+    lazy var talkRooms: [ChatRoom] = mockChatList
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +37,7 @@ final class TravelTalkViewController: UIViewController, UITableViewDelegate, UIT
         talkTableView.delegate = self
         talkTableView.dataSource = self
         
-        talkTableView.rowHeight = 100
+        talkTableView.rowHeight = 60
         
         talkTableView.register(TalkRoomCell.self, forCellReuseIdentifier: TalkRoomCell.reuseIdentifier)
         talkTableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
@@ -69,11 +71,15 @@ final class TravelTalkViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return talkRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TalkRoomCell.reuseIdentifier, for: indexPath) as? TalkRoomCell {
+            
+            let talkRoom = talkRooms[indexPath.row]
+            
+            cell.configureData(talkRoom)
             
             return cell
         } else {

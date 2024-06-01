@@ -9,12 +9,12 @@ import UIKit
 
 final class TalkRoomCell: UITableViewCell {
     
-    let thumbnail: UIImageView = UIImageView()
+    private var thumbnail: UIImageView = UIImageView()
     
-    let title: UILabel = UILabel()
-    let lastMessage: UILabel = UILabel()
+    private var title: UILabel = UILabel()
+    private var lastMessage: UILabel = UILabel()
     
-    let updatedAt: UILabel = UILabel()
+    private var updatedAt: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,7 +60,7 @@ final class TalkRoomCell: UITableViewCell {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: thumbnail.topAnchor, constant: 4),
+            title.topAnchor.constraint(equalTo: thumbnail.topAnchor, constant: 0),
             title.leadingAnchor.constraint(equalTo: thumbnail.trailingAnchor, constant: 4),
         ])
         
@@ -74,7 +74,7 @@ final class TalkRoomCell: UITableViewCell {
         lastMessage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            lastMessage.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
+            lastMessage.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
             lastMessage.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             lastMessage.bottomAnchor.constraint(equalTo: thumbnail.bottomAnchor, constant: -4),
         ])
@@ -90,10 +90,17 @@ final class TalkRoomCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             updatedAt.centerYAnchor.constraint(equalTo: title.centerYAnchor),
-            updatedAt.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            updatedAt.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
         ])
         
         updatedAt.text = "24.01.12"
         updatedAt.backgroundColor = .green
+    }
+    
+    internal func configureData(_ data: ChatRoom) {
+//        thumbnail.image = UIImage(sys)
+        title.text = data.chatroomName
+        lastMessage.text = data.chatList.last?.message
+        updatedAt.text = data.chatList.last?.formattedDate
     }
 }
