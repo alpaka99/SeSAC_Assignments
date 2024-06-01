@@ -18,6 +18,8 @@
 		CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E532C0B41F600DDAAEC /* TravelViewController.swift */; };
 		CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E552C0B421A00DDAAEC /* TalkViewController.swift */; };
 		CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */; };
+		CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */; };
+		CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		CE348E532C0B41F600DDAAEC /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
 		CE348E552C0B421A00DDAAEC /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
+		CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewCell.swift"; sourceTree = "<group>"; };
+		CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		CE348E382C0B407600DDAAEC /* ReTravelMagazine */ = {
 			isa = PBXGroup;
 			children = (
+				CE348E5D2C0B80BA00DDAAEC /* Extensions */,
 				CE348E5A2C0B447400DDAAEC /* Talk */,
 				CE348E592C0B446E00DDAAEC /* Travel */,
 				CE348E582C0B446300DDAAEC /* Restaurant */,
@@ -86,6 +91,7 @@
 			children = (
 				CE348E4F2C0B419100DDAAEC /* MagazineViewController.swift */,
 				CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */,
+				CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */,
 			);
 			path = Magazine;
 			sourceTree = "<group>";
@@ -112,6 +118,14 @@
 				CE348E552C0B421A00DDAAEC /* TalkViewController.swift */,
 			);
 			path = Talk;
+			sourceTree = "<group>";
+		};
+		CE348E5D2C0B80BA00DDAAEC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,9 +204,11 @@
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
 				CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */,
 				CE348E3A2C0B407600DDAAEC /* AppDelegate.swift in Sources */,
+				CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */,
 				CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */,
 				CE348E502C0B419100DDAAEC /* MagazineViewController.swift in Sources */,
 				CE348E3C2C0B407600DDAAEC /* SceneDelegate.swift in Sources */,
+				CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
