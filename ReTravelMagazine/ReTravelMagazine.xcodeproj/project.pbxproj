@@ -64,19 +64,51 @@
 		CE348E382C0B407600DDAAEC /* ReTravelMagazine */ = {
 			isa = PBXGroup;
 			children = (
+				CE348E5A2C0B447400DDAAEC /* Talk */,
+				CE348E592C0B446E00DDAAEC /* Travel */,
+				CE348E582C0B446300DDAAEC /* Restaurant */,
+				CE348E572C0B445C00DDAAEC /* Magazine */,
 				CE348E392C0B407600DDAAEC /* AppDelegate.swift */,
 				CE348E3B2C0B407600DDAAEC /* SceneDelegate.swift */,
 				CE348E3F2C0B407600DDAAEC /* Main.storyboard */,
 				CE348E4D2C0B40FB00DDAAEC /* TabBarController.swift */,
-				CE348E4F2C0B419100DDAAEC /* MagazineViewController.swift */,
-				CE348E512C0B41BD00DDAAEC /* RestaurantViewController.swift */,
-				CE348E532C0B41F600DDAAEC /* TravelViewController.swift */,
-				CE348E552C0B421A00DDAAEC /* TalkViewController.swift */,
 				CE348E422C0B407700DDAAEC /* Assets.xcassets */,
 				CE348E442C0B407700DDAAEC /* LaunchScreen.storyboard */,
 				CE348E472C0B407700DDAAEC /* Info.plist */,
 			);
 			path = ReTravelMagazine;
+			sourceTree = "<group>";
+		};
+		CE348E572C0B445C00DDAAEC /* Magazine */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E4F2C0B419100DDAAEC /* MagazineViewController.swift */,
+			);
+			path = Magazine;
+			sourceTree = "<group>";
+		};
+		CE348E582C0B446300DDAAEC /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E512C0B41BD00DDAAEC /* RestaurantViewController.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		CE348E592C0B446E00DDAAEC /* Travel */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E532C0B41F600DDAAEC /* TravelViewController.swift */,
+			);
+			path = Travel;
+			sourceTree = "<group>";
+		};
+		CE348E5A2C0B447400DDAAEC /* Talk */ = {
+			isa = PBXGroup;
+			children = (
+				CE348E552C0B421A00DDAAEC /* TalkViewController.swift */,
+			);
+			path = Talk;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
