@@ -57,6 +57,8 @@ final class TravelViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
+        tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.reuseIdentifier)
+        tableView.register(TravelAdCell.self, forCellReuseIdentifier: TravelAdCell.reuseIdentifier)
     }
 }
 
@@ -68,19 +70,18 @@ extension TravelViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
-            
-            cell.textLabel?.text = "• even number cell"
-            cell.textLabel?.textColor = .systemOrange
+            let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.reuseIdentifier, for: indexPath) as! TravelTableViewCell
+
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
-            
-            cell.textLabel?.text = "• odd number cell"
-            cell.textLabel?.textColor = .systemBlue
+            let cell = tableView.dequeueReusableCell(withIdentifier: TravelAdCell.reuseIdentifier, for: indexPath) as! TravelAdCell
             
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

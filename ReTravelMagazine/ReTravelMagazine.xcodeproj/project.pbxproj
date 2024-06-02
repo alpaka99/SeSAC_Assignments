@@ -21,6 +21,8 @@
 		CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */; };
 		CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */; };
 		CE348E642C0B842400DDAAEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E632C0B842400DDAAEC /* Constants.swift */; };
+		CE348E662C0C50B200DDAAEC /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */; };
+		CE348E682C0C581800DDAAEC /* TravelAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E672C0C581800DDAAEC /* TravelAdCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewCell.swift"; sourceTree = "<group>"; };
 		CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
 		CE348E632C0B842400DDAAEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
+		CE348E672C0C581800DDAAEC /* TravelAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				CE348E532C0B41F600DDAAEC /* TravelViewController.swift */,
+				CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */,
+				CE348E672C0C581800DDAAEC /* TravelAdCell.swift */,
 			);
 			path = Travel;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */,
+				CE348E682C0C581800DDAAEC /* TravelAdCell.swift in Sources */,
+				CE348E662C0C50B200DDAAEC /* TravelTableViewCell.swift in Sources */,
 				CE348E642C0B842400DDAAEC /* Constants.swift in Sources */,
 				CE348E4E2C0B40FB00DDAAEC /* TabBarController.swift in Sources */,
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
