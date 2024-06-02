@@ -85,15 +85,20 @@ extension TalkViewController: UISearchBarDelegate {
 
 extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TalkTableViewCell.reuseIdentifier, for: indexPath) as! TalkTableViewCell
         
-//        cell.textLabel?.text = "talk text"
         
         return cell
+    }
+    
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = TalkRoomViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

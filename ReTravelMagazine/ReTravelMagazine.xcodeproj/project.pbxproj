@@ -24,6 +24,9 @@
 		CE348E662C0C50B200DDAAEC /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */; };
 		CE348E682C0C581800DDAAEC /* TravelAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E672C0C581800DDAAEC /* TravelAdCell.swift */; };
 		CE348E6A2C0C8C3200DDAAEC /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E692C0C8C3200DDAAEC /* TalkTableViewCell.swift */; };
+		CE348E6C2C0D2BE000DDAAEC /* TalkRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E6B2C0D2BE000DDAAEC /* TalkRoomViewController.swift */; };
+		CE348E6E2C0D2DED00DDAAEC /* OpponentTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E6D2C0D2DED00DDAAEC /* OpponentTalkCell.swift */; };
+		CE348E702C0D32FB00DDAAEC /* UserTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E6F2C0D32FB00DDAAEC /* UserTalkCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		CE348E672C0C581800DDAAEC /* TravelAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdCell.swift; sourceTree = "<group>"; };
 		CE348E692C0C8C3200DDAAEC /* TalkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkTableViewCell.swift; sourceTree = "<group>"; };
+		CE348E6B2C0D2BE000DDAAEC /* TalkRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkRoomViewController.swift; sourceTree = "<group>"; };
+		CE348E6D2C0D2DED00DDAAEC /* OpponentTalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentTalkCell.swift; sourceTree = "<group>"; };
+		CE348E6F2C0D32FB00DDAAEC /* UserTalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTalkCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,9 @@
 			children = (
 				CE348E552C0B421A00DDAAEC /* TalkViewController.swift */,
 				CE348E692C0C8C3200DDAAEC /* TalkTableViewCell.swift */,
+				CE348E6B2C0D2BE000DDAAEC /* TalkRoomViewController.swift */,
+				CE348E6D2C0D2DED00DDAAEC /* OpponentTalkCell.swift */,
+				CE348E6F2C0D32FB00DDAAEC /* UserTalkCell.swift */,
 			);
 			path = Talk;
 			sourceTree = "<group>";
@@ -219,6 +228,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE348E6E2C0D2DED00DDAAEC /* OpponentTalkCell.swift in Sources */,
+				CE348E6C2C0D2BE000DDAAEC /* TalkRoomViewController.swift in Sources */,
 				CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */,
 				CE348E682C0C581800DDAAEC /* TravelAdCell.swift in Sources */,
 				CE348E662C0C50B200DDAAEC /* TravelTableViewCell.swift in Sources */,
@@ -227,6 +238,7 @@
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
 				CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */,
 				CE348E3A2C0B407600DDAAEC /* AppDelegate.swift in Sources */,
+				CE348E702C0D32FB00DDAAEC /* UserTalkCell.swift in Sources */,
 				CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */,
 				CE348E6A2C0C8C3200DDAAEC /* TalkTableViewCell.swift in Sources */,
 				CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */,
