@@ -67,7 +67,7 @@ final class RestaurantViewController: UIViewController {
     
     private func configureFilterAlert() {
         FilterOption.allCases.forEach { option in
-            let action = UIAlertAction(title: option.rawValue, style: .default) { [weak self] _ in
+            let action = UIAlertAction(title: option.rawValue, style: option.style) { [weak self] _ in
                 self?.filterRestaurants(with: option)
             }
             
@@ -79,10 +79,12 @@ final class RestaurantViewController: UIViewController {
         switch option {
         case .total:
             filteredRestaurant = restaurants
-        default:
+        case .cafe, .chinese, .japanese, .korean, .semiWestern, .snack, .western:
             filteredRestaurant = restaurants.filter {
                 option == FilterOption.init(rawValue: $0.category)
             }
+        case .cancel:
+            break
         }
     }
     
@@ -123,7 +125,14 @@ final class RestaurantViewController: UIViewController {
 extension RestaurantViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let coordinate = view.annotation?.coordinate {
-            map.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: MapConstants.dummyLatitudinalMeters, longitudinalMeters: MapConstants.dummyLongitudinalMeters)
+            map.setRegion(
+                MKCoordinateRegion(
+                    center: coordinate,
+                    latitudinalMeters: MapConstants.dummyLatitudinalMeters,
+                    longitudinalMeters: MapConstants.dummyLongitudinalMeters
+                ),
+                animated: true
+            )
         }
     }
 }
@@ -138,6 +147,17 @@ enum FilterOption: String, CaseIterable {
     case semiWestern = "경양식"
     case snack = "분식"
     case cafe = "카페"
+    case cancel = "취소"
+    
+    var style: UIAlertAction.Style {
+        switch self {
+            
+        case .total, .korean, .japanese, .western, .chinese, .semiWestern, .snack, .cafe:
+            return .default
+        case .cancel:
+            return .cancel
+        }
+    }
 }
 
 
