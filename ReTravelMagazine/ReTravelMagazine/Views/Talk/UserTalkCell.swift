@@ -16,6 +16,7 @@ final class UserTalkCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         layoutComponents()
+        setComponentsUI()
     }
     
     required init?(coder: NSCoder) {
@@ -25,6 +26,11 @@ final class UserTalkCell: UITableViewCell {
     private func layoutComponents() {
         layoutMessage()
         layoutDate()
+    }
+    
+    private func setComponentsUI() {
+        setMessageUI()
+        setDateUI()
     }
     
     private func layoutMessage() {
@@ -38,14 +44,6 @@ final class UserTalkCell: UITableViewCell {
             talk.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
             talk.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
         ])
-        
-        talk.numberOfLines = 0
-        talk.layer.borderWidth = 1
-        talk.layer.borderColor = UIColor.systemGray3.cgColor
-        talk.layer.cornerRadius = 8
-        talk.clipsToBounds = true
-        talk.backgroundColor = .systemGray3
-        talk.text = "test message test message test message test message test message test message test message test message test message test message"
     }
     
     private func layoutDate() {
@@ -59,6 +57,23 @@ final class UserTalkCell: UITableViewCell {
             date.bottomAnchor.constraint(equalTo: talk.bottomAnchor),
         ])
         
+        
+    }
+    
+    private func setMessageUI() {
+        talk.font = .systemFont(ofSize: 12, weight: .medium)
+        talk.numberOfLines = 0
+        talk.layer.borderWidth = 1
+        talk.layer.borderColor = UIColor.systemGray3.cgColor
+        talk.layer.cornerRadius = 8
+        talk.clipsToBounds = true
+        talk.backgroundColor = .systemGray3
+        talk.text = "test message test message test message test message test message test message test message test message test message test message"
+    }
+    
+    private func setDateUI() {
+        date.font = .systemFont(ofSize: 12, weight: .medium)
+        date.textColor = .systemGray4
         date.text = Date.now.formatted()
     }
 }

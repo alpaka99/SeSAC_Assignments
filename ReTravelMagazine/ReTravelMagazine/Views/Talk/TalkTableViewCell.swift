@@ -24,11 +24,24 @@ final class TalkTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        setComponentsUI()
+    }
+    
     private func layoutComponents() {
         layoutImage()
         layoutName()
         layoutMessage()
         layoutDate()
+    }
+    
+    private func setComponentsUI() {
+        setImageUI()
+        setNameUI()
+        setMessageUI()
+        setDateUI()
     }
     
     private func layoutImage() {
@@ -42,8 +55,6 @@ final class TalkTableViewCell: UITableViewCell {
             image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
             image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 1)
         ])
-        
-        image.backgroundColor = .systemMint
     }
     
     private func layoutName() {
@@ -84,5 +95,26 @@ final class TalkTableViewCell: UITableViewCell {
         ])
         
         date.text = String(describing: Date.now.formatted())
+    }
+    
+    private func setImageUI() {
+        image.backgroundColor = .systemGray4
+        image.layer.cornerRadius = image.frame.width / 2
+        image.clipsToBounds = true
+    }
+    
+    private func setNameUI() {
+        name.font = .systemFont(ofSize: 16, weight: .semibold)
+    }
+    
+    private func setMessageUI() {
+        message.font = .systemFont(ofSize: 12, weight: .semibold)
+        message.textColor = .systemGray3
+    }
+    
+    private func setDateUI() {
+        date.font = .systemFont(ofSize: 12, weight: .regular)
+        date.textColor = .systemGray4
+        date.textAlignment = .right
     }
 }

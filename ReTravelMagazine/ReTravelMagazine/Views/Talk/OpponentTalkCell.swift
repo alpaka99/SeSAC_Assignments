@@ -14,26 +14,24 @@ final class OpponentTalkCell: UITableViewCell {
     private let talk: UILabel = UILabel()
     private let date: UILabel = UILabel()
     
-    var talkCellType: TalkCellType = .received
-    
     private let padding: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
-        configureData()
-        
         layoutComponents()
+        setComponentsUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureData() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
     }
     
     private func layoutComponents() {
@@ -41,6 +39,13 @@ final class OpponentTalkCell: UITableViewCell {
         layoutName()
         layoutTalk()
         layoutDate()
+    }
+    
+    private func setComponentsUI() {
+        setProfileImageUI()
+        setNameUI()
+        setTalkUI()
+        setDateUI()
     }
     
     private func layoutProfileImage() {
@@ -67,8 +72,6 @@ final class OpponentTalkCell: UITableViewCell {
             name.topAnchor.constraint(equalTo: profileImage.topAnchor),
             name.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 4),
         ])
-        
-        name.text = "test name"
     }
     
     private func layoutTalk() {
@@ -83,13 +86,6 @@ final class OpponentTalkCell: UITableViewCell {
             talk.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
         ])
         
-        talk.text = "test talk test talk test talk test talk test talk test talk"
-        talk.numberOfLines = 0
-        talk.layer.borderWidth = 1
-        talk.layer.borderColor = UIColor.systemGray3.cgColor
-        talk.layer.cornerRadius = 8
-        talk.clipsToBounds = true
-        
     }
     
     private func layoutDate() {
@@ -103,12 +99,31 @@ final class OpponentTalkCell: UITableViewCell {
             date.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
         ])
         
+    }
+    
+    private func setProfileImageUI() {
+        profileImage.backgroundColor = .systemGray4
+    }
+    
+    private func setNameUI() {
+        name.font = .systemFont(ofSize: 12, weight: .medium)
+        name.text = "test name"
+    }
+    
+    private func setTalkUI() {
+        talk.font = .systemFont(ofSize: 12, weight: .medium)
+        talk.numberOfLines = 0
+        talk.layer.borderWidth = 1
+        talk.layer.borderColor = UIColor.systemGray3.cgColor
+        talk.layer.cornerRadius = 8
+        talk.clipsToBounds = true
+        
+        talk.text = "test talk\n test talk\n test talk\n test talk\n test talk\n test talk\n test talk\n test talk test talk test talk test talk test talk"
+    }
+    
+    private func setDateUI() {
+        date.font = .systemFont(ofSize: 12, weight: .regular)
+        date.textColor = .systemGray4
         date.text = Date.now.formatted()
     }
-}
-
-
-enum TalkCellType {
-    case received
-    case send
 }
