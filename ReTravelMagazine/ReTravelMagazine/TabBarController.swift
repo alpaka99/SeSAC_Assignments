@@ -21,6 +21,7 @@ final class TabBarController: UITabBarController {
             let vc = item.viewController
             vc.tabBarItem.title = item.title
             vc.tabBarItem.image = UIImage(systemName: item.imageName)
+            vc.navigationItem.title = item.navigationTitle
             let nav = UINavigationController(rootViewController: vc)
             navigationItems.append(nav)
         }
@@ -67,6 +68,10 @@ enum TabBarItemType: CaseIterable {
         case .talk:
             return "Talk"
         }
+    }
+    
+    var navigationTitle: String {
+        return "SeSAC" + self.title
     }
     
     var viewController: UIViewController {

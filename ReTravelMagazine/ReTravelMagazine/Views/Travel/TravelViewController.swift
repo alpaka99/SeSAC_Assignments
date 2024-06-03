@@ -45,12 +45,7 @@ final class TravelViewController: UIViewController {
     
     
     private func configureComponents() {
-        configureNavigationItem()
         configureTableView()
-    }
-    
-    private func configureNavigationItem() {
-        navigationItem.title = "SeSAC Travel"
     }
     
     private func configureTableView() {
@@ -81,7 +76,7 @@ extension TravelViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
                 
-                
+                cell.textLabel?.text = TableViewCellConstants.basicCellText
                 
                 return cell
             }
@@ -93,6 +88,8 @@ extension TravelViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
+                
+                cell.textLabel?.text = TableViewCellConstants.basicCellText
                 
                 return cell
             }

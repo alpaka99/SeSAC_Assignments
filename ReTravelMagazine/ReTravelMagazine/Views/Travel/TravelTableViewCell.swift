@@ -108,19 +108,16 @@ final class TravelTableViewCell: UITableViewCell {
     
     private func setTitleUI() {
         title.font = .systemFont(ofSize: 16, weight: .semibold)
-        title.text = "title"
     }
     
     private func setSubtitleUI() {
         subtitle.font = .systemFont(ofSize: 12, weight: .medium)
         subtitle.textColor = .systemGray4
-        subtitle.text = "test subtitle"
     }
     
     private func setGradeUI() {
         grade.font = .systemFont(ofSize: 12, weight: .medium)
         grade.textColor = .systemGray4
-        grade.text = "test grade"
     }
     
     private func setImageUI() {

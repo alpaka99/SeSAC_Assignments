@@ -21,8 +21,6 @@ final class MagazineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "SeSAC Magazine"
-        
         layoutComponents()
         setComponentsUI()
         configureComponents()
@@ -78,7 +76,7 @@ extension MagazineViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
             
-            cell.textLabel?.text = "Magazine"
+            cell.textLabel?.text = TableViewCellConstants.basicCellText
             
             return cell
         }
@@ -90,8 +88,8 @@ extension MagazineViewController: UITableViewDelegate, UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = magazineData[indexPath.row]
-        let magazineDetailViewController = MagazineDetailViewController()
         
+        let magazineDetailViewController = MagazineDetailViewController()
         magazineDetailViewController.configureData(data)
         
         navigationController?.pushViewController(magazineDetailViewController, animated: true)

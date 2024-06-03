@@ -73,9 +73,6 @@ final class MagazineTableViewCell: UITableViewCell {
             title.leadingAnchor.constraint(equalTo: magazineImage.leadingAnchor),
             title.trailingAnchor.constraint(equalTo: magazineImage.trailingAnchor),
         ])
-        
-        title.text = "title"
-        title.textColor = .black
     }
     
     private func layoutSubtitle() {

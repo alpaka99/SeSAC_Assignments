@@ -63,13 +63,8 @@ final class TalkViewController: UIViewController {
     }
     
     private func configureComponents() {
-        configureNavigationItem()
         configureSearchBar()
         configureTableView()
-    }
-    
-    private func configureNavigationItem() {
-        navigationItem.title = "SeSAC Talk"
     }
     
     private func configureSearchBar() {
@@ -98,9 +93,8 @@ extension TalkViewController: UISearchBarDelegate {
             filteredChatRooms = chatRooms
         } else {
             filteredChatRooms = chatRooms.filter { chatRoom in
-                chatRoom.chatRoomUsers.localizedStandardContains(searchText) || chatRoom.chatRoomMessage.localizedStandardContains(searchText)
+                chatRoom.chatRoomUsers.localizedStandardContains(searchText) || chatRoom.chatRoomMessages.localizedStandardContains(searchText)
             }
-            print(filteredChatRooms)
         }
     }
     

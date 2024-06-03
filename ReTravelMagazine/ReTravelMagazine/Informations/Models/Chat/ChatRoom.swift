@@ -16,8 +16,16 @@ struct ChatRoom {
         return chatList.reduce("") { $0 + $1.user.rawValue }
     }
     
-    var chatRoomMessage: String {
+    var chatRoomMessages: String {
         return chatList.reduce("") { $0 + $1.message }
+    }
+    
+    var chatRoomThumbnail: String {
+        return chatroomImage.last ?? "dummyImage"
+    }
+    
+    var chatRoomLastMessage: String {
+        return chatList.last?.message ?? "새로운 채팅방입니다"
     }
 }
 

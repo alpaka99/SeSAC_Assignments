@@ -19,3 +19,8 @@ internal struct MapConstants {
     internal static let dummyLatitudinalMeters: Double = 500
     internal static let dummyLongitudinalMeters: Double = 500
 }
+
+
+internal struct TableViewCellConstants {
+    static let basicCellText: String = "Something went wrong...🤔"
+}

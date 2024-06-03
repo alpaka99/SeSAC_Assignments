@@ -51,8 +51,6 @@ final class RestaurantViewController: UIViewController {
     }
     
     private func configureNavigationItem() {
-        navigationItem.title = "SeSAC Restaurant"
-        
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(annotationListButtonTapped))
         
         navigationItem.rightBarButtonItem = rightBarButtonItem

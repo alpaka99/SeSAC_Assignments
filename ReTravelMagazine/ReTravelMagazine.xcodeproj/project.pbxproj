@@ -40,6 +40,7 @@
 		CE348EBC2C0DA5F300DDAAEC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE348EBB2C0DA5F300DDAAEC /* Kingfisher */; };
 		CE348EBE2C0DAB0700DDAAEC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */; };
 		CE348EC02C0DF58200DDAAEC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EBF2C0DF58200DDAAEC /* UIColor+Extension.swift */; };
+		CE348EC22C0E2BB700DDAAEC /* Double?+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EC12C0E2BB700DDAAEC /* Double?+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		CE348EB72C0D938700DDAAEC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
 		CE348EBF2C0DF58200DDAAEC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CE348EC12C0E2BB700DDAAEC /* Double?+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double?+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			children = (
 				CE348E5E2C0B80CA00DDAAEC /* UITableViewCell+Extension.swift */,
 				CE348EBF2C0DF58200DDAAEC /* UIColor+Extension.swift */,
+				CE348EC12C0E2BB700DDAAEC /* Double?+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				CE348E6E2C0D2DED00DDAAEC /* OpponentTalkCell.swift in Sources */,
 				CE348E6C2C0D2BE000DDAAEC /* TalkRoomViewController.swift in Sources */,
 				CE348EA62C0D90E400DDAAEC /* CityInfo.swift in Sources */,
+				CE348EC22C0E2BB700DDAAEC /* Double?+Extension.swift in Sources */,
 				CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */,
 				CE348EA42C0D90E400DDAAEC /* TravelInfo.swift in Sources */,
 				CE348EB22C0D935000DDAAEC /* City.swift in Sources */,

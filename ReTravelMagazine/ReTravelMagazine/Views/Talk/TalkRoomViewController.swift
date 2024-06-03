@@ -77,18 +77,33 @@ extension TalkRoomViewController: UITableViewDelegate, UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = chats[indexPath.row]
         
+        // MARK: 이 과정을 간소화 하는 방법이 있을까?? tableView.dequeReuseableCell을 해야해서 다른 객체에서 cell을 만들어서 전달하기가 까다로움.
         if data.user == .user {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UserTalkCell.reuseIdentifier, for: indexPath) as! UserTalkCell
-            
-            cell.configureData(data)
-            
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: UserTalkCell.reuseIdentifier, for: indexPath) as? UserTalkCell {
+                
+                cell.configureData(data)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
+                
+                cell.textLabel?.text = TableViewCellConstants.basicCellText
+                
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: OpponentTalkCell.reuseIdentifier, for: indexPath) as! OpponentTalkCell
-            
-            cell.configureData(data)
-            
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: OpponentTalkCell.reuseIdentifier, for: indexPath) as? OpponentTalkCell {
+                
+                cell.configureData(data)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
+                
+                cell.textLabel?.text = TableViewCellConstants.basicCellText
+                
+                return cell
+            }
         }
     }
     

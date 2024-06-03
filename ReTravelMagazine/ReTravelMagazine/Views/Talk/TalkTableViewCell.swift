@@ -120,14 +120,10 @@ final class TalkTableViewCell: UITableViewCell {
     }
     
     internal func configureData(_ data: ChatRoom) {
-        if let chatRoomImage = data.chatroomImage.first {
-            image.image = UIImage(named: chatRoomImage)
-        }
+        image.image = UIImage(named: data.chatRoomThumbnail)
         
         name.text = data.chatroomName
         
-        if let lastMessage = data.chatList.last {
-            message.text = lastMessage.message
-        }
+        message.text = data.chatRoomLastMessage
     }
 }
