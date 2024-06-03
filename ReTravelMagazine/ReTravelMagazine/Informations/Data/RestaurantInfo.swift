@@ -5,7 +5,7 @@
 //  Created by Den on 5/20/24.
 //
 
-import Foundation
+import CoreLocation
 
 struct Restaurant {
     let image: String
@@ -17,6 +17,10 @@ struct Restaurant {
     let category: String
     let price: Int
     let type: Int
+    
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
 }
 
 struct RestaurantList {

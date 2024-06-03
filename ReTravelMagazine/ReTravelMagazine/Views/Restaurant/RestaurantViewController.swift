@@ -12,7 +12,14 @@ import UIKit
 final class RestaurantViewController: UIViewController {
     
     private let map: MKMapView = MKMapView()
-    
+    private let restaurants: [Restaurant] = RestaurantList().restaurantArray
+    private lazy var filteredRestaurant: [Restaurant] = [] {
+        didSet {
+            self.removeAllExistingAnnotations()
+            self.addFilteredAnnotations()
+        }
+    }
+    private var filterSheet: UIAlertController = UIAlertController()
     private lazy var initialRegion: MKCoordinateRegion = MKCoordinateRegion(
         center: MapConstants.initialCenter,
         latitudinalMeters: MapConstants.dummyLatitudinalMeters,
@@ -40,6 +47,7 @@ final class RestaurantViewController: UIViewController {
     private func configureComponents() {
         configureNavigationItem()
         configureMap()
+        configureFilterAlert()
     }
     
     private func configureNavigationItem() {
@@ -51,9 +59,31 @@ final class RestaurantViewController: UIViewController {
     }
     
     private func configureMap() {
-        map.region = initialRegion
+        map.delegate = self
         
-        placeAnnotations()
+        map.region = initialRegion
+        filteredRestaurant = restaurants
+    }
+    
+    private func configureFilterAlert() {
+        FilterOption.allCases.forEach { option in
+            let action = UIAlertAction(title: option.rawValue, style: .default) { [weak self] _ in
+                self?.filterRestaurants(with: option)
+            }
+            
+            filterSheet.addAction(action)
+        }
+    }
+    
+    private func filterRestaurants(with option: FilterOption) {
+        switch option {
+        case .total:
+            filteredRestaurant = restaurants
+        default:
+            filteredRestaurant = restaurants.filter {
+                option == FilterOption.init(rawValue: $0.category)
+            }
+        }
     }
     
     private func layoutMap() {
@@ -69,44 +99,46 @@ final class RestaurantViewController: UIViewController {
         ])
     }
     
-    private func placeAnnotations() {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = MapConstants.initialCenter
-        
-        annotation.title = "SeSAC iOS"
-        
-        map.addAnnotation(annotation)
-    }
-    
     @objc
     func annotationListButtonTapped() {
-        let annotationAlert = UIAlertController(title: "filter options", message: "choose filter option", preferredStyle: .actionSheet)
-        
-        let option1 = UIAlertAction(title: "option1", style: .default) { _ in
-            print("option1")
+        present(filterSheet, animated: true)
+    }
+    
+    private func removeAllExistingAnnotations() {
+        map.removeAnnotations(map.annotations)
+    }
+    
+    private func addFilteredAnnotations() {
+        filteredRestaurant.forEach { restaurant in
+            let pointAnnotation = MKPointAnnotation()
+            pointAnnotation.coordinate = restaurant.coordinate
+            pointAnnotation.title = restaurant.name
+            
+            map.addAnnotation(pointAnnotation)
         }
-        annotationAlert.addAction(option1)
-        
-        let option2 = UIAlertAction(title: "option2", style: .default) { _ in
-            print("option2")
-        }
-        annotationAlert.addAction(option2)
-        
-        let option3 = UIAlertAction(title: "option3", style: .default) { _ in
-            print("option3")
-        }
-        annotationAlert.addAction(option3)
-        
-        let option4 = UIAlertAction(title: "option4", style: .default) { _ in
-            print("option4")
-        }
-        annotationAlert.addAction(option4)
-        
-        let option5 = UIAlertAction(title: "option5", style: .default) { _ in
-            print("option5")
-        }
-        annotationAlert.addAction(option5)
-        
-        present(annotationAlert, animated: true)
     }
 }
+
+
+extension RestaurantViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let coordinate = view.annotation?.coordinate {
+            map.region = MKCoordinateRegion(center: coordinate, latitudinalMeters: MapConstants.dummyLatitudinalMeters, longitudinalMeters: MapConstants.dummyLongitudinalMeters)
+        }
+    }
+}
+
+//한식 일식 양식 중식 경양식 분식 카페
+enum FilterOption: String, CaseIterable {
+    case total = "전체"
+    case korean = "한식"
+    case japanese = "일식"
+    case western = "양식"
+    case chinese = "중식"
+    case semiWestern = "경양식"
+    case snack = "분식"
+    case cafe = "카페"
+}
+
+
+
