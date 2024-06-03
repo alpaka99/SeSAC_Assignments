@@ -18,6 +18,7 @@ final class MagazineTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         layoutComponents()
+        setComponentsUI()
     }
     
     required init?(coder: NSCoder) {
@@ -32,6 +33,13 @@ final class MagazineTableViewCell: UITableViewCell {
         layoutDate()
     }
     
+    private func setComponentsUI() {
+        setMagazineImageUI()
+        setTitleUI()
+        setSubtitleUI()
+        setDateUI()
+    }
+    
     private func layoutImageView() {
         self.addSubview(magazineImage)
         
@@ -39,12 +47,10 @@ final class MagazineTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             magazineImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            magazineImage.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
+            magazineImage.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             magazineImage.heightAnchor.constraint(equalTo: magazineImage.widthAnchor, multiplier: 1),
             magazineImage.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
-        
-        magazineImage.backgroundColor = .systemOrange
     }
     
     private func layoutTitle() {
@@ -91,5 +97,30 @@ final class MagazineTableViewCell: UITableViewCell {
         
         date.text = "date"
         date.textColor = .black
+    }
+    
+    
+    private func setMagazineImageUI() {
+        magazineImage.backgroundColor = .systemGray4
+        magazineImage.layer.cornerRadius = 12
+        magazineImage.clipsToBounds = true
+        magazineImage.layer.borderColor = UIColor.systemGray5.cgColor
+        magazineImage.layer.borderWidth = 1
+    }
+    
+    private func setTitleUI() {
+        title.font = .systemFont(ofSize: 28, weight: .bold)
+        title.numberOfLines = 0
+    }
+    
+    private func setSubtitleUI() {
+        subtitle.font = .systemFont(ofSize: 20, weight: .semibold)
+        subtitle.textColor = .systemGray4
+    }
+    
+    private func setDateUI() {
+        date.font = .systemFont(ofSize: 16, weight: .medium)
+        date.textColor = .systemGray4
+        date.textAlignment = .right
     }
 }

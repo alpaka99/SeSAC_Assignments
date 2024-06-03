@@ -115,21 +115,3 @@ struct TravelInfo {
                ad: false),
     ]
 }
-
-//
-//Travel(title: "영등포 캠퍼스",
-//       description: "Jack님과 함께하는,\n우당탕탕 iOS 개발 성장기!",
-//       travel_image: "https://images.unsplash.com/photo-1679285516851-4f0cb04a3893?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//       grade: 5.0,
-//       save: 30,
-//       like: true,
-//       ad: false),
-struct Travel {
-    let title: String
-    let description: String?
-    let travel_image: String?
-    let grade: Double?
-    let save: Double?
-    let like: Bool?
-    let ad: Bool
-}

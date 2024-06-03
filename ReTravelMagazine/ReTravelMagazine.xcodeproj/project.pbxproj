@@ -27,11 +27,17 @@
 		CE348E6C2C0D2BE000DDAAEC /* TalkRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E6B2C0D2BE000DDAAEC /* TalkRoomViewController.swift */; };
 		CE348E6E2C0D2DED00DDAAEC /* OpponentTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E6D2C0D2DED00DDAAEC /* OpponentTalkCell.swift */; };
 		CE348E9E2C0D8B4000DDAAEC /* UserTalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E9D2C0D8B4000DDAAEC /* UserTalkCell.swift */; };
-		CE348EA42C0D90E400DDAAEC /* TravelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA12C0D90E400DDAAEC /* TravelModel.swift */; };
+		CE348EA42C0D90E400DDAAEC /* TravelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA12C0D90E400DDAAEC /* TravelInfo.swift */; };
 		CE348EA52C0D90E400DDAAEC /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA22C0D90E400DDAAEC /* ChattingData.swift */; };
 		CE348EA62C0D90E400DDAAEC /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA32C0D90E400DDAAEC /* CityInfo.swift */; };
 		CE348EA82C0D911800DDAAEC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA72C0D911800DDAAEC /* MagazineInfo.swift */; };
-		CE348EAA2C0D913400DDAAEC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA92C0D913400DDAAEC /* Restaurant.swift */; };
+		CE348EAA2C0D913400DDAAEC /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA92C0D913400DDAAEC /* RestaurantInfo.swift */; };
+		CE348EAE2C0D931400DDAAEC /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EAD2C0D931400DDAAEC /* Travel.swift */; };
+		CE348EB02C0D933D00DDAAEC /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EAF2C0D933D00DDAAEC /* Magazine.swift */; };
+		CE348EB22C0D935000DDAAEC /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB12C0D935000DDAAEC /* City.swift */; };
+		CE348EB42C0D935D00DDAAEC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB32C0D935D00DDAAEC /* Chat.swift */; };
+		CE348EB62C0D937200DDAAEC /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB52C0D937200DDAAEC /* ChatRoom.swift */; };
+		CE348EB82C0D938700DDAAEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB72C0D938700DDAAEC /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,11 +63,17 @@
 		CE348E6B2C0D2BE000DDAAEC /* TalkRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkRoomViewController.swift; sourceTree = "<group>"; };
 		CE348E6D2C0D2DED00DDAAEC /* OpponentTalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentTalkCell.swift; sourceTree = "<group>"; };
 		CE348E9D2C0D8B4000DDAAEC /* UserTalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTalkCell.swift; sourceTree = "<group>"; };
-		CE348EA12C0D90E400DDAAEC /* TravelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModel.swift; sourceTree = "<group>"; };
+		CE348EA12C0D90E400DDAAEC /* TravelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelInfo.swift; sourceTree = "<group>"; };
 		CE348EA22C0D90E400DDAAEC /* ChattingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 		CE348EA32C0D90E400DDAAEC /* CityInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		CE348EA72C0D911800DDAAEC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
-		CE348EA92C0D913400DDAAEC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		CE348EA92C0D913400DDAAEC /* RestaurantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
+		CE348EAD2C0D931400DDAAEC /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
+		CE348EAF2C0D933D00DDAAEC /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
+		CE348EB12C0D935000DDAAEC /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		CE348EB32C0D935D00DDAAEC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		CE348EB52C0D937200DDAAEC /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		CE348EB72C0D938700DDAAEC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,13 +191,43 @@
 		CE348EA02C0D90CB00DDAAEC /* Informations */ = {
 			isa = PBXGroup;
 			children = (
+				CE348EAC2C0D92F800DDAAEC /* Models */,
+				CE348EAB2C0D927C00DDAAEC /* Data */,
+			);
+			path = Informations;
+			sourceTree = "<group>";
+		};
+		CE348EAB2C0D927C00DDAAEC /* Data */ = {
+			isa = PBXGroup;
+			children = (
 				CE348EA72C0D911800DDAAEC /* MagazineInfo.swift */,
 				CE348EA22C0D90E400DDAAEC /* ChattingData.swift */,
 				CE348EA32C0D90E400DDAAEC /* CityInfo.swift */,
-				CE348EA12C0D90E400DDAAEC /* TravelModel.swift */,
-				CE348EA92C0D913400DDAAEC /* Restaurant.swift */,
+				CE348EA12C0D90E400DDAAEC /* TravelInfo.swift */,
+				CE348EA92C0D913400DDAAEC /* RestaurantInfo.swift */,
 			);
-			path = Informations;
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CE348EAC2C0D92F800DDAAEC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE348EB92C0D939C00DDAAEC /* Chat */,
+				CE348EAD2C0D931400DDAAEC /* Travel.swift */,
+				CE348EAF2C0D933D00DDAAEC /* Magazine.swift */,
+				CE348EB12C0D935000DDAAEC /* City.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE348EB92C0D939C00DDAAEC /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CE348EB32C0D935D00DDAAEC /* Chat.swift */,
+				CE348EB52C0D937200DDAAEC /* ChatRoom.swift */,
+				CE348EB72C0D938700DDAAEC /* User.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,26 +301,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE348EAA2C0D913400DDAAEC /* Restaurant.swift in Sources */,
+				CE348EAA2C0D913400DDAAEC /* RestaurantInfo.swift in Sources */,
 				CE348E6E2C0D2DED00DDAAEC /* OpponentTalkCell.swift in Sources */,
 				CE348E6C2C0D2BE000DDAAEC /* TalkRoomViewController.swift in Sources */,
 				CE348EA62C0D90E400DDAAEC /* CityInfo.swift in Sources */,
 				CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */,
-				CE348EA42C0D90E400DDAAEC /* TravelModel.swift in Sources */,
+				CE348EA42C0D90E400DDAAEC /* TravelInfo.swift in Sources */,
+				CE348EB22C0D935000DDAAEC /* City.swift in Sources */,
 				CE348E682C0C581800DDAAEC /* TravelAdCell.swift in Sources */,
 				CE348E662C0C50B200DDAAEC /* TravelTableViewCell.swift in Sources */,
+				CE348EB62C0D937200DDAAEC /* ChatRoom.swift in Sources */,
 				CE348E642C0B842400DDAAEC /* Constants.swift in Sources */,
 				CE348E4E2C0B40FB00DDAAEC /* TabBarController.swift in Sources */,
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
 				CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */,
+				CE348EB42C0D935D00DDAAEC /* Chat.swift in Sources */,
 				CE348EA82C0D911800DDAAEC /* MagazineInfo.swift in Sources */,
 				CE348E3A2C0B407600DDAAEC /* AppDelegate.swift in Sources */,
 				CE348E9E2C0D8B4000DDAAEC /* UserTalkCell.swift in Sources */,
 				CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */,
+				CE348EAE2C0D931400DDAAEC /* Travel.swift in Sources */,
+				CE348EB82C0D938700DDAAEC /* User.swift in Sources */,
 				CE348E6A2C0C8C3200DDAAEC /* TalkTableViewCell.swift in Sources */,
 				CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */,
 				CE348EA52C0D90E400DDAAEC /* ChattingData.swift in Sources */,
 				CE348E502C0B419100DDAAEC /* MagazineViewController.swift in Sources */,
+				CE348EB02C0D933D00DDAAEC /* Magazine.swift in Sources */,
 				CE348E3C2C0B407600DDAAEC /* SceneDelegate.swift in Sources */,
 				CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */,
 			);

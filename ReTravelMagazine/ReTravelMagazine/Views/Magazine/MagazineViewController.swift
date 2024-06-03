@@ -23,11 +23,16 @@ final class MagazineViewController: UIViewController {
         navigationItem.title = "SeSAC Magazine"
         
         layoutComponents()
+        setComponentsUI()
         configureComponents()
     }
     
     private func layoutComponents() {
         layoutTableView()
+    }
+    
+    private func setComponentsUI() {
+        
     }
     
     private func configureComponents() {
