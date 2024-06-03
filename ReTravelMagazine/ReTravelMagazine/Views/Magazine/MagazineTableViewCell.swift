@@ -5,6 +5,7 @@
 //  Created by user on 6/1/24.
 //
 
+import Kingfisher
 import UIKit
 
 final class MagazineTableViewCell: UITableViewCell {
@@ -38,6 +39,15 @@ final class MagazineTableViewCell: UITableViewCell {
         setTitleUI()
         setSubtitleUI()
         setDateUI()
+    }
+    
+    internal func configureData(_ data: Magazine) {
+        if let url = URL(string: data.photo_image) {
+            magazineImage.kf.setImage(with: url)
+        }
+        title.text = data.title
+        subtitle.text = data.subtitle
+        date.text = data.date
     }
     
     private func layoutImageView() {
@@ -78,9 +88,6 @@ final class MagazineTableViewCell: UITableViewCell {
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             subtitle.trailingAnchor.constraint(equalTo: title.trailingAnchor),
         ])
-        
-        subtitle.text = "subtitle"
-        subtitle.textColor = .black
     }
     
     private func layoutDate() {
@@ -94,9 +101,6 @@ final class MagazineTableViewCell: UITableViewCell {
             date.trailingAnchor.constraint(equalTo: subtitle.trailingAnchor),
             date.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
         ])
-        
-        date.text = "date"
-        date.textColor = .black
     }
     
     

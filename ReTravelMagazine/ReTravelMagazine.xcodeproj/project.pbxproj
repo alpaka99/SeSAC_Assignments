@@ -30,7 +30,6 @@
 		CE348EA42C0D90E400DDAAEC /* TravelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA12C0D90E400DDAAEC /* TravelInfo.swift */; };
 		CE348EA52C0D90E400DDAAEC /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA22C0D90E400DDAAEC /* ChattingData.swift */; };
 		CE348EA62C0D90E400DDAAEC /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA32C0D90E400DDAAEC /* CityInfo.swift */; };
-		CE348EA82C0D911800DDAAEC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA72C0D911800DDAAEC /* MagazineInfo.swift */; };
 		CE348EAA2C0D913400DDAAEC /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EA92C0D913400DDAAEC /* RestaurantInfo.swift */; };
 		CE348EAE2C0D931400DDAAEC /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EAD2C0D931400DDAAEC /* Travel.swift */; };
 		CE348EB02C0D933D00DDAAEC /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EAF2C0D933D00DDAAEC /* Magazine.swift */; };
@@ -38,6 +37,8 @@
 		CE348EB42C0D935D00DDAAEC /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB32C0D935D00DDAAEC /* Chat.swift */; };
 		CE348EB62C0D937200DDAAEC /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB52C0D937200DDAAEC /* ChatRoom.swift */; };
 		CE348EB82C0D938700DDAAEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB72C0D938700DDAAEC /* User.swift */; };
+		CE348EBC2C0DA5F300DDAAEC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE348EBB2C0DA5F300DDAAEC /* Kingfisher */; };
+		CE348EBE2C0DAB0700DDAAEC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +67,6 @@
 		CE348EA12C0D90E400DDAAEC /* TravelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelInfo.swift; sourceTree = "<group>"; };
 		CE348EA22C0D90E400DDAAEC /* ChattingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
 		CE348EA32C0D90E400DDAAEC /* CityInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
-		CE348EA72C0D911800DDAAEC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
 		CE348EA92C0D913400DDAAEC /* RestaurantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
 		CE348EAD2C0D931400DDAAEC /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
 		CE348EAF2C0D933D00DDAAEC /* Magazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magazine.swift; sourceTree = "<group>"; };
@@ -74,6 +74,7 @@
 		CE348EB32C0D935D00DDAAEC /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		CE348EB52C0D937200DDAAEC /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		CE348EB72C0D938700DDAAEC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE348EBC2C0DA5F300DDAAEC /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +202,7 @@
 		CE348EAB2C0D927C00DDAAEC /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				CE348EA72C0D911800DDAAEC /* MagazineInfo.swift */,
+				CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */,
 				CE348EA22C0D90E400DDAAEC /* ChattingData.swift */,
 				CE348EA32C0D90E400DDAAEC /* CityInfo.swift */,
 				CE348EA12C0D90E400DDAAEC /* TravelInfo.swift */,
@@ -246,6 +248,9 @@
 			dependencies = (
 			);
 			name = ReTravelMagazine;
+			packageProductDependencies = (
+				CE348EBB2C0DA5F300DDAAEC /* Kingfisher */,
+			);
 			productName = ReTravelMagazine;
 			productReference = CE348E362C0B407600DDAAEC /* ReTravelMagazine.app */;
 			productType = "com.apple.product-type.application";
@@ -274,6 +279,9 @@
 				Base,
 			);
 			mainGroup = CE348E2D2C0B407600DDAAEC;
+			packageReferences = (
+				CE348EBA2C0DA5F300DDAAEC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = CE348E372C0B407600DDAAEC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -316,7 +324,6 @@
 				CE348E522C0B41BD00DDAAEC /* RestaurantViewController.swift in Sources */,
 				CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */,
 				CE348EB42C0D935D00DDAAEC /* Chat.swift in Sources */,
-				CE348EA82C0D911800DDAAEC /* MagazineInfo.swift in Sources */,
 				CE348E3A2C0B407600DDAAEC /* AppDelegate.swift in Sources */,
 				CE348E9E2C0D8B4000DDAAEC /* UserTalkCell.swift in Sources */,
 				CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */,
@@ -327,6 +334,7 @@
 				CE348EA52C0D90E400DDAAEC /* ChattingData.swift in Sources */,
 				CE348E502C0B419100DDAAEC /* MagazineViewController.swift in Sources */,
 				CE348EB02C0D933D00DDAAEC /* Magazine.swift in Sources */,
+				CE348EBE2C0DAB0700DDAAEC /* MagazineInfo.swift in Sources */,
 				CE348E3C2C0B407600DDAAEC /* SceneDelegate.swift in Sources */,
 				CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */,
 			);
@@ -559,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE348EBA2C0DA5F300DDAAEC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE348EBB2C0DA5F300DDAAEC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE348EBA2C0DA5F300DDAAEC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE348E2E2C0B407600DDAAEC /* Project object */;
 }

@@ -10,6 +10,7 @@ import UIKit
 final class MagazineViewController: UIViewController {
     
     private let tableView: UITableView = UITableView()
+    private let magazineData: [Magazine] = MagazineInfo().magazine
     
     override func loadView() {
         let view = UIView()
@@ -63,12 +64,15 @@ final class MagazineViewController: UIViewController {
 
 extension MagazineViewController: UITableViewDelegate, UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return magazineData.count
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if let cell = tableView.dequeueReusableCell(withIdentifier: MagazineTableViewCell.reuseIdentifier, for: indexPath) as? MagazineTableViewCell {
+            
+            let data = magazineData[indexPath.row]
+            cell.configureData(data)
+            
             
             return cell
         } else {
@@ -85,8 +89,12 @@ extension MagazineViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = MagazineDetailViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let data = magazineData[indexPath.row]
+        let magazineDetailViewController = MagazineDetailViewController()
+        
+        magazineDetailViewController.configureData(data)
+        
+        navigationController?.pushViewController(magazineDetailViewController, animated: true)
     }
 }
 

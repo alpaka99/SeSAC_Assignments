@@ -22,6 +22,7 @@ final class MagazineDetailViewController: UIViewController {
         super.viewDidLoad()
         
         layoutTitleLabel()
+        setComponenteUI()
     }
     
     private func layoutTitleLabel() {
@@ -32,10 +33,20 @@ final class MagazineDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -16),
         ])
-        
-        titleLabel.text = "detail title"
     }
     
+    private func setComponenteUI() {
+        setTitleLabelUI()
+    }
     
+    private func setTitleLabelUI() {
+        titleLabel.numberOfLines = 0
+    }
+    
+    internal func configureData(_ data: Magazine) {
+        titleLabel.text = data.link
+    }
 }
