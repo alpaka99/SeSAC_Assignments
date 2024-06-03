@@ -10,7 +10,7 @@ import UIKit
 final class UserTalkCell: UITableViewCell {
     
     let date: UILabel = UILabel()
-    let message: UILabel = UILabel()
+    let talk: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,23 +28,24 @@ final class UserTalkCell: UITableViewCell {
     }
     
     private func layoutMessage() {
-        self.addSubview(message)
+        self.addSubview(talk)
         
-        message.translatesAutoresizingMaskIntoConstraints = false
+        talk.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            message.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            message.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            message.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            talk.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            talk.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            talk.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            talk.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
         ])
         
-        message.numberOfLines = 0
-        message.layer.borderWidth = 1
-        message.layer.borderColor = UIColor.systemGray3.cgColor
-        message.layer.cornerRadius = 8
-        message.clipsToBounds = true
-        message.backgroundColor = .systemGray3
-        message.text = "test message test message test message test message test message test message test message test message test message test message"
+        talk.numberOfLines = 0
+        talk.layer.borderWidth = 1
+        talk.layer.borderColor = UIColor.systemGray3.cgColor
+        talk.layer.cornerRadius = 8
+        talk.clipsToBounds = true
+        talk.backgroundColor = .systemGray3
+        talk.text = "test message test message test message test message test message test message test message test message test message test message"
     }
     
     private func layoutDate() {
@@ -54,8 +55,8 @@ final class UserTalkCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             date.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            date.trailingAnchor.constraint(equalTo: message.leadingAnchor, constant: -4),
-            date.bottomAnchor.constraint(equalTo: message.bottomAnchor),
+            date.trailingAnchor.constraint(equalTo: talk.leadingAnchor, constant: -4),
+            date.bottomAnchor.constraint(equalTo: talk.bottomAnchor),
         ])
         
         date.text = Date.now.formatted()

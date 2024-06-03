@@ -79,7 +79,8 @@ final class OpponentTalkCell: UITableViewCell {
         NSLayoutConstraint.activate([
             talk.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 4),
             talk.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            talk.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+            talk.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            talk.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
         ])
         
         talk.text = "test talk test talk test talk test talk test talk test talk"

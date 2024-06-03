@@ -58,11 +58,11 @@ final class TalkRoomViewController: UIViewController {
 
 extension TalkRoomViewController: UITableViewDelegate, UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 2
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 3 == 0 {
+        if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: UserTalkCell.reuseIdentifier, for: indexPath)
             print(#function)
             return cell
