@@ -8,11 +8,11 @@
 import UIKit
 
 final class TravelTableViewCell: UITableViewCell {
-    let title: UILabel = UILabel()
-    let subtitle: UILabel = UILabel()
-    let grade: UILabel = UILabel()
-    let image: UIImageView = UIImageView()
-    let likeButton: UIButton = UIButton()
+    private let title: UILabel = UILabel()
+    private let subtitle: UILabel = UILabel()
+    private let grade: UILabel = UILabel()
+    private let image: UIImageView = UIImageView()
+    private let likeButton: UIButton = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -107,18 +107,18 @@ final class TravelTableViewCell: UITableViewCell {
     }
     
     private func setTitleUI() {
-        title.font = .systemFont(ofSize: 24, weight: .semibold)
+        title.font = .systemFont(ofSize: 16, weight: .semibold)
         title.text = "title"
     }
     
     private func setSubtitleUI() {
-        subtitle.font = .systemFont(ofSize: 20, weight: .medium)
+        subtitle.font = .systemFont(ofSize: 12, weight: .medium)
         subtitle.textColor = .systemGray4
         subtitle.text = "test subtitle"
     }
     
     private func setGradeUI() {
-        grade.font = .systemFont(ofSize: 16, weight: .medium)
+        grade.font = .systemFont(ofSize: 12, weight: .medium)
         grade.textColor = .systemGray4
         grade.text = "test grade"
     }
@@ -133,5 +133,15 @@ final class TravelTableViewCell: UITableViewCell {
     private func setLikeButtonUI() {
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.tintColor = .white
+    }
+    
+    internal func configureData(_ data: Travel) {
+        if let imageUrl = data.travel_image, let url = URL(string: imageUrl) {
+            image.kf.setImage(with: url)
+        }
+        
+        title.text = data.title
+        subtitle.text = data.description
+        grade.text = data.fullGradeDescription
     }
 }

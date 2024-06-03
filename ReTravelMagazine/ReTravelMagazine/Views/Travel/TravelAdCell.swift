@@ -8,8 +8,8 @@
 import UIKit
 
 final class TravelAdCell: UITableViewCell {
-    let title: UILabel = UILabel()
-    let badge: UILabel = UILabel()
+    private let title: UILabel = UILabel()
+    private let badge: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,8 +60,7 @@ final class TravelAdCell: UITableViewCell {
     private func setTitleUI() {
         title.backgroundColor = UIColor.randomColor
         title.numberOfLines = 0
-        title.text = "ad title"
-        title.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
+        title.font = UIFont.systemFont(ofSize: 24, weight: .heavy)
         title.textAlignment = .center
         title.layer.cornerRadius = 8
         title.clipsToBounds = true
@@ -75,15 +74,8 @@ final class TravelAdCell: UITableViewCell {
         badge.layer.cornerRadius = 4
         badge.clipsToBounds = true
     }
-}
-
-extension UIColor {
-    static var randomColor: UIColor {
-        return UIColor.init(
-            red: CGFloat.random(in: 0...1),
-            green: CGFloat.random(in: 0...1),
-            blue: CGFloat.random(in: 0...1),
-            alpha: 1
-        )
+    
+    internal func configureData(_ data: Travel) {
+        title.text = data.title
     }
 }

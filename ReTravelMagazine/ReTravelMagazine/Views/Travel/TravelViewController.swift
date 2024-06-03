@@ -9,7 +9,8 @@ import UIKit
 
 final class TravelViewController: UIViewController {
     
-    let tableView: UITableView = UITableView()
+    private let tableView: UITableView = UITableView()
+    private let travels: [Travel] = TravelInfo().travel
     
     override func loadView() {
         let view = UIView()
@@ -65,19 +66,36 @@ final class TravelViewController: UIViewController {
 
 extension TravelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return travels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.reuseIdentifier, for: indexPath) as! TravelTableViewCell
-
-            
-            return cell
+        let data = travels[indexPath.row]
+        
+        if data.ad {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TravelAdCell.reuseIdentifier, for: indexPath) as? TravelAdCell {
+                
+                cell.configureData(data)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
+                
+                
+                
+                return cell
+            }
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TravelAdCell.reuseIdentifier, for: indexPath) as! TravelAdCell
-            
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.reuseIdentifier, for: indexPath) as? TravelTableViewCell {
+                
+                cell.configureData(data)
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
+                
+                return cell
+            }
         }
     }
     

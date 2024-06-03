@@ -18,7 +18,7 @@
 		CE348E542C0B41F600DDAAEC /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E532C0B41F600DDAAEC /* TravelViewController.swift */; };
 		CE348E562C0B421A00DDAAEC /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E552C0B421A00DDAAEC /* TalkViewController.swift */; };
 		CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */; };
-		CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */; };
+		CE348E5F2C0B80CA00DDAAEC /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E5E2C0B80CA00DDAAEC /* UITableViewCell+Extension.swift */; };
 		CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */; };
 		CE348E642C0B842400DDAAEC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E632C0B842400DDAAEC /* Constants.swift */; };
 		CE348E662C0C50B200DDAAEC /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */; };
@@ -39,6 +39,7 @@
 		CE348EB82C0D938700DDAAEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EB72C0D938700DDAAEC /* User.swift */; };
 		CE348EBC2C0DA5F300DDAAEC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE348EBB2C0DA5F300DDAAEC /* Kingfisher */; };
 		CE348EBE2C0DAB0700DDAAEC /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */; };
+		CE348EC02C0DF58200DDAAEC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348EBF2C0DF58200DDAAEC /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +56,7 @@
 		CE348E532C0B41F600DDAAEC /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
 		CE348E552C0B421A00DDAAEC /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		CE348E5B2C0B474D00DDAAEC /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
-		CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewCell.swift"; sourceTree = "<group>"; };
+		CE348E5E2C0B80CA00DDAAEC /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CE348E602C0B80F500DDAAEC /* MagazineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineDetailViewController.swift; sourceTree = "<group>"; };
 		CE348E632C0B842400DDAAEC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE348E652C0C50B200DDAAEC /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		CE348EB52C0D937200DDAAEC /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		CE348EB72C0D938700DDAAEC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE348EBD2C0DAB0700DDAAEC /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
+		CE348EBF2C0DF58200DDAAEC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +168,8 @@
 		CE348E5D2C0B80BA00DDAAEC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE348E5E2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift */,
+				CE348E5E2C0B80CA00DDAAEC /* UITableViewCell+Extension.swift */,
+				CE348EBF2C0DF58200DDAAEC /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				CE348E9E2C0D8B4000DDAAEC /* UserTalkCell.swift in Sources */,
 				CE348E612C0B80F500DDAAEC /* MagazineDetailViewController.swift in Sources */,
 				CE348EAE2C0D931400DDAAEC /* Travel.swift in Sources */,
+				CE348EC02C0DF58200DDAAEC /* UIColor+Extension.swift in Sources */,
 				CE348EB82C0D938700DDAAEC /* User.swift in Sources */,
 				CE348E6A2C0C8C3200DDAAEC /* TalkTableViewCell.swift in Sources */,
 				CE348E5C2C0B474D00DDAAEC /* MagazineTableViewCell.swift in Sources */,
@@ -336,7 +340,7 @@
 				CE348EB02C0D933D00DDAAEC /* Magazine.swift in Sources */,
 				CE348EBE2C0DAB0700DDAAEC /* MagazineInfo.swift in Sources */,
 				CE348E3C2C0B407600DDAAEC /* SceneDelegate.swift in Sources */,
-				CE348E5F2C0B80CA00DDAAEC /* Extension+UITableViewCell.swift in Sources */,
+				CE348E5F2C0B80CA00DDAAEC /* UITableViewCell+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
