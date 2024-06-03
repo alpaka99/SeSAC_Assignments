@@ -11,28 +11,74 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let magazineVC = MagazineViewController()
-        let restaurantVC = RestaurantViewController()
-        let travelVC = TravelViewController()
-        let talkVC = TalkViewController()
-        
-        
-        magazineVC.tabBarItem.image = UIImage(systemName: "number")
-        magazineVC.tabBarItem.title = "Magazine"
-        restaurantVC.tabBarItem.image = UIImage(systemName: "number")
-        restaurantVC.tabBarItem.title = "Restaurant"
-        travelVC.tabBarItem.image = UIImage(systemName: "number")
-        travelVC.tabBarItem.title = "Travel"
-        talkVC.tabBarItem.image = UIImage(systemName: "number")
-        talkVC.tabBarItem.title = "Talk"
-        
-        let magazineNav = UINavigationController(rootViewController: magazineVC)
-        let restaurantNav = UINavigationController(rootViewController: restaurantVC)
-        let travelNav = UINavigationController(rootViewController: travelVC)
-        let talkNav = UINavigationController(rootViewController: talkVC)
-        
-        self.setViewControllers([magazineNav, restaurantNav, travelNav, talkNav], animated: true)
-        
+        self.setViewControllers(addTabBarItem(), animated: true)
         tabBar.backgroundColor = .systemGray4
+    }
+    
+    private func addTabBarItem() -> [UINavigationController] {
+        var navigationItems: [UINavigationController] = []
+        TabBarItemType.allCases.forEach { item in
+            let vc = item.viewController
+            vc.tabBarItem.title = item.title
+            vc.tabBarItem.image = UIImage(systemName: item.imageName)
+            let nav = UINavigationController(rootViewController: vc)
+            navigationItems.append(nav)
+        }
+        
+        return navigationItems
+    }
+}
+
+
+enum TabBarItemType: CaseIterable {
+    static var allCases: [TabBarItemType] = [
+        .magazine,
+        .restaurant,
+        .travel,
+        .talk
+    ]
+    
+    case magazine
+    case restaurant
+    case travel
+    case talk
+    
+    var imageName: String {
+        switch self {
+        case .magazine:
+            return "newspaper.fill"
+        case .restaurant:
+            return "fork.knife"
+        case .travel:
+            return "airplane.departure"
+        case .talk:
+            return "message"
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .magazine:
+            return "Magazine"
+        case .restaurant:
+            return "Restaurant"
+        case .travel:
+            return "Travel"
+        case .talk:
+            return "Talk"
+        }
+    }
+    
+    var viewController: UIViewController {
+        switch self {
+        case .magazine:
+            return MagazineViewController()
+        case .restaurant:
+            return RestaurantViewController()
+        case .travel:
+            return TravelViewController()
+        case .talk:
+            return TalkViewController()
+        }
     }
 }
