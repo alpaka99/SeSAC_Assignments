@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: 그냥 view에다가 add하면 contentView가 간섭함. -> 그러면? 그냥 contentView 위에 얹으면 됨
 final class TravelTableViewCell: UITableViewCell {
     let title: UILabel = UILabel()
     let subtitle: UILabel = UILabel()
@@ -19,6 +18,7 @@ final class TravelTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         layoutComponents()
+        setComponentsUI()
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +33,14 @@ final class TravelTableViewCell: UITableViewCell {
         layoutLikeButton()
     }
     
+    private func setComponentsUI() {
+        setTitleUI()
+        setSubtitleUI()
+        setGradeUI()
+        setImageUI()
+        setLikeButtonUI()
+    }
+    
     private func layoutTitle() {
         self.contentView.addSubview(title)
         
@@ -43,7 +51,7 @@ final class TravelTableViewCell: UITableViewCell {
             title.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
         ])
         
-        title.text = "test title"
+        
     }
     
     private func layoutSubTitle() {
@@ -55,8 +63,6 @@ final class TravelTableViewCell: UITableViewCell {
             subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
         ])
-        
-        subtitle.text = "test subtitle"
     }
     
     
@@ -71,7 +77,7 @@ final class TravelTableViewCell: UITableViewCell {
             grade.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -8),
         ])
         
-        grade.text = "test grade"
+        
     }
     
     private func layoutImage() {
@@ -83,10 +89,8 @@ final class TravelTableViewCell: UITableViewCell {
             image.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
             image.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8),
             image.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
-            image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 0.7)
+            image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 0.8)
         ])
-        
-        image.backgroundColor = .systemGray4
     }
     
     private func layoutLikeButton() {
@@ -100,15 +104,34 @@ final class TravelTableViewCell: UITableViewCell {
             likeButton.heightAnchor.constraint(equalToConstant: 20),
             likeButton.widthAnchor.constraint(equalTo: likeButton.heightAnchor, multiplier: 1)
         ])
-        
-        likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-        likeButton.setImage(UIImage(named: "heart"), for: .normal)
-        likeButton.tintColor = .white
-        likeButton.backgroundColor = .systemIndigo
     }
     
-    @objc
-    func likeButtonTapped() {
-        print(#function)
+    private func setTitleUI() {
+        title.font = .systemFont(ofSize: 24, weight: .semibold)
+        title.text = "title"
+    }
+    
+    private func setSubtitleUI() {
+        subtitle.font = .systemFont(ofSize: 20, weight: .medium)
+        subtitle.textColor = .systemGray4
+        subtitle.text = "test subtitle"
+    }
+    
+    private func setGradeUI() {
+        grade.font = .systemFont(ofSize: 16, weight: .medium)
+        grade.textColor = .systemGray4
+        grade.text = "test grade"
+    }
+    
+    private func setImageUI() {
+        image.backgroundColor = .systemGray4
+        image.layer.cornerRadius = 8
+        image.clipsToBounds = true
+        
+    }
+    
+    private func setLikeButtonUI() {
+        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        likeButton.tintColor = .white
     }
 }

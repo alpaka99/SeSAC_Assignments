@@ -15,6 +15,7 @@ final class TravelAdCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         layoutComponents()
+        setComponentsUI()
     }
     
     required init?(coder: NSCoder) {
@@ -24,6 +25,11 @@ final class TravelAdCell: UITableViewCell {
     private func layoutComponents() {
         layoutTitle()
         layoutBadge()
+    }
+    
+    private func setComponentsUI() {
+        setTitleUI()
+        setBadgeUI()
     }
     
     private func layoutTitle() {
@@ -37,12 +43,6 @@ final class TravelAdCell: UITableViewCell {
             title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             title.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
         ])
-        
-        title.backgroundColor = .systemIndigo
-        title.numberOfLines = 0
-        title.text = "ad title"
-        title.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
-        title.textAlignment = .center
     }
     
     private func layoutBadge() {
@@ -51,11 +51,39 @@ final class TravelAdCell: UITableViewCell {
         badge.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            badge.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            badge.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            badge.topAnchor.constraint(equalTo: title.topAnchor, constant: 4),
+            badge.trailingAnchor.constraint(equalTo: title.trailingAnchor, constant: -4),
+            badge.widthAnchor.constraint(equalTo: title.widthAnchor, multiplier: 0.1)
         ])
-        
+    }
+    
+    private func setTitleUI() {
+        title.backgroundColor = UIColor.randomColor
+        title.numberOfLines = 0
+        title.text = "ad title"
+        title.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
+        title.textAlignment = .center
+        title.layer.cornerRadius = 8
+        title.clipsToBounds = true
+    }
+    
+    private func setBadgeUI() {
         badge.text = "Ad"
-        badge.backgroundColor = .systemGreen
+        badge.font = .systemFont(ofSize: 12, weight: .bold)
+        badge.textAlignment = .center
+        badge.backgroundColor = .white
+        badge.layer.cornerRadius = 4
+        badge.clipsToBounds = true
+    }
+}
+
+extension UIColor {
+    static var randomColor: UIColor {
+        return UIColor.init(
+            red: CGFloat.random(in: 0...1),
+            green: CGFloat.random(in: 0...1),
+            blue: CGFloat.random(in: 0...1),
+            alpha: 1
+        )
     }
 }
