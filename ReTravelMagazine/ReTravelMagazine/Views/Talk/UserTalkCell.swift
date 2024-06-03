@@ -45,7 +45,6 @@ final class UserTalkCell: UITableViewCell {
             talkBackground.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             talkBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             talkBackground.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            talkBackground.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
         ])
     }
     

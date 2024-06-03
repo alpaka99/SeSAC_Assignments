@@ -26,6 +26,12 @@ final class TalkRoomViewController: UIViewController {
         configureComponents()
     }
     
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        tableView.scrollToRow(at: IndexPath(row: chats.count-1, section: 0), at: .bottom, animated: true)
+    }
+    
     private func layoutComponents() {
         layoutTableView()
     }
@@ -50,6 +56,8 @@ final class TalkRoomViewController: UIViewController {
     private func configureTableView() {
         tableView.delegate  = self
         tableView.dataSource = self
+        
+        tableView.separatorColor = .clear
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
         tableView.register(OpponentTalkCell.self, forCellReuseIdentifier: OpponentTalkCell.reuseIdentifier)

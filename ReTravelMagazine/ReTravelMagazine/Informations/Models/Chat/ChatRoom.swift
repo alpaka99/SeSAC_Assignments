@@ -11,5 +11,13 @@ struct ChatRoom {
     let chatroomImage: [String] //채팅방에 속한 유저 이미지
     let chatroomName: String //채팅방 이름
     var chatList: [Chat] = [] //채팅 화면에서 사용할 데이터
+    
+    var chatRoomUsers: String {
+        return chatList.reduce("") { $0 + $1.user.rawValue }
+    }
+    
+    var chatRoomMessage: String {
+        return chatList.reduce("") { $0 + $1.message }
+    }
 }
 

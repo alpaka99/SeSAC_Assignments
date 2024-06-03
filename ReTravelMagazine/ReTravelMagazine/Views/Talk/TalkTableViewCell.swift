@@ -58,6 +58,7 @@ final class TalkTableViewCell: UITableViewCell {
         ])
     }
     
+    // MARK: 여기서 constraint warning이 발생 -> 원인: UILabel들의 height가 모호하다 (cell height를 결정하던지, label height들을 결정해주면 될 것 같은데 어떤게 좋을지 모르겠습니다...!)
     private func layoutName() {
         self.addSubview(name)
         

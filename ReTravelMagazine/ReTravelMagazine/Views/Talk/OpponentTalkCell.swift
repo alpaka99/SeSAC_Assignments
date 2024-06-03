@@ -111,7 +111,6 @@ final class OpponentTalkCell: UITableViewCell {
         NSLayoutConstraint.activate([
             date.leadingAnchor.constraint(equalTo: talkBackground.trailingAnchor, constant: 4),
             date.bottomAnchor.constraint(equalTo: talkBackground.bottomAnchor),
-            date.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
         ])
         
     }
