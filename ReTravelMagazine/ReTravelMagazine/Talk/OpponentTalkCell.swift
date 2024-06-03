@@ -14,17 +14,26 @@ final class OpponentTalkCell: UITableViewCell {
     private let talk: UILabel = UILabel()
     private let date: UILabel = UILabel()
     
+    var talkCellType: TalkCellType = .received
+    
     private let padding: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        
+        configureData()
+        
         layoutComponents()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureData() {
+        
     }
     
     private func layoutComponents() {
@@ -95,4 +104,10 @@ final class OpponentTalkCell: UITableViewCell {
         
         date.text = Date.now.formatted()
     }
+}
+
+
+enum TalkCellType {
+    case received
+    case send
 }

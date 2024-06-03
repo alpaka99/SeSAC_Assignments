@@ -52,6 +52,7 @@ final class TalkRoomViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
         tableView.register(OpponentTalkCell.self, forCellReuseIdentifier: OpponentTalkCell.reuseIdentifier)
+        tableView.register(UserTalkCell.self, forCellReuseIdentifier: UserTalkCell.reuseIdentifier)
     }
 }
 
@@ -61,13 +62,15 @@ extension TalkRoomViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as UITableViewCell
-        
-//        cell.textLabel?.text = "test chat"
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: OpponentTalkCell.reuseIdentifier, for: indexPath) as! OpponentTalkCell
-        
-        return cell
+        if indexPath.row % 3 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserTalkCell.reuseIdentifier, for: indexPath)
+            print(#function)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: OpponentTalkCell.reuseIdentifier, for: indexPath) as! OpponentTalkCell
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
