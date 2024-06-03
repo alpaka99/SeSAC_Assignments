@@ -9,8 +9,9 @@ import UIKit
 
 final class UserTalkCell: UITableViewCell {
     
-    let date: UILabel = UILabel()
-    let talk: UILabel = UILabel()
+    private let date: UILabel = UILabel()
+    private let talkBackground: UIView = UIView()
+    private let talk: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,25 +25,40 @@ final class UserTalkCell: UITableViewCell {
     }
     
     private func layoutComponents() {
-        layoutMessage()
+        layoutTalkBackground()
+        layoutTalk()
         layoutDate()
     }
     
     private func setComponentsUI() {
-        setMessageUI()
+        setTalkBackgroundUI()
+        setTalkUI()
         setDateUI()
     }
     
-    private func layoutMessage() {
-        self.addSubview(talk)
+    private func layoutTalkBackground() {
+        self.addSubview(talkBackground)
+        
+        talkBackground.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            talkBackground.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            talkBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            talkBackground.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            talkBackground.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
+        ])
+    }
+    
+    private func layoutTalk() {
+        talkBackground.addSubview(talk)
         
         talk.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            talk.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            talk.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            talk.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            talk.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
+            talk.topAnchor.constraint(equalTo: talkBackground.topAnchor, constant: 8),
+            talk.leadingAnchor.constraint(equalTo: talkBackground.leadingAnchor, constant: 8),
+            talk.trailingAnchor.constraint(equalTo: talkBackground.trailingAnchor, constant: -8),
+            talk.bottomAnchor.constraint(equalTo: talkBackground.bottomAnchor, constant: -8),
         ])
     }
     
@@ -53,27 +69,32 @@ final class UserTalkCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             date.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            date.trailingAnchor.constraint(equalTo: talk.leadingAnchor, constant: -4),
-            date.bottomAnchor.constraint(equalTo: talk.bottomAnchor),
+            date.trailingAnchor.constraint(equalTo: talkBackground.leadingAnchor, constant: -4),
+            date.bottomAnchor.constraint(equalTo: talkBackground.bottomAnchor),
         ])
-        
-        
     }
     
-    private func setMessageUI() {
+    private func setTalkBackgroundUI() {
+        talkBackground.layer.borderWidth = 1
+        talkBackground.layer.borderColor = UIColor.systemGray3.cgColor
+        talkBackground.layer.cornerRadius = 8
+        talkBackground.clipsToBounds = true
+        talkBackground.backgroundColor = .systemGray3
+    }
+    
+    private func setTalkUI() {
         talk.font = .systemFont(ofSize: 12, weight: .medium)
         talk.numberOfLines = 0
-        talk.layer.borderWidth = 1
-        talk.layer.borderColor = UIColor.systemGray3.cgColor
-        talk.layer.cornerRadius = 8
-        talk.clipsToBounds = true
-        talk.backgroundColor = .systemGray3
-        talk.text = "test message test message test message test message test message test message test message test message test message test message"
     }
     
     private func setDateUI() {
         date.font = .systemFont(ofSize: 12, weight: .medium)
         date.textColor = .systemGray4
-        date.text = Date.now.formatted()
+        date.textAlignment = .right
+    }
+    
+    internal func configureData(_ data: Chat) {
+        talk.text = data.message
+        date.text = data.date
     }
 }

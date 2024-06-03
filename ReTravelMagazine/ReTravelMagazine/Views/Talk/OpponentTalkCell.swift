@@ -11,6 +11,7 @@ final class OpponentTalkCell: UITableViewCell {
     
     private let profileImage: UIImageView = UIImageView()
     private let name: UILabel = UILabel()
+    private let talkBackground: UIView = UIView()
     private let talk: UILabel = UILabel()
     private let date: UILabel = UILabel()
     
@@ -37,6 +38,7 @@ final class OpponentTalkCell: UITableViewCell {
     private func layoutComponents() {
         layoutProfileImage()
         layoutName()
+        layoutTalkBackground()
         layoutTalk()
         layoutDate()
     }
@@ -44,6 +46,7 @@ final class OpponentTalkCell: UITableViewCell {
     private func setComponentsUI() {
         setProfileImageUI()
         setNameUI()
+        setTalkBackgroundUI()
         setTalkUI()
         setDateUI()
     }
@@ -74,18 +77,30 @@ final class OpponentTalkCell: UITableViewCell {
         ])
     }
     
+    private func layoutTalkBackground() {
+        self.addSubview(talkBackground)
+        
+        talkBackground.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            talkBackground.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 4),
+            talkBackground.leadingAnchor.constraint(equalTo: name.leadingAnchor),
+            talkBackground.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            talkBackground.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
+        ])
+    }
+    
     private func layoutTalk() {
-        self.addSubview(talk)
+        talkBackground.addSubview(talk)
         
         talk.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            talk.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 4),
-            talk.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            talk.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            talk.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.75)
+            talk.topAnchor.constraint(equalTo: talkBackground.topAnchor, constant: 8),
+            talk.leadingAnchor.constraint(equalTo: talkBackground.leadingAnchor, constant: 8),
+            talk.trailingAnchor.constraint(equalTo: talkBackground.trailingAnchor, constant: -8),
+            talk.bottomAnchor.constraint(equalTo: talkBackground.bottomAnchor, constant: -8),
         ])
-        
     }
     
     private func layoutDate() {
@@ -94,36 +109,45 @@ final class OpponentTalkCell: UITableViewCell {
         date.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            date.leadingAnchor.constraint(equalTo: talk.trailingAnchor, constant: 4),
-            date.bottomAnchor.constraint(equalTo: talk.bottomAnchor),
+            date.leadingAnchor.constraint(equalTo: talkBackground.trailingAnchor, constant: 4),
+            date.bottomAnchor.constraint(equalTo: talkBackground.bottomAnchor),
             date.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
         ])
         
     }
     
     private func setProfileImageUI() {
+        profileImage.contentMode = .scaleAspectFill
         profileImage.backgroundColor = .systemGray4
+        profileImage.clipsToBounds = true
     }
     
     private func setNameUI() {
         name.font = .systemFont(ofSize: 12, weight: .medium)
-        name.text = "test name"
+    }
+    
+    private func setTalkBackgroundUI() {
+        talkBackground.layer.borderWidth = 1
+        talkBackground.layer.borderColor = UIColor.systemGray3.cgColor
+        talkBackground.layer.cornerRadius = 8
+        talkBackground.clipsToBounds = true
     }
     
     private func setTalkUI() {
         talk.font = .systemFont(ofSize: 12, weight: .medium)
         talk.numberOfLines = 0
-        talk.layer.borderWidth = 1
-        talk.layer.borderColor = UIColor.systemGray3.cgColor
-        talk.layer.cornerRadius = 8
-        talk.clipsToBounds = true
-        
-        talk.text = "test talk\n test talk\n test talk\n test talk\n test talk\n test talk\n test talk\n test talk test talk test talk test talk test talk"
     }
     
     private func setDateUI() {
         date.font = .systemFont(ofSize: 12, weight: .regular)
         date.textColor = .systemGray4
         date.text = Date.now.formatted()
+    }
+    
+    internal func configureData(_ data: Chat) {
+        profileImage.image = UIImage(named: data.user.profileImage)
+        name.text = data.user.rawValue
+        talk.text = data.message
+        date.text = data.date
     }
 }

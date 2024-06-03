@@ -53,7 +53,8 @@ final class TalkTableViewCell: UITableViewCell {
             image.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            image.widthAnchor.constraint(equalTo: image.heightAnchor, multiplier: 1)
+            image.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
+            image.heightAnchor.constraint(equalTo: image.widthAnchor, multiplier: 1)
         ])
     }
     
@@ -66,8 +67,6 @@ final class TalkTableViewCell: UITableViewCell {
             name.topAnchor.constraint(equalTo: image.topAnchor, constant: 4),
             name.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 4),
         ])
-        
-        name.text = "name test"
     }
     
     private func layoutMessage() {
@@ -80,8 +79,6 @@ final class TalkTableViewCell: UITableViewCell {
             message.leadingAnchor.constraint(equalTo: name.leadingAnchor),
             message.bottomAnchor.constraint(equalTo: image.bottomAnchor, constant: -4),
         ])
-        
-        message.text = "test message"
     }
     
     private func layoutDate() {
@@ -101,20 +98,35 @@ final class TalkTableViewCell: UITableViewCell {
         image.backgroundColor = .systemGray4
         image.layer.cornerRadius = image.frame.width / 2
         image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
     }
     
     private func setNameUI() {
-        name.font = .systemFont(ofSize: 16, weight: .semibold)
+        name.font = .systemFont(ofSize: 12, weight: .semibold)
+        name.numberOfLines = 1
     }
     
     private func setMessageUI() {
         message.font = .systemFont(ofSize: 12, weight: .semibold)
         message.textColor = .systemGray3
+        message.numberOfLines = 1
     }
     
     private func setDateUI() {
-        date.font = .systemFont(ofSize: 12, weight: .regular)
+        date.font = .systemFont(ofSize: 10, weight: .regular)
         date.textColor = .systemGray4
         date.textAlignment = .right
+    }
+    
+    internal func configureData(_ data: ChatRoom) {
+        if let chatRoomImage = data.chatroomImage.first {
+            image.image = UIImage(named: chatRoomImage)
+        }
+        
+        name.text = data.chatroomName
+        
+        if let lastMessage = data.chatList.last {
+            message.text = lastMessage.message
+        }
     }
 }

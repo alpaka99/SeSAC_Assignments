@@ -9,7 +9,8 @@ import UIKit
 
 final class TalkRoomViewController: UIViewController {
     
-    let tableView: UITableView = UITableView()
+    private let tableView: UITableView = UITableView()
+    private var chats: [Chat] = []
     
     override func loadView() {
         super.loadView()
@@ -54,20 +55,30 @@ final class TalkRoomViewController: UIViewController {
         tableView.register(OpponentTalkCell.self, forCellReuseIdentifier: OpponentTalkCell.reuseIdentifier)
         tableView.register(UserTalkCell.self, forCellReuseIdentifier: UserTalkCell.reuseIdentifier)
     }
+    
+    internal func configureData(_ data: [Chat]) {
+        chats = data
+    }
 }
 
 extension TalkRoomViewController: UITableViewDelegate, UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return chats.count
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UserTalkCell.reuseIdentifier, for: indexPath)
-            print(#function)
+        let data = chats[indexPath.row]
+        
+        if data.user == .user {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserTalkCell.reuseIdentifier, for: indexPath) as! UserTalkCell
+            
+            cell.configureData(data)
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: OpponentTalkCell.reuseIdentifier, for: indexPath) as! OpponentTalkCell
+            
+            cell.configureData(data)
             
             return cell
         }
