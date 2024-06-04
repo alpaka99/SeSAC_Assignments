@@ -17,9 +17,9 @@
 		CE348F1A2C0F11DC00DDAAEC /* LabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F192C0F11DC00DDAAEC /* LabelType.swift */; };
 		CE348F1C2C0F127900DDAAEC /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F1B2C0F127900DDAAEC /* ButtonType.swift */; };
 		CE348F1F2C0F1AB400DDAAEC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE348F1E2C0F1AB400DDAAEC /* SnapKit */; };
-		CE348F212C0F29A100DDAAEC /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F202C0F29A100DDAAEC /* TestViewController.swift */; };
 		CE348F262C0F2BDA00DDAAEC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F252C0F2BDA00DDAAEC /* TabBarController.swift */; };
 		CE348F282C0F2BF400DDAAEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */; };
+		CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +34,9 @@
 		CE348F172C0F10C800DDAAEC /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
 		CE348F192C0F11DC00DDAAEC /* LabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelType.swift; sourceTree = "<group>"; };
 		CE348F1B2C0F127900DDAAEC /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
-		CE348F202C0F29A100DDAAEC /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CE348F252C0F2BDA00DDAAEC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,6 @@
 				CE348F0C2C0F09D700DDAAEC /* Assets.xcassets */,
 				CE348F0E2C0F09D700DDAAEC /* LaunchScreen.storyboard */,
 				CE348F112C0F09D700DDAAEC /* Info.plist */,
-				CE348F202C0F29A100DDAAEC /* TestViewController.swift */,
 				CE348F252C0F2BDA00DDAAEC /* TabBarController.swift */,
 			);
 			path = LetsFlixProject;
@@ -91,6 +90,7 @@
 				CE348F172C0F10C800DDAAEC /* TextFieldType.swift */,
 				CE348F192C0F11DC00DDAAEC /* LabelType.swift */,
 				CE348F1B2C0F127900DDAAEC /* ButtonType.swift */,
+				CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */,
 			);
 			path = ComponentTypes;
 			sourceTree = "<group>";
@@ -188,7 +188,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE348F212C0F29A100DDAAEC /* TestViewController.swift in Sources */,
 				CE348F262C0F2BDA00DDAAEC /* TabBarController.swift in Sources */,
 				CE348F082C0F09D500DDAAEC /* LetsFlixViewController.swift in Sources */,
 				CE348F1C2C0F127900DDAAEC /* ButtonType.swift in Sources */,
@@ -197,6 +196,7 @@
 				CE348F182C0F10C800DDAAEC /* TextFieldType.swift in Sources */,
 				CE348F042C0F09D500DDAAEC /* AppDelegate.swift in Sources */,
 				CE348F062C0F09D500DDAAEC /* SceneDelegate.swift in Sources */,
+				CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

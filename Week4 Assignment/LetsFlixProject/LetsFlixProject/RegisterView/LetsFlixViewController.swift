@@ -84,6 +84,8 @@ class LetsFlixViewController: UIViewController {
             make.height.equalTo(emailTextField.snp.height)
                 .multipliedBy(1.2)
         }
+        
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
     
     private func configureBottomlabel() {
@@ -100,5 +102,13 @@ class LetsFlixViewController: UIViewController {
             make.top.equalTo(registerButton.snp.bottom)
                 .offset(16)
         }
+    }
+    
+    @objc
+    func registerButtonTapped(_ sender: UIButton) {
+        let tabBarController = TabBarController()
+        tabBarController.modalPresentationStyle = .fullScreen
+        
+        present(tabBarController, animated: true)
     }
 }
