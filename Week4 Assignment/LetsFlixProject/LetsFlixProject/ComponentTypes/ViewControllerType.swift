@@ -75,7 +75,6 @@ enum ViewControllerType: CaseIterable {
         
         nav.tabBarItem.title = self.title
         nav.tabBarItem.image = UIImage(systemName: self.systemName)
-        nav.tabBarController?.tabBar.backgroundColor = .darkGray
         
         return nav
     }

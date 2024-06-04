@@ -18,7 +18,7 @@ enum ButtonType {
         case .common(_, _):
             return .white
         case .transparentButton(_, _):
-            return .systemGray3
+            return .darkGray
         }
     }
     
@@ -55,7 +55,7 @@ enum ButtonType {
     var font: UIFont {
         switch self {
         case .common(_, _), .transparentButton(_, _):
-            return UIFont.systemFont(ofSize: 16, weight: .bold)
+            return UIFont.systemFont(ofSize: 12, weight: .bold)
         }
     }
     
@@ -67,6 +67,7 @@ enum ButtonType {
         config.title = self.title
         config.baseForegroundColor = self.titleColor
         config.image = UIImage(systemName: self.systemName)
+        config.background.backgroundColor = self.backgroundColor
         
         
         button.configuration = config

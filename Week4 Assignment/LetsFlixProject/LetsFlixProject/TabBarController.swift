@@ -8,11 +8,13 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    lazy var tabs = buildTabs()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        setViewControllers(buildTabs(), animated: true)
+        UITabBar.appearance().backgroundColor = .darkGray.withAlphaComponent(0.7)
+        setViewControllers(tabs, animated: true)
     }
     
     private func buildTabs() -> [UINavigationController] {

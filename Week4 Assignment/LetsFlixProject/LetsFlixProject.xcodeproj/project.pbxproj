@@ -21,6 +21,7 @@
 		CE348F282C0F2BF400DDAAEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */; };
 		CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */; };
 		CED954392C0F3355006D67E5 /* ImageViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954382C0F3355006D67E5 /* ImageViewType.swift */; };
+		CED9543B2C0F3E41006D67E5 /* BackgroundType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9543A2C0F3E41006D67E5 /* BackgroundType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
 		CED954382C0F3355006D67E5 /* ImageViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewType.swift; sourceTree = "<group>"; };
+		CED9543A2C0F3E41006D67E5 /* BackgroundType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				CE348F1B2C0F127900DDAAEC /* ButtonType.swift */,
 				CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */,
 				CED954382C0F3355006D67E5 /* ImageViewType.swift */,
+				CED9543A2C0F3E41006D67E5 /* BackgroundType.swift */,
 			);
 			path = ComponentTypes;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				CE348F262C0F2BDA00DDAAEC /* TabBarController.swift in Sources */,
 				CE348F082C0F09D500DDAAEC /* LetsFlixViewController.swift in Sources */,
+				CED9543B2C0F3E41006D67E5 /* BackgroundType.swift in Sources */,
 				CE348F1C2C0F127900DDAAEC /* ButtonType.swift in Sources */,
 				CE348F282C0F2BF400DDAAEC /* HomeViewController.swift in Sources */,
 				CE348F1A2C0F11DC00DDAAEC /* LabelType.swift in Sources */,
