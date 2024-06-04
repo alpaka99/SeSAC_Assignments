@@ -45,6 +45,17 @@ enum ButtonType {
         }
     }
     
+    var attributedTitle: AttributedString {
+        switch self {
+        case .common(_, let text), .transparentButton(_, let text):
+            var attributeContainer = AttributeContainer()
+            attributeContainer.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            attributeContainer.foregroundColor = self.titleColor
+            let attributedString = AttributedString(text, attributes: attributeContainer)
+            return attributedString
+        }
+    }
+    
     var cornerRadius: CGFloat {
         switch self {
         case .common(_, _), .transparentButton(_, _):
@@ -64,7 +75,7 @@ enum ButtonType {
         
         var config = UIButton.Configuration.plain()
         
-        config.title = self.title
+        config.attributedTitle = self.attributedTitle
         config.baseForegroundColor = self.titleColor
         config.image = UIImage(systemName: self.systemName)
         config.background.backgroundColor = self.backgroundColor

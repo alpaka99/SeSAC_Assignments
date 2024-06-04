@@ -14,6 +14,9 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         UITabBar.appearance().backgroundColor = .darkGray.withAlphaComponent(0.7)
+        UITabBar.appearance().tintColor = .white
+        
+        
         setViewControllers(tabs, animated: true)
     }
     

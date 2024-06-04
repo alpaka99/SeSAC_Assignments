@@ -35,6 +35,8 @@ final class HomeViewController: UIViewController {
         configureHierarchy()
         
         configureLayout()
+        
+        configureUI()
     }
     
     private func configureHierarchy() {
@@ -69,10 +71,6 @@ final class HomeViewController: UIViewController {
     }
     
     func configureButtonStackLayout() {
-        buttonStack.axis = .horizontal
-        buttonStack.distribution = .fillEqually
-        buttonStack.spacing = 16
-        
         buttonStack.snp.makeConstraints { make in
             make.bottom.horizontalEdges.equalTo(mainPoster)
                 .inset(8)
@@ -103,9 +101,7 @@ final class HomeViewController: UIViewController {
     }
     
     func configureBottomPosterStack() {
-        bottomPosterStack.axis = .horizontal
-        bottomPosterStack.spacing = 8
-        bottomPosterStack.distribution = .fillEqually
+        
         
         bottomPosterStack.snp.makeConstraints { make in
             make.top.equalTo(bottomLabel.snp.bottom)
@@ -115,5 +111,15 @@ final class HomeViewController: UIViewController {
             make.bottom.equalTo(bottomBackground)
                 .inset(8)
         }
+    }
+    
+    private func configureUI() {
+        buttonStack.axis = .horizontal
+        buttonStack.distribution = .fillEqually
+        buttonStack.spacing = 8
+        
+        bottomPosterStack.axis = .horizontal
+        bottomPosterStack.spacing = 8
+        bottomPosterStack.distribution = .fillEqually
     }
 }

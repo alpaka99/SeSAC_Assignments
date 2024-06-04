@@ -30,12 +30,12 @@ class LetsFlixViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .black
         
         configureHierarchy()
         
         configureLayouts()
         
+        configureUI()
     }
 
     
@@ -64,9 +64,6 @@ class LetsFlixViewController: UIViewController {
     }
     
     private func configureTextFieldsLayout() {
-        letsFlixStack.axis = .vertical
-        letsFlixStack.spacing = 16
-        letsFlixStack.distribution = .fillEqually
         letsFlixStack.snp.makeConstraints { make in
             make.center.equalTo(view.snp.center)
             make.width.equalTo(view.snp.width)
@@ -102,6 +99,16 @@ class LetsFlixViewController: UIViewController {
             make.top.equalTo(registerButton.snp.bottom)
                 .offset(16)
         }
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = .black
+        
+        letsFlixStack.axis = .vertical
+        letsFlixStack.spacing = 16
+        letsFlixStack.distribution = .fillEqually
+        
+        switchButton.onTintColor = .systemRed
     }
     
     @objc

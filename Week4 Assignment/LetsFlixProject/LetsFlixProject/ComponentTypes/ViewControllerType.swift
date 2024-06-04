@@ -51,6 +51,15 @@ enum ViewControllerType: CaseIterable {
         }
     }
     
+    var titleColor: UIColor {
+        switch self {
+        case .home(_):
+            return .white
+        case .new, .saved:
+            return .black
+        }
+    }
+    
     var systemName: String {
         switch self {
         case .home(_):
@@ -76,6 +85,7 @@ enum ViewControllerType: CaseIterable {
         nav.tabBarItem.title = self.title
         nav.tabBarItem.image = UIImage(systemName: self.systemName)
         
+        nav.navigationBar.titleTextAttributes = [.foregroundColor: self.titleColor]
         return nav
     }
 }
