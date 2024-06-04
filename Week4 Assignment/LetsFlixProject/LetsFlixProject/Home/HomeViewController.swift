@@ -17,7 +17,7 @@ final class HomeViewController: UIViewController {
     lazy var buttonStack: UIStackView = UIStackView(arrangedSubviews: [playButton, savedButton])
     
     let bottomBackground: UIView = BackgroundType.colored.build()
-    let bottomLabel: UILabel = LabelType.title(LabelConstants.homeCategoryLabel).build()
+    let bottomLabel: UILabel = LabelType.title(LabelConstants.homeBottomLabel).build()
     let firstPoster: UIImageView = ImageViewType.poster(ImageViewConstants.firstPosterImageName).build()
     let secondPoster: UIImageView = ImageViewType.poster(ImageViewConstants.secondPosterImageName).build()
     let thirdPoster: UIImageView = ImageViewType.poster(ImageViewConstants.thirdPosterImageName).build()
