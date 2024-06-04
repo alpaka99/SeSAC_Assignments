@@ -9,18 +9,18 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
-    let mainPoster: UIImageView = ImageViewType.poster("노량").build()
+    let mainPoster: UIImageView = ImageViewType.poster(ImageViewConstants.mainPosterImageName).build()
     
-    let categoryLabel: UILabel = LabelType.information("응원하고픈 • 흥미진진 • 사극 • 전투 • 한국작품").build()
-    let playButton: UIButton = ButtonType.common("play.fill", "재생").build()
-    let savedButton: UIButton = ButtonType.transparentButton("plus", "내가 찜한 리스트").build()
+    let categoryLabel: UILabel = LabelType.information(LabelConstants.homeCategoryLabel).build()
+    let playButton: UIButton = ButtonType.common(ButtonConstants.playButtonImageName, ButtonConstants.playButtonTitle).build()
+    let savedButton: UIButton = ButtonType.transparentButton(ButtonConstants.savedButtonImageName, ButtonConstants.savedButtonTitle ).build()
     lazy var buttonStack: UIStackView = UIStackView(arrangedSubviews: [playButton, savedButton])
     
     let bottomBackground: UIView = BackgroundType.colored.build()
-    let bottomLabel: UILabel = LabelType.title("지금 뜨는 콘텐츠").build()
-    let firstPoster: UIImageView = ImageViewType.poster("더퍼스트슬램덩크").build()
-    let secondPoster: UIImageView = ImageViewType.poster("오펜하이머").build()
-    let thirdPoster: UIImageView = ImageViewType.poster("스즈메의문단속").build()
+    let bottomLabel: UILabel = LabelType.title(LabelConstants.homeCategoryLabel).build()
+    let firstPoster: UIImageView = ImageViewType.poster(ImageViewConstants.firstPosterImageName).build()
+    let secondPoster: UIImageView = ImageViewType.poster(ImageViewConstants.secondPosterImageName).build()
+    let thirdPoster: UIImageView = ImageViewType.poster(ImageViewConstants.thirdPosterImageName).build()
     lazy var bottomPosterStack: UIStackView = UIStackView(arrangedSubviews: [
         firstPoster,
         secondPoster,

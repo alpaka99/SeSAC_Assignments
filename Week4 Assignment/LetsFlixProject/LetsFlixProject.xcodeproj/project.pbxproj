@@ -22,6 +22,7 @@
 		CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */; };
 		CED954392C0F3355006D67E5 /* ImageViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954382C0F3355006D67E5 /* ImageViewType.swift */; };
 		CED9543B2C0F3E41006D67E5 /* BackgroundType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9543A2C0F3E41006D67E5 /* BackgroundType.swift */; };
+		CED954842C0FCED8006D67E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954832C0FCED8006D67E5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
 		CED954382C0F3355006D67E5 /* ImageViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewType.swift; sourceTree = "<group>"; };
 		CED9543A2C0F3E41006D67E5 /* BackgroundType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundType.swift; sourceTree = "<group>"; };
+		CED954832C0FCED8006D67E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		CE348F022C0F09D500DDAAEC /* LetsFlixProject */ = {
 			isa = PBXGroup;
 			children = (
+				CED954822C0FCEC4006D67E5 /* Constatnts */,
 				CE348F242C0F2BB000DDAAEC /* Home */,
 				CE348F232C0F2BA300DDAAEC /* RegisterView */,
 				CE348F222C0F2A5C00DDAAEC /* ComponentTypes */,
@@ -115,6 +118,14 @@
 				CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		CED954822C0FCEC4006D67E5 /* Constatnts */ = {
+			isa = PBXGroup;
+			children = (
+				CED954832C0FCED8006D67E5 /* Constants.swift */,
+			);
+			path = Constatnts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 				CED954392C0F3355006D67E5 /* ImageViewType.swift in Sources */,
 				CE348F062C0F09D500DDAAEC /* SceneDelegate.swift in Sources */,
 				CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */,
+				CED954842C0FCED8006D67E5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

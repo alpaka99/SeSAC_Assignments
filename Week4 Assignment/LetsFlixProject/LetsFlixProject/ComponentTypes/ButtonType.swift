@@ -10,8 +10,8 @@ import UIKit
 enum ButtonType {
     static let type = UIButton.self
     
-    case common(String, String)
-    case transparentButton(String, String)
+    case common(String?, String?)
+    case transparentButton(String?, String?)
     
     var backgroundColor: UIColor {
         switch self {
@@ -34,25 +34,35 @@ enum ButtonType {
     var systemName: String {
         switch self {
         case .common(let imageName, _), .transparentButton(let imageName, _):
-            return imageName
+            if let imageName = imageName {
+                return imageName
+            }
+            return ""
         }
     }
     
     var title: String {
         switch self {
         case .common(_, let text), .transparentButton(_, let text):
-            return text
+            if let text = text {
+                return text
+            }
+            return ""
         }
     }
     
-    var attributedTitle: AttributedString {
+    var attributedTitle: AttributedString? {
         switch self {
         case .common(_, let text), .transparentButton(_, let text):
-            var attributeContainer = AttributeContainer()
-            attributeContainer.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-            attributeContainer.foregroundColor = self.titleColor
-            let attributedString = AttributedString(text, attributes: attributeContainer)
-            return attributedString
+            if let text = text {
+                var attributeContainer = AttributeContainer()
+                attributeContainer.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+                attributeContainer.foregroundColor = self.titleColor
+                let attributedString = AttributedString(text, attributes: attributeContainer)
+                return attributedString
+            } else {
+                return nil
+            }
         }
     }
     

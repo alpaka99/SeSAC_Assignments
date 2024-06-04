@@ -11,19 +11,19 @@ import SnapKit
 
 class LetsFlixViewController: UIViewController {
 
-    let letsFilxTitle: UILabel = LabelType.letsFlixTitle("LETSFLIX").build()
+    let letsFilxTitle: UILabel = LabelType.letsFlixTitle(LabelConstants.letsFlixTitle).build()
     
-    let emailTextField: UITextField = TextFieldType.register("이메일 주소 또는 전화번호").build()
-    let passwordTextField: UITextField = TextFieldType.register("비밀번호").build()
-    let nicknameTextField: UITextField = TextFieldType.register("닉네임").build()
-    let locationTextField: UITextField = TextFieldType.register("위치").build()
-    let couponTextField: UITextField = TextFieldType.register("추천 코드 입력").build()
+    let emailTextField: UITextField = TextFieldType.register(TextFieldConstants.emailPlaceholder).build()
+    let passwordTextField: UITextField = TextFieldType.register(TextFieldConstants.passwordPlaceholder).build()
+    let nicknameTextField: UITextField = TextFieldType.register(TextFieldConstants.nicknamePlaceholder).build()
+    let locationTextField: UITextField = TextFieldType.register(TextFieldConstants.locationPlaceholder).build()
+    let couponTextField: UITextField = TextFieldType.register(TextFieldConstants.couponTextField).build()
     lazy var letsFlixStack: UIStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, nicknameTextField, locationTextField, couponTextField])
     
-    let registerButton: UIButton = ButtonType.common("", "회원가입").build()
+    let registerButton: UIButton = ButtonType.common(nil, ButtonConstants.registerButtonTitle).build()
     
     
-    let bottomLabel: UILabel = LabelType.title("추가 정보 입력").build()
+    let bottomLabel: UILabel = LabelType.title(LabelConstants.letsFlixBottomTitle).build()
     let switchButton: UISwitch = UISwitch()
     
     
