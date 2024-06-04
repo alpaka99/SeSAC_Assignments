@@ -20,10 +20,16 @@ class ViewController: UIViewController {
         navigationItem.title = "General Alert"
         configureTableView()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationAlertShown), name: NSNotification.Name("showNotificationAlert"), object: nil)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showProtocolAlert(indexPath.row, completion: deleteData)
+//        showProtocolAlert(indexPath.row, completion: deleteData)
+    }
+    
+    @objc
+    func notificationAlertShown(_ notification: UNNotification) {
+        print(#function)
     }
 }
 
@@ -34,6 +40,8 @@ protocol GeneralAlert {
     var data: [DataType] { get set }
     
     func showProtocolAlert(_ index: Int, completion: @escaping (Int) -> ())
+    
+    func showNotificationAlert(_ index: Int)
 }
 
 
@@ -61,5 +69,10 @@ extension ViewController: GeneralAlert {
     func deleteData(_ index: Int) {
         data.remove(at: index)
         tableView.reloadData()
+    }
+    
+    
+    func showNotificationAlert(_ index: Int) {
+        NotificationCenter.default.post(name: NSNotification.Name("showNotificationAlert"), object: index)
     }
 }
