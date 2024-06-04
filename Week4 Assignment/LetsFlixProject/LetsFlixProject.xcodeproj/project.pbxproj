@@ -20,6 +20,7 @@
 		CE348F262C0F2BDA00DDAAEC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F252C0F2BDA00DDAAEC /* TabBarController.swift */; };
 		CE348F282C0F2BF400DDAAEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */; };
 		CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */; };
+		CED954392C0F3355006D67E5 /* ImageViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954382C0F3355006D67E5 /* ImageViewType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		CE348F252C0F2BDA00DDAAEC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE348F272C0F2BF400DDAAEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
+		CED954382C0F3355006D67E5 /* ImageViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				CE348F192C0F11DC00DDAAEC /* LabelType.swift */,
 				CE348F1B2C0F127900DDAAEC /* ButtonType.swift */,
 				CEA4A6302C0F2E3800B9380B /* ViewControllerType.swift */,
+				CED954382C0F3355006D67E5 /* ImageViewType.swift */,
 			);
 			path = ComponentTypes;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				CE348F1A2C0F11DC00DDAAEC /* LabelType.swift in Sources */,
 				CE348F182C0F10C800DDAAEC /* TextFieldType.swift in Sources */,
 				CE348F042C0F09D500DDAAEC /* AppDelegate.swift in Sources */,
+				CED954392C0F3355006D67E5 /* ImageViewType.swift in Sources */,
 				CE348F062C0F09D500DDAAEC /* SceneDelegate.swift in Sources */,
 				CEA4A6312C0F2E3800B9380B /* ViewControllerType.swift in Sources */,
 			);
