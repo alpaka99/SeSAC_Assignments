@@ -20,6 +20,7 @@
 		CED954EA2C1053D0006D67E5 /* MovieRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */; };
 		CED954EC2C1059C7006D67E5 /* MovieRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */; };
 		CED954F02C105E00006D67E5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */; };
+		CED954F32C1064D7006D67E5 /* DailyBoxOffices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954F22C1064D7006D67E5 /* DailyBoxOffices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankingViewController.swift; sourceTree = "<group>"; };
 		CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankingCell.swift; sourceTree = "<group>"; };
 		CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CED954F22C1064D7006D67E5 /* DailyBoxOffices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBoxOffices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		CED954C62C101AC7006D67E5 /* Day17Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CED954F12C1064C0006D67E5 /* Models */,
 				CED954EE2C105DEA006D67E5 /* Extension */,
 				CED954ED2C105DD6006D67E5 /* Views */,
 				CED954C72C101AC7006D67E5 /* AppDelegate.swift */,
@@ -116,6 +119,14 @@
 				CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CED954F12C1064C0006D67E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CED954F22C1064D7006D67E5 /* DailyBoxOffices.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				CED954E22C101C0A006D67E5 /* TabBarController.swift in Sources */,
 				CED954EC2C1059C7006D67E5 /* MovieRankingCell.swift in Sources */,
 				CED954F02C105E00006D67E5 /* UITableViewCell+Extension.swift in Sources */,
+				CED954F32C1064D7006D67E5 /* DailyBoxOffices.swift in Sources */,
 				CED954E72C102EAC006D67E5 /* LottoBallsView.swift in Sources */,
 				CED954C82C101AC7006D67E5 /* AppDelegate.swift in Sources */,
 				CED954E52C101EB5006D67E5 /* LottoHeaderView.swift in Sources */,

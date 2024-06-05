@@ -59,20 +59,23 @@ final class MovieRankingCell: UITableViewCell {
     
     private func configureUI() {
         ranking.backgroundColor = .white
-        ranking.text = "20"
         ranking.textAlignment = .center
         ranking.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
-        movieTitle.text = "더퍼스트슬램덩크"
         movieTitle.numberOfLines = 1
         movieTitle.textColor = .white
         movieTitle.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
-        releaseDate.text = "\(Date.now.formatted())"
         releaseDate.textColor = .white
         releaseDate.textAlignment = .right
         
         self.backgroundColor = .clear
+    }
+    
+    internal func configureData(_ data: MovieInfo) {
+        ranking.text = data.rank
+        movieTitle.text = data.movieNm
+        releaseDate.text = data.openDt
     }
     
 }
