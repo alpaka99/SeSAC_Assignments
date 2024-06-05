@@ -27,7 +27,7 @@ final class MovieRankingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        fetchData(getYesterdayDate())
         configureHierarchy()
         configureLayout()
         configureUI()
@@ -98,8 +98,8 @@ final class MovieRankingViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    private func fetchData() {
-        if let date = textField.text {
+    private func fetchData(_ date: String?) {
+        if let date = date {
             let url = urlPrefix+date
             AF.request(url).response { [weak self] response in
                 switch response.result {
@@ -129,13 +129,17 @@ final class MovieRankingViewController: UIViewController {
     
     @objc
     private func textFieldSubmitted(_ sender: UITextField) {
-        fetchData()
+        if let text = textField.text {
+            fetchData(text)
+        }
         view.endEditing(true)
     }
     
     @objc
     private func searchButtonTapped(_ sender: UIButton) {
-        fetchData()
+        if let text = textField.text {
+            fetchData(text)
+        }
         view.endEditing(true)
     }
     
@@ -146,6 +150,23 @@ final class MovieRankingViewController: UIViewController {
         ac.addAction(conform)
         
         present(ac, animated: true)
+    }
+    
+    private func getYesterdayDate() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        
+        var dayComponent = DateComponents()
+        dayComponent.day = -1
+        let calendar = Calendar.current
+        let yesterday = calendar.date(byAdding: dayComponent, to: Date.now)
+        
+        if let yesterday = yesterday {
+            let yesterdayString = dateFormatter.string(from: yesterday)
+            return yesterdayString
+        }
+        
+        return nil
     }
 }
 
@@ -183,7 +204,7 @@ enum FailAlertType {
     var message: String {
         switch self {
         case .unknown:
-            return "알 수 없는 에러가 발생했습니다. 다시 시도해주세요"
+            return "오류가 발생했습니다. 다시 시도해주세요"
         case .unsupportedDate:
             return "데이터가 없는 날짜입니다. 다른 날짜를 검색해주세요"
         case .notIntError:

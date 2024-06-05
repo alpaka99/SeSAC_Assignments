@@ -99,6 +99,7 @@ final class LottoViewController: UIViewController {
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.borderWidth = 2
         textField.textAlignment = .center
+        textField.text = "986"
         textField.addTarget(self, action: #selector(textFieldSubmitted), for: .editingDidEndOnExit)
         
         resultLabelStack.axis = .horizontal
@@ -120,6 +121,7 @@ final class LottoViewController: UIViewController {
         drawNumberPickerView.dataSource = self
         
         drawNumberPickerView.backgroundColor = .systemGray3
+        drawNumberPickerView.selectRow(985, inComponent: 0, animated: true)
 
     }
     
