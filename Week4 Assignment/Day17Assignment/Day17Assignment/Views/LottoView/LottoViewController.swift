@@ -8,7 +8,7 @@
 import UIKit
 
 import Alamofire
-
+// 오 캐싱 아이디어 재밌겠다... -> 이건 따로 객체를 둬서 해야겠는데?
 final class LottoViewController: UIViewController {
     private let textField: UITextField = UITextField()
     

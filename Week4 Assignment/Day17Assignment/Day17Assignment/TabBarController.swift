@@ -21,7 +21,12 @@ final class TabBarController: UITabBarController {
         nav2.tabBarItem.title = "영화"
         nav2.tabBarItem.image = UIImage(systemName: "theatermasks.fill")
         
-        setViewControllers([nav2, nav1], animated: true)
+        let vc3 = WeatherViewController()
+        let nav3 = UINavigationController(rootViewController: vc3)
+        nav3.tabBarItem.title = "날씨"
+        nav3.tabBarItem.image = UIImage(systemName: "sun.max.fill")
+        
+        setViewControllers([nav3, nav2, nav1], animated: true)
     }
     
     
