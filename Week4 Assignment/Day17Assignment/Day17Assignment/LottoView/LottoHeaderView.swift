@@ -55,8 +55,12 @@ final class LottoHeaderView: UIView {
     
     private func configureUI() {
         title.text = "당첨 번호 안내"
-        drawDate.text = "\(Date.now) 추첨"
+        
         drawDate.textAlignment = .right
         divider.backgroundColor = .systemGray4
+    }
+    
+    internal func configureData(_ data: LottoInfo) {
+        drawDate.text = "\(data.drwNoDate) 추첨"
     }
 }

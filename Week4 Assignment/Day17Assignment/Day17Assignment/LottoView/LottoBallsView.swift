@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 
+// MARK: 공들을 전부 하나의 type으로 만들어줄 수 있지 않을까?
 final class LottoBallsView: UIView {
     let firstBall: UILabel = UILabel()
     let secondBall: UILabel = UILabel()
@@ -37,7 +38,7 @@ final class LottoBallsView: UIView {
         configureHierarchy()
         configureLayout()
         configureUI()
-        configureData()
+        configureData(nil)
     }
     
     required init?(coder: NSCoder) {
@@ -55,20 +56,17 @@ final class LottoBallsView: UIView {
     }
     
     private func configureLayout() {
-        ballStack.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            make.height.equalTo(ballStack.snp.width)
-                .multipliedBy(0.1)
-        }
-        
-        
         balls.forEach { ball in
             ball.snp.makeConstraints { make in
-                make.width.equalTo(ballStack.snp.width)
+                make.width.equalTo(self.snp.width)
                     .multipliedBy(0.1)
                 make.height.equalTo(ball.snp.width)
                     .multipliedBy(1)
             }
+        }
+        
+        ballStack.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
@@ -82,18 +80,67 @@ final class LottoBallsView: UIView {
             
             ball.textAlignment = .center
             ball.clipsToBounds = true
-            ball.backgroundColor = .systemRed
             ball.font = .systemFont(ofSize: 16, weight: .bold)
         }
-        
+        firstBall.backgroundColor = .systemYellow
+        secondBall.backgroundColor = .systemTeal
+        thirdBall.backgroundColor = .systemTeal
+        fourthBall.backgroundColor = .systemPink
+        fifthBall.backgroundColor = .systemPink
+        sixthBall.backgroundColor  = .systemGray
         plusBall.backgroundColor = .clear
+        bonusBall.backgroundColor = .systemGray
+        
         plusBall.textColor = .black
     }
     
-    private func configureData() {
-        balls.forEach { ball in
-            ball.text = "45"
+    internal func configureData(_ data: LottoInfo?) {
+        if let data = data {
+            firstBall.text = String(data.drwtNo1)
+            secondBall.text = String(data.drwtNo2)
+            thirdBall.text = String(data.drwtNo3)
+            fourthBall.text = String(data.drwtNo4)
+            fifthBall.text = String(data.drwtNo5)
+            sixthBall.text = String(data.drwtNo6)
+            bonusBall.text = String(data.bnusNo)
+        } else {
+            balls.forEach { ball in
+                ball.text = "?"
+            }
         }
         plusBall.text = "+"
+    }
+}
+
+
+enum BallType: CaseIterable {
+    case first
+    case second
+    case third
+    case fourth
+    case fifth
+    case sixth
+    case plus
+    case bonus
+    
+    var key: String {
+        switch self {
+        case .first:
+            return "drwtNo1"
+        case .second:
+            return "drwtNo2"
+        case .third:
+            return "drwtNo3"
+        case .fourth:
+            return "drwtNo4"
+        case .fifth:
+            return "drwtNo5"
+        case .sixth:
+            return "drwtNo6"
+        case .plus:
+            return "plus"
+        case .bonus:
+            return "bnusNo"
+        }
     }
 }

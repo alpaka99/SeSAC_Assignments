@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Alamofire
+
 class LottoViewController: UIViewController {
     let textField: UITextField = UITextField()
     
@@ -29,7 +31,7 @@ class LottoViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
-        configureData()
+//        configureData()
     }
     
     func configureHierarchy() {
@@ -97,6 +99,7 @@ class LottoViewController: UIViewController {
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.borderWidth = 2
         textField.textAlignment = .center
+        textField.addTarget(self, action: #selector(drawNumberSubmitted), for: .editingDidEndOnExit)
         
         resultLabelStack.axis = .horizontal
         resultLabelStack.spacing = 8
@@ -115,16 +118,49 @@ class LottoViewController: UIViewController {
         
         drawNumberPickerView.delegate = self
         drawNumberPickerView.dataSource = self
+        
+        drawNumberPickerView.backgroundColor = .systemGray3
 
     }
     
-    func configureData() {
-        drawPrefixLabel.text = "913회"
+    func configureData(_ data: LottoInfo) {
+        drawPrefixLabel.text = "\(data.drwNo)회"
+        
         drawSuffixLabel.text = "당첨번호"
         bonusLabel.text = "보너스"
+        
+        lottoHeaderView.configureData(data)
+        lottoBallsView.configureData(data)
+        
+    }
+    
+    @objc
+    func drawNumberSubmitted(_ sender: UITextField) {
+        if let text = sender.text, let _ = Int(text) {
+            fetchLottoData(text)
+        } else {
+            // enter int alert
+        }
+    }
+    
+    func fetchLottoData(_ drawNumber: String) {
+        let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo="+drawNumber
+        
+        AF.request(url).response { [weak self] response in
+            if let data = response.data, let decodedData = try? JSONDecoder().decode(LottoInfo.self, from: data) {
+                switch decodedData.returnValue {
+                case "success":
+                    self?.configureData(decodedData)
+                case "fail":
+                    // show fail alert
+                    break
+                default:
+                    break
+                }
+            }
+        }
     }
 }
-
 
 extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -132,13 +168,36 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 20
+        return 2000
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UILabel()
-        view.text = "\(row)"
+        view.text = "\(row) 회"
         view.textAlignment = .center
         return view
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.text = String(row)
+    }
+}
+
+struct LottoInfo: Decodable {
+    let totSellamnt: Int
+    let returnValue: String
+    let drwNoDate: String
+    let firstWinamnt: Int
+    let firstPrzwnerCo: Int
+    let firstAccumamnt: Int
+    
+    let drwNo: Int // 회차 번호
+    
+    let drwtNo1: Int
+    let drwtNo2: Int
+    let drwtNo3: Int
+    let drwtNo4: Int
+    let drwtNo5: Int
+    let drwtNo6: Int
+    let bnusNo: Int
 }
