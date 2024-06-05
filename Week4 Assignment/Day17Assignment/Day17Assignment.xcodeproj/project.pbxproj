@@ -19,6 +19,7 @@
 		CED954E72C102EAC006D67E5 /* LottoBallsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E62C102EAC006D67E5 /* LottoBallsView.swift */; };
 		CED954EA2C1053D0006D67E5 /* MovieRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */; };
 		CED954EC2C1059C7006D67E5 /* MovieRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */; };
+		CED954F02C105E00006D67E5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CED954E62C102EAC006D67E5 /* LottoBallsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBallsView.swift; sourceTree = "<group>"; };
 		CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankingViewController.swift; sourceTree = "<group>"; };
 		CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankingCell.swift; sourceTree = "<group>"; };
+		CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,8 @@
 		CED954C62C101AC7006D67E5 /* Day17Assignment */ = {
 			isa = PBXGroup;
 			children = (
-				CED954E82C1053BF006D67E5 /* MovieRanking */,
-				CED954E32C101E08006D67E5 /* LottoView */,
+				CED954EE2C105DEA006D67E5 /* Extension */,
+				CED954ED2C105DD6006D67E5 /* Views */,
 				CED954C72C101AC7006D67E5 /* AppDelegate.swift */,
 				CED954C92C101AC7006D67E5 /* SceneDelegate.swift */,
 				CED954D02C101AC9006D67E5 /* Assets.xcassets */,
@@ -97,6 +99,23 @@
 				CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */,
 			);
 			path = MovieRanking;
+			sourceTree = "<group>";
+		};
+		CED954ED2C105DD6006D67E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED954E32C101E08006D67E5 /* LottoView */,
+				CED954E82C1053BF006D67E5 /* MovieRanking */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CED954EE2C105DEA006D67E5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +200,7 @@
 				CED954EA2C1053D0006D67E5 /* MovieRankingViewController.swift in Sources */,
 				CED954E22C101C0A006D67E5 /* TabBarController.swift in Sources */,
 				CED954EC2C1059C7006D67E5 /* MovieRankingCell.swift in Sources */,
+				CED954F02C105E00006D67E5 /* UITableViewCell+Extension.swift in Sources */,
 				CED954E72C102EAC006D67E5 /* LottoBallsView.swift in Sources */,
 				CED954C82C101AC7006D67E5 /* AppDelegate.swift in Sources */,
 				CED954E52C101EB5006D67E5 /* LottoHeaderView.swift in Sources */,
