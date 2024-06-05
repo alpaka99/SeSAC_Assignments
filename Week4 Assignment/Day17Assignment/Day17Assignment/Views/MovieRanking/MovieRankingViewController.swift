@@ -86,6 +86,7 @@ final class MovieRankingViewController: UIViewController {
         searchButton.setTitle("검색", for: .normal)
         searchButton.setTitleColor(.black, for: .normal)
         searchButton.backgroundColor = .white
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         divider.backgroundColor = .white
         
@@ -93,7 +94,7 @@ final class MovieRankingViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
         tableView.register(MovieRankingCell.self, forCellReuseIdentifier: MovieRankingCell.identifier)
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .black // change to gradient
         tableView.separatorStyle = .none
     }
     
@@ -104,12 +105,23 @@ final class MovieRankingViewController: UIViewController {
                 switch response.result {
                 case .success(_):
                     if let data = response.data, let decodedData = try? JSONDecoder().decode(BoxOfficeResponse.self, from: data) {
-                        self?.boxOfficeResponse = decodedData
+                        if decodedData.boxOfficeResult.dailyBoxOfficeList.isEmpty {
+                            // show unsupported date alert
+                            self?.showAlert(.unsupportedDate)
+                            print("unsupported date")
+                        } else {
+                            self?.boxOfficeResponse = decodedData
+                        }
                     } else {
-                        print("JSON Decoding error")
+                        // show unknonw error alert
+                        self?.showAlert(.unknown)
+                        print("unknown error")
                     }
                 case .failure(let error):
-                    print(error)
+                    // show unknonw error alert
+//                    print("unknown error")
+                    self?.showAlert(.unknown)
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -118,6 +130,21 @@ final class MovieRankingViewController: UIViewController {
     @objc
     func textFieldSubmitted(_ sender: UITextField) {
         fetchData()
+        view.endEditing(true)
+    }
+    
+    @objc func searchButtonTapped(_ sender: UIButton) {
+        fetchData()
+        view.endEditing(true)
+    }
+    
+    func showAlert(_ type: FailAlertType) {
+        let ac = UIAlertController(title: type.title, message: type.message, preferredStyle: .alert)
+        
+        let conform = UIAlertAction(title: "확인", style: .default)
+        ac.addAction(conform)
+        
+        present(ac, animated: true)
     }
 }
 
@@ -137,6 +164,27 @@ extension MovieRankingViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+enum FailAlertType {
+    case unknown
+    case unsupportedDate
+    
+    var title: String {
+        switch self {
+        case .unknown, .unsupportedDate:
+            return "알림"
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .unknown:
+            return "알 수 없는 에러가 발생했습니다. 다시 시도해주세요"
+        case .unsupportedDate:
+            return "데이터가 없는 날짜입니다. 다른 날짜를 검색해주세요"
+        }
     }
 }
 
