@@ -11,16 +11,16 @@ import SnapKit
 
 // MARK: 공들을 전부 하나의 type으로 만들어줄 수 있지 않을까?
 final class LottoBallsView: UIView {
-    let firstBall: UILabel = UILabel()
-    let secondBall: UILabel = UILabel()
-    let thirdBall: UILabel = UILabel()
-    let fourthBall: UILabel = UILabel()
-    let fifthBall: UILabel = UILabel()
-    let sixthBall: UILabel = UILabel()
-    let plusBall: UILabel = UILabel()
-    let bonusBall: UILabel = UILabel()
+    private let firstBall: UILabel = UILabel()
+    private let secondBall: UILabel = UILabel()
+    private let thirdBall: UILabel = UILabel()
+    private let fourthBall: UILabel = UILabel()
+    private let fifthBall: UILabel = UILabel()
+    private let sixthBall: UILabel = UILabel()
+    private let plusBall: UILabel = UILabel()
+    private let bonusBall: UILabel = UILabel()
     
-    lazy var balls: [UILabel] = [
+    private lazy var balls: [UILabel] = [
         firstBall,
         secondBall,
         thirdBall,
@@ -30,9 +30,9 @@ final class LottoBallsView: UIView {
         plusBall,
         bonusBall
     ]
-    lazy var ballStack: UIStackView = UIStackView(arrangedSubviews: balls)
+    private lazy var ballStack: UIStackView = UIStackView(arrangedSubviews: balls)
     
-    override init(frame: CGRect) {
+    internal override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureHierarchy()
@@ -41,11 +41,11 @@ final class LottoBallsView: UIView {
         configureData(nil)
     }
     
-    required init?(coder: NSCoder) {
+    internal required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    internal override func layoutSubviews() {
         balls.forEach { ball in
             ball.layer.cornerRadius = ball.frame.width / 2
         }

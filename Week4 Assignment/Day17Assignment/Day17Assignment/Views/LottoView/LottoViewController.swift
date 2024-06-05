@@ -9,20 +9,20 @@ import UIKit
 
 import Alamofire
 
-class LottoViewController: UIViewController {
-    let textField: UITextField = UITextField()
+final class LottoViewController: UIViewController {
+    private let textField: UITextField = UITextField()
     
-    let lottoHeaderView: LottoHeaderView = LottoHeaderView()
+    private let lottoHeaderView: LottoHeaderView = LottoHeaderView()
     
-    let drawPrefixLabel: UILabel = UILabel()
-    let drawSuffixLabel: UILabel = UILabel()
-    lazy var resultLabelStack: UIStackView = UIStackView(arrangedSubviews: [drawPrefixLabel, drawSuffixLabel])
-    let lottoBallsView: LottoBallsView = LottoBallsView()
-    let bonusLabel: UILabel = UILabel()
+    private let drawPrefixLabel: UILabel = UILabel()
+    private let drawSuffixLabel: UILabel = UILabel()
+    private lazy var resultLabelStack: UIStackView = UIStackView(arrangedSubviews: [drawPrefixLabel, drawSuffixLabel])
+    private let lottoBallsView: LottoBallsView = LottoBallsView()
+    private let bonusLabel: UILabel = UILabel()
     
-    let drawNumberPickerView: UIPickerView = UIPickerView()
+    private let drawNumberPickerView: UIPickerView = UIPickerView()
     
-    override func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -31,10 +31,9 @@ class LottoViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
-//        configureData()
     }
     
-    func configureHierarchy() {
+    private func configureHierarchy() {
         view.addSubview(textField)
         view.addSubview(lottoHeaderView)
         view.addSubview(resultLabelStack)
@@ -43,7 +42,7 @@ class LottoViewController: UIViewController {
         view.addSubview(drawNumberPickerView)
     }
 
-    func configureLayout() {
+    private func configureLayout() {
         textField.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
                 .inset(16)
@@ -81,9 +80,10 @@ class LottoViewController: UIViewController {
         
         
         bonusLabel.snp.makeConstraints { make in
-            make.top.equalTo(lottoBallsView.bonusBall.snp.bottom)
+            make.top.equalTo(lottoBallsView.snp.bottom)
                 .offset(4)
-            make.centerX.equalTo(lottoBallsView.bonusBall.snp.centerX)
+            make.trailing.equalTo(lottoBallsView.snp.trailing)
+                .inset(4)
         }
         
         drawNumberPickerView.snp.makeConstraints { make in
@@ -94,12 +94,12 @@ class LottoViewController: UIViewController {
         }
     }
     
-    func configureUI() {
+    private func configureUI() {
         textField.layer.cornerRadius = 8
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.borderWidth = 2
         textField.textAlignment = .center
-        textField.addTarget(self, action: #selector(drawNumberSubmitted), for: .editingDidEndOnExit)
+        textField.addTarget(self, action: #selector(textFieldSubmitted), for: .editingDidEndOnExit)
         
         resultLabelStack.axis = .horizontal
         resultLabelStack.spacing = 8
@@ -123,10 +123,10 @@ class LottoViewController: UIViewController {
 
     }
     
-    func configureData(_ data: LottoInfo) {
+    private func configureData(_ data: LottoInfo) {
         drawPrefixLabel.text = "\(data.drwNo)회"
         
-        drawSuffixLabel.text = "당첨번호"
+        drawSuffixLabel.text = "당첨 번호"
         bonusLabel.text = "보너스"
         
         lottoHeaderView.configureData(data)
@@ -135,15 +135,18 @@ class LottoViewController: UIViewController {
     }
     
     @objc
-    func drawNumberSubmitted(_ sender: UITextField) {
-        if let text = sender.text, let _ = Int(text) {
-            fetchLottoData(text)
+    private func textFieldSubmitted(_ sender: UITextField) {
+        if let text = sender.text, let rowNumber = Int(text) {
+            fetchLottoData(text) { [weak self] in
+                self?.drawNumberPickerView.selectRow(rowNumber-1, inComponent: 0, animated: true)
+            }
         } else {
             // enter int alert
+            showAlert(.notIntError)
         }
     }
     
-    func fetchLottoData(_ drawNumber: String) {
+    private func fetchLottoData(_ drawNumber: String, completion: @escaping () -> () = {}) {
         let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo="+drawNumber
         
         AF.request(url).response { [weak self] response in
@@ -153,33 +156,49 @@ class LottoViewController: UIViewController {
                     self?.configureData(decodedData)
                 case "fail":
                     // show fail alert
+                    print("this")
+                    self?.showAlert(.unknown)
                     break
                 default:
                     break
                 }
+                
+                completion()
             }
         }
+        
+        
+    }
+    
+    private func showAlert(_ type: FailAlertType) {
+        let ac = UIAlertController(title: type.title, message: type.message, preferredStyle: .alert)
+        let conform = UIAlertAction(title: "확인", style: .default)
+        ac.addAction(conform)
+        
+        present(ac, animated: true)
     }
 }
 
 extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    internal func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    internal func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 2000
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    internal func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UILabel()
-        view.text = "\(row) 회"
+        view.text = "\(row+1) 회"
         view.textAlignment = .center
         return view
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.text = String(row)
+    internal func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        fetchLottoData(String(row+1)) { [weak self] in
+            self?.textField.text = String(row+1)
+        }
     }
 }
 

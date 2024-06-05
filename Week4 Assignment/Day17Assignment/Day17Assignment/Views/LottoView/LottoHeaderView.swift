@@ -11,11 +11,11 @@ import SnapKit
 
 final class LottoHeaderView: UIView {
     
-    let title: UILabel = UILabel()
-    let drawDate: UILabel = UILabel()
-    let divider: UIView = UIView()
+    private let title: UILabel = UILabel()
+    private let drawDate: UILabel = UILabel()
+    private let divider: UIView = UIView()
     
-    override init(frame: CGRect) {
+    internal override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureHierarchy()
@@ -23,7 +23,7 @@ final class LottoHeaderView: UIView {
         configureUI()
     }
     
-    required init?(coder: NSCoder) {
+    internal required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -60,7 +60,12 @@ final class LottoHeaderView: UIView {
         divider.backgroundColor = .systemGray4
     }
     
-    internal func configureData(_ data: LottoInfo) {
-        drawDate.text = "\(data.drwNoDate) 추첨"
+    internal func configureData(_ data: LottoInfo?) {
+        if let data = data {
+            drawDate.text = "\(data.drwNoDate) 추첨"
+        } else {
+            drawDate.text = ""
+            title.text = "어떤 로또 번호가 이번주 당첨번호일까요...?"
+        }
     }
 }

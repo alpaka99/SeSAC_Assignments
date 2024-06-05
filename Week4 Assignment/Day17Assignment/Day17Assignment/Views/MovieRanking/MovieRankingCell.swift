@@ -11,9 +11,9 @@ import SnapKit
 
 final class MovieRankingCell: UITableViewCell {
     
-    let ranking: UILabel = UILabel()
-    let movieTitle: UILabel = UILabel()
-    let releaseDate: UILabel = UILabel()
+    private let ranking: UILabel = UILabel()
+    private let movieTitle: UILabel = UILabel()
+    private let releaseDate: UILabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
