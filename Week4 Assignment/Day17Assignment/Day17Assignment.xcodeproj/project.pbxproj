@@ -17,6 +17,8 @@
 		CED954E22C101C0A006D67E5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E12C101C0A006D67E5 /* TabBarController.swift */; };
 		CED954E52C101EB5006D67E5 /* LottoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E42C101EB5006D67E5 /* LottoHeaderView.swift */; };
 		CED954E72C102EAC006D67E5 /* LottoBallsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E62C102EAC006D67E5 /* LottoBallsView.swift */; };
+		CED954EA2C1053D0006D67E5 /* MovieRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */; };
+		CED954EC2C1059C7006D67E5 /* MovieRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		CED954E12C101C0A006D67E5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CED954E42C101EB5006D67E5 /* LottoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoHeaderView.swift; sourceTree = "<group>"; };
 		CED954E62C102EAC006D67E5 /* LottoBallsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoBallsView.swift; sourceTree = "<group>"; };
+		CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankingViewController.swift; sourceTree = "<group>"; };
+		CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRankingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		CED954C62C101AC7006D67E5 /* Day17Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CED954E82C1053BF006D67E5 /* MovieRanking */,
 				CED954E32C101E08006D67E5 /* LottoView */,
 				CED954C72C101AC7006D67E5 /* AppDelegate.swift */,
 				CED954C92C101AC7006D67E5 /* SceneDelegate.swift */,
@@ -83,6 +88,15 @@
 				CED954E62C102EAC006D67E5 /* LottoBallsView.swift */,
 			);
 			path = LottoView;
+			sourceTree = "<group>";
+		};
+		CED954E82C1053BF006D67E5 /* MovieRanking */ = {
+			isa = PBXGroup;
+			children = (
+				CED954E92C1053D0006D67E5 /* MovieRankingViewController.swift */,
+				CED954EB2C1059C7006D67E5 /* MovieRankingCell.swift */,
+			);
+			path = MovieRanking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +178,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED954CC2C101AC7006D67E5 /* LottoViewController.swift in Sources */,
+				CED954EA2C1053D0006D67E5 /* MovieRankingViewController.swift in Sources */,
 				CED954E22C101C0A006D67E5 /* TabBarController.swift in Sources */,
+				CED954EC2C1059C7006D67E5 /* MovieRankingCell.swift in Sources */,
 				CED954E72C102EAC006D67E5 /* LottoBallsView.swift in Sources */,
 				CED954C82C101AC7006D67E5 /* AppDelegate.swift in Sources */,
 				CED954E52C101EB5006D67E5 /* LottoHeaderView.swift in Sources */,
