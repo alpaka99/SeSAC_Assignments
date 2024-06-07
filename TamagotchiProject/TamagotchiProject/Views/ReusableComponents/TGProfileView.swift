@@ -47,18 +47,16 @@ extension TGProfileView: CodeBaseBuildable {
         
         borderdLabel.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom)
-                .offset(4)
+                .offset(16)
             
             $0.centerX.equalTo(self.snp.centerX)
-            
-            $0.bottom.equalTo(self.snp.bottom)
-                .offset(-4)
         }
     }
     
     internal func configureUI() {
-        profileImage.clipsToBounds = true
         profileImage.layer.borderColor = UIColor.TGNavyColor.cgColor
         profileImage.layer.borderWidth = 2
+        profileImage.backgroundColor = .red
+        profileImage.image = UIImage(named: "noImage")
     }
 }

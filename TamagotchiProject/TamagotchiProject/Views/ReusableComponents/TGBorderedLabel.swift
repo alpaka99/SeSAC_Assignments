@@ -34,12 +34,12 @@ extension TGBorderedLabel: CodeBaseBuildable {
     
     internal func configureLayout() {
         labelBackground.snp.makeConstraints {
-            $0.edges.equalTo(self.snp.edges)
+            $0.center.equalTo(self.snp.center)
         }
         
         labelText.snp.makeConstraints {
             $0.edges.equalTo(labelBackground.snp.edges)
-                .inset(2)
+                .inset(4)
         }
     }
     

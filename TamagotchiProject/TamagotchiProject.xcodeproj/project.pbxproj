@@ -22,6 +22,12 @@
 		CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955312C12E714006D67E5 /* TGBorderedLabel.swift */; };
 		CED955342C12EC3A006D67E5 /* TGAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955332C12EC3A006D67E5 /* TGAlert.swift */; };
 		CED955362C12EF01006D67E5 /* TGDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955352C12EF01006D67E5 /* TGDivider.swift */; };
+		CED955392C13053E006D67E5 /* TamagotchiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955382C13053E006D67E5 /* TamagotchiViewController.swift */; };
+		CED9553B2C1360DE006D67E5 /* TGMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9553A2C1360DE006D67E5 /* TGMessageBubble.swift */; };
+		CED9553D2C136815006D67E5 /* TGButtonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9553C2C136815006D67E5 /* TGButtonTextField.swift */; };
+		CED955402C1377ED006D67E5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9553F2C1377ED006D67E5 /* SettingViewController.swift */; };
+		CED955422C137A06006D67E5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955412C137A06006D67E5 /* SettingTableViewCell.swift */; };
+		CED955452C1385DB006D67E5 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +47,12 @@
 		CED955312C12E714006D67E5 /* TGBorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGBorderedLabel.swift; sourceTree = "<group>"; };
 		CED955332C12EC3A006D67E5 /* TGAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGAlert.swift; sourceTree = "<group>"; };
 		CED955352C12EF01006D67E5 /* TGDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGDivider.swift; sourceTree = "<group>"; };
+		CED955382C13053E006D67E5 /* TamagotchiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiViewController.swift; sourceTree = "<group>"; };
+		CED9553A2C1360DE006D67E5 /* TGMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGMessageBubble.swift; sourceTree = "<group>"; };
+		CED9553C2C136815006D67E5 /* TGButtonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGButtonTextField.swift; sourceTree = "<group>"; };
+		CED9553F2C1377ED006D67E5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CED955412C137A06006D67E5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +136,9 @@
 		CED9552B2C12DC1E006D67E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CED955432C1385C9006D67E5 /* ChangeNameViewController */,
+				CED9553E2C1377DD006D67E5 /* SettingViewController */,
+				CED955372C13052D006D67E5 /* TamagotchiViewController */,
 				CED955302C12E6AC006D67E5 /* ReusableComponents */,
 				CED955212C12D464006D67E5 /* HomeViewController */,
 			);
@@ -137,8 +152,35 @@
 				CED955312C12E714006D67E5 /* TGBorderedLabel.swift */,
 				CED955332C12EC3A006D67E5 /* TGAlert.swift */,
 				CED955352C12EF01006D67E5 /* TGDivider.swift */,
+				CED9553C2C136815006D67E5 /* TGButtonTextField.swift */,
 			);
 			path = ReusableComponents;
+			sourceTree = "<group>";
+		};
+		CED955372C13052D006D67E5 /* TamagotchiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CED955382C13053E006D67E5 /* TamagotchiViewController.swift */,
+				CED9553A2C1360DE006D67E5 /* TGMessageBubble.swift */,
+			);
+			path = TamagotchiViewController;
+			sourceTree = "<group>";
+		};
+		CED9553E2C1377DD006D67E5 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CED9553F2C1377ED006D67E5 /* SettingViewController.swift */,
+				CED955412C137A06006D67E5 /* SettingTableViewCell.swift */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
+		CED955432C1385C9006D67E5 /* ChangeNameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */,
+			);
+			path = ChangeNameViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,16 +259,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED9553D2C136815006D67E5 /* TGButtonTextField.swift in Sources */,
 				CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */,
 				CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */,
+				CED955402C1377ED006D67E5 /* SettingViewController.swift in Sources */,
+				CED955392C13053E006D67E5 /* TamagotchiViewController.swift in Sources */,
 				CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */,
 				CED955342C12EC3A006D67E5 /* TGAlert.swift in Sources */,
 				CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */,
+				CED9553B2C1360DE006D67E5 /* TGMessageBubble.swift in Sources */,
 				CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */,
+				CED955422C137A06006D67E5 /* SettingTableViewCell.swift in Sources */,
 				CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */,
 				CED955262C12D48A006D67E5 /* Reusable.swift in Sources */,
 				CED955362C12EF01006D67E5 /* TGDivider.swift in Sources */,
 				CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */,
+				CED955452C1385DB006D67E5 /* ChangeNameViewController.swift in Sources */,
 				CED9552A2C12D980006D67E5 /* TamagotchiCell.swift in Sources */,
 				CED955282C12D4E9006D67E5 /* Constants.swift in Sources */,
 			);
