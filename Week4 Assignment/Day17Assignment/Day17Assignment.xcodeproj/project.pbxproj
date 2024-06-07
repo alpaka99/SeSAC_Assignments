@@ -22,6 +22,7 @@
 		CED954F02C105E00006D67E5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */; };
 		CED954F32C1064D7006D67E5 /* DailyBoxOffices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954F22C1064D7006D67E5 /* DailyBoxOffices.swift */; };
 		CED954F92C1080D8006D67E5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954F82C1080D8006D67E5 /* WeatherViewController.swift */; };
+		CED954FB2C108BC3006D67E5 /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED954FA2C108BC3006D67E5 /* WeatherHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CED954EF2C105E00006D67E5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CED954F22C1064D7006D67E5 /* DailyBoxOffices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBoxOffices.swift; sourceTree = "<group>"; };
 		CED954F82C1080D8006D67E5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		CED954FA2C108BC3006D67E5 /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				CED954F82C1080D8006D67E5 /* WeatherViewController.swift */,
+				CED954FA2C108BC3006D67E5 /* WeatherHeaderView.swift */,
 			);
 			path = WeatherView;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				CED954C82C101AC7006D67E5 /* AppDelegate.swift in Sources */,
 				CED954E52C101EB5006D67E5 /* LottoHeaderView.swift in Sources */,
 				CED954CA2C101AC7006D67E5 /* SceneDelegate.swift in Sources */,
+				CED954FB2C108BC3006D67E5 /* WeatherHeaderView.swift in Sources */,
 				CED954F92C1080D8006D67E5 /* WeatherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ import SnapKit
 
 final class WeatherViewController: UIViewController {
     let dateLabel: UILabel = UILabel()
-    let headerView: UIView = UIView()
+    let headerView: WeatherHeaderView = WeatherHeaderView()
     let tableView: UITableView = UITableView()
     
     internal override func viewDidLoad() {
@@ -54,9 +54,9 @@ final class WeatherViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .systemOrange
         dateLabel.text = Date.now.description
-        headerView.backgroundColor = .systemBlue
-        tableView.backgroundColor = .systemMint
         
+        
+        headerView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
     }
 }
@@ -69,4 +69,29 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
+}
+
+// WeatherHeaderView Delegate
+protocol WeatherHeaderViewDelegate {
+    func locationButtonTapped()
+    
+    func shareButtonTapped()
+    
+    func refreshButtonTapped()
+}
+
+extension WeatherViewController: WeatherHeaderViewDelegate {
+    internal func locationButtonTapped() {
+        print("location button pressed")
+    }
+    
+    internal func shareButtonTapped() {
+        print("share button pressed")
+    }
+    
+    internal func refreshButtonTapped() {
+        print("refresh button pressed")
+    }
+    
+    
 }
