@@ -7,11 +7,9 @@
 
 import UIKit
 
-final class TamagotchiProfileView: UIView {
+final class TGProfileView: UIView {
     let profileImage: UIImageView = UIImageView()
-//    let nameBackground: UIView = UIView()
-//    let name: UILabel = UILabel()
-    let borderdLabel: BorderedLabel = BorderedLabel()
+    let borderdLabel: TGBorderedLabel = TGBorderedLabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +30,7 @@ final class TamagotchiProfileView: UIView {
     }
 }
 
-extension TamagotchiProfileView: CodeBaseBuildable {
+extension TGProfileView: CodeBaseBuildable {
     internal func configureHierarchy() {
         self.addSubview(profileImage)
         self.addSubview(borderdLabel)
@@ -60,7 +58,7 @@ extension TamagotchiProfileView: CodeBaseBuildable {
     
     internal func configureUI() {
         profileImage.clipsToBounds = true
-        profileImage.layer.borderColor = UIColor.black.cgColor
-        profileImage.layer.borderWidth = 1
+        profileImage.layer.borderColor = UIColor.TGNavyColor.cgColor
+        profileImage.layer.borderWidth = 2
     }
 }

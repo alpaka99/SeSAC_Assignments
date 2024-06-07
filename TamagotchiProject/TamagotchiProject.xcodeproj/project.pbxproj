@@ -17,9 +17,9 @@
 		CED955262C12D48A006D67E5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955252C12D48A006D67E5 /* Reusable.swift */; };
 		CED955282C12D4E9006D67E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955272C12D4E9006D67E5 /* Constants.swift */; };
 		CED9552A2C12D980006D67E5 /* TamagotchiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955292C12D980006D67E5 /* TamagotchiCell.swift */; };
-		CED9552D2C12DC35006D67E5 /* TamagotchiProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552C2C12DC35006D67E5 /* TamagotchiProfileView.swift */; };
+		CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552C2C12DC35006D67E5 /* TGProfileView.swift */; };
 		CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */; };
-		CED955322C12E714006D67E5 /* BorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955312C12E714006D67E5 /* BorderedLabel.swift */; };
+		CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955312C12E714006D67E5 /* TGBorderedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +34,9 @@
 		CED955252C12D48A006D67E5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		CED955272C12D4E9006D67E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CED955292C12D980006D67E5 /* TamagotchiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCell.swift; sourceTree = "<group>"; };
-		CED9552C2C12DC35006D67E5 /* TamagotchiProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiProfileView.swift; sourceTree = "<group>"; };
+		CED9552C2C12DC35006D67E5 /* TGProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGProfileView.swift; sourceTree = "<group>"; };
 		CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseBuildable.swift; sourceTree = "<group>"; };
-		CED955312C12E714006D67E5 /* BorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedLabel.swift; sourceTree = "<group>"; };
+		CED955312C12E714006D67E5 /* TGBorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGBorderedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +129,8 @@
 		CED955302C12E6AC006D67E5 /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
-				CED9552C2C12DC35006D67E5 /* TamagotchiProfileView.swift */,
-				CED955312C12E714006D67E5 /* BorderedLabel.swift */,
+				CED9552C2C12DC35006D67E5 /* TGProfileView.swift */,
+				CED955312C12E714006D67E5 /* TGBorderedLabel.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -212,10 +212,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */,
-				CED955322C12E714006D67E5 /* BorderedLabel.swift in Sources */,
+				CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */,
 				CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */,
 				CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */,
-				CED9552D2C12DC35006D67E5 /* TamagotchiProfileView.swift in Sources */,
+				CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */,
 				CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */,
 				CED955262C12D48A006D67E5 /* Reusable.swift in Sources */,
 				CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */,

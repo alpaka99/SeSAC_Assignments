@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class BorderedLabel: UIView {
+final class TGBorderedLabel: UIView {
     let labelBackground: UIView = UIView()
     let labelText: UILabel = UILabel()
     
@@ -26,7 +26,7 @@ final class BorderedLabel: UIView {
     }
 }
 
-extension BorderedLabel: CodeBaseBuildable {
+extension TGBorderedLabel: CodeBaseBuildable {
     internal func configureHierarchy() {
         self.addSubview(labelBackground)
         labelBackground.addSubview(labelText)
@@ -45,7 +45,7 @@ extension BorderedLabel: CodeBaseBuildable {
     
     internal func configureUI() {
         labelBackground.backgroundColor = .clear
-        labelBackground.layer.borderColor = UIColor.black.cgColor
+        labelBackground.layer.borderColor = UIColor.TGNavyColor.cgColor
         labelBackground.layer.borderWidth = 1
         labelBackground.layer.cornerRadius = 4
         
@@ -53,5 +53,6 @@ extension BorderedLabel: CodeBaseBuildable {
         labelText.numberOfLines = 1
         labelText.textAlignment = .center
         labelText.font = .systemFont(ofSize: 12, weight: .semibold)
+        labelText.textColor = UIColor.TGNavyColor
     }
 }

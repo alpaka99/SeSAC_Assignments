@@ -8,7 +8,7 @@
 import UIKit
 
 final class TamagotchiCell: UICollectionViewCell {
-    let tamagotchiProfile:TamagotchiProfileView = TamagotchiProfileView()
+    let tamagotchiProfile: TGProfileView = TGProfileView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

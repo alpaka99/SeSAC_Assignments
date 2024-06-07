@@ -69,12 +69,14 @@ extension HomeViewController: CodeBaseBuildable {
     internal func configureUI() {
         navigationItem.title = "다마고치 선택하기"
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.TGBackgroundColor
         
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
         collectionView.register(TamagotchiCell.self, forCellWithReuseIdentifier: TamagotchiCell.identifier)
+        
+        collectionView.backgroundColor = .clear
     }
 }
 
