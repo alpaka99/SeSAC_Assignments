@@ -20,6 +20,8 @@
 		CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552C2C12DC35006D67E5 /* TGProfileView.swift */; };
 		CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */; };
 		CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955312C12E714006D67E5 /* TGBorderedLabel.swift */; };
+		CED955342C12EC3A006D67E5 /* TGAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955332C12EC3A006D67E5 /* TGAlert.swift */; };
+		CED955362C12EF01006D67E5 /* TGDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955352C12EF01006D67E5 /* TGDivider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		CED9552C2C12DC35006D67E5 /* TGProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGProfileView.swift; sourceTree = "<group>"; };
 		CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseBuildable.swift; sourceTree = "<group>"; };
 		CED955312C12E714006D67E5 /* TGBorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGBorderedLabel.swift; sourceTree = "<group>"; };
+		CED955332C12EC3A006D67E5 /* TGAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGAlert.swift; sourceTree = "<group>"; };
+		CED955352C12EF01006D67E5 /* TGDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGDivider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 			children = (
 				CED9552C2C12DC35006D67E5 /* TGProfileView.swift */,
 				CED955312C12E714006D67E5 /* TGBorderedLabel.swift */,
+				CED955332C12EC3A006D67E5 /* TGAlert.swift */,
+				CED955352C12EF01006D67E5 /* TGDivider.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -214,10 +220,12 @@
 				CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */,
 				CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */,
 				CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */,
+				CED955342C12EC3A006D67E5 /* TGAlert.swift in Sources */,
 				CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */,
 				CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */,
 				CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */,
 				CED955262C12D48A006D67E5 /* Reusable.swift in Sources */,
+				CED955362C12EF01006D67E5 /* TGDivider.swift in Sources */,
 				CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */,
 				CED9552A2C12D980006D67E5 /* TamagotchiCell.swift in Sources */,
 				CED955282C12D4E9006D67E5 /* Constants.swift in Sources */,

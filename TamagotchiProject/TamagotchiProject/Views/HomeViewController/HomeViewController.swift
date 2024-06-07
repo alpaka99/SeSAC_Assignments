@@ -78,6 +78,14 @@ extension HomeViewController: CodeBaseBuildable {
         
         collectionView.backgroundColor = .clear
     }
+    
+    // MARK: modal style TGAlert 안으로 옮기기
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let ac = TGAlert()
+        ac.modalPresentationStyle = .overFullScreen
+        ac.modalTransitionStyle = .crossDissolve
+        self.present(ac, animated: true)
+    }
 }
 
 
