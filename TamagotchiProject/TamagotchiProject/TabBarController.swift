@@ -11,7 +11,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc1 = ViewController()
+        let vc1 = HomeViewController()
         let nav1 = UINavigationController(rootViewController: vc1)
         
         

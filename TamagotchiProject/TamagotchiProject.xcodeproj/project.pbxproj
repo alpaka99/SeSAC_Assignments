@@ -9,21 +9,34 @@
 /* Begin PBXBuildFile section */
 		CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955082C12CB21006D67E5 /* AppDelegate.swift */; };
 		CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */; };
-		CED9550D2C12CB21006D67E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550C2C12CB21006D67E5 /* ViewController.swift */; };
+		CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550C2C12CB21006D67E5 /* HomeViewController.swift */; };
 		CED955122C12CB23006D67E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED955112C12CB23006D67E5 /* Assets.xcassets */; };
 		CED955152C12CB23006D67E5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CED955142C12CB23006D67E5 /* Base */; };
 		CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9551C2C12CEDD006D67E5 /* TabBarController.swift */; };
+		CED955202C12D153006D67E5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CED9551F2C12D153006D67E5 /* SnapKit */; };
+		CED955262C12D48A006D67E5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955252C12D48A006D67E5 /* Reusable.swift */; };
+		CED955282C12D4E9006D67E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955272C12D4E9006D67E5 /* Constants.swift */; };
+		CED9552A2C12D980006D67E5 /* TamagotchiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955292C12D980006D67E5 /* TamagotchiCell.swift */; };
+		CED9552D2C12DC35006D67E5 /* TamagotchiProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552C2C12DC35006D67E5 /* TamagotchiProfileView.swift */; };
+		CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */; };
+		CED955322C12E714006D67E5 /* BorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955312C12E714006D67E5 /* BorderedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CED955052C12CB21006D67E5 /* TamagotchiProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED955082C12CB21006D67E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CED9550C2C12CB21006D67E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CED9550C2C12CB21006D67E5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CED955112C12CB23006D67E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CED955142C12CB23006D67E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CED955162C12CB23006D67E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CED9551C2C12CEDD006D67E5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CED955252C12D48A006D67E5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		CED955272C12D4E9006D67E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CED955292C12D980006D67E5 /* TamagotchiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCell.swift; sourceTree = "<group>"; };
+		CED9552C2C12DC35006D67E5 /* TamagotchiProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiProfileView.swift; sourceTree = "<group>"; };
+		CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseBuildable.swift; sourceTree = "<group>"; };
+		CED955312C12E714006D67E5 /* BorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED955202C12D153006D67E5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +70,69 @@
 		CED955072C12CB21006D67E5 /* TamagotchiProject */ = {
 			isa = PBXGroup;
 			children = (
+				CED9552B2C12DC1E006D67E5 /* Views */,
+				CED955242C12D483006D67E5 /* Protocols */,
+				CED955232C12D474006D67E5 /* Constants */,
+				CED955222C12D46E006D67E5 /* Extensions */,
 				CED955082C12CB21006D67E5 /* AppDelegate.swift */,
 				CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */,
-				CED9550C2C12CB21006D67E5 /* ViewController.swift */,
 				CED955112C12CB23006D67E5 /* Assets.xcassets */,
 				CED955132C12CB23006D67E5 /* LaunchScreen.storyboard */,
 				CED955162C12CB23006D67E5 /* Info.plist */,
 				CED9551C2C12CEDD006D67E5 /* TabBarController.swift */,
 			);
 			path = TamagotchiProject;
+			sourceTree = "<group>";
+		};
+		CED955212C12D464006D67E5 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CED9550C2C12CB21006D67E5 /* HomeViewController.swift */,
+				CED955292C12D980006D67E5 /* TamagotchiCell.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		CED955222C12D46E006D67E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CED955232C12D474006D67E5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CED955272C12D4E9006D67E5 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		CED955242C12D483006D67E5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CED955252C12D48A006D67E5 /* Reusable.swift */,
+				CED9552E2C12DCF1006D67E5 /* CodeBaseBuildable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CED9552B2C12DC1E006D67E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED955302C12E6AC006D67E5 /* ReusableComponents */,
+				CED955212C12D464006D67E5 /* HomeViewController */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CED955302C12E6AC006D67E5 /* ReusableComponents */ = {
+			isa = PBXGroup;
+			children = (
+				CED9552C2C12DC35006D67E5 /* TamagotchiProfileView.swift */,
+				CED955312C12E714006D67E5 /* BorderedLabel.swift */,
+			);
+			path = ReusableComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +151,9 @@
 			dependencies = (
 			);
 			name = TamagotchiProject;
+			packageProductDependencies = (
+				CED9551F2C12D153006D67E5 /* SnapKit */,
+			);
 			productName = TamagotchiProject;
 			productReference = CED955052C12CB21006D67E5 /* TamagotchiProject.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +182,9 @@
 				Base,
 			);
 			mainGroup = CED954FC2C12CB21006D67E5;
+			packageReferences = (
+				CED9551E2C12D153006D67E5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = CED955062C12CB21006D67E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,10 +211,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED9550D2C12CB21006D67E5 /* ViewController.swift in Sources */,
+				CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */,
+				CED955322C12E714006D67E5 /* BorderedLabel.swift in Sources */,
 				CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */,
 				CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */,
+				CED9552D2C12DC35006D67E5 /* TamagotchiProfileView.swift in Sources */,
 				CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */,
+				CED955262C12D48A006D67E5 /* Reusable.swift in Sources */,
+				CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */,
+				CED9552A2C12D980006D67E5 /* TamagotchiCell.swift in Sources */,
+				CED955282C12D4E9006D67E5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +441,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CED9551E2C12D153006D67E5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CED9551F2C12D153006D67E5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CED9551E2C12D153006D67E5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CED954FD2C12CB21006D67E5 /* Project object */;
 }
