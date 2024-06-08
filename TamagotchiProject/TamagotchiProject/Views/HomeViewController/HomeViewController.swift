@@ -96,6 +96,10 @@ extension HomeViewController: CodeBaseBuildable {
     
     // MARK: modal style TGAlert 안으로 옮기기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row < tamagotchiData.count {
+            let data = tamagotchiData[indexPath.row]
+            ac.configureData(data)
+        }
         present(ac, animated: true)
     }
 }
@@ -103,6 +107,7 @@ extension HomeViewController: CodeBaseBuildable {
 extension HomeViewController: TGAlertDelegate {
     func startButtonTapped() {
         let vc = TamagotchiViewController()
+//        vc.configureData()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

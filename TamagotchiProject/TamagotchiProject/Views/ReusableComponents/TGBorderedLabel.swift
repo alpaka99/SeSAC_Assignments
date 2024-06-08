@@ -55,4 +55,9 @@ extension TGBorderedLabel: CodeBaseBuildable {
         labelText.font = .systemFont(ofSize: 12, weight: .semibold)
         labelText.textColor = UIColor.TGNavyColor
     }
+    
+    internal func configureData(_ data: String) {
+        print(#function)
+        labelText.text = data
+    }
 }

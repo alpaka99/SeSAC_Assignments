@@ -7,6 +7,8 @@
 
 
 internal struct Tamagotchi {
+    static let dummyTamagotchi: Tamagotchi = Tamagotchi(name: "준비중이에요", imageNumber: 0, description: "아직 준비중인 다마고치에요")
+    
     var name: String
     var imageNumber: Int
     var description: String

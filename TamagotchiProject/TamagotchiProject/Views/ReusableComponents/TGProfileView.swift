@@ -59,4 +59,9 @@ extension TGProfileView: CodeBaseBuildable {
         profileImage.backgroundColor = .TGBackgroundColor
         profileImage.image = UIImage(named: "noImage")
     }
+    
+    internal func configureData(_ data: Tamagotchi) {
+        profileImage.image = UIImage(named: data.imageName)
+        borderdLabel.configureData(data.name)
+    }
 }

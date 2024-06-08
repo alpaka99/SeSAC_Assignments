@@ -88,6 +88,10 @@ extension TamagotchiViewController: CodeBaseBuildable {
         status.font = .systemFont(ofSize: 12, weight: .bold)
     }
     
+    func configureData(_ data: Tamagotchi) {
+        
+    }
+    
     @objc
     func settingButtonTapped(_ button: UIBarButtonItem) {
         print(#function)

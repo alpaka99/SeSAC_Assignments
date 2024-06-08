@@ -21,6 +21,7 @@ final class TGAlertViewController: UIViewController {
         cancelButton,
         actionButton
     ])
+    var tamagotchi: Tamagotchi = Tamagotchi.dummyTamagotchi
     
     weak var tgAlertDelegate: TGAlertDelegate?
         
@@ -104,7 +105,7 @@ extension TGAlertViewController: CodeBaseBuildable {
         info.textColor = .TGNavyColor
         info.font = .systemFont(ofSize: 12, weight: .semibold)
         info.textAlignment = .center
-        info.text = "아직 준비중인 다마고치에요 🌱"
+        info.text = tamagotchi.description
         
         // MARK: corner radius, border 설정, forgroundColor, tapGesture 고치기
         buttonStackView.backgroundColor = .systemGray
@@ -117,6 +118,11 @@ extension TGAlertViewController: CodeBaseBuildable {
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
     
+    internal func configureData(_ data: Tamagotchi) {
+        self.tamagotchi = data
+        tgProfile.configureData(data)
+        info.text = data.description
+    }
     
     
     @objc
