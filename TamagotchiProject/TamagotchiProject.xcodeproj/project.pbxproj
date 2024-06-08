@@ -28,6 +28,7 @@
 		CED955402C1377ED006D67E5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9553F2C1377ED006D67E5 /* SettingViewController.swift */; };
 		CED955422C137A06006D67E5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955412C137A06006D67E5 /* SettingTableViewCell.swift */; };
 		CED955452C1385DB006D67E5 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */; };
+		CED955482C14216C006D67E5 /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955472C14216C006D67E5 /* Tamagotchi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		CED9553F2C1377ED006D67E5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CED955412C137A06006D67E5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
+		CED955472C14216C006D67E5 /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		CED955072C12CB21006D67E5 /* TamagotchiProject */ = {
 			isa = PBXGroup;
 			children = (
+				CED955462C142161006D67E5 /* Models */,
 				CED9552B2C12DC1E006D67E5 /* Views */,
 				CED955242C12D483006D67E5 /* Protocols */,
 				CED955232C12D474006D67E5 /* Constants */,
@@ -183,6 +186,14 @@
 			path = ChangeNameViewController;
 			sourceTree = "<group>";
 		};
+		CED955462C142161006D67E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CED955472C14216C006D67E5 /* Tamagotchi.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -266,6 +277,7 @@
 				CED955392C13053E006D67E5 /* TamagotchiViewController.swift in Sources */,
 				CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */,
 				CED955342C12EC3A006D67E5 /* TGAlert.swift in Sources */,
+				CED955482C14216C006D67E5 /* Tamagotchi.swift in Sources */,
 				CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */,
 				CED9553B2C1360DE006D67E5 /* TGMessageBubble.swift in Sources */,
 				CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */,

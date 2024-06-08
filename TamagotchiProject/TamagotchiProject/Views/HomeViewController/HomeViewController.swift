@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-    let collectionView: UICollectionView = UICollectionView.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let collectionView: UICollectionView = UICollectionView.init(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout()
+    )
+    let tamagotchiData: [Tamagotchi] = TamagotchiData().tamagotchis
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +29,17 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCell.identifier, for: indexPath) as? TamagotchiCell else { return UICollectionViewCell() }
+        
+        guard indexPath.row < tamagotchiData.count else { return cell }
+        
+        let data = tamagotchiData[indexPath.row]
+        
+        cell.configureData(data)
         
         return cell
     }

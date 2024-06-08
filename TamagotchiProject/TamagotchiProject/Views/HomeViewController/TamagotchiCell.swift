@@ -33,7 +33,13 @@ final class TamagotchiCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        
+        tamagotchiProfile.profileImage.image = UIImage(named: "noImage")
+        tamagotchiProfile.borderdLabel.labelText.text = "준비중이에요"
+    }
+    
+    internal func configureData(_ data: Tamagotchi) {
+        tamagotchiProfile.profileImage.image = UIImage(named: data.imageName)
+        tamagotchiProfile.borderdLabel.labelText.text = data.name
     }
 }
 
