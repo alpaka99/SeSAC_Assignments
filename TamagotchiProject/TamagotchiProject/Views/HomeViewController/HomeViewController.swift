@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
+    let ac = TGAlertViewController()
     let tamagotchiData: [Tamagotchi] = TamagotchiData().tamagotchis
     
     override func viewDidLoad() {
@@ -86,14 +87,23 @@ extension HomeViewController: CodeBaseBuildable {
         collectionView.register(TamagotchiCell.self, forCellWithReuseIdentifier: TamagotchiCell.identifier)
         
         collectionView.backgroundColor = .clear
+        
+        ac.tgAlertDelegate = self
+        ac.modalPresentationStyle = .overFullScreen
+        ac.modalTransitionStyle = .crossDissolve
+        
     }
     
     // MARK: modal style TGAlert 안으로 옮기기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let ac = TGAlert()
-        ac.modalPresentationStyle = .overFullScreen
-        ac.modalTransitionStyle = .crossDissolve
-        self.present(ac, animated: true)
+        present(ac, animated: true)
+    }
+}
+
+extension HomeViewController: TGAlertDelegate {
+    func startButtonTapped() {
+        let vc = TamagotchiViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

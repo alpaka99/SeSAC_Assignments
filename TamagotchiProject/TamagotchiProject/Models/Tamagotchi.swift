@@ -19,12 +19,12 @@ internal struct Tamagotchi {
             let exp = Int((Double(food) / 5.0) + (Double(water) / 2.0)) / 10
             
             switch exp {
-            case ..<1:
-                return 1
-            case 1..<11:
-                return exp
+//            case ..<1:
+//                return 1
+//            case 1..<10:
+//                return exp
             default:
-                return 10
+                return 9
             }
         }
     }

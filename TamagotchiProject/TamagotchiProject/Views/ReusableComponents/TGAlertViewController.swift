@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class TGAlert: UIViewController {
+final class TGAlertViewController: UIViewController {
     let tapGestureView: UIView = UIView()
     let tgAlertBackground: UIView = UIView()
     let tgProfile: TGProfileView = TGProfileView()
@@ -21,6 +21,8 @@ final class TGAlert: UIViewController {
         cancelButton,
         actionButton
     ])
+    
+    weak var tgAlertDelegate: TGAlertDelegate?
         
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ final class TGAlert: UIViewController {
 }
 
 
-extension TGAlert: CodeBaseBuildable {
+extension TGAlertViewController: CodeBaseBuildable {
     internal func configureHierarchy() {
         view.addSubview(tapGestureView)
         tapGestureView.addSubview(tgAlertBackground)
@@ -124,11 +126,13 @@ extension TGAlert: CodeBaseBuildable {
     
     @objc
     func cancelButtonTapped(_ sender: UIButton) {
-        print(#function)
+        self.dismiss(animated: true)
     }
     
     @objc
     func actionButtonTapped(_ sender: UIButton) {
-        print(#function)
+        dismiss(animated: true) { [weak self] in
+            self?.tgAlertDelegate?.startButtonTapped()
+        }
     }
 }

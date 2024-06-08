@@ -23,6 +23,11 @@ final class ChangeNameViewController: UIViewController {
 }
 
 extension ChangeNameViewController: CodeBaseBuildable {
+    func configureData<T>(_ data: T) {
+        
+    }
+    
+    
     func configureHierarchy() {
         view.addSubview(textField)
         view.addSubview(divider)

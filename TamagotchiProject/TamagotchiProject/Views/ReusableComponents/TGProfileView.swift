@@ -56,7 +56,7 @@ extension TGProfileView: CodeBaseBuildable {
     internal func configureUI() {
         profileImage.layer.borderColor = UIColor.TGNavyColor.cgColor
         profileImage.layer.borderWidth = 2
-        profileImage.backgroundColor = .red
+        profileImage.backgroundColor = .TGBackgroundColor
         profileImage.image = UIImage(named: "noImage")
     }
 }
