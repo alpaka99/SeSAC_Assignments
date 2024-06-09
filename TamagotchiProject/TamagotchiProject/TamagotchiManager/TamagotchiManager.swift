@@ -52,17 +52,39 @@ final class TamagotchiManager {
     }
     
     private func applySelectedTamagotchiChange() {
-        for i in 0..<tamagotchiData.count {
-            let tamagotchi = tamagotchiData[i]
-            if tamagotchi.id == selectedTamagotchi.id {
-                tamagotchiData[i] = selectedTamagotchi
+        if let index = fetchTargetTamagotchiIndex(selectedTamagotchi.id) {
+            print(#function)
+            tamagotchiData[index] = selectedTamagotchi
+        }
+    }
+    
+    private func fetchTargetTamagotchiIndex(_ id: UUID) -> Int? {
+        for index in 0..<tamagotchiData.count {
+            if tamagotchiData[index].id == id {
+                return index
             }
         }
+        return nil
     }
     
     internal func saveTamagotchi() {
         saveTamagotchiData()
         loadTamagotchiData()
+    }
+    
+    internal func feedTamagotchi(_ tamagotchi: Tamagotchi, type: TGButtonTextFieldType, amount: Int = 1) {
+        if let index = fetchTargetTamagotchiIndex(tamagotchi.id) {
+            if amount < type.limit {
+                var tamagotchi = tamagotchiData[index]
+                switch type {
+                case .food:
+                    tamagotchi.addFood(amount)
+                case .water:
+                    tamagotchi.addWater(amount)
+                }
+                setSelectedTamagotchi(with: tamagotchi)
+            }
+        }
     }
 }
 

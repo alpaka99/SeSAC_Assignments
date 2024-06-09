@@ -18,7 +18,7 @@ final class TamagotchiViewController: UIViewController {
     
     var tamagotchi: Tamagotchi = TamagotchiManager.shared.selectedTamagotchi {
         didSet {
-//            changeUI()
+            changeUI()
         }
     }
     
@@ -33,9 +33,6 @@ final class TamagotchiViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectedTamagotchiChanged), name: NSNotification.Name("SelectedTamagotchi"), object: nil)
     }
     
-    override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-    }
 }
 
 extension TamagotchiViewController: CodeBaseBuildable {
@@ -121,29 +118,27 @@ extension TamagotchiViewController: CodeBaseBuildable {
     
     @objc
     func selectedTamagotchiChanged() {
+        print(#function)
         self.tamagotchi = TamagotchiManager.shared.selectedTamagotchi
     }
 }
 
 extension TamagotchiViewController: TGButtonTextFieldDelegate {
     func textFieldButtonTapped(_ type: TGButtonTextFieldType, amount: Int) {
-        switch type {
-        case .food:
-            if amount < 100 {
-                tamagotchi.addFood(amount)
-                TamagotchiManager.shared.setSelectedTamagotchi(with: tamagotchi)
-            }
-        case .water:
-            if amount < 50 {
-                tamagotchi.addWater(amount)
-                TamagotchiManager.shared.setSelectedTamagotchi(with: tamagotchi)
-            }
-        }
-        changeUI()
+        TamagotchiManager.shared.feedTamagotchi(tamagotchi, type: type, amount: amount)
     }
 }
 
 enum TGButtonTextFieldType {
     case food
     case water
+    
+    var limit: Int {
+        switch self {
+        case .food:
+            return 100
+        case .water:
+            return 50
+        }
+    }
 }

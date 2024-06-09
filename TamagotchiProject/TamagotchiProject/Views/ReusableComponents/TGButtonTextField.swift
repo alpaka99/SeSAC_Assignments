@@ -100,12 +100,11 @@ extension TGButtonTextField: CodeBaseBuildable {
     
     @objc
     func buttonTapped(_ sender: UIButton) {
-        if let text = textField.text {
-            if let amount = Int(text) {
-                delegate?.textFieldButtonTapped(type, amount: amount)
-            } else {
-                delegate?.textFieldButtonTapped(type, amount: 1)
-            }
+        if let text = textField.text,
+           let amount = Int(text) {
+            delegate?.textFieldButtonTapped(type, amount: amount)
+        } else {
+            delegate?.textFieldButtonTapped(type, amount: 1)
         }
     }
 }
