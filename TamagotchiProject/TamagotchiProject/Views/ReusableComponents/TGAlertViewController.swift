@@ -36,6 +36,7 @@ final class TGAlertViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        changeUI()
     }
 }
 
@@ -123,7 +124,6 @@ extension TGAlertViewController: CodeBaseBuildable {
     }
     
     private func changeUI() {
-        print(#function)
         tgProfile.configureData(tamagotchi)
         info.text = tamagotchi.description
     }

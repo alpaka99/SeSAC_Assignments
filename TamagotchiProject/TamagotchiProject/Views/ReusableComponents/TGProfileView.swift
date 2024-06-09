@@ -61,7 +61,6 @@ extension TGProfileView: CodeBaseBuildable {
     }
     
     internal func configureData(_ data: Tamagotchi) {
-        print(data.imageName)
         profileImage.image = UIImage(named: data.imageName)
         borderdLabel.configureData(data.name)
     }

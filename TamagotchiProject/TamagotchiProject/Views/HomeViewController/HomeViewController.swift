@@ -43,6 +43,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let data = tamagotchiData[indexPath.row]
         
+        // MARK: 직접 데이터 전달이 아니라 다른 방법으로 수정이 가능할까?
         cell.configureData(data)
         
         return cell
@@ -92,11 +93,10 @@ extension HomeViewController: CodeBaseBuildable {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < tamagotchiData.count {
-            let ac = TGAlertViewController()
-            
             let index = indexPath.row
             TamagotchiManager.shared.setSelectedTamagotchi(index)
-            print(ac.tamagotchi)
+            
+            let ac = TGAlertViewController()
             
             ac.tgAlertDelegate = self
             ac.modalPresentationStyle = .overFullScreen
@@ -113,8 +113,6 @@ extension HomeViewController: TGAlertDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-
 
 extension UICollectionViewCell: Reusable {
     

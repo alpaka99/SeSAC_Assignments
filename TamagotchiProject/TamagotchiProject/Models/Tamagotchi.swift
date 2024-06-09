@@ -4,11 +4,12 @@
 //
 //  Created by user on 6/8/24.
 //
+import Foundation
 
-
-internal struct Tamagotchi: Codable {
+internal struct Tamagotchi: Codable, Identifiable {
     static let dummyTamagotchi: Tamagotchi = Tamagotchi(name: "준비중이에요", imageNumber: 0, description: "아직 준비중인 다마고치에요")
     
+    private(set) var id: UUID = UUID()
     var name: String
     var imageNumber: Int
     var description: String
