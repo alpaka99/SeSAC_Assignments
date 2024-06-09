@@ -34,7 +34,6 @@ final class TamagotchiManager {
 //         load tamagotchi data from userdefault
         if let loadedData = UserDefaults.standard.loadData([Tamagotchi].self) {
             self.tamagotchiData = loadedData
-            print(loadedData)
         } else {
             // if nil, load tamagotchi data from mode
             tamagotchiData = Tamagotchi.initialData
@@ -54,6 +53,7 @@ final class TamagotchiManager {
     private func applySelectedTamagotchiChange() {
         if let index = fetchTargetTamagotchiIndex(selectedTamagotchi.id) {
             tamagotchiData[index] = selectedTamagotchi
+            saveTamagotchi()
         }
     }
     
@@ -66,6 +66,7 @@ final class TamagotchiManager {
         return nil
     }
     
+    //MARK: 메서드 이름 변경하기
     internal func saveTamagotchi() {
         saveTamagotchiData()
         loadTamagotchiData()
@@ -88,6 +89,7 @@ final class TamagotchiManager {
     
     internal func resetData(completion: ()->()) {
         tamagotchiData = Tamagotchi.initialData
+        saveTamagotchi()
         completion()
     }
 }

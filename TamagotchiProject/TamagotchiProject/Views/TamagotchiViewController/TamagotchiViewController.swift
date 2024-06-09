@@ -31,6 +31,7 @@ final class TamagotchiViewController: UIViewController {
         changeUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(selectedTamagotchiChanged), name: NSNotification.Name("SelectedTamagotchi"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userNameChanged), name: NSNotification.Name("UserName"), object: nil)
     }
     
 }
@@ -81,7 +82,7 @@ extension TamagotchiViewController: CodeBaseBuildable {
     func configureUI() {
         view.backgroundColor = .TGBackgroundColor
         
-        navigationItem.title = "고석환님의 다마고치"
+        navigationItem.title = "\(UserNameManager.shared.userName)님의 다마고치"
 
         let rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "person.circle"),
@@ -122,6 +123,11 @@ extension TamagotchiViewController: CodeBaseBuildable {
     @objc
     func selectedTamagotchiChanged() {
         self.tamagotchi = TamagotchiManager.shared.selectedTamagotchi
+    }
+    
+    @objc
+    func userNameChanged() {
+        navigationItem.title = "\(UserNameManager.shared.userName)님의 타마고치"
     }
 }
 

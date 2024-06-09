@@ -11,6 +11,27 @@ import SnapKit
 
 final class SettingViewController: UIViewController {
     let tableView: UITableView = UITableView()
+    lazy var settingOptions: [SettingOption] = [
+        SettingOption(
+            settingType: .changeName,
+            icon: "pencil",
+            title: "내 이름 설정하기",
+            trailingSubtitle: "\(UserNameManager.shared.userName)"
+        ),
+        SettingOption(
+            settingType: .changeTamagotchi,
+            icon: "moon.fill",
+            title: "다마고치 변경하기",
+            trailingSubtitle: nil
+        ),
+        SettingOption(
+            settingType: .resetData,
+            icon: "arrow.clockwise",
+            title: "데이터 초기화",
+            trailingSubtitle: nil
+        ),
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +39,7 @@ final class SettingViewController: UIViewController {
         configureLayout()
         configureUI()
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(userNameChanged), name: NSNotification.Name("UserName"), object: nil)
     }
 }
 
@@ -51,7 +72,7 @@ extension SettingViewController: CodeBaseBuildable {
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingOption.settingOptions.count
+        return settingOptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +80,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let data = SettingOption.settingOptions[indexPath.row]
+        let data = settingOptions[indexPath.row]
         cell.configureData(data)
         
         return cell
@@ -110,6 +131,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         present(ac, animated: true)
     }
+    
+    @objc
+    func userNameChanged() {
+        settingOptions[0] = SettingOption(
+            settingType: .changeName,
+            icon: "pencil",
+            title: "내 이름 설정하기",
+            trailingSubtitle: "\(UserNameManager.shared.userName)"
+        )
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
 }
 
 
@@ -124,27 +156,6 @@ struct SettingOption {
     let title: String
     let trailingSubtitle: String?
     let trailingIcon: String = "chevron.right"
-    
-    static let settingOptions: [SettingOption] = [
-        SettingOption(
-            settingType: .changeName,
-            icon: "pencil",
-            title: "내 이름 설정하기",
-            trailingSubtitle: "고래밥"
-        ),
-        SettingOption(
-            settingType: .changeTamagotchi,
-            icon: "moon.fill",
-            title: "다마고치 변경하기",
-            trailingSubtitle: nil
-        ),
-        SettingOption(
-            settingType: .resetData,
-            icon: "arrow.clockwise",
-            title: "데이터 초기화",
-            trailingSubtitle: nil
-        ),
-    ]
 }
 
 

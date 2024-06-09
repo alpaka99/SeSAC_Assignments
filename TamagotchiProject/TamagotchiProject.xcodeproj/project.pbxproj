@@ -32,6 +32,7 @@
 		CED9554A2C14370D006D67E5 /* TGAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955492C14370D006D67E5 /* TGAlertDelegate.swift */; };
 		CED9554D2C15724B006D67E5 /* TamagotchiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9554C2C15724B006D67E5 /* TamagotchiManager.swift */; };
 		CED9554F2C158DBA006D67E5 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9554E2C158DBA006D67E5 /* UserDefaults+Extension.swift */; };
+		CED955512C15F13F006D67E5 /* UserNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955502C15F13F006D67E5 /* UserNameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		CED955492C14370D006D67E5 /* TGAlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGAlertDelegate.swift; sourceTree = "<group>"; };
 		CED9554C2C15724B006D67E5 /* TamagotchiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiManager.swift; sourceTree = "<group>"; };
 		CED9554E2C158DBA006D67E5 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		CED955502C15F13F006D67E5 /* UserNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				CED9554C2C15724B006D67E5 /* TamagotchiManager.swift */,
+				CED955502C15F13F006D67E5 /* UserNameManager.swift */,
 			);
 			path = TamagotchiManager;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				CED955402C1377ED006D67E5 /* SettingViewController.swift in Sources */,
 				CED955392C13053E006D67E5 /* TamagotchiViewController.swift in Sources */,
 				CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */,
+				CED955512C15F13F006D67E5 /* UserNameManager.swift in Sources */,
 				CED9554A2C14370D006D67E5 /* TGAlertDelegate.swift in Sources */,
 				CED955342C12EC3A006D67E5 /* TGAlertViewController.swift in Sources */,
 				CED955482C14216C006D67E5 /* Tamagotchi.swift in Sources */,

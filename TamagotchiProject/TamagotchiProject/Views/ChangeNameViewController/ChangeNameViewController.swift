@@ -58,11 +58,17 @@ extension ChangeNameViewController: CodeBaseBuildable {
         let rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = rightBarButtonItem
         
-        textField.placeholder = "test placeholder"
+        textField.placeholder = "새 대장님의 이름을 알려주세요"
+        textField.text = UserNameManager.shared.userName
         divider.backgroundColor = .TGNavyColor
     }
     
     @objc
     func saveButtonTapped(_ sender: UIBarButtonItem) {
+        if let userName = textField.text,
+           userName.isEmpty == false {
+            UserNameManager.shared.setUserNameInfo(userName)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
