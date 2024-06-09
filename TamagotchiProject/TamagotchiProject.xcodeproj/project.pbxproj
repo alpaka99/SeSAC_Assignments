@@ -30,6 +30,8 @@
 		CED955452C1385DB006D67E5 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */; };
 		CED955482C14216C006D67E5 /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955472C14216C006D67E5 /* Tamagotchi.swift */; };
 		CED9554A2C14370D006D67E5 /* TGAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955492C14370D006D67E5 /* TGAlertDelegate.swift */; };
+		CED9554D2C15724B006D67E5 /* TamagotchiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9554C2C15724B006D67E5 /* TamagotchiManager.swift */; };
+		CED9554F2C158DBA006D67E5 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9554E2C158DBA006D67E5 /* UserDefaults+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		CED955442C1385DB006D67E5 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		CED955472C14216C006D67E5 /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 		CED955492C14370D006D67E5 /* TGAlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGAlertDelegate.swift; sourceTree = "<group>"; };
+		CED9554C2C15724B006D67E5 /* TamagotchiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiManager.swift; sourceTree = "<group>"; };
+		CED9554E2C158DBA006D67E5 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 		CED955222C12D46E006D67E5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CED9554E2C158DBA006D67E5 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 		CED9554B2C157185006D67E5 /* TamagotchiManager */ = {
 			isa = PBXGroup;
 			children = (
+				CED9554C2C15724B006D67E5 /* TamagotchiManager.swift */,
 			);
 			path = TamagotchiManager;
 			sourceTree = "<group>";
@@ -295,11 +301,13 @@
 				CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */,
 				CED955422C137A06006D67E5 /* SettingTableViewCell.swift in Sources */,
 				CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */,
+				CED9554F2C158DBA006D67E5 /* UserDefaults+Extension.swift in Sources */,
 				CED955262C12D48A006D67E5 /* Reusable.swift in Sources */,
 				CED955362C12EF01006D67E5 /* TGDivider.swift in Sources */,
 				CED9552F2C12DCF1006D67E5 /* CodeBaseBuildable.swift in Sources */,
 				CED955452C1385DB006D67E5 /* ChangeNameViewController.swift in Sources */,
 				CED9552A2C12D980006D67E5 /* TamagotchiCell.swift in Sources */,
+				CED9554D2C15724B006D67E5 /* TamagotchiManager.swift in Sources */,
 				CED955282C12D4E9006D67E5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

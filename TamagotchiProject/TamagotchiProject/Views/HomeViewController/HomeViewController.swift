@@ -10,12 +10,15 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-    let collectionView: UICollectionView = UICollectionView.init(
+    private let collectionView: UICollectionView = UICollectionView.init(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
-    let ac = TGAlertViewController()
-    let tamagotchiData: [Tamagotchi] = TamagotchiData().tamagotchis
+    private var tamagotchiData: [Tamagotchi] = TamagotchiManager.shared.tamagotchiData {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +63,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return CGSize(width: length, height: length)
     }
-    
-    
 }
 
 extension HomeViewController: CodeBaseBuildable {
@@ -87,27 +88,28 @@ extension HomeViewController: CodeBaseBuildable {
         collectionView.register(TamagotchiCell.self, forCellWithReuseIdentifier: TamagotchiCell.identifier)
         
         collectionView.backgroundColor = .clear
-        
-        ac.tgAlertDelegate = self
-        ac.modalPresentationStyle = .overFullScreen
-        ac.modalTransitionStyle = .crossDissolve
-        
     }
     
-    // MARK: modal style TGAlert 안으로 옮기기
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < tamagotchiData.count {
-            let data = tamagotchiData[indexPath.row]
-            ac.configureData(data)
+            let ac = TGAlertViewController()
+            
+            let index = indexPath.row
+            TamagotchiManager.shared.setSelectedTamagotchi(index)
+            print(ac.tamagotchi)
+            
+            ac.tgAlertDelegate = self
+            ac.modalPresentationStyle = .overFullScreen
+            ac.modalTransitionStyle = .crossDissolve
+            
+            present(ac, animated: true)
         }
-        present(ac, animated: true)
     }
 }
 
 extension HomeViewController: TGAlertDelegate {
     func startButtonTapped(_ data: Tamagotchi) {
         let vc = TamagotchiViewController()
-        vc.configureData(data)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

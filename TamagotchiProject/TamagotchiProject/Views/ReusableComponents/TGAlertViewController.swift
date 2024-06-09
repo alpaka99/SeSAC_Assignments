@@ -21,7 +21,11 @@ final class TGAlertViewController: UIViewController {
         cancelButton,
         actionButton
     ])
-    var tamagotchi: Tamagotchi = Tamagotchi.dummyTamagotchi
+    var tamagotchi: Tamagotchi = TamagotchiManager.shared.selectedTamagotchi {
+        didSet {
+            changeUI()
+        }
+    }
     
     weak var tgAlertDelegate: TGAlertDelegate?
         
@@ -118,12 +122,11 @@ extension TGAlertViewController: CodeBaseBuildable {
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
     
-    internal func configureData(_ data: Tamagotchi) {
-        self.tamagotchi = data
-        tgProfile.configureData(data)
-        info.text = data.description
+    private func changeUI() {
+        print(#function)
+        tgProfile.configureData(tamagotchi)
+        info.text = tamagotchi.description
     }
-    
     
     @objc
     func backgroundTapped() {

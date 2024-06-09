@@ -15,8 +15,11 @@ final class TamagotchiViewController: UIViewController {
     let status: UILabel = UILabel()
     let feedFoodView: TGButtonTextField = TGButtonTextField()
     let feedWaterView: TGButtonTextField = TGButtonTextField()
-    var tamagotchi: Tamagotchi = Tamagotchi.dummyTamagotchi {
+    var tamagotchi: Tamagotchi = TamagotchiManager.shared.selectedTamagotchi {
         didSet {
+            changeUI()
+        }
+        willSet {
             changeUI()
         }
     }
@@ -27,6 +30,7 @@ final class TamagotchiViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        changeUI()
     }
     
     override func viewIsAppearing(_ animated: Bool) {
@@ -97,17 +101,17 @@ extension TamagotchiViewController: CodeBaseBuildable {
         
         feedFoodView.delegate = self
         feedWaterView.delegate = self
-    }
-    
-    internal func configureData(_ data: Tamagotchi) {
-        self.tamagotchi = data
+        
         feedFoodView.configureData(.food)
         feedWaterView.configureData(.water)
     }
     
+    
     private func changeUI() {
-        profile.configureData(tamagotchi)
+//        profile.configureData(tamagotchi)
         status.text = tamagotchi.status
+        feedFoodView.configureData(.food)
+        feedWaterView.configureData(.water)
     }
     
     @objc
@@ -120,9 +124,13 @@ extension TamagotchiViewController: TGButtonTextFieldDelegate {
     func textFieldButtonTapped(_ type: TGButtonTextFieldType, amount: Int) {
         switch type {
         case .food:
-            tamagotchi.addFood(amount)
+            if amount < 100 {
+                tamagotchi.addFood(amount)
+            }
         case .water:
-            tamagotchi.addWater(amount)
+            if amount < 50 {
+                tamagotchi.addWater(amount)
+            }
         }
         changeUI()
     }
