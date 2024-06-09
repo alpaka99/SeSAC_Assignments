@@ -127,6 +127,7 @@ extension TamagotchiCollectionViewController: TGAlertDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case .changeTamagotchi:
             TamagotchiManager.shared.setSelectedTamagotchi(with: tamagotchi)
+            navigationController?.popToRootViewController(animated: true)
         }
         
     }
