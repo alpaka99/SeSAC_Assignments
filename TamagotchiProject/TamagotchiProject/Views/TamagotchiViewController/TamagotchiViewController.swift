@@ -15,6 +15,11 @@ final class TamagotchiViewController: UIViewController {
     let status: UILabel = UILabel()
     let feedFoodView: TGButtonTextField = TGButtonTextField()
     let feedWaterView: TGButtonTextField = TGButtonTextField()
+    var tamagotchi: Tamagotchi = Tamagotchi.dummyTamagotchi {
+        didSet {
+            changeUI()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,10 @@ final class TamagotchiViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
     }
 }
 
@@ -83,17 +92,43 @@ extension TamagotchiViewController: CodeBaseBuildable {
         
         navigationItem.rightBarButtonItem = rightBarButtonItem
         
-        status.text = "LV0 • 밥알 0개 • 물방울 0개"
         status.textColor = .TGNavyColor
         status.font = .systemFont(ofSize: 12, weight: .bold)
+        
+        feedFoodView.delegate = self
+        feedWaterView.delegate = self
     }
     
-    func configureData(_ data: Tamagotchi) {
-        
+    internal func configureData(_ data: Tamagotchi) {
+        self.tamagotchi = data
+        feedFoodView.configureData(.food)
+        feedWaterView.configureData(.water)
+    }
+    
+    private func changeUI() {
+        profile.configureData(tamagotchi)
+        status.text = tamagotchi.status
     }
     
     @objc
     func settingButtonTapped(_ button: UIBarButtonItem) {
-        print(#function)
+        
     }
+}
+
+extension TamagotchiViewController: TGButtonTextFieldDelegate {
+    func textFieldButtonTapped(_ type: TGButtonTextFieldType, amount: Int) {
+        switch type {
+        case .food:
+            tamagotchi.addFood(amount)
+        case .water:
+            tamagotchi.addWater(amount)
+        }
+        changeUI()
+    }
+}
+
+enum TGButtonTextFieldType {
+    case food
+    case water
 }

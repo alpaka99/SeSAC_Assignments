@@ -57,7 +57,6 @@ extension TGBorderedLabel: CodeBaseBuildable {
     }
     
     internal func configureData(_ data: String) {
-        print(#function)
         labelText.text = data
     }
 }

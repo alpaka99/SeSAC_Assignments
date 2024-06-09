@@ -90,6 +90,7 @@
 		CED955072C12CB21006D67E5 /* TamagotchiProject */ = {
 			isa = PBXGroup;
 			children = (
+				CED9554B2C157185006D67E5 /* TamagotchiManager */,
 				CED955462C142161006D67E5 /* Models */,
 				CED9552B2C12DC1E006D67E5 /* Views */,
 				CED955242C12D483006D67E5 /* Protocols */,
@@ -195,6 +196,13 @@
 				CED955472C14216C006D67E5 /* Tamagotchi.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CED9554B2C157185006D67E5 /* TamagotchiManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TamagotchiManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

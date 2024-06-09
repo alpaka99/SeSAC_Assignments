@@ -105,9 +105,9 @@ extension HomeViewController: CodeBaseBuildable {
 }
 
 extension HomeViewController: TGAlertDelegate {
-    func startButtonTapped() {
+    func startButtonTapped(_ data: Tamagotchi) {
         let vc = TamagotchiViewController()
-//        vc.configureData()
+        vc.configureData(data)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

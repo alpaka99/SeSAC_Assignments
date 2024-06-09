@@ -6,5 +6,5 @@
 //
 
 protocol TGAlertDelegate: AnyObject {
-    func startButtonTapped()
+    func startButtonTapped(_ data: Tamagotchi)
 }

@@ -64,6 +64,5 @@ extension ChangeNameViewController: CodeBaseBuildable {
     
     @objc
     func saveButtonTapped(_ sender: UIBarButtonItem) {
-        print(#function)
     }
 }

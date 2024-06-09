@@ -138,7 +138,8 @@ extension TGAlertViewController: CodeBaseBuildable {
     @objc
     func actionButtonTapped(_ sender: UIButton) {
         dismiss(animated: true) { [weak self] in
-            self?.tgAlertDelegate?.startButtonTapped()
+            guard let tamagotchi = self?.tamagotchi else { return }
+            self?.tgAlertDelegate?.startButtonTapped(tamagotchi)
         }
     }
 }

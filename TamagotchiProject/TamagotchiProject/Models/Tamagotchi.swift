@@ -21,18 +21,27 @@ internal struct Tamagotchi {
             let exp = Int((Double(food) / 5.0) + (Double(water) / 2.0)) / 10
             
             switch exp {
-//            case ..<1:
-//                return 1
-//            case 1..<10:
-//                return exp
+            case ..<1:
+                return 1
+            case 1..<10:
+                return exp
             default:
-                return 9
+                return 10
             }
         }
     }
     
     internal var imageName: String {
-        return "\(imageNumber)-\(level)"
+        switch level {
+        case 10...:
+            return "\(imageNumber)-\(level-1)"
+        default:
+            return "\(imageNumber)-\(level)"
+        }
+    }
+    
+    internal var status: String {
+        return "LV\(level) • 밥알 \(food)개 • 물방울 \(water)개"
     }
     
     internal mutating func addFood(_ amount: Int) {
