@@ -9,10 +9,18 @@ import Foundation
 
 final class TamagotchiManager {
     internal static var shared: TamagotchiManager = TamagotchiManager()
-    internal private(set) var tamagotchiData: [Tamagotchi] = []
+    internal private(set) var tamagotchiData: [Tamagotchi] = [] {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name("TamagotchiData"), object: nil)
+        }
+    }
     
     // 값을 복사해서 가져오는게 아니라 주소값을 가져오는 방법은 없을까?
-    internal private(set) var selectedTamagotchi: Tamagotchi = Tamagotchi.dummyTamagotchi
+    internal private(set) var selectedTamagotchi: Tamagotchi = Tamagotchi.dummyTamagotchi {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name("SelectedTamagotchi"), object: nil)
+        }
+    }
     
     private init() {
         loadTamagotchiData()
@@ -38,9 +46,17 @@ final class TamagotchiManager {
         UserDefaults.standard.saveData(tamagotchiData)
     }
     
-    internal func setSelectedTamagotchi(_ index: Int) {
-        if index < tamagotchiData.count {
-            self.selectedTamagotchi = tamagotchiData[index]
+    internal func setSelectedTamagotchi(with tamagotchi: Tamagotchi) {
+        self.selectedTamagotchi = tamagotchi
+        applySelectedTamagotchiChange()
+    }
+    
+    private func applySelectedTamagotchiChange() {
+        for i in 0..<tamagotchiData.count {
+            let tamagotchi = tamagotchiData[i]
+            if tamagotchi.id == selectedTamagotchi.id {
+                tamagotchiData[i] = selectedTamagotchi
+            }
         }
     }
     

@@ -6,7 +6,7 @@
 //
 import Foundation
 
-internal struct Tamagotchi: Codable, Identifiable {
+internal struct Tamagotchi: Codable, Identifiable, Equatable {
     static let dummyTamagotchi: Tamagotchi = Tamagotchi(name: "준비중이에요", imageNumber: 0, description: "아직 준비중인 다마고치에요")
     
     private(set) var id: UUID = UUID()
@@ -55,6 +55,10 @@ internal struct Tamagotchi: Codable, Identifiable {
     
     internal mutating func changeName(_ name: String) {
         self.name = name
+    }
+    
+    static func == (lhs: Tamagotchi, rhs: Tamagotchi) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

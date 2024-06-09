@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(tamagotchiDataChanged), name: NSNotification.Name("TamagotchiData"), object: nil)
     }
 }
 
@@ -94,7 +96,8 @@ extension HomeViewController: CodeBaseBuildable {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < tamagotchiData.count {
             let index = indexPath.row
-            TamagotchiManager.shared.setSelectedTamagotchi(index)
+            
+            TamagotchiManager.shared.setSelectedTamagotchi(with: self.tamagotchiData[index])
             
             let ac = TGAlertViewController()
             
@@ -104,6 +107,11 @@ extension HomeViewController: CodeBaseBuildable {
             
             present(ac, animated: true)
         }
+    }
+    
+    @objc
+    func tamagotchiDataChanged() {
+        self.tamagotchiData = TamagotchiManager.shared.tamagotchiData
     }
 }
 
