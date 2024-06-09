@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955082C12CB21006D67E5 /* AppDelegate.swift */; };
 		CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */; };
-		CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550C2C12CB21006D67E5 /* HomeViewController.swift */; };
+		CED9550D2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550C2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift */; };
 		CED955122C12CB23006D67E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED955112C12CB23006D67E5 /* Assets.xcassets */; };
 		CED955152C12CB23006D67E5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CED955142C12CB23006D67E5 /* Base */; };
 		CED9551D2C12CEDD006D67E5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9551C2C12CEDD006D67E5 /* TabBarController.swift */; };
@@ -39,7 +39,7 @@
 		CED955052C12CB21006D67E5 /* TamagotchiProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED955082C12CB21006D67E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CED9550C2C12CB21006D67E5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CED9550C2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCollectionViewController.swift; sourceTree = "<group>"; };
 		CED955112C12CB23006D67E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CED955142C12CB23006D67E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CED955162C12CB23006D67E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,13 +112,13 @@
 			path = TamagotchiProject;
 			sourceTree = "<group>";
 		};
-		CED955212C12D464006D67E5 /* HomeViewController */ = {
+		CED955212C12D464006D67E5 /* TamagotchiCollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CED9550C2C12CB21006D67E5 /* HomeViewController.swift */,
+				CED9550C2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift */,
 				CED955292C12D980006D67E5 /* TamagotchiCell.swift */,
 			);
-			path = HomeViewController;
+			path = TamagotchiCollectionViewController;
 			sourceTree = "<group>";
 		};
 		CED955222C12D46E006D67E5 /* Extensions */ = {
@@ -154,7 +154,7 @@
 				CED9553E2C1377DD006D67E5 /* SettingViewController */,
 				CED955372C13052D006D67E5 /* TamagotchiViewController */,
 				CED955302C12E6AC006D67E5 /* ReusableComponents */,
-				CED955212C12D464006D67E5 /* HomeViewController */,
+				CED955212C12D464006D67E5 /* TamagotchiCollectionViewController */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED9553D2C136815006D67E5 /* TGButtonTextField.swift in Sources */,
-				CED9550D2C12CB21006D67E5 /* HomeViewController.swift in Sources */,
+				CED9550D2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift in Sources */,
 				CED955322C12E714006D67E5 /* TGBorderedLabel.swift in Sources */,
 				CED955402C1377ED006D67E5 /* SettingViewController.swift in Sources */,
 				CED955392C13053E006D67E5 /* TamagotchiViewController.swift in Sources */,

@@ -109,7 +109,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func changeTamagotchiCellPressed() {
+        let vc = TamagotchiCollectionViewController()
+        vc.collectionViewType = .changeTamagotchi
         
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func resetDataCellPressed() {

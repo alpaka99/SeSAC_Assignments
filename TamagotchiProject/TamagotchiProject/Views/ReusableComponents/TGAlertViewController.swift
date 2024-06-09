@@ -119,13 +119,21 @@ extension TGAlertViewController: CodeBaseBuildable {
         cancelButton.setTitle("취소", for: .normal)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         
-        actionButton.setTitle("시작하기", for: .normal)
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
     
     private func changeUI() {
         tgProfile.configureData(tamagotchi)
         info.text = tamagotchi.description
+    }
+    
+    internal func changeActionButton(_ type: TamagotchiCollectionViewControllerType) {
+        switch type {
+        case .home:
+            actionButton.setTitle("시작하기", for: .normal)
+        case .changeTamagotchi:
+            actionButton.setTitle("변경하기", for: .normal)
+        }
     }
     
     @objc

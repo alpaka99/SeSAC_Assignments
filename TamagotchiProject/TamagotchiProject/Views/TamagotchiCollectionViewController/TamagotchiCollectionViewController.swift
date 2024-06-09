@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class HomeViewController: UIViewController {
+class TamagotchiCollectionViewController: UIViewController {
     private let collectionView: UICollectionView = UICollectionView.init(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
@@ -19,6 +19,8 @@ class HomeViewController: UIViewController {
             collectionView.reloadData()
         }
     }
+    
+    internal var collectionViewType: TamagotchiCollectionViewControllerType = .home
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class HomeViewController: UIViewController {
 }
 
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TamagotchiCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
@@ -67,7 +69,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-extension HomeViewController: CodeBaseBuildable {
+extension TamagotchiCollectionViewController: CodeBaseBuildable {
     internal func configureHierarchy() {
         view.addSubview(collectionView)
     }
@@ -104,6 +106,9 @@ extension HomeViewController: CodeBaseBuildable {
             ac.modalPresentationStyle = .overFullScreen
             ac.modalTransitionStyle = .crossDissolve
             
+            ac.changeActionButton(collectionViewType)
+            
+            
             present(ac, animated: true)
         }
     }
@@ -114,10 +119,16 @@ extension HomeViewController: CodeBaseBuildable {
     }
 }
 
-extension HomeViewController: TGAlertDelegate {
-    func startButtonTapped(_ data: Tamagotchi) {
-        let vc = TamagotchiViewController()
-        navigationController?.pushViewController(vc, animated: true)
+extension TamagotchiCollectionViewController: TGAlertDelegate {
+    func startButtonTapped(_ tamagotchi: Tamagotchi) {
+        switch collectionViewType {
+        case .home:
+            let vc = TamagotchiViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .changeTamagotchi:
+            TamagotchiManager.shared.setSelectedTamagotchi(with: tamagotchi)
+        }
+        
     }
 }
 
@@ -125,3 +136,8 @@ extension UICollectionViewCell: Reusable {
     
 }
 
+
+enum TamagotchiCollectionViewControllerType {
+    case home
+    case changeTamagotchi
+}
