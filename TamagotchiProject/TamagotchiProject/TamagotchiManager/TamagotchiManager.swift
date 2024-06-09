@@ -37,7 +37,7 @@ final class TamagotchiManager {
             print(loadedData)
         } else {
             // if nil, load tamagotchi data from mode
-            tamagotchiData = TamagotchiData().tamagotchis
+            tamagotchiData = Tamagotchi.initialData
         }
     }
     
@@ -53,7 +53,6 @@ final class TamagotchiManager {
     
     private func applySelectedTamagotchiChange() {
         if let index = fetchTargetTamagotchiIndex(selectedTamagotchi.id) {
-            print(#function)
             tamagotchiData[index] = selectedTamagotchi
         }
     }
@@ -85,6 +84,11 @@ final class TamagotchiManager {
                 setSelectedTamagotchi(with: tamagotchi)
             }
         }
+    }
+    
+    internal func resetData(completion: ()->()) {
+        tamagotchiData = Tamagotchi.initialData
+        completion()
     }
 }
 

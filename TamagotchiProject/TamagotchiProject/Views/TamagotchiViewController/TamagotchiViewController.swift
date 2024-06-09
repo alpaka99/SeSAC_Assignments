@@ -113,12 +113,14 @@ extension TamagotchiViewController: CodeBaseBuildable {
     
     @objc
     func settingButtonTapped(_ button: UIBarButtonItem) {
-        
+        let vc = SettingViewController()
+        vc.navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.topItem?.backButtonTitle = "" // ??
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc
     func selectedTamagotchiChanged() {
-        print(#function)
         self.tamagotchi = TamagotchiManager.shared.selectedTamagotchi
     }
 }

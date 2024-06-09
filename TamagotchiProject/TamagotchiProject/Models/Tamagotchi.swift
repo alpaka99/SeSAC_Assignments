@@ -8,6 +8,23 @@ import Foundation
 
 internal struct Tamagotchi: Codable, Identifiable, Equatable {
     static let dummyTamagotchi: Tamagotchi = Tamagotchi(name: "준비중이에요", imageNumber: 0, description: "아직 준비중인 다마고치에요")
+    static let initialData: [Tamagotchi] = [
+        Tamagotchi(
+            name: "따끔따끔 다마고치",
+            imageNumber: 1,
+            description: "따끔"
+        ),
+        Tamagotchi(
+            name: "방실방실 다마고치",
+            imageNumber: 2,
+            description: "방실"
+        ),
+        Tamagotchi(
+            name: "반짝반짝 다마고치",
+            imageNumber: 3,
+            description: "반짝"
+        ),
+    ]
     
     private(set) var id: UUID = UUID()
     var name: String
@@ -60,25 +77,4 @@ internal struct Tamagotchi: Codable, Identifiable, Equatable {
     static func == (lhs: Tamagotchi, rhs: Tamagotchi) -> Bool {
         return lhs.id == rhs.id
     }
-}
-
-
-internal struct TamagotchiData {
-    let tamagotchis: [Tamagotchi] = [
-        Tamagotchi(
-            name: "따끔따끔 다마고치",
-            imageNumber: 1,
-            description: "따끔"
-        ),
-        Tamagotchi(
-            name: "방실방실 다마고치",
-            imageNumber: 2,
-            description: "방실"
-        ),
-        Tamagotchi(
-            name: "반짝반짝 다마고치",
-            imageNumber: 3,
-            description: "반짝"
-        ),
-    ]
 }

@@ -10,10 +10,11 @@ import UIKit
 import SnapKit
 
 final class SettingTableViewCell: UITableViewCell {
+    var settingType: SettingType = .changeName
     let icon: UIImageView = UIImageView()
     let title: UILabel = UILabel()
     let trailingSubtitle: UILabel = UILabel()
-    let trailingIcon: UIImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+    let trailingIcon: UIImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,19 +54,31 @@ extension SettingTableViewCell: CodeBaseBuildable {
         
         trailingSubtitle.snp.makeConstraints {
             $0.centerY.equalTo(self.snp.centerY)
-            $0.trailing.equalTo(self.accessoryView?.snp.leading ?? self.snp.trailing)
+            $0.trailing.equalTo(self.trailingIcon.snp.leading)
                 .offset(-20)
+        }
+        
+        trailingIcon.snp.makeConstraints {
+            $0.centerY.equalTo(self.snp.centerY)
+            $0.trailing.equalTo(self.snp.trailing)
+                .offset(-8)
         }
     }
     
     func configureUI() {
         self.backgroundColor = .TGBackgroundColor
         
-        icon.image = UIImage(systemName: "pencil")
-        
-        title.text = "test test test"
         title.numberOfLines = 1
+    }
+    
+    func configureData(_ data: SettingOption) {
+        settingType = data.settingType
+        icon.image = UIImage(systemName: data.icon)
         
-        trailingSubtitle.text = "고래밥"
+        title.text = data.title
+        
+        trailingSubtitle.text = data.trailingSubtitle
+        
+        trailingIcon.image = UIImage(systemName: data.trailingIcon)
     }
 }

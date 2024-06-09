@@ -42,7 +42,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCell.identifier, for: indexPath) as? TamagotchiCell else { return UICollectionViewCell() }
         
         guard indexPath.row < tamagotchiData.count else { return cell }
-        
         let data = tamagotchiData[indexPath.row]
         
         // MARK: 직접 데이터 전달이 아니라 다른 방법으로 수정이 가능할까?
