@@ -19,9 +19,6 @@ final class TamagotchiViewController: UIViewController {
         didSet {
             changeUI()
         }
-        willSet {
-            changeUI()
-        }
     }
     
     override func viewDidLoad() {
@@ -108,7 +105,7 @@ extension TamagotchiViewController: CodeBaseBuildable {
     
     
     private func changeUI() {
-//        profile.configureData(tamagotchi)
+        profile.configureData(tamagotchi)
         status.text = tamagotchi.status
         feedFoodView.configureData(.food)
         feedWaterView.configureData(.water)
