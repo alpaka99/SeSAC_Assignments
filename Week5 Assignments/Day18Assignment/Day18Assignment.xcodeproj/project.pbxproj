@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		CED955642C16F770006D67E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955632C16F770006D67E5 /* AppDelegate.swift */; };
 		CED955662C16F770006D67E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955652C16F770006D67E5 /* SceneDelegate.swift */; };
-		CED955682C16F770006D67E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955672C16F770006D67E5 /* ViewController.swift */; };
+		CED955682C16F770006D67E5 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955672C16F770006D67E5 /* TrendingViewController.swift */; };
 		CED9556D2C16F771006D67E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED9556C2C16F771006D67E5 /* Assets.xcassets */; };
 		CED955702C16F771006D67E5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CED9556F2C16F771006D67E5 /* Base */; };
 		CED955792C16F7AB006D67E5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CED955782C16F7AB006D67E5 /* SnapKit */; };
 		CED9557C2C16F7B6006D67E5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CED9557B2C16F7B6006D67E5 /* Alamofire */; };
+		CED9557F2C16FA7D006D67E5 /* CodeBaseBuilldable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9557E2C16FA7D006D67E5 /* CodeBaseBuilldable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CED955602C16F770006D67E5 /* Day18Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Day18Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED955632C16F770006D67E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED955652C16F770006D67E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CED955672C16F770006D67E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CED955672C16F770006D67E5 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		CED9556C2C16F771006D67E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CED9556F2C16F771006D67E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CED955712C16F771006D67E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CED9557E2C16FA7D006D67E5 /* CodeBaseBuilldable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseBuilldable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +60,23 @@
 		CED955622C16F770006D67E5 /* Day18Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CED9557D2C16FA69006D67E5 /* Protocol */,
 				CED955632C16F770006D67E5 /* AppDelegate.swift */,
 				CED955652C16F770006D67E5 /* SceneDelegate.swift */,
-				CED955672C16F770006D67E5 /* ViewController.swift */,
+				CED955672C16F770006D67E5 /* TrendingViewController.swift */,
 				CED9556C2C16F771006D67E5 /* Assets.xcassets */,
 				CED9556E2C16F771006D67E5 /* LaunchScreen.storyboard */,
 				CED955712C16F771006D67E5 /* Info.plist */,
 			);
 			path = Day18Assignment;
+			sourceTree = "<group>";
+		};
+		CED9557D2C16FA69006D67E5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CED9557E2C16FA7D006D67E5 /* CodeBaseBuilldable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED955682C16F770006D67E5 /* ViewController.swift in Sources */,
+				CED955682C16F770006D67E5 /* TrendingViewController.swift in Sources */,
+				CED9557F2C16FA7D006D67E5 /* CodeBaseBuilldable.swift in Sources */,
 				CED955642C16F770006D67E5 /* AppDelegate.swift in Sources */,
 				CED955662C16F770006D67E5 /* SceneDelegate.swift in Sources */,
 			);

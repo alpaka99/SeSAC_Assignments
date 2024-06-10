@@ -7,12 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import SnapKit
 
+final class TrendingViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .white
     }
 
 
