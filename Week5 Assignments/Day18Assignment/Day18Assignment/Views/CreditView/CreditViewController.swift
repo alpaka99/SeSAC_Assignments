@@ -50,26 +50,46 @@ extension CreditViewController: CodeBaseBuilldable {
     func configureUI() {
         view.backgroundColor = .white
         
-//        creditHeaderView.backgroundColor = .systemBlue
-        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
+        tableView.register(CreditOverViewCell.self, forCellReuseIdentifier: CreditOverViewCell.identifier)
         tableView.backgroundColor = .systemOrange
+        
+        
     }
 }
 
 extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        switch section {
+        case 0: // overview section
+            return 1
+        case 1:
+            return 10
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "test"
         
-        return cell
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CreditOverViewCell.identifier, for: indexPath) as? CreditOverViewCell else { return UITableViewCell() }
+            
+            cell.delegate = self
+            
+            return cell
+        case 1:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "test"
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
     
     
@@ -86,5 +106,15 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
+extension CreditViewController: CreditOverViewCellDelegate {
+    func dropDownButtonTapped() {
+        tableView.reloadData()
     }
 }
