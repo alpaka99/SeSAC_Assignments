@@ -16,6 +16,10 @@
 		CED9557C2C16F7B6006D67E5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CED9557B2C16F7B6006D67E5 /* Alamofire */; };
 		CED9557F2C16FA7D006D67E5 /* CodeBaseBuilldable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9557E2C16FA7D006D67E5 /* CodeBaseBuilldable.swift */; };
 		CED955812C16FADA006D67E5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955802C16FADA006D67E5 /* Reusable.swift */; };
+		CED955852C16FD25006D67E5 /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955842C16FD25006D67E5 /* TrendingTableViewCell.swift */; };
+		CED955872C16FF11006D67E5 /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955862C16FF11006D67E5 /* MoviePosterView.swift */; };
+		CED9558A2C1700CD006D67E5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955892C1700CD006D67E5 /* UITableViewCell+Extension.swift */; };
+		CED9558C2C1705E6006D67E5 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9558B2C1705E6006D67E5 /* DescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		CED955712C16F771006D67E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CED9557E2C16FA7D006D67E5 /* CodeBaseBuilldable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseBuilldable.swift; sourceTree = "<group>"; };
 		CED955802C16FADA006D67E5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		CED955842C16FD25006D67E5 /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
+		CED955862C16FF11006D67E5 /* MoviePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
+		CED955892C1700CD006D67E5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		CED9558B2C1705E6006D67E5 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		CED955622C16F770006D67E5 /* Day18Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CED955882C1700B8006D67E5 /* Extension */,
 				CED955822C16FB1A006D67E5 /* Views */,
 				CED9557D2C16FA69006D67E5 /* Protocol */,
 				CED955632C16F770006D67E5 /* AppDelegate.swift */,
@@ -94,8 +103,19 @@
 			isa = PBXGroup;
 			children = (
 				CED955672C16F770006D67E5 /* TrendingViewController.swift */,
+				CED955842C16FD25006D67E5 /* TrendingTableViewCell.swift */,
+				CED955862C16FF11006D67E5 /* MoviePosterView.swift */,
+				CED9558B2C1705E6006D67E5 /* DescriptionView.swift */,
 			);
 			path = Trending;
+			sourceTree = "<group>";
+		};
+		CED955882C1700B8006D67E5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CED955892C1700CD006D67E5 /* UITableViewCell+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +197,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED955682C16F770006D67E5 /* TrendingViewController.swift in Sources */,
+				CED955872C16FF11006D67E5 /* MoviePosterView.swift in Sources */,
 				CED9557F2C16FA7D006D67E5 /* CodeBaseBuilldable.swift in Sources */,
+				CED9558C2C1705E6006D67E5 /* DescriptionView.swift in Sources */,
+				CED9558A2C1700CD006D67E5 /* UITableViewCell+Extension.swift in Sources */,
+				CED955852C16FD25006D67E5 /* TrendingTableViewCell.swift in Sources */,
 				CED955642C16F770006D67E5 /* AppDelegate.swift in Sources */,
 				CED955662C16F770006D67E5 /* SceneDelegate.swift in Sources */,
 				CED955812C16FADA006D67E5 /* Reusable.swift in Sources */,

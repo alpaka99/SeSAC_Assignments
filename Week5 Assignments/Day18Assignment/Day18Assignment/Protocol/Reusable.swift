@@ -6,12 +6,14 @@
 //
 
 protocol Reusable {
-    
+    static var identifier: String { get }
 }
 
 
 extension Reusable {
-    var identifier: String {
-        return String(describing: self)
+    static var identifier: String {
+        get {
+            return String(describing: self)
+        }
     }
 }

@@ -45,6 +45,9 @@ extension TrendingViewController: CodeBaseBuilldable {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
+        tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.identifier)
     }
     
     @objc
@@ -64,6 +67,12 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendingTableViewCell.identifier, for: indexPath) as? TrendingTableViewCell else { return UITableViewCell() }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
