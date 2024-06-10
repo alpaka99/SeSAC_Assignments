@@ -20,6 +20,8 @@
 		CED955872C16FF11006D67E5 /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955862C16FF11006D67E5 /* MoviePosterView.swift */; };
 		CED9558A2C1700CD006D67E5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955892C1700CD006D67E5 /* UITableViewCell+Extension.swift */; };
 		CED9558C2C1705E6006D67E5 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9558B2C1705E6006D67E5 /* DescriptionView.swift */; };
+		CED9558F2C1717FC006D67E5 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9558E2C1717FC006D67E5 /* CreditViewController.swift */; };
+		CED955912C171A6D006D67E5 /* CreditHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955902C171A6D006D67E5 /* CreditHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		CED955862C16FF11006D67E5 /* MoviePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
 		CED955892C1700CD006D67E5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CED9558B2C1705E6006D67E5 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		CED9558E2C1717FC006D67E5 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
+		CED955902C171A6D006D67E5 /* CreditHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 		CED955822C16FB1A006D67E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CED9558D2C1717EA006D67E5 /* CreditView */,
 				CED955832C16FB21006D67E5 /* Trending */,
 			);
 			path = Views;
@@ -116,6 +121,15 @@
 				CED955892C1700CD006D67E5 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CED9558D2C1717EA006D67E5 /* CreditView */ = {
+			isa = PBXGroup;
+			children = (
+				CED9558E2C1717FC006D67E5 /* CreditViewController.swift */,
+				CED955902C171A6D006D67E5 /* CreditHeaderView.swift */,
+			);
+			path = CreditView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +214,11 @@
 				CED955872C16FF11006D67E5 /* MoviePosterView.swift in Sources */,
 				CED9557F2C16FA7D006D67E5 /* CodeBaseBuilldable.swift in Sources */,
 				CED9558C2C1705E6006D67E5 /* DescriptionView.swift in Sources */,
+				CED955912C171A6D006D67E5 /* CreditHeaderView.swift in Sources */,
 				CED9558A2C1700CD006D67E5 /* UITableViewCell+Extension.swift in Sources */,
 				CED955852C16FD25006D67E5 /* TrendingTableViewCell.swift in Sources */,
 				CED955642C16F770006D67E5 /* AppDelegate.swift in Sources */,
+				CED9558F2C1717FC006D67E5 /* CreditViewController.swift in Sources */,
 				CED955662C16F770006D67E5 /* SceneDelegate.swift in Sources */,
 				CED955812C16FADA006D67E5 /* Reusable.swift in Sources */,
 			);
