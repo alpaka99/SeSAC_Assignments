@@ -24,6 +24,8 @@
 		CED955912C171A6D006D67E5 /* CreditHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955902C171A6D006D67E5 /* CreditHeaderView.swift */; };
 		CED955932C171DE1006D67E5 /* CreditOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955922C171DE1006D67E5 /* CreditOverViewCell.swift */; };
 		CED955972C17262D006D67E5 /* CastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955962C17262D006D67E5 /* CastViewCell.swift */; };
+		CED955992C172A68006D67E5 /* .gitIgnore in Resources */ = {isa = PBXBuildFile; fileRef = CED955982C172A68006D67E5 /* .gitIgnore */; };
+		CED9559F2C172AC0006D67E5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9559E2C172AC0006D67E5 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		CED955902C171A6D006D67E5 /* CreditHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditHeaderView.swift; sourceTree = "<group>"; };
 		CED955922C171DE1006D67E5 /* CreditOverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditOverViewCell.swift; sourceTree = "<group>"; };
 		CED955962C17262D006D67E5 /* CastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewCell.swift; sourceTree = "<group>"; };
+		CED955982C172A68006D67E5 /* .gitIgnore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitIgnore; sourceTree = "<group>"; };
+		CED9559E2C172AC0006D67E5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		CED955572C16F770006D67E5 = {
 			isa = PBXGroup;
 			children = (
+				CED955982C172A68006D67E5 /* .gitIgnore */,
 				CED955622C16F770006D67E5 /* Day18Assignment */,
 				CED955612C16F770006D67E5 /* Products */,
 			);
@@ -78,6 +83,7 @@
 		CED955622C16F770006D67E5 /* Day18Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CED9559B2C172A94006D67E5 /* APIKey */,
 				CED955882C1700B8006D67E5 /* Extension */,
 				CED955822C16FB1A006D67E5 /* Views */,
 				CED9557D2C16FA69006D67E5 /* Protocol */,
@@ -136,6 +142,14 @@
 				CED955962C17262D006D67E5 /* CastViewCell.swift */,
 			);
 			path = CreditView;
+			sourceTree = "<group>";
+		};
+		CED9559B2C172A94006D67E5 /* APIKey */ = {
+			isa = PBXGroup;
+			children = (
+				CED9559E2C172AC0006D67E5 /* APIKey.swift */,
+			);
+			path = APIKey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +220,7 @@
 			files = (
 				CED9556D2C16F771006D67E5 /* Assets.xcassets in Resources */,
 				CED955702C16F771006D67E5 /* Base in Resources */,
+				CED955992C172A68006D67E5 /* .gitIgnore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +239,7 @@
 				CED955912C171A6D006D67E5 /* CreditHeaderView.swift in Sources */,
 				CED9558A2C1700CD006D67E5 /* UITableViewCell+Extension.swift in Sources */,
 				CED955972C17262D006D67E5 /* CastViewCell.swift in Sources */,
+				CED9559F2C172AC0006D67E5 /* APIKey.swift in Sources */,
 				CED955852C16FD25006D67E5 /* TrendingTableViewCell.swift in Sources */,
 				CED955642C16F770006D67E5 /* AppDelegate.swift in Sources */,
 				CED9558F2C1717FC006D67E5 /* CreditViewController.swift in Sources */,
