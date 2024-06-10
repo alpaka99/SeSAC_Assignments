@@ -74,16 +74,16 @@ extension DescriptionView: CodeBaseBuilldable {
         
         disclosureButton.snp.makeConstraints {
             $0.verticalEdges.equalTo(detailLabel.snp.verticalEdges)
-            $0.trailing.equalTo(background.snp.trailing)
+            $0.trailing.equalTo(divider.snp.trailing)
         }
     }
     
     func configureUI() {
         background.backgroundColor = .white
         
-        title.text = "Title Title Title  Title "
+        
         title.numberOfLines = 1
-        subtitle.text = "Subtitle  Subtitle  Subtitle "
+        
         subtitle.numberOfLines = 1
         
         divider.backgroundColor = .black
@@ -92,5 +92,8 @@ extension DescriptionView: CodeBaseBuilldable {
         disclosureButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
     }
     
-    
+    func configureData(_ data: TrendingInfo) {
+        title.text = data.name
+        subtitle.text = data.overview
+    }
 }

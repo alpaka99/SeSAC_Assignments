@@ -7,13 +7,19 @@
 
 import UIKit
 
+import Alamofire
 import SnapKit
 
 final class TrendingViewController: UIViewController {
+    private let tableView: UITableView = UITableView()
     private let leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: TrendingViewController.self, action: #selector(leftBarButtonItemTapped))
     private let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: TrendingViewController.self, action: #selector(rightBarButtonItemTapped))
     
-    private let tableView: UITableView = UITableView()
+    private var trendingInfo: [TrendingInfo] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +27,8 @@ final class TrendingViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        
+        fetchMovieData()
     }
 }
 
@@ -50,6 +58,33 @@ extension TrendingViewController: CodeBaseBuilldable {
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.identifier)
     }
     
+    private func fetchMovieData() {
+        let headers: HTTPHeaders = [
+            "accept" : "application/json",
+            "Authorization" : "Bearer \(TMDBKey.accessToken)"
+        ]
+        
+        let parameters: Parameters = [
+            "language" : "en-US",
+        ]
+        
+        AF.request(
+            "https://api.themoviedb.org/3/trending/tv/week",
+            parameters: parameters,
+            headers: headers
+        )
+        .responseDecodable(of: TrendingResponse.self) { [weak self] response in
+            switch response.result {
+            case .success(let value):
+                print("Success")
+                self?.trendingInfo = value.results
+            case .failure(let error):
+                print("Failure")
+                print(error)
+            }
+        }
+    }
+    
     @objc
     private func leftBarButtonItemTapped(_ sender: UIBarButtonItem) {
         print(#function)
@@ -63,11 +98,15 @@ extension TrendingViewController: CodeBaseBuilldable {
 
 extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return trendingInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendingTableViewCell.identifier, for: indexPath) as? TrendingTableViewCell else { return UITableViewCell() }
+        
+        let data = trendingInfo[indexPath.row]
+        cell.configureData(data)
+        cell.delegate = self
         
         return cell
     }
@@ -77,7 +116,27 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CreditViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath) as? TrendingTableViewCell {
+            print(fetchCreditInfoFromCell(cell))
+            let vc = CreditViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
+
+extension TrendingViewController: TrendingTableViewCellDelegate {
+    func fetchCreditInfoFromCell(_ cell: TrendingTableViewCell) -> [CreditInfo] {
+        return cell.credit
+    }
+}
+
+
+//https://developer.themoviedb.org/reference/movie-top-rated-list
+
+//https://developer.themoviedb.org/reference/tv-series-images
+
+
+
+
+
+

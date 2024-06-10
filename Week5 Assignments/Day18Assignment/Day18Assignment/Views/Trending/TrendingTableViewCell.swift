@@ -7,12 +7,16 @@
 
 import UIKit
 
+import Alamofire
 import SnapKit
 
 final class TrendingTableViewCell: UITableViewCell {
     private let dateLabel: UILabel = UILabel()
     private let categoryLabel: UILabel = UILabel()
-    private let moviePosterView: MoviePosterView = MoviePosterView()
+    private(set) var moviePosterView: MoviePosterView = MoviePosterView()
+    var credit: [CreditInfo] = []
+    
+    weak var delegate: TrendingTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,11 +64,48 @@ extension TrendingTableViewCell: CodeBaseBuilldable {
         }
     }
     
-    internal func configureUI() {
-        categoryLabel.text = "#Category"
+    internal func configureUI() {        
         categoryLabel.numberOfLines = 1
-        
-        dateLabel.text = String(describing: Date.now.formatted())
         dateLabel.numberOfLines = 1
     }
+    
+    internal func configureData(_ data: TrendingInfo) {
+        categoryLabel.text = Genre.init(rawValue: Int(data.genre_ids.first ?? 0))?.category
+        dateLabel.text = data.first_air_date
+        fetchCreditData(data)
+        moviePosterView.configureData(data)
+    }
+    
+    func fetchCreditData(_ data: TrendingInfo) {
+        let parameters: Parameters = [
+            "language" : "en-US"
+        ]
+        
+        let headers: HTTPHeaders = [
+            "accept" : "application/json",
+            "Authorization" : "Bearer \(TMDBKey.accessToken)"
+        ]
+        
+        AF.request(
+            "https://api.themoviedb.org/3/tv/\(data.id)/credits",
+            parameters: parameters,
+            headers: headers
+        )
+        .responseDecodable(of: CreditResponse.self) { [weak self] response in
+            switch response.result {
+            case .success(let value):
+                print("credit fetch success")
+                self?.credit = value.cast
+                self?.moviePosterView.creditInfo = value.cast.map { $0.name }
+            case .failure(let error):
+                print("credit fetch failed")
+                print(error)
+            }
+        }
+        
+    }
+}
+
+protocol TrendingTableViewCellDelegate: AnyObject {
+    func fetchCreditInfoFromCell(_ cell: TrendingTableViewCell) -> [CreditInfo]
 }
