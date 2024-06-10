@@ -55,9 +55,8 @@ extension CreditViewController: CodeBaseBuilldable {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
         tableView.register(CreditOverViewCell.self, forCellReuseIdentifier: CreditOverViewCell.identifier)
+        tableView.register(CastViewCell.self, forCellReuseIdentifier: CastViewCell.identifier)
         tableView.backgroundColor = .systemOrange
-        
-        
     }
 }
 
@@ -83,8 +82,8 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 1:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "test"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CastViewCell.identifier, for: indexPath) as? CastViewCell else { return UITableViewCell() }
+            
             
             return cell
         default:
