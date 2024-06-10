@@ -15,7 +15,11 @@ import SnapKit
 final class MoviePosterView: UIView {
     let imageView: UIImageView = UIImageView()
     let descriptionView: DescriptionView = DescriptionView()
-    var creditInfo: [String] = []
+    var creditInfo: [String] = [] {
+        didSet {
+            configureUI()
+        }
+    }
     
     override internal init(frame: CGRect) {
         super.init(frame: frame)

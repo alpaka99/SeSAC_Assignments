@@ -76,7 +76,6 @@ extension TrendingViewController: CodeBaseBuilldable {
         .responseDecodable(of: TrendingResponse.self) { [weak self] response in
             switch response.result {
             case .success(let value):
-                print("Success")
                 self?.trendingInfo = value.results
             case .failure(let error):
                 print("Failure")

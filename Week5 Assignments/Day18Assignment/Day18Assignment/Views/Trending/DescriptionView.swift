@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Alamofire
 import SnapKit
 
 final class DescriptionView: UIView {
@@ -94,6 +95,32 @@ extension DescriptionView: CodeBaseBuilldable {
     
     func configureData(_ data: TrendingInfo) {
         title.text = data.name
-        subtitle.text = data.overview
+        fetchCreditData(data)
+    }
+    
+    func fetchCreditData(_ data: TrendingInfo) {
+        let parameters: Parameters = [
+            "language" : "en-US"
+        ]
+        
+        let headers: HTTPHeaders = [
+            "accept" : "application/json",
+            "Authorization" : "Bearer \(TMDBKey.accessToken)"
+        ]
+        
+        AF.request(
+            "https://api.themoviedb.org/3/tv/\(data.id)/credits",
+            parameters: parameters,
+            headers: headers
+        )
+        .responseDecodable(of: CreditResponse.self) { [weak self] response in
+            switch response.result {
+            case .success(let value):
+                self?.subtitle.text = value.cast.map { $0.name }.joined(separator: " ")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
 }

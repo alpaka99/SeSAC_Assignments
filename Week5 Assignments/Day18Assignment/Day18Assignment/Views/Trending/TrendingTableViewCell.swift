@@ -94,11 +94,9 @@ extension TrendingTableViewCell: CodeBaseBuilldable {
         .responseDecodable(of: CreditResponse.self) { [weak self] response in
             switch response.result {
             case .success(let value):
-                print("credit fetch success")
                 self?.credit = value.cast
                 self?.moviePosterView.creditInfo = value.cast.map { $0.name }
             case .failure(let error):
-                print("credit fetch failed")
                 print(error)
             }
         }
