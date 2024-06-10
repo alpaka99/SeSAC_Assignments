@@ -62,10 +62,10 @@
 		CED955622C16F770006D67E5 /* Day18Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CED955822C16FB1A006D67E5 /* Views */,
 				CED9557D2C16FA69006D67E5 /* Protocol */,
 				CED955632C16F770006D67E5 /* AppDelegate.swift */,
 				CED955652C16F770006D67E5 /* SceneDelegate.swift */,
-				CED955672C16F770006D67E5 /* TrendingViewController.swift */,
 				CED9556C2C16F771006D67E5 /* Assets.xcassets */,
 				CED9556E2C16F771006D67E5 /* LaunchScreen.storyboard */,
 				CED955712C16F771006D67E5 /* Info.plist */,
@@ -80,6 +80,22 @@
 				CED955802C16FADA006D67E5 /* Reusable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CED955822C16FB1A006D67E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED955832C16FB21006D67E5 /* Trending */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CED955832C16FB21006D67E5 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				CED955672C16F770006D67E5 /* TrendingViewController.swift */,
+			);
+			path = Trending;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
