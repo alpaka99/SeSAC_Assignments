@@ -5,4 +5,14 @@
 //  Created by user on 6/11/24.
 //
 
-import Foundation
+import UIKit
+
+protocol Reusable {
+    static var identifier: String { get }
+}
+
+extension UICollectionViewCell: Reusable {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
