@@ -70,6 +70,7 @@ extension CreditOverViewCell: CodeBaseBuilldable {
         overview.numberOfLines = 2
         
         dropDownButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        dropDownButton.tintColor = .darkGray
         dropDownButton.addTarget(self, action: #selector(dropDownButtonTapped), for: .touchUpInside)
         
     }

@@ -51,9 +51,9 @@ extension CastViewCell: CodeBaseBuilldable {
             $0.centerY.equalTo(profileImage.snp.centerY)
                 .offset(-16)
             $0.leading.equalTo(profileImage.snp.trailing)
-                .offset(8)
+                .offset(16)
             $0.trailing.equalTo(contentView.snp.trailing)
-                .offset(-8)
+                .offset(-16)
         }
         
         playedRole.snp.makeConstraints {
@@ -68,6 +68,10 @@ extension CastViewCell: CodeBaseBuilldable {
         profileImage.backgroundColor = .systemGray4
         profileImage.layer.cornerRadius = 8
         profileImage.clipsToBounds = true
+        
+        actorName.font = .systemFont(ofSize: 16, weight: .medium)
+        playedRole.font = .systemFont(ofSize: 16, weight: .medium)
+        playedRole.textColor = .systemGray3
     }
     
     func configureData(_ creditInfo: CreditInfo) {

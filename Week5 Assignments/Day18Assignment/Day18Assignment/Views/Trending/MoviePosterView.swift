@@ -73,6 +73,5 @@ extension MoviePosterView: CodeBaseBuilldable {
         }
         
         descriptionView.configureData(data)
-        descriptionView.detailLabel.text = creditInfo.joined(separator: " ")
     }
 }

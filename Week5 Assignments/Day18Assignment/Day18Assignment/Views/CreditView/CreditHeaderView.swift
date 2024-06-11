@@ -64,11 +64,13 @@ extension CreditHeaderView: CodeBaseBuilldable {
     
     func configureUI() {
         backgroundImage.contentMode = .scaleToFill
+        backgroundImage.backgroundColor = .black
         
         posterImage.layer.cornerRadius = 8
         posterImage.contentMode = .scaleToFill
         
         title.textColor = .white
+        title.font = .systemFont(ofSize: 24, weight: .bold)
     }
     
     func configureData(_ data: TrendingInfo) {

@@ -94,10 +94,12 @@ extension DescriptionView: CodeBaseBuilldable {
         
         divider.backgroundColor = .darkGray
         
-        detailLabel.textColor = .black
-        detailLabel.text = "자세히보기" //MARK: detailLable의 글씨가 안뜨는 현상
+        detailLabel.textColor = .darkGray
+        detailLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        detailLabel.text = "자세히보기"
         
         disclosureButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        disclosureButton.tintColor = .darkGray
     }
     
     func configureData(_ data: TrendingInfo) {

@@ -65,6 +65,8 @@ extension CreditViewController: CodeBaseBuilldable {
     func configureUI() {
         view.backgroundColor = .white
         
+        navigationItem.title = "출연/제작"
+        
         tableView.delegate = self
         tableView.dataSource = self
         
