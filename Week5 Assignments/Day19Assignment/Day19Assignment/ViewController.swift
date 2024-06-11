@@ -18,3 +18,23 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: CodeBaseBuildable {
+    func configureHierarchy() {
+        view.addSubview(searchBar)
+        view.addSubview(collectionView)
+    }
+    
+    func configureLayout() {
+        
+    }
+    
+    func configureUI() {
+        <#code#>
+    }
+    
+    func configureData<T>(_ data: T) {
+        <#code#>
+    }
+    
+    
+}
