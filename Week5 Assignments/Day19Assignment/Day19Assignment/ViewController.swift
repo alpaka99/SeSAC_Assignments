@@ -17,6 +17,12 @@ class ViewController: UIViewController {
         collectionViewLayout: collectionViewLayout()
     )
     
+    var searchResult: [SearchData] = [] {
+        didSet {
+            searchResultSet()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,6 +30,8 @@ class ViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(searchResultChanged), name: NSNotification.Name("SearchResult"), object: nil)
     }
 }
 
@@ -46,29 +54,46 @@ extension ViewController: CodeBaseBuildable {
     
     func configureUI() {
         view.backgroundColor = .white
+        
+        searchBar.delegate = self
+        searchBar.backgroundColor = .black
+        
         collectionView.backgroundColor = .systemIndigo
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.prefetchDataSource = self
         
-        collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
+        collectionView.register(
+            SearchCollectionViewCell.self,
+            forCellWithReuseIdentifier: SearchCollectionViewCell.identifier
+        )
     }
     
     func configureData<T>(_ data: T) {
         print(#function)
+    }
+    
+    @objc
+    func searchResultChanged(_ notification: NSNotification) {
+        self.searchResult = SearchManager.shared.searchResult
+        collectionView.reloadData()
     }
 }
 
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return searchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as? SearchCollectionViewCell  else { return UICollectionViewCell() }
         
-        cell.backgroundColor = .systemOrange
+        let data = searchResult[indexPath.row]
+        
+        cell.configureData(data)
         
         return cell
     }
@@ -85,10 +110,32 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         return layout
     }
+    
+    func searchResultSet() {
+        collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print(indexPath)
+    }
 }
 
 
-struct ScreenSize {
-    static let width: CGFloat = UIScreen.main.bounds.width
-    static let height: CGFloat = UIScreen.main.bounds.height
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, text.isEmpty == false {
+            SearchManager.shared.searchNewData(text)
+        }
+    }
+}
+
+
+extension ViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        if let lastIndexPath = indexPaths.first, lastIndexPath.item - 10 <= SearchManager.shared.searchResult.count {
+            if let text = searchBar.text, !text.isEmpty {
+                SearchManager.shared.prefetchData(text)
+            }
+        }
+    }
 }
