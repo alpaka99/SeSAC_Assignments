@@ -51,12 +51,17 @@ extension MoviePosterView: CodeBaseBuilldable {
     }
     
     func configureUI() {
-        self.layer.borderColor = UIColor.systemGray.cgColor
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 8
-        self.clipsToBounds = true
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 10
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.masksToBounds = false
         
-        imageView.backgroundColor = .systemBlue
+        
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.layer.borderColor = UIColor.systemGray.cgColor
+        imageView.layer.borderWidth = 1
         imageView.contentMode = .scaleToFill
         
         descriptionView.backgroundColor = .systemOrange

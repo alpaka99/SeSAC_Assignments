@@ -55,7 +55,6 @@ extension DescriptionView: CodeBaseBuilldable {
         subtitle.snp.makeConstraints {
             $0.leading.trailing.equalTo(title)
             $0.top.equalTo(title.snp.bottom)
-                .offset(8)
         }
         
         divider.snp.makeConstraints {
@@ -66,30 +65,38 @@ extension DescriptionView: CodeBaseBuilldable {
         }
         
         detailLabel.snp.makeConstraints {
-            $0.leading.equalTo(divider.snp.leading)
             $0.top.equalTo(divider.snp.bottom)
                 .offset(16)
+            $0.leading.equalTo(divider.snp.leading)
             $0.bottom.equalTo(background.snp.bottom)
                 .offset(-8)
+            $0.height.equalTo(30)
         }
         
         disclosureButton.snp.makeConstraints {
-            $0.verticalEdges.equalTo(detailLabel.snp.verticalEdges)
+            $0.leading.equalTo(detailLabel.snp.trailing)
             $0.trailing.equalTo(divider.snp.trailing)
+            $0.centerY.equalTo(detailLabel.snp.centerY)
+            $0.size.equalTo(44)
         }
+        
     }
     
     func configureUI() {
         background.backgroundColor = .white
         
-        
         title.numberOfLines = 1
+        title.font = .systemFont(ofSize: 20, weight: .semibold)
         
         subtitle.numberOfLines = 1
+        subtitle.font = .systemFont(ofSize: 16, weight: .regular)
+        subtitle.textColor = .darkGray
         
-        divider.backgroundColor = .black
+        divider.backgroundColor = .darkGray
         
-        detailLabel.text = "자세히보기"
+        detailLabel.textColor = .black
+        detailLabel.text = "자세히보기" //MARK: detailLable의 글씨가 안뜨는 현상
+        
         disclosureButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
     }
     

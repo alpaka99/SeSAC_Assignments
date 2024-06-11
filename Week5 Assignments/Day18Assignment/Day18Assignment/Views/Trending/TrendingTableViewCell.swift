@@ -56,15 +56,20 @@ extension TrendingTableViewCell: CodeBaseBuilldable {
         dateLabel.snp.makeConstraints {
             $0.horizontalEdges.equalTo(categoryLabel.snp.horizontalEdges)
             $0.bottom.equalTo(categoryLabel.snp.top)
-                .offset(-8)
+                .offset(-4)
             $0.top.equalTo(contentView.snp.top)
                 .offset(8)
         }
     }
     
-    internal func configureUI() {        
-        categoryLabel.numberOfLines = 1
+    internal func configureUI() {
         dateLabel.numberOfLines = 1
+        dateLabel.textColor = .darkGray
+        dateLabel.font = .systemFont(ofSize: 12, weight: .regular)
+        
+        categoryLabel.numberOfLines = 1
+        categoryLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        
     }
     
     internal func configureData(_ data: TrendingInfo) {
