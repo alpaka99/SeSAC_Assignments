@@ -45,14 +45,16 @@ extension SearchCollectionViewCell: CodeBaseBuildable {
     
     func configureData<T>(_ data: T) {
         guard let data = data as? SearchData else { return }
-        SearchManager.shared.fetchImageById(id: data.id) {[weak self] filePath in
-            if let filePath = filePath {
-                SearchManager.shared.fetchImage(filePath) { image in
-                    self?.posterImage.image = image
-                }
-            } else {
-                self?.posterImage.image = UIImage(systemName: "camera.fill")
+        if let poster_path = data.poster_path {
+            SearchManager.shared.fetchImage(poster_path) {[weak self] image in
+                self?.posterImage.image = image
             }
+        } else if let backdrop_path = data.backdrop_path {
+            SearchManager.shared.fetchImage(backdrop_path) {[weak self] image in
+                self?.posterImage.image = image
+            }
+        } else {
+            self.posterImage.image = UIImage(systemName: "camera.fill")
         }
     }
 }

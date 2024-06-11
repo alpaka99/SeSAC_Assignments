@@ -68,32 +68,32 @@ final class SearchManager {
         }
     }
     
-    internal func fetchImageById(id: Int, completionHandler: @escaping(String?)->()) {
-        let fetchImageByIdUrl = "https://api.themoviedb.org/3/movie/\(id)/images"
-        
-        let headers: HTTPHeaders = TMDBAPIKey.headers
-        
-        AF.request(
-            fetchImageByIdUrl,
-            headers: headers
-        )
-        .responseDecodable(of: ImagePathResult.self) { response in
-            switch response.result {
-            case .success(let value):
-                if !value.posters.isEmpty, let item = value.posters.first {
-                    completionHandler(item.file_path)
-                } else if !value.posters.isEmpty, let item = value.backdrops.first {
-                    completionHandler(item.file_path)
-                } else if !value.logos.isEmpty, let item = value.logos.first {
-                    completionHandler(item.file_path)
-                } else {
-                    completionHandler(nil)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+//    internal func fetchImageById(id: Int, completionHandler: @escaping(String?)->()) {
+//        let fetchImageByIdUrl = "https://api.themoviedb.org/3/movie/\(id)/images"
+//        
+//        let headers: HTTPHeaders = TMDBAPIKey.headers
+//        
+//        AF.request(
+//            fetchImageByIdUrl,
+//            headers: headers
+//        )
+//        .responseDecodable(of: ImagePathResult.self) { response in
+//            switch response.result {
+//            case .success(let value):
+//                if !value.posters.isEmpty, let item = value.posters.first {
+//                    completionHandler(item.file_path)
+//                } else if !value.posters.isEmpty, let item = value.backdrops.first {
+//                    completionHandler(item.file_path)
+//                } else if !value.logos.isEmpty, let item = value.logos.first {
+//                    completionHandler(item.file_path)
+//                } else {
+//                    completionHandler(nil)
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
     
     internal func fetchImage(_ imageUrl: String, completionHandler: @escaping (UIImage?)->()) {
         let imageURL = "https://image.tmdb.org/t/p/original\(imageUrl)"

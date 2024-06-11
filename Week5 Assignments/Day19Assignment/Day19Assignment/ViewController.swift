@@ -78,7 +78,7 @@ extension ViewController: CodeBaseBuildable {
     @objc
     func searchResultChanged(_ notification: NSNotification) {
         self.searchResult = SearchManager.shared.searchResult
-        collectionView.reloadData()
+//        collectionView.reloadData()
     }
 }
 
