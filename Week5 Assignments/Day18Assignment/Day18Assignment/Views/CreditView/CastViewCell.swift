@@ -65,12 +65,17 @@ extension CastViewCell: CodeBaseBuilldable {
     }
     
     func configureUI() {
-        profileImage.backgroundColor = .systemMint
+        profileImage.backgroundColor = .systemGray4
         profileImage.layer.cornerRadius = 8
         profileImage.clipsToBounds = true
+    }
+    
+    func configureData(_ creditInfo: CreditInfo) {
+        actorName.text = creditInfo.name
+        playedRole.text = creditInfo.character
         
-        actorName.text = "Actor Name"
-        
-        playedRole.text = "Played Role / Played Role"
+        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(creditInfo.profile_path)") {
+            profileImage.kf.setImage(with: url)
+        }
     }
 }

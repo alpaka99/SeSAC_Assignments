@@ -105,7 +105,6 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
         
         let data = trendingInfo[indexPath.row]
         cell.configureData(data)
-        cell.delegate = self
         
         return cell
     }
@@ -115,17 +114,9 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? TrendingTableViewCell {
-            print(fetchCreditInfoFromCell(cell))
-            let vc = CreditViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-}
-
-extension TrendingViewController: TrendingTableViewCellDelegate {
-    func fetchCreditInfoFromCell(_ cell: TrendingTableViewCell) -> [CreditInfo] {
-        return cell.credit
+        let vc = CreditViewController()
+        vc.trendingInfo = trendingInfo[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

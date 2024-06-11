@@ -116,7 +116,7 @@ extension DescriptionView: CodeBaseBuilldable {
         .responseDecodable(of: CreditResponse.self) { [weak self] response in
             switch response.result {
             case .success(let value):
-                self?.subtitle.text = value.cast.map { $0.name }.joined(separator: " ")
+                self?.subtitle.text = value.cast.map { $0.name }.joined(separator: ", ")
             case .failure(let error):
                 print(error)
             }

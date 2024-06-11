@@ -16,8 +16,6 @@ final class TrendingTableViewCell: UITableViewCell {
     private(set) var moviePosterView: MoviePosterView = MoviePosterView()
     var credit: [CreditInfo] = []
     
-    weak var delegate: TrendingTableViewCellDelegate?
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -102,8 +100,4 @@ extension TrendingTableViewCell: CodeBaseBuilldable {
         }
         
     }
-}
-
-protocol TrendingTableViewCellDelegate: AnyObject {
-    func fetchCreditInfoFromCell(_ cell: TrendingTableViewCell) -> [CreditInfo]
 }

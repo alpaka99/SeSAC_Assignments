@@ -66,13 +66,16 @@ extension CreditOverViewCell: CodeBaseBuilldable {
     }
     
     func configureUI() {
-        overview.text = "Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview Overview "
+        
         overview.numberOfLines = 2
         
         dropDownButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        dropDownButton.backgroundColor = .systemPink
         dropDownButton.addTarget(self, action: #selector(dropDownButtonTapped), for: .touchUpInside)
         
+    }
+    
+    func configureData(_ data: TrendingInfo) {
+        overview.text = data.overview
     }
     
     func changeUI(completion: ()->()) {
