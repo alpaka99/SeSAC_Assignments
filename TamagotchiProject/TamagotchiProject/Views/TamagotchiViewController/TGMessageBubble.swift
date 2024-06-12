@@ -57,7 +57,11 @@ extension TGMessageBubble: CodeBaseBuildable {
         message.textAlignment = .center
         message.textColor = .TGNavyColor
         message.font = .systemFont(ofSize: 12, weight: .semibold)
-        message.text = "복습을 하자 복습을 하자 복습을 열심히 하자 복습을 하자 복습을 하자 복습을 열심히 하자 복습을 하자 복습을 하자 복습을 열심히 하자 복습을 하자 복습을 하자 복습을 열심히 하자 복습을 하자"
+        message.text = TamagotchiTalk.randomTamagotchi.talk
+    }
+    
+    func changeMessage() {
+        message.text = TamagotchiTalk.randomTamagotchi.talk
     }
     
     

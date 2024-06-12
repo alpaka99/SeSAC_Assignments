@@ -106,6 +106,7 @@ extension TamagotchiViewController: CodeBaseBuildable {
     
     
     private func changeUI() {
+        messageBubble.changeMessage()
         profile.configureData(tamagotchi)
         status.text = tamagotchi.status
         feedFoodView.configureData(.food)
@@ -128,6 +129,7 @@ extension TamagotchiViewController: CodeBaseBuildable {
     @objc
     func userNameChanged() {
         navigationItem.title = "\(UserNameManager.shared.userName)님의 타마고치"
+        messageBubble.changeMessage()
     }
 }
 

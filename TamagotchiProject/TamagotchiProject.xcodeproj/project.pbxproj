@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE6150F52C19BA8B00165CAB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6150F42C19BA8B00165CAB /* UIColor+Extension.swift */; };
 		CED955092C12CB21006D67E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED955082C12CB21006D67E5 /* AppDelegate.swift */; };
 		CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */; };
 		CED9550D2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9550C2C12CB21006D67E5 /* TamagotchiCollectionViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE6150F42C19BA8B00165CAB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CED955052C12CB21006D67E5 /* TamagotchiProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamagotchiProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED955082C12CB21006D67E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED9550A2C12CB21006D67E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				CED9554E2C158DBA006D67E5 /* UserDefaults+Extension.swift */,
+				CE6150F42C19BA8B00165CAB /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				CED9552D2C12DC35006D67E5 /* TGProfileView.swift in Sources */,
 				CED955422C137A06006D67E5 /* SettingTableViewCell.swift in Sources */,
 				CED9550B2C12CB21006D67E5 /* SceneDelegate.swift in Sources */,
+				CE6150F52C19BA8B00165CAB /* UIColor+Extension.swift in Sources */,
 				CED9554F2C158DBA006D67E5 /* UserDefaults+Extension.swift in Sources */,
 				CED955262C12D48A006D67E5 /* Reusable.swift in Sources */,
 				CED955362C12EF01006D67E5 /* TGDivider.swift in Sources */,
