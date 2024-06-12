@@ -125,6 +125,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let cancel = UIAlertAction(title: "아냐!", style: .cancel)
         let deleteData = UIAlertAction(title: "웅", style: .default) { _ in
             TamagotchiManager.shared.resetData() { [weak self] in
+                UserNameManager.shared.resetData()
                 self?.navigationController?.popToRootViewController(animated: true)
             }
         }

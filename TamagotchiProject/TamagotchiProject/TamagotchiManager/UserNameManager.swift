@@ -45,6 +45,11 @@ final class UserNameManager {
         UserDefaults.standard.saveData(userNameInfo)
         loadData()
     }
+    
+    internal func resetData() {
+        setUserNameInfo("익명")
+        loadData()
+    }
 }
 
 
