@@ -55,10 +55,12 @@ extension ViewController: CodeBaseBuildable {
     func configureUI() {
         view.backgroundColor = .white
         
+        navigationItem.title = "영화 검색"
+        
         searchBar.delegate = self
         searchBar.backgroundColor = .black
         
-        collectionView.backgroundColor = .systemIndigo
+        collectionView.backgroundColor = .black
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -78,7 +80,6 @@ extension ViewController: CodeBaseBuildable {
     @objc
     func searchResultChanged(_ notification: NSNotification) {
         self.searchResult = SearchManager.shared.searchResult
-//        collectionView.reloadData()
     }
 }
 

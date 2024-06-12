@@ -127,6 +127,7 @@ final class SearchManager {
     
     internal func resetPage() {
         self.page = 1
+        self.searchResult = []
     }
 }
 

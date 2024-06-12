@@ -40,7 +40,7 @@ extension SearchCollectionViewCell: CodeBaseBuildable {
         posterImage.layer.cornerRadius = 8
         posterImage.clipsToBounds = true
         posterImage.contentMode = .scaleToFill
-        posterImage.backgroundColor = .systemOrange
+        posterImage.backgroundColor = .systemGray4
     }
     
     func configureData<T>(_ data: T) {
