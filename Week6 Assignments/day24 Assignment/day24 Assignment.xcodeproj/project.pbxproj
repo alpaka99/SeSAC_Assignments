@@ -15,6 +15,10 @@
 		CE82DF882C22B21400937DC7 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF872C22B21400937DC7 /* RestaurantViewController.swift */; };
 		CE82DF8B2C22B2D100937DC7 /* WeatherCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF8A2C22B2D100937DC7 /* WeatherCheckViewController.swift */; };
 		CE82DF8E2C22B3ED00937DC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF8D2C22B3ED00937DC7 /* Constants.swift */; };
+		CE82DF942C22B67B00937DC7 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF932C22B67B00937DC7 /* Restaurant.swift */; };
+		CE82DF972C22B6C400937DC7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE82DF962C22B6C400937DC7 /* SnapKit */; };
+		CE82DF9A2C22BC3A00937DC7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF992C22BC3A00937DC7 /* UIButton+Extension.swift */; };
+		CE82DF9D2C22BE6E00937DC7 /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF9C2C22BE6E00937DC7 /* CustomLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,9 @@
 		CE82DF872C22B21400937DC7 /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		CE82DF8A2C22B2D100937DC7 /* WeatherCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCheckViewController.swift; sourceTree = "<group>"; };
 		CE82DF8D2C22B3ED00937DC7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE82DF932C22B67B00937DC7 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		CE82DF992C22BC3A00937DC7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CE82DF9C2C22BE6E00937DC7 /* CustomLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE82DF972C22B6C400937DC7 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +68,9 @@
 		CE82DF6E2C22AA3C00937DC7 /* day24 Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				CE82DF9B2C22BE6600937DC7 /* Manager */,
+				CE82DF982C22BC3200937DC7 /* Extensions */,
+				CE82DF922C22B67200937DC7 /* Models */,
 				CE82DF8C2C22B3E400937DC7 /* Constants */,
 				CE82DF832C22B1CA00937DC7 /* Views */,
 				CE82DF6F2C22AA3C00937DC7 /* AppDelegate.swift */,
@@ -105,6 +116,30 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		CE82DF922C22B67200937DC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE82DF932C22B67B00937DC7 /* Restaurant.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE82DF982C22BC3200937DC7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE82DF992C22BC3A00937DC7 /* UIButton+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE82DF9B2C22BE6600937DC7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CE82DF9C2C22BE6E00937DC7 /* CustomLocationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,6 +156,9 @@
 			dependencies = (
 			);
 			name = "day24 Assignment";
+			packageProductDependencies = (
+				CE82DF962C22B6C400937DC7 /* SnapKit */,
+			);
 			productName = "day24 Assignment";
 			productReference = CE82DF6C2C22AA3C00937DC7 /* day24 Assignment.app */;
 			productType = "com.apple.product-type.application";
@@ -149,6 +187,9 @@
 				Base,
 			);
 			mainGroup = CE82DF632C22AA3C00937DC7;
+			packageReferences = (
+				CE82DF952C22B6C400937DC7 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = CE82DF6D2C22AA3C00937DC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,9 +219,12 @@
 				CE82DF852C22B1D400937DC7 /* TabBarController.swift in Sources */,
 				CE82DF882C22B21400937DC7 /* RestaurantViewController.swift in Sources */,
 				CE82DF8B2C22B2D100937DC7 /* WeatherCheckViewController.swift in Sources */,
+				CE82DF942C22B67B00937DC7 /* Restaurant.swift in Sources */,
 				CE82DF702C22AA3C00937DC7 /* AppDelegate.swift in Sources */,
+				CE82DF9A2C22BC3A00937DC7 /* UIButton+Extension.swift in Sources */,
 				CE82DF722C22AA3C00937DC7 /* SceneDelegate.swift in Sources */,
 				CE82DF8E2C22B3ED00937DC7 /* Constants.swift in Sources */,
+				CE82DF9D2C22BE6E00937DC7 /* CustomLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +371,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "day24 Assignment/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "day24 Assignment";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Day24Assignment에서 음식점 정보와 날씨 정보를 제공하기 위해 위치 정보가 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -358,6 +403,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "day24 Assignment/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "day24 Assignment";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Day24Assignment에서 음식점 정보와 날씨 정보를 제공하기 위해 위치 정보가 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -401,6 +447,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE82DF952C22B6C400937DC7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE82DF962C22B6C400937DC7 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE82DF952C22B6C400937DC7 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE82DF642C22AA3C00937DC7 /* Project object */;
 }
