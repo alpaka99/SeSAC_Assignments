@@ -10,7 +10,9 @@ import CoreLocation
 class LocationStore: NSObject {
     internal static let shared = LocationStore()
     private let locationManager = CLLocationManager()
+    private let geoCoder = CLGeocoder()
     private var currentLocation: CLLocationCoordinate2D = LocationCoordinate.dummyLocation
+    private var currentLocationName = ""
     
     private override init() {
         super.init()
@@ -73,4 +75,22 @@ extension LocationStore: CLLocationManagerDelegate {
         self.updateLocation()
         return currentLocation
     }
+    
+    func fetchLocationName() {
+        updateLocation()
+        
+        geoCoder.reverseGeocodeLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)) { placeMarks, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            print(placeMarks?.first)
+        }
+    }
+}
+
+enum ReverseGeocodingError: Error {
+    case unknownError
 }
