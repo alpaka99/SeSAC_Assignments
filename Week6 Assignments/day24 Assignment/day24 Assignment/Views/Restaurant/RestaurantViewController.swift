@@ -55,6 +55,7 @@ final class RestaurantViewController: UIViewController {
         
         navigationItem.title = "식당 정보 검색하기"
         
+        mapView.delegate = self
         mapView.showsUserLocation = true
         
         userLocationButton.addTarget(
@@ -68,13 +69,17 @@ final class RestaurantViewController: UIViewController {
     
     @objc
     func userLocationButtonTapped(_ sender: UIButton) {
-        let coordinateRegion = MKCoordinateRegion(
-            center: LocationStore.shared.fetchCurrentLocation(),
+        moveToCoordinate(LocationStore.shared.fetchCurrentLocation())
+    }
+    
+    func moveToCoordinate(_ center: CLLocationCoordinate2D) {
+        let region = MKCoordinateRegion(
+            center: center,
             latitudinalMeters: 400,
             longitudinalMeters: 400
         )
         
-        mapView.region = coordinateRegion
+        mapView.region = region
     }
     
     func addRestaurantAnnotations(_ restaurants: [Restaurant]) {
@@ -92,5 +97,19 @@ final class RestaurantViewController: UIViewController {
         }
         
         mapView.addAnnotations(restaurantAnnotations)
+    }
+}
+
+extension RestaurantViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotationCoordinate = view.annotation?.coordinate {
+            let annotationRegion = MKCoordinateRegion(
+                center: annotationCoordinate,
+                latitudinalMeters: 400,
+                longitudinalMeters: 400
+            )
+            
+            mapView.region = annotationRegion
+        }
     }
 }
