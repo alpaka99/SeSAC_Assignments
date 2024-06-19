@@ -40,4 +40,12 @@ extension UIButton {
         self.configuration = config
         return self
     }
+    
+    func adjustSystemImageSize(size: CGFloat) -> Self {
+        var config = self.config
+        config.image = config.image?.applyingSymbolConfiguration(.init(pointSize: size))
+        
+        self.configuration = config
+        return self
+    }
 }
