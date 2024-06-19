@@ -23,8 +23,8 @@ final class TabBarController: UITabBarController {
         
         setViewControllers(
             [
+                weatherCheckNavigationController,
                 restaurantNavigationController,
-                weatherCheckNavigationController
             ],
             animated: true
         )
