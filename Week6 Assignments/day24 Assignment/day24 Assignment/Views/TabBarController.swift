@@ -21,8 +21,14 @@ final class TabBarController: UITabBarController {
         weatherCheckViewController.tabBarItem.image = UIImage(systemName: TabBarItem.weatherCheck.systemName)
         weatherCheckNavigationController.tabBarItem.title = TabBarItem.weatherCheck.title
         
+        let testViewController = TestViewController()
+        let testViewNavigationController = UINavigationController(rootViewController: testViewController)
+        testViewController.tabBarItem.image = UIImage(systemName: "person")
+        testViewController.tabBarItem.title = "test"
+        
         setViewControllers(
             [
+                testViewNavigationController,
                 weatherCheckNavigationController,
                 restaurantNavigationController,
             ],

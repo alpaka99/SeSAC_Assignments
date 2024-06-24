@@ -10,8 +10,7 @@ import UIKit
 import SnapKit
 
 final class WeatherCheckViewController: UIViewController {
-    let backgroundImage = UIImageView(image: UIImage(named: ImageName.weatherCheckBackgroundImage))
-
+    let backgroundImage = UIImageView()
     
     let timeLabel = UILabel()
     
@@ -31,6 +30,8 @@ final class WeatherCheckViewController: UIViewController {
     
     let tableView = UITableView()
     
+    let testButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,13 +46,20 @@ final class WeatherCheckViewController: UIViewController {
         backgroundImage.addSubview(timeLabel)
         
         backgroundImage.addSubview(headerView)
+//        
+        headerView.addSubview(locationButton)
+        headerView.addSubview(locationName)
+        headerView.addSubview(shareButton)
+        headerView.addSubview(refreshButton)
         
-        backgroundImage.addSubview(locationButton)
-        backgroundImage.addSubview(locationName)
-        backgroundImage.addSubview(shareButton)
-        backgroundImage.addSubview(refreshButton)
+//        backgroundImage.addSubview(locationButton)
+//        backgroundImage.addSubview(locationName)
+//        backgroundImage.addSubview(shareButton)
+//        backgroundImage.addSubview(refreshButton)
 
         backgroundImage.addSubview(tableView)
+        
+        backgroundImage.addSubview(testButton)
     }
     
     func configureLayout() {
@@ -64,45 +72,50 @@ final class WeatherCheckViewController: UIViewController {
                 .inset(16)
         }
         
-        headerView.snp.makeConstraints {
-            $0.top.equalTo(timeLabel.snp.bottom)
-                .offset(16)
-            $0.horizontalEdges.equalTo(timeLabel.snp.horizontalEdges)
-        }
-        
+//        headerView.snp.makeConstraints {
+//            $0.top.equalTo(timeLabel.snp.bottom)
+//                .offset(16)
+//            $0.horizontalEdges.equalTo(timeLabel.snp.horizontalEdges)
+//        }
+//        
         locationButton.snp.makeConstraints {
             $0.top.equalTo(timeLabel.snp.bottom)
                 .offset(16)
-            $0.leading.equalTo(headerView.snp.leading)
-            $0.centerY.equalTo(headerView.snp.centerY)
-            $0.size.equalTo(headerView.snp.height)
+            $0.leading.equalTo(timeLabel.snp.leading)
+            $0.size.equalTo(44)
         }
         
         locationName.snp.makeConstraints {
             $0.leading.equalTo(locationButton.snp.trailing)
                 .offset(8)
-            $0.centerY.equalTo(headerView.snp.centerY)
-            $0.size.equalTo(headerView.snp.height)
+            $0.centerY.equalTo(locationButton.snp.centerY)
+            $0.size.equalTo(locationButton.snp.height)
         }
         
         refreshButton.snp.makeConstraints {
-            $0.trailing.equalTo(headerView.snp.trailing)
+            $0.trailing.equalTo(timeLabel.snp.trailing)
                 .offset(-8)
-            $0.centerY.equalTo(headerView.snp.centerY)
-            $0.size.equalTo(headerView.snp.height)
+            $0.centerY.equalTo(locationButton.snp.centerY)
+            $0.size.equalTo(locationButton.snp.height)
         }
         
         shareButton.snp.makeConstraints {
             $0.trailing.equalTo(refreshButton.snp.leading)
                 .offset(-8)
-            $0.centerY.equalTo(headerView.snp.centerY)
-            $0.size.equalTo(headerView.snp.height)
+            $0.centerY.equalTo(locationButton.snp.centerY)
+            $0.size.equalTo(locationButton.snp.height)
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(headerView.snp.bottom)
+            $0.top.equalTo(locationButton.snp.bottom)
                 .offset(16)
-            $0.horizontalEdges.equalTo(headerView.snp.horizontalEdges)
+            $0.horizontalEdges.equalTo(timeLabel.snp.horizontalEdges)
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        testButton.snp.makeConstraints {
+            $0.top.equalTo(tableView.snp.bottom)
+            
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -110,18 +123,22 @@ final class WeatherCheckViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         
+//        backgroundImage.image = UIImage(named: ImageName.weatherCheckBackgroundImage)
         backgroundImage.contentMode = .scaleAspectFill
         
         DateHelper.dateFormatter.dateFormat = DateHelper.weatherDateFormat
         timeLabel.text = DateHelper.dateFormatter.string(from: Date.now)
         timeLabel.textColor = .white
         
-        print(#function)
+        locationName.text = "위치 이름"
+        locationName.textColor = .white
+        
         locationButton.addTarget(
             self,
             action: #selector(locationButtonTapped),
             for: .touchUpInside
         )
+        
         shareButton.addTarget(
             self,
             action: #selector(shareButtonTapped),
@@ -134,7 +151,13 @@ final class WeatherCheckViewController: UIViewController {
         )
         tableView.backgroundColor = .clear
         
-        LocationStore.shared.fetchLocationName()
+        print(#function)
+        testButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
+        testButton.backgroundColor = .systemOrange
+        testButton.tintColor = .white
+        testButton.setTitle("TestButton", for: .normal)
+        
+//        LocationStore.shared.fetchLocationName()
     }
     
     // MARK: 왜 button에 addTarget이 안되는거지..?
@@ -145,19 +168,18 @@ final class WeatherCheckViewController: UIViewController {
     }
     
     @objc
-    func shareButtonTapped() {
+    func shareButtonTapped(_ sender: UIButton) {
         print(#function)
     }
 }
 
 extension WeatherCheckViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath) as UITableViewCell
-//        cell.textLabel?.text = "졸리다"
         return cell
     }
 }

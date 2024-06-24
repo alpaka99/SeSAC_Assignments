@@ -20,6 +20,7 @@
 		CE82DF9A2C22BC3A00937DC7 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF992C22BC3A00937DC7 /* UIButton+Extension.swift */; };
 		CE82DF9D2C22BE6E00937DC7 /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF9C2C22BE6E00937DC7 /* CustomLocationManager.swift */; };
 		CE82DFA02C2340A200937DC7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DF9F2C2340A200937DC7 /* Reusable.swift */; };
+		CE82DFAE2C286A0400937DC7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DFAD2C286A0400937DC7 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		CE82DF992C22BC3A00937DC7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		CE82DF9C2C22BE6E00937DC7 /* CustomLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
 		CE82DF9F2C2340A200937DC7 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		CE82DFAD2C286A0400937DC7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CE82DF8A2C22B2D100937DC7 /* WeatherCheckViewController.swift */,
+				CE82DFAD2C286A0400937DC7 /* TestViewController.swift */,
 			);
 			path = WeatherCheck;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			files = (
 				CE82DF852C22B1D400937DC7 /* TabBarController.swift in Sources */,
 				CE82DF882C22B21400937DC7 /* RestaurantViewController.swift in Sources */,
+				CE82DFAE2C286A0400937DC7 /* TestViewController.swift in Sources */,
 				CE82DF8B2C22B2D100937DC7 /* WeatherCheckViewController.swift in Sources */,
 				CE82DF942C22B67B00937DC7 /* Restaurant.swift in Sources */,
 				CE82DFA02C2340A200937DC7 /* Reusable.swift in Sources */,
