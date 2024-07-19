@@ -9,20 +9,22 @@
 /* Begin PBXBuildFile section */
 		CEB45B472C492A2300327314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B462C492A2300327314 /* AppDelegate.swift */; };
 		CEB45B492C492A2300327314 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B482C492A2300327314 /* SceneDelegate.swift */; };
-		CEB45B4B2C492A2300327314 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B4A2C492A2300327314 /* ViewController.swift */; };
+		CEB45B4B2C492A2300327314 /* FocusModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B4A2C492A2300327314 /* FocusModeViewController.swift */; };
 		CEB45B502C492A2400327314 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB45B4F2C492A2400327314 /* Assets.xcassets */; };
 		CEB45B532C492A2400327314 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CEB45B522C492A2400327314 /* Base */; };
 		CEB45B5C2C4A005A00327314 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEB45B5B2C4A005A00327314 /* SnapKit */; };
+		CEB45B612C4A707B00327314 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B602C4A707B00327314 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CEB45B432C492A2300327314 /* FocusModeCompositionalLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusModeCompositionalLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB45B462C492A2300327314 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB45B482C492A2300327314 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEB45B4A2C492A2300327314 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEB45B4A2C492A2300327314 /* FocusModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusModeViewController.swift; sourceTree = "<group>"; };
 		CEB45B4F2C492A2400327314 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB45B522C492A2400327314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB45B542C492A2400327314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEB45B602C4A707B00327314 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,11 @@
 			children = (
 				CEB45B462C492A2300327314 /* AppDelegate.swift */,
 				CEB45B482C492A2300327314 /* SceneDelegate.swift */,
-				CEB45B4A2C492A2300327314 /* ViewController.swift */,
+				CEB45B4A2C492A2300327314 /* FocusModeViewController.swift */,
 				CEB45B4F2C492A2400327314 /* Assets.xcassets */,
 				CEB45B512C492A2400327314 /* LaunchScreen.storyboard */,
 				CEB45B542C492A2400327314 /* Info.plist */,
+				CEB45B602C4A707B00327314 /* SettingViewController.swift */,
 			);
 			path = FocusModeCompositionalLayout;
 			sourceTree = "<group>";
@@ -142,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB45B4B2C492A2300327314 /* ViewController.swift in Sources */,
+				CEB45B4B2C492A2300327314 /* FocusModeViewController.swift in Sources */,
 				CEB45B472C492A2300327314 /* AppDelegate.swift in Sources */,
 				CEB45B492C492A2300327314 /* SceneDelegate.swift in Sources */,
+				CEB45B612C4A707B00327314 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

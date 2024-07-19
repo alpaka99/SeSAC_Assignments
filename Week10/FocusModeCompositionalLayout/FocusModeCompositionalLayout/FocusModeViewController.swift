@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FocusModeViewController.swift
 //  FocusModeCompositionalLayout
 //
 //  Created by user on 7/18/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class ViewController: UIViewController {
+class FocusModeViewController: UIViewController {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     var dataSource: UICollectionViewDiffableDataSource<Section, Mode.CellData>!
     
@@ -65,8 +65,12 @@ class ViewController: UIViewController {
                     .customView(configuration: .init(
                         customView: trailingView,
                         placement: .trailing(displayed: .always)
-                    ))
+                    )),
                 ]
+                
+                if itemIdentifier.isDisclosureShowing {
+                    cell.accessories.append(.disclosureIndicator(options: .init(tintColor: .white)))
+                }
             }
         })
         
@@ -123,6 +127,7 @@ enum Mode: CaseIterable, Equatable {
         let subTitle: String?
         let textColor: UIColor
         let trailingView: UIView?
+        let isDisclosureShowing: Bool
     }
     
     private var titleIcon: UIImage? {
@@ -205,6 +210,15 @@ enum Mode: CaseIterable, Equatable {
         }
     }
     
+    var isDisclosureShowing: Bool {
+        switch self {
+        case .noDistrubMode, .sleep, .privateTime, .work:
+            return true
+        case .shareAcross:
+            return false
+        }
+    }
+    
     var data: CellData {
         return CellData(
             titleIcon: self.titleIcon,
@@ -212,7 +226,8 @@ enum Mode: CaseIterable, Equatable {
             title: self.title,
             subTitle: self.subTitle,
             textColor: self.textColor, 
-            trailingView: self.trailingView
+            trailingView: self.trailingView,
+            isDisclosureShowing: self.isDisclosureShowing
         )
     }
 }
