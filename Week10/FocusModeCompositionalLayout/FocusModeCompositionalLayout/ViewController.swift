@@ -46,11 +46,12 @@ class ViewController: UIViewController {
             
             content.text = itemIdentifier.title
             content.textProperties.color = itemIdentifier.textColor
+            
             content.image = itemIdentifier.titleIcon
             content.imageProperties.tintColor = itemIdentifier.imageTintColor
+            
             content.secondaryText = itemIdentifier.subTitle
             content.secondaryTextProperties.color = itemIdentifier.textColor
-            
             
             
             var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
@@ -59,10 +60,14 @@ class ViewController: UIViewController {
             
             cell.contentConfiguration = content
             cell.backgroundConfiguration = backgroundConfig
-            cell.accessories = [
-                .label(text: itemIdentifier.trailingTitle, options: .init(tintColor: .white)),
-                .disclosureIndicator(options: .init(tintColor: .white))
-            ]
+            if let trailingView = itemIdentifier.trailingView {
+                cell.accessories = [
+                    .customView(configuration: .init(
+                        customView: trailingView,
+                        placement: .trailing(displayed: .always)
+                    ))
+                ]
+            }
         })
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -96,7 +101,7 @@ enum Section: CaseIterable {
     var items: [Mode.CellData] {
         switch self {
         case .mode:
-            return [Mode.noDistrubMode.data, Mode.privateTime.data, Mode.work.data, Mode.privateTime.data]
+            return [Mode.noDistrubMode.data, Mode.sleep.data, Mode.work.data, Mode.privateTime.data]
         case .share:
             return [Mode.shareAcross.data]
         }
@@ -116,8 +121,8 @@ enum Mode: CaseIterable, Equatable {
         let imageTintColor: UIColor
         let title: String?
         let subTitle: String?
-        let trailingTitle: String
         let textColor: UIColor
+        let trailingView: UIView?
     }
     
     private var titleIcon: UIImage? {
@@ -174,21 +179,29 @@ enum Mode: CaseIterable, Equatable {
         }
     }
     
-    private var trailingTitle: String {
-        switch self {
-        case .noDistrubMode:
-            return "켬"
-        case .sleep, .work, .privateTime:
-            return ""
-        case .shareAcross:
-            return "설정"
-        }
-    }
-    
     private var textColor: UIColor {
         switch self {
         case .noDistrubMode, .sleep, .work, .privateTime, .shareAcross:
             return .white
+        }
+    }
+    
+    private var trailingView: UIView? {
+        switch self {
+        case .noDistrubMode:
+            let label = UILabel()
+            label.text = "켬"
+            label.textColor = self.textColor
+            return label
+        case .privateTime:
+            let label = UILabel()
+            label.text = "설정"
+            label.textColor = self.textColor
+            return label
+        case .shareAcross:
+            return UISwitch()
+        case .sleep, .work:
+            return nil
         }
     }
     
@@ -198,8 +211,8 @@ enum Mode: CaseIterable, Equatable {
             imageTintColor: self.imageTintColor,
             title: self.title,
             subTitle: self.subTitle,
-            trailingTitle: self.trailingTitle,
-            textColor: self.textColor
+            textColor: self.textColor, 
+            trailingView: self.trailingView
         )
     }
 }
