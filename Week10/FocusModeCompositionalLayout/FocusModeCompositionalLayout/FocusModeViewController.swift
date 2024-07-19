@@ -11,7 +11,7 @@ import SnapKit
 
 class FocusModeViewController: UIViewController {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-    var dataSource: UICollectionViewDiffableDataSource<Section, Mode.CellData>!
+    var dataSource: UICollectionViewDiffableDataSource<FocusModeSection, FocusModeCell.CellData>!
     
     func createLayout() -> UICollectionViewLayout {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -38,7 +38,7 @@ class FocusModeViewController: UIViewController {
 
     private func configureDataSource() {
         // cell Registration
-        var registration: UICollectionView.CellRegistration<UICollectionViewListCell, Mode.CellData>!
+        var registration: UICollectionView.CellRegistration<UICollectionViewListCell, FocusModeCell.CellData>!
         
         // 어떤 cell의 register 해줄지 여기서 UI 디자인등을 함
         registration = UICollectionView.CellRegistration(handler: { cell, indexPath, itemIdentifier in
@@ -84,9 +84,9 @@ class FocusModeViewController: UIViewController {
     // 여기서 아예 snapShot을 처음부터 다 설정
     // 데이터 타입도 여기서 정해줌
     func updateSnapShot() {
-        var snapShot = NSDiffableDataSourceSnapshot<Section, Mode.CellData>()
+        var snapShot = NSDiffableDataSourceSnapshot<FocusModeSection, FocusModeCell.CellData>()
         
-        Section.allCases.forEach { section in
+        FocusModeSection.allCases.forEach { section in
             snapShot.appendSections([section])
             snapShot.appendItems(section.items)
         }
@@ -98,21 +98,21 @@ class FocusModeViewController: UIViewController {
 
 }
 
-enum Section: CaseIterable {
+enum FocusModeSection: CaseIterable {
     case mode
     case share
     
-    var items: [Mode.CellData] {
+    var items: [FocusModeCell.CellData] {
         switch self {
         case .mode:
-            return [Mode.noDistrubMode.data, Mode.sleep.data, Mode.work.data, Mode.privateTime.data]
+            return [FocusModeCell.noDistrubMode.data, FocusModeCell.sleep.data, FocusModeCell.work.data, FocusModeCell.privateTime.data]
         case .share:
-            return [Mode.shareAcross.data]
+            return [FocusModeCell.shareAcross.data]
         }
     }
 }
 
-enum Mode: CaseIterable, Equatable {
+enum FocusModeCell: CaseIterable, Equatable {
     case noDistrubMode
     case sleep
     case work

@@ -11,7 +11,7 @@ import SnapKit
 
 final class SettingViewController: UIViewController {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-    var dataSource: UICollectionViewDiffableDataSource<String, String>!
+    var dataSource: UICollectionViewDiffableDataSource<SettingSection, SettingCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,36 +27,110 @@ final class SettingViewController: UIViewController {
     
     func createLayout() -> UICollectionViewCompositionalLayout {
         var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-        configuration.backgroundColor = .systemBlue
+        configuration.backgroundColor = .black
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         
         return layout
     }
     
     func configureDataSource() {
-        var registration: UICollectionView.CellRegistration<UICollectionViewListCell, String>!
+        var registration: UICollectionView.CellRegistration<UICollectionViewListCell, SettingCell>!
         registration = UICollectionView.CellRegistration { cell, indexPath, itemIdentifier in
             var content = UIListContentConfiguration.cell()
-            content.text = itemIdentifier
-            content.secondaryText = String(indexPath.row)
-            content.textProperties.color = .systemOrange
+            content.text = itemIdentifier.title
+            content.textProperties.color = .white
+            
+            let backgroundConfig = UIBackgroundConfiguration.clear()
             
             cell.contentConfiguration = content
+            cell.backgroundConfiguration = backgroundConfig
         }
         
-        dataSource = UICollectionViewDiffableDataSource<String, String>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<SettingSection, SettingCell>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: itemIdentifier)
             return cell
         })
     }
     
     func configureSnapShot() {
-        var snapShot = NSDiffableDataSourceSnapshot<String, String>()
+        var snapShot = NSDiffableDataSourceSnapshot<SettingSection, SettingCell>()
         
-        snapShot.appendSections(["section1", "section2"])
-        snapShot.appendItems(["item1", "item2", "item3", "item4"], toSection: "section1")
-        snapShot.appendItems(["element1", "element2", "element3"], toSection: "section2")
+        SettingSection.allCases.forEach { section in
+            snapShot.appendSections([section])
+            snapShot.appendItems(section.items)
+        }
         
         dataSource.apply(snapShot)
+    }
+}
+
+enum SettingSection: Hashable, CaseIterable {
+    case totalSection
+    case privateSection
+    case etcSection
+    
+    var items: [SettingCell] {
+        switch self {
+        case .totalSection:
+            return [
+                SettingCell.notice,
+                SettingCell.lab,
+                SettingCell.versionInfo,
+            ]
+        case .privateSection:
+            return [
+                SettingCell.security,
+                SettingCell.notification,
+                SettingCell.chatting,
+                SettingCell.multiProfie,
+            ]
+        case .etcSection:
+            return [
+                SettingCell.customerCenter
+            ]
+        }
+    }
+}
+
+enum SettingCell {
+    struct CellItem: Identifiable {
+        let id = UUID()
+        var title: String?
+    }
+    
+    case notice
+    case lab
+    case versionInfo
+    
+    case security
+    case notification
+    case chatting
+    case multiProfie
+    
+    case customerCenter
+    
+    var title: String? {
+        switch self {
+        case .notice:
+            return "공지사항"
+        case .lab:
+            return "실험실"
+        case .versionInfo:
+            return "버전 정보"
+        case .security:
+            return "개인/보안"
+        case .notification:
+            return "알림"
+        case .chatting:
+            return "채팅"
+        case .multiProfie:
+            return "멀티프로필"
+        case .customerCenter:
+            return "고객센터/도움말"
+        }
+    }
+    
+    var item: CellItem {
+        return CellItem(title: title)
     }
 }
