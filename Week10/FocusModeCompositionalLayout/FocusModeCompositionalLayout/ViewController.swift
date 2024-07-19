@@ -9,14 +9,9 @@ import UIKit
 
 import SnapKit
 
-struct CellData: Hashable, Identifiable {
-    let id = UUID()
-    let title: String = "Test"
-}
-
 class ViewController: UIViewController {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-    var dataSource: UICollectionViewDiffableDataSource<String, CellData>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Mode.CellData>!
     
     func createLayout() -> UICollectionViewLayout {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -43,22 +38,31 @@ class ViewController: UIViewController {
 
     private func configureDataSource() {
         // cell Registration
-        var registration: UICollectionView.CellRegistration<UICollectionViewListCell, CellData>!
+        var registration: UICollectionView.CellRegistration<UICollectionViewListCell, Mode.CellData>!
         
         // 어떤 cell의 register 해줄지 여기서 UI 디자인등을 함
         registration = UICollectionView.CellRegistration(handler: { cell, indexPath, itemIdentifier in
             var content = UIListContentConfiguration.cell()
-            content.text = "test"
-            content.textProperties.color = .white
-            content.image = UIImage(systemName: "star")
-            content.imageProperties.tintColor = .systemRed
+            
+            content.text = itemIdentifier.title
+            content.textProperties.color = itemIdentifier.textColor
+            content.image = itemIdentifier.titleIcon
+            content.imageProperties.tintColor = itemIdentifier.imageTintColor
+            content.secondaryText = itemIdentifier.subTitle
+            content.secondaryTextProperties.color = itemIdentifier.textColor
+            
+            
             
             var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
-            backgroundConfig.backgroundColor = .clear
+            backgroundConfig.backgroundColor = .darkGray
             backgroundConfig.cornerRadius = 8
             
             cell.contentConfiguration = content
             cell.backgroundConfiguration = backgroundConfig
+            cell.accessories = [
+                .label(text: itemIdentifier.trailingTitle, options: .init(tintColor: .white)),
+                .disclosureIndicator(options: .init(tintColor: .white))
+            ]
         })
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -71,11 +75,13 @@ class ViewController: UIViewController {
     // 여기서 아예 snapShot을 처음부터 다 설정
     // 데이터 타입도 여기서 정해줌
     func updateSnapShot() {
-        var snapShot = NSDiffableDataSourceSnapshot<String, CellData>()
+        var snapShot = NSDiffableDataSourceSnapshot<Section, Mode.CellData>()
         
-        snapShot.appendSections(["Test1", "Test2"])
-        snapShot.appendItems([CellData(), CellData(), CellData(), CellData()], toSection: "Test1")
-        
+        Section.allCases.forEach { section in
+            snapShot.appendSections([section])
+            snapShot.appendItems(section.items)
+        }
+//
         // collectionView에 snapShot을 주는게 아니라, dataSource에 apply를 해주는 방식
         // 그래서 dataSource 변수를 하나 지정해둬야하는거고
         dataSource.apply(snapShot)
@@ -83,3 +89,117 @@ class ViewController: UIViewController {
 
 }
 
+enum Section: CaseIterable {
+    case mode
+    case share
+    
+    var items: [Mode.CellData] {
+        switch self {
+        case .mode:
+            return [Mode.noDistrubMode.data, Mode.privateTime.data, Mode.work.data, Mode.privateTime.data]
+        case .share:
+            return [Mode.shareAcross.data]
+        }
+    }
+}
+
+enum Mode: CaseIterable, Equatable {
+    case noDistrubMode
+    case sleep
+    case work
+    case privateTime
+    case shareAcross
+    
+    struct CellData: Hashable, Identifiable {
+        let id = UUID()
+        let titleIcon: UIImage?
+        let imageTintColor: UIColor
+        let title: String?
+        let subTitle: String?
+        let trailingTitle: String
+        let textColor: UIColor
+    }
+    
+    private var titleIcon: UIImage? {
+        switch self {
+        case .noDistrubMode:
+            return UIImage(systemName: "moon.fill")?.withTintColor(imageTintColor)
+        case .sleep:
+            return UIImage(systemName: "bed.double.fill")?.withTintColor(imageTintColor)
+        case .work:
+            return UIImage(systemName: "iphone.gen2.radiowaves.left.and.right")?.withTintColor(imageTintColor)
+        case .privateTime:
+            return UIImage(systemName: "person.fill")?.withTintColor(imageTintColor)
+        case .shareAcross:
+            return nil
+        }
+    }
+    
+    private var imageTintColor: UIColor {
+        switch self {
+        case .noDistrubMode:
+            return .systemPurple
+        case .sleep:
+            return .systemOrange
+        case .work:
+            return .systemGreen
+        case .privateTime:
+            return .systemBlue
+        case .shareAcross:
+            return .clear
+        }
+    }
+    
+    private var title: String? {
+        switch self {
+        case .noDistrubMode:
+            return "방해 금지 모드"
+        case .sleep:
+            return "수면"
+        case .work:
+            return "업무"
+        case .privateTime:
+            return "개인 시간"
+        case .shareAcross:
+            return "모든 기기에서 공유"
+        }
+    }
+    
+    private var subTitle: String? {
+        switch self {
+        case .work:
+            return "09:00~06:00"
+        case .noDistrubMode, .sleep, .privateTime, .shareAcross:
+            return nil
+        }
+    }
+    
+    private var trailingTitle: String {
+        switch self {
+        case .noDistrubMode:
+            return "켬"
+        case .sleep, .work, .privateTime:
+            return ""
+        case .shareAcross:
+            return "설정"
+        }
+    }
+    
+    private var textColor: UIColor {
+        switch self {
+        case .noDistrubMode, .sleep, .work, .privateTime, .shareAcross:
+            return .white
+        }
+    }
+    
+    var data: CellData {
+        return CellData(
+            titleIcon: self.titleIcon,
+            imageTintColor: self.imageTintColor,
+            title: self.title,
+            subTitle: self.subTitle,
+            trailingTitle: self.trailingTitle,
+            textColor: self.textColor
+        )
+    }
+}
