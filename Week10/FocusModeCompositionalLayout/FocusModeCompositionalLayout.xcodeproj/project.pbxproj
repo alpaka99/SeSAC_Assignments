@@ -14,6 +14,7 @@
 		CEB45B532C492A2400327314 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CEB45B522C492A2400327314 /* Base */; };
 		CEB45B5C2C4A005A00327314 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEB45B5B2C4A005A00327314 /* SnapKit */; };
 		CEB45B612C4A707B00327314 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B602C4A707B00327314 /* SettingViewController.swift */; };
+		CEB45B632C4BB0E400327314 /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		CEB45B522C492A2400327314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB45B542C492A2400327314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB45B602C4A707B00327314 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		CEB45B3A2C492A2300327314 = {
 			isa = PBXGroup;
 			children = (
+				CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */,
 				CEB45B452C492A2300327314 /* FocusModeCompositionalLayout */,
 				CEB45B442C492A2300327314 /* Products */,
 			);
@@ -149,6 +152,7 @@
 				CEB45B472C492A2300327314 /* AppDelegate.swift in Sources */,
 				CEB45B492C492A2300327314 /* SceneDelegate.swift in Sources */,
 				CEB45B612C4A707B00327314 /* SettingViewController.swift in Sources */,
+				CEB45B632C4BB0E400327314 /* ShoppingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
