@@ -16,6 +16,7 @@
 		CEB45B612C4A707B00327314 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B602C4A707B00327314 /* SettingViewController.swift */; };
 		CEB45B632C4BB0E400327314 /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */; };
 		CEB45B652C4CD92D00327314 /* ShoppingTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B642C4CD92D00327314 /* ShoppingTodoViewController.swift */; };
+		CEB45B672C4D277200327314 /* TravelTalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB45B662C4D277200327314 /* TravelTalkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		CEB45B602C4A707B00327314 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		CEB45B642C4CD92D00327314 /* ShoppingTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTodoViewController.swift; sourceTree = "<group>"; };
+		CEB45B662C4D277200327314 /* TravelTalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTalkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		CEB45B3A2C492A2300327314 = {
 			isa = PBXGroup;
 			children = (
+				CEB45B662C4D277200327314 /* TravelTalkViewController.swift */,
 				CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */,
 				CEB45B452C492A2300327314 /* FocusModeCompositionalLayout */,
 				CEB45B442C492A2300327314 /* Products */,
@@ -154,6 +157,7 @@
 				CEB45B4B2C492A2300327314 /* FocusModeViewController.swift in Sources */,
 				CEB45B472C492A2300327314 /* AppDelegate.swift in Sources */,
 				CEB45B652C4CD92D00327314 /* ShoppingTodoViewController.swift in Sources */,
+				CEB45B672C4D277200327314 /* TravelTalkViewController.swift in Sources */,
 				CEB45B492C492A2300327314 /* SceneDelegate.swift in Sources */,
 				CEB45B612C4A707B00327314 /* SettingViewController.swift in Sources */,
 				CEB45B632C4BB0E400327314 /* ShoppingViewController.swift in Sources */,
