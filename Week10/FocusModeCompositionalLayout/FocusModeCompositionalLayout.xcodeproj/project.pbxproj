@@ -48,8 +48,6 @@
 		CEB45B3A2C492A2300327314 = {
 			isa = PBXGroup;
 			children = (
-				CEB45B662C4D277200327314 /* TravelTalkViewController.swift */,
-				CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */,
 				CEB45B452C492A2300327314 /* FocusModeCompositionalLayout */,
 				CEB45B442C492A2300327314 /* Products */,
 			);
@@ -66,6 +64,8 @@
 		CEB45B452C492A2300327314 /* FocusModeCompositionalLayout */ = {
 			isa = PBXGroup;
 			children = (
+				CEB45B662C4D277200327314 /* TravelTalkViewController.swift */,
+				CEB45B622C4BB0E400327314 /* ShoppingViewController.swift */,
 				CEB45B462C492A2300327314 /* AppDelegate.swift */,
 				CEB45B482C492A2300327314 /* SceneDelegate.swift */,
 				CEB45B4A2C492A2300327314 /* FocusModeViewController.swift */,
