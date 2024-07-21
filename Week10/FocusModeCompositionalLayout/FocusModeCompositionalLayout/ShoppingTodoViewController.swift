@@ -34,6 +34,8 @@ final class ShoppingTodoViewController: UIViewController {
             collectionView.top.equalTo(searchBar.snp.bottom)
             collectionView.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        searchBar.delegate = self
         configureDataSource()
         configureSnapShot()
     }
@@ -103,4 +105,13 @@ struct ShoppingTodoCellData: Identifiable, Hashable {
     let checked: Bool
     let title: String
     let favorite: Bool
+}
+
+extension ShoppingTodoViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, !text.isEmpty {
+            shoppingTodoCellDatas.append(ShoppingTodoCellData(checked: false, title: text, favorite: false))
+            configureSnapShot()
+        }
+    }
 }
