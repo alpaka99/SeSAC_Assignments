@@ -47,7 +47,8 @@ class FocusModeViewController: UIViewController {
             content.text = itemIdentifier.title
             content.textProperties.color = itemIdentifier.textColor
             
-            content.image = itemIdentifier.titleIcon
+//            content.image = itemIdentifier.titleIcon
+            
             content.imageProperties.tintColor = itemIdentifier.imageTintColor
             
             content.secondaryText = itemIdentifier.subTitle
