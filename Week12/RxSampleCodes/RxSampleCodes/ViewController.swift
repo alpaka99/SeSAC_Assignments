@@ -32,6 +32,24 @@ class ViewController: UIViewController {
     
     let switchButton = UISwitch()
     
+    let signLabel =  {
+        let label  = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textAlignment = .center
+        return label
+    }()
+    let signName = {
+        let textField = UITextField()
+        textField.placeholder = "이름을 입력해주세요"
+        return textField
+    }()
+    let signEmail = {
+        let textField = UITextField()
+        textField.placeholder = "이메일을 입력해주세요"
+        return textField
+    }()
+    let button = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,6 +58,7 @@ class ViewController: UIViewController {
         setPickerView()
         setTableView()
         setSwitch()
+        setSign()
     }
     
 
@@ -53,6 +72,9 @@ class ViewController: UIViewController {
         view.addSubview(tableLabel)
         view.addSubview(tableView)
         view.addSubview(switchButton)
+        view.addSubview(signLabel)
+        view.addSubview(signName)
+        view.addSubview(signEmail)
         
         pickerLabel.snp.makeConstraints { label in
             label.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -78,6 +100,22 @@ class ViewController: UIViewController {
         switchButton.snp.makeConstraints { switchBtn in
             switchBtn.top.equalTo(tableView.snp.bottom)
             switchBtn.centerX.equalToSuperview()
+        }
+        signLabel.snp.makeConstraints { label in
+            label.top.equalTo(switchButton.snp.bottom)
+                .offset(8)
+            label.horizontalEdges.equalTo(pickerLabel.snp.horizontalEdges)
+        }
+        signName.snp.makeConstraints { textField in
+            textField.top.equalTo(signLabel.snp.bottom)
+            textField.leading.equalTo(view.safeAreaLayoutGuide)
+            textField.width.equalTo(view.safeAreaLayoutGuide)
+                .multipliedBy(0.5)
+        }
+        signEmail.snp.makeConstraints { textField in
+            textField.top.equalTo(signLabel.snp.bottom)
+            textField.leading.equalTo(signName.snp.trailing)
+            textField.trailing.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
@@ -149,6 +187,14 @@ class ViewController: UIViewController {
         
         switchButton.rx.isOn.bind(to: tableView.rx.isHidden)
             .disposed(by: disposeBag)
+    }
+    
+    func setSign() {
+        Observable.combineLatest(signName.rx.text.orEmpty, signEmail.rx.text.orEmpty) { name, email in
+            return "이름은 \(name)이고, 이메일은 \(email)입니다"
+        }
+        .bind(to: signLabel.rx.text)
+        .disposed(by: disposeBag)
     }
 }
 
