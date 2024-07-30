@@ -14,7 +14,7 @@ import SnapKit
 class ViewController: UIViewController {
     let disposeBag = DisposeBag()
     
-    let simpleLabel = {
+    let pickerLabel = {
         let label  = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textAlignment = .center
@@ -22,12 +22,21 @@ class ViewController: UIViewController {
     }()
     let pickerView = UIPickerView()
     
+    let tableLabel = {
+        let label  = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textAlignment = .center
+        return label
+    }()
+    let tableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         configureUI()
         setPickerView()
+        setTableView()
     }
     
 
@@ -36,18 +45,30 @@ class ViewController: UIViewController {
         
         navigationItem.title = "RxSampleCodes"
         
-        view.addSubview(simpleLabel)
+        view.addSubview(pickerLabel)
         view.addSubview(pickerView)
+        view.addSubview(tableLabel)
+        view.addSubview(tableView)
         
-        simpleLabel.snp.makeConstraints { label in
+        pickerLabel.snp.makeConstraints { label in
             label.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
                 .inset(8)
         }
         pickerView.snp.makeConstraints { picker in
-            picker.top.equalTo(simpleLabel.snp.bottom)
-                .offset(8)
+            picker.top.equalTo(pickerLabel.snp.bottom)
             picker.horizontalEdges.equalTo(view.snp.horizontalEdges)
                 .inset(8)
+        }
+        tableLabel.snp.makeConstraints { label in
+            label.top.equalTo(pickerView.snp.bottom)
+            label.horizontalEdges.equalTo(pickerLabel)
+        }
+        tableView.snp.makeConstraints { tableView in
+            tableView.top.equalTo(tableLabel.snp.bottom)
+                .offset(8)
+            tableView.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+                .inset(8)
+            tableView.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
@@ -82,9 +103,34 @@ class ViewController: UIViewController {
 //                print("현재 재생하고 있는 음악은 \(models)입니다")
 //            })
             .map { "현재 재생하고 있는 음악은 \($0)입니다" }
-            .bind(to: simpleLabel.rx.text)
+            .bind(to: pickerLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
+    func setTableView() {
+        let items = Observable.just([
+            "낮에 뜨는 달",
+            "홍연",
+            "상사화",
+            "달그림자"
+        ])
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        
+        items
+            .bind(to: tableView.rx.items) { (tableView, row, element) in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell")!
+            cell.textLabel?.text = element
+            return cell
+        }
+        .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(String.self)
+            .map { 
+                "\($0)를 탭했습니다"
+            }
+            .bind(to: tableLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
 }
 
