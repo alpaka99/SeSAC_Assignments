@@ -48,7 +48,16 @@ class ViewController: UIViewController {
         textField.placeholder = "이메일을 입력해주세요"
         return textField
     }()
-    let button = UIButton()
+    let signButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.title = "가입"
+        config.background.backgroundColor = .systemBlue
+        config.cornerStyle = .capsule
+        button.configuration = config
+        button.tintColor = .white
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +84,7 @@ class ViewController: UIViewController {
         view.addSubview(signLabel)
         view.addSubview(signName)
         view.addSubview(signEmail)
+        view.addSubview(signButton)
         
         pickerLabel.snp.makeConstraints { label in
             label.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -116,6 +126,11 @@ class ViewController: UIViewController {
             textField.top.equalTo(signLabel.snp.bottom)
             textField.leading.equalTo(signName.snp.trailing)
             textField.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        signButton.snp.makeConstraints { btn in
+            btn.top.equalTo(signName.snp.bottom)
+            btn.centerX.equalTo(view.safeAreaLayoutGuide)
+            btn.height.equalTo(44)
         }
     }
 
@@ -195,6 +210,28 @@ class ViewController: UIViewController {
         }
         .bind(to: signLabel.rx.text)
         .disposed(by: disposeBag)
+        
+        signName.rx.text.orEmpty
+            .map { $0.count < 4 }
+            .bind(to: signEmail.rx.isHidden, signButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        signEmail.rx.text.orEmpty
+            .map { $0.count > 4}
+            .bind(to: signButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        signButton.rx.tap
+            .subscribe {[weak self] _ in
+                self?.showAlert()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func showAlert() {
+        let ac = UIAlertController(title: "알림", message: signLabel.text, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "확인", style: .cancel))
+        present(ac, animated: true)
     }
 }
 
