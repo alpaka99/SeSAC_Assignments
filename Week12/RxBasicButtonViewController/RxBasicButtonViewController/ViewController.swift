@@ -7,9 +7,15 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 class ViewController: UIViewController {
+    var firstButtonCount = 0
+    
+    let disposeBag = DisposeBag()
+    
     let firstTextLabel = {
         let label = UILabel()
         label.text = "before input"
@@ -47,6 +53,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         configureUI()
+        reactiveProgramming()
     }
     
     func configureUI() {
@@ -84,9 +91,17 @@ class ViewController: UIViewController {
     }
 
     func reactiveProgramming() {
-        
+        firstButton.rx.tap
+            .map { [weak self] in self?.firstButtonCount += 1 }
+            .map { [weak self] in
+                if let vc = self {
+                    "\(vc.firstButtonCount)번 탭 했어요"
+                } else {
+                    ""
+                }
+            }
+            .bind(to: firstTextLabel.rx.text)
+            .disposed(by: disposeBag)
     }
-    
-
 }
 
