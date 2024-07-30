@@ -30,6 +30,8 @@ class ViewController: UIViewController {
     }()
     let tableView = UITableView()
     
+    let switchButton = UISwitch()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,6 +39,7 @@ class ViewController: UIViewController {
         configureUI()
         setPickerView()
         setTableView()
+        setSwitch()
     }
     
 
@@ -49,6 +52,7 @@ class ViewController: UIViewController {
         view.addSubview(pickerView)
         view.addSubview(tableLabel)
         view.addSubview(tableView)
+        view.addSubview(switchButton)
         
         pickerLabel.snp.makeConstraints { label in
             label.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -68,7 +72,12 @@ class ViewController: UIViewController {
                 .offset(8)
             tableView.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
                 .inset(8)
-            tableView.bottom.equalTo(view.safeAreaLayoutGuide)
+            tableView.height.equalTo(150)
+            
+        }
+        switchButton.snp.makeConstraints { switchBtn in
+            switchBtn.top.equalTo(tableView.snp.bottom)
+            switchBtn.centerX.equalToSuperview()
         }
     }
 
@@ -130,6 +139,15 @@ class ViewController: UIViewController {
                 "\($0)를 탭했습니다"
             }
             .bind(to: tableLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    func setSwitch() {
+        Observable.of(false) // Observable<Boo> = false를 시작값으로 갖고, 그걸 switch에 넣어줌
+            .bind(to: switchButton.rx.isOn)
+            .disposed(by: disposeBag)
+        
+        switchButton.rx.isOn.bind(to: tableView.rx.isHidden)
             .disposed(by: disposeBag)
     }
 }
