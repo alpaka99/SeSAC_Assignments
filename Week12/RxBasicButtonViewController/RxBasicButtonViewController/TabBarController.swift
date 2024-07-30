@@ -14,7 +14,9 @@ final class TabBarController: UITabBarController {
         let nav1 = UINavigationController(rootViewController: SimplePickerViewController())
         nav1.tabBarItem.image = UIImage(systemName: "star.fill")
         
+        let nav2 = UINavigationController(rootViewController: SimpleTableViewController())
+        nav2.tabBarItem.image = UIImage(systemName: "heart.fill")
         
-        setViewControllers([nav1], animated: true)
+        setViewControllers([nav1, nav2], animated: true)
     }
 }
