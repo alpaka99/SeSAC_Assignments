@@ -19,6 +19,7 @@
 		CED7BE8B2C59636C00F750AA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BE8A2C59636C00F750AA /* TabBarController.swift */; };
 		CED7BE8D2C596BD200F750AA /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BE8C2C596BD200F750AA /* SimpleTableViewController.swift */; };
 		CED7BE922C5A74E800F750AA /* AddingNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BE912C5A74E800F750AA /* AddingNumbersViewController.swift */; };
+		CED7BE942C5A943D00F750AA /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BE932C5A943D00F750AA /* SimpleValidationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		CED7BE8A2C59636C00F750AA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CED7BE8C2C596BD200F750AA /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		CED7BE912C5A74E800F750AA /* AddingNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNumbersViewController.swift; sourceTree = "<group>"; };
+		CED7BE932C5A943D00F750AA /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				CED7BE8A2C59636C00F750AA /* TabBarController.swift */,
 				CED7BE8C2C596BD200F750AA /* SimpleTableViewController.swift */,
 				CED7BE912C5A74E800F750AA /* AddingNumbersViewController.swift */,
+				CED7BE932C5A943D00F750AA /* SimpleValidationViewController.swift */,
 			);
 			path = RxBasicButtonViewController;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED7BE492C58FEDA00F750AA /* SimplePickerViewController.swift in Sources */,
+				CED7BE942C5A943D00F750AA /* SimpleValidationViewController.swift in Sources */,
 				CED7BE8B2C59636C00F750AA /* TabBarController.swift in Sources */,
 				CED7BE8D2C596BD200F750AA /* SimpleTableViewController.swift in Sources */,
 				CED7BE452C58FEDA00F750AA /* AppDelegate.swift in Sources */,
