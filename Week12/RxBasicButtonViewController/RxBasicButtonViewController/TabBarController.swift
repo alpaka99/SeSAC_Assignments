@@ -17,6 +17,9 @@ final class TabBarController: UITabBarController {
         let nav2 = UINavigationController(rootViewController: SimpleTableViewController())
         nav2.tabBarItem.image = UIImage(systemName: "heart.fill")
         
-        setViewControllers([nav1, nav2], animated: true)
+        let nav3 = UINavigationController(rootViewController: AddingNumbersViewController())
+        nav3.tabBarItem.image = UIImage(systemName: "plus.viewfinder")
+        
+        setViewControllers([nav1, nav2, nav3], animated: true)
     }
 }
