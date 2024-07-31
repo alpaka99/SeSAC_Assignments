@@ -20,11 +20,12 @@ final class SimpleValidationViewController:
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
+        textField.placeholder = "닉네임을 입력해주세요"
         return textField
     }()
     let userValidationLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .systemRed
         label.text = "닉네임은 최소 5글자 이상이어야합니다"
         return label
@@ -34,11 +35,12 @@ final class SimpleValidationViewController:
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
+        textField.placeholder = "비밀번호를 입력해주세요"
         return textField
     }()
     let passwordValidationLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .systemRed
         label.text = "비밀번호는 최소 5글자 이상이어야합니다"
         return label
@@ -50,7 +52,6 @@ final class SimpleValidationViewController:
         config.title = "제출하기"
         button.configuration = config
         button.tintColor = .white
-        button.isEnabled = false
         return button
     }()
     
@@ -107,11 +108,11 @@ final class SimpleValidationViewController:
     
     
     func configureRx() {
-        Observable.just("닉네임을 입력해주세요")
+        BehaviorSubject.just("")
             .bind(to: usernameTextField.rx.text)
             .disposed(by: disposeBag)
         
-        Observable.just("비밀번호를 입력해주세요")
+        BehaviorSubject.just("")
             .bind(to: passwordTextField.rx.text)
             .disposed(by: disposeBag)
         
