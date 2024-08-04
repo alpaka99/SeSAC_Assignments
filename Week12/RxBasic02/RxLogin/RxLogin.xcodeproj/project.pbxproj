@@ -20,6 +20,8 @@
 		CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F012C5F566A00330A4C /* PhoneViewController.swift */; };
 		CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */; };
 		CECB5F082C5F824700330A4C /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F072C5F824700330A4C /* BirthdayViewController.swift */; };
+		CECB5F0A2C5FCDD000330A4C /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F092C5FCDD000330A4C /* TodoViewController.swift */; };
+		CECB5F0C2C5FE2A300330A4C /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		CECB5F012C5F566A00330A4C /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTextField.swift; sourceTree = "<group>"; };
 		CECB5F072C5F824700330A4C /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
+		CECB5F092C5FCDD000330A4C /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			children = (
 				CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */,
 				CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */,
+				CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 				CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */,
 				CECB5F012C5F566A00330A4C /* PhoneViewController.swift */,
 				CECB5F072C5F824700330A4C /* BirthdayViewController.swift */,
+				CECB5F092C5FCDD000330A4C /* TodoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECB5F0A2C5FCDD000330A4C /* TodoViewController.swift in Sources */,
+				CECB5F0C2C5FE2A300330A4C /* AssignmentTableViewCell.swift in Sources */,
 				CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */,
 				CECB5EF62C5C87A600330A4C /* PasswordViewController.swift in Sources */,
 				CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */,
