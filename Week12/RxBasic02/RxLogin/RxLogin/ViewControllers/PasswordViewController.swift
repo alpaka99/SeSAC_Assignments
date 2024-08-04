@@ -67,9 +67,6 @@ final class PasswordViewController: UIViewController {
     
     
     func configureBind() {
-        print(#function)
-        
-        
         userInput
             .bind(to: passwordTextField.rx.text)
             .disposed(by: disposeBag)
@@ -93,6 +90,13 @@ final class PasswordViewController: UIViewController {
                 let color = flag ? UIColor.systemGreen : UIColor.systemRed
                 owner.nextButton.rx.backgroundColor.onNext(color)
                 owner.passwordTextField.layer.rx.borderColor.onNext(color.cgColor)
+            }
+            .disposed(by: disposeBag)
+        
+        
+        nextButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.navigationController?.pushViewController(PhoneViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */; };
 		CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */; };
-		CECB5EE42C5C85AD00330A4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EE32C5C85AD00330A4C /* ViewController.swift */; };
 		CECB5EE92C5C85AE00330A4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECB5EE82C5C85AE00330A4C /* Assets.xcassets */; };
 		CECB5EEC2C5C85AE00330A4C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CECB5EEB2C5C85AE00330A4C /* Base */; };
 		CECB5EF42C5C85FF00330A4C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CECB5EF32C5C85FF00330A4C /* .gitignore */; };
@@ -18,19 +17,22 @@
 		CECB5EFC2C5C886B00330A4C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CECB5EFB2C5C886B00330A4C /* RxCocoa */; };
 		CECB5EFE2C5C886B00330A4C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CECB5EFD2C5C886B00330A4C /* RxSwift */; };
 		CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */; };
+		CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F012C5F566A00330A4C /* PhoneViewController.swift */; };
+		CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CECB5EDC2C5C85AD00330A4C /* RxLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CECB5EE32C5C85AD00330A4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CECB5EE82C5C85AE00330A4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECB5EEB2C5C85AE00330A4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CECB5EED2C5C85AE00330A4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECB5EF32C5C85FF00330A4C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentButton.swift; sourceTree = "<group>"; };
+		CECB5F012C5F566A00330A4C /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
+		CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,16 +69,33 @@
 		CECB5EDE2C5C85AD00330A4C /* RxLogin */ = {
 			isa = PBXGroup;
 			children = (
+				CECB5F062C5F5B7700330A4C /* ViewControllers */,
+				CECB5F052C5F5B6400330A4C /* Components */,
 				CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */,
 				CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */,
-				CECB5EE32C5C85AD00330A4C /* ViewController.swift */,
 				CECB5EE82C5C85AE00330A4C /* Assets.xcassets */,
 				CECB5EEA2C5C85AE00330A4C /* LaunchScreen.storyboard */,
 				CECB5EED2C5C85AE00330A4C /* Info.plist */,
-				CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */,
-				CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */,
 			);
 			path = RxLogin;
+			sourceTree = "<group>";
+		};
+		CECB5F052C5F5B6400330A4C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */,
+				CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CECB5F062C5F5B7700330A4C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */,
+				CECB5F012C5F566A00330A4C /* PhoneViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,9 +178,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECB5EE42C5C85AD00330A4C /* ViewController.swift in Sources */,
+				CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */,
 				CECB5EF62C5C87A600330A4C /* PasswordViewController.swift in Sources */,
 				CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */,
+				CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */,
 				CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */,
 				CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */,
 			);
