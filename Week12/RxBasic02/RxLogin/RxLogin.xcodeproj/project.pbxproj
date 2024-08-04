@@ -19,6 +19,7 @@
 		CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */; };
 		CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F012C5F566A00330A4C /* PhoneViewController.swift */; };
 		CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */; };
+		CECB5F082C5F824700330A4C /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F072C5F824700330A4C /* BirthdayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentButton.swift; sourceTree = "<group>"; };
 		CECB5F012C5F566A00330A4C /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTextField.swift; sourceTree = "<group>"; };
+		CECB5F072C5F824700330A4C /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */,
 				CECB5F012C5F566A00330A4C /* PhoneViewController.swift */,
+				CECB5F072C5F824700330A4C /* BirthdayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */,
 				CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */,
 				CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */,
+				CECB5F082C5F824700330A4C /* BirthdayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
