@@ -17,6 +17,7 @@
 		CECB5EF92C5C885800330A4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CECB5EF82C5C885800330A4C /* SnapKit */; };
 		CECB5EFC2C5C886B00330A4C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CECB5EFB2C5C886B00330A4C /* RxCocoa */; };
 		CECB5EFE2C5C886B00330A4C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CECB5EFD2C5C886B00330A4C /* RxSwift */; };
+		CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		CECB5EED2C5C85AE00330A4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECB5EF32C5C85FF00330A4C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				CECB5EEA2C5C85AE00330A4C /* LaunchScreen.storyboard */,
 				CECB5EED2C5C85AE00330A4C /* Info.plist */,
 				CECB5EF52C5C87A600330A4C /* PasswordViewController.swift */,
+				CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */,
 			);
 			path = RxLogin;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				CECB5EE42C5C85AD00330A4C /* ViewController.swift in Sources */,
 				CECB5EF62C5C87A600330A4C /* PasswordViewController.swift in Sources */,
 				CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */,
+				CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */,
 				CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

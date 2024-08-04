@@ -14,23 +14,21 @@ import SnapKit
 final class PasswordViewController: UIViewController {
     let disposeBag = DisposeBag()
     
+    let userInput = PublishSubject<String>()
+    let baseColor = BehaviorSubject<UIColor>(value: .systemRed)
+    let passwordValidation = BehaviorSubject(value: "")
+    
     let passwordTextField = {
         let textField = UITextField()
         textField.placeholder = "비밀번호를 입력해주세요"
         return textField
     }()
     
-    let nextButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.background.backgroundColor = .darkGray
-        button.configuration = config
-        button.layer.cornerRadius = 8
-        return button
-    }()
+    let nextButton = AssignmentButton(title: "다음으로")
     
     let validationLabel = {
         let label = UILabel()
+        label.text = "비밀번호를 4자리 이상 입력해주세요"
         return label
     }()
     
@@ -70,13 +68,11 @@ final class PasswordViewController: UIViewController {
     
     func configureBind() {
         print(#function)
-        let userInput = PublishSubject<String>()
+        
         
         userInput
             .bind(to: passwordTextField.rx.text)
             .disposed(by: disposeBag)
-        
-        let baseColor = BehaviorSubject<UIColor>(value: .systemRed)
         
         baseColor
             .bind(with: self, onNext: { owner, color in
@@ -85,5 +81,19 @@ final class PasswordViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        passwordTextField.rx.text.orEmpty // orEmpty를 안쓰면 ControlProperty<String?>인 optional type이라서 에러가 발생함
+            .bind(to: passwordValidation)
+            .disposed(by: disposeBag)
+        
+        passwordValidation
+            .map { $0.count >= 4 }
+            .bind(with: self) { owner, flag in
+                owner.nextButton.rx.isEnabled.onNext(flag)
+                owner.validationLabel.rx.isHidden.onNext(flag)
+                let color = flag ? UIColor.systemGreen : UIColor.systemRed
+                owner.nextButton.rx.backgroundColor.onNext(color)
+                owner.passwordTextField.layer.rx.borderColor.onNext(color.cgColor)
+            }
+            .disposed(by: disposeBag)
     }
 }
