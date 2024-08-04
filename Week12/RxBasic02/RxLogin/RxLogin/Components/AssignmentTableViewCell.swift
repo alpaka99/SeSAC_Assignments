@@ -81,13 +81,6 @@ final class AssignmentTableViewCell: UITableViewCell {
     }
     
     func configureBind() {
-        favoriteButton.rx.tap
-            .subscribe(with: self) { owner, _ in
-                let value = try! owner.isFavorite.value()
-                owner.isFavorite.onNext(!value)
-            }
-            .disposed(by: disposeBag)
-        
         isFavorite
             .subscribe(with: self) { owner, value in
                 let imageName = value ? "star.fill" : "star"
@@ -96,12 +89,7 @@ final class AssignmentTableViewCell: UITableViewCell {
             .disposed(by: disposeBag)
         
         
-        checkButton.rx.tap
-        .subscribe(with: self) { owner, _ in
-            let value = try! owner.isChecked.value()
-            owner.isChecked.onNext(!value)
-        }
-        .disposed(by: disposeBag)
+        
         
         isChecked
             .subscribe(with: self) { owner, value in

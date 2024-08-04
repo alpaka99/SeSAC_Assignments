@@ -17,15 +17,13 @@ final class TodoViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    let data = [
+    var data = BehaviorSubject(value:[
         CellData(isChecked: false, title: "first", isFavorite: true),
         CellData(isChecked: true, title: "second", isFavorite: false),
         CellData(isChecked: true, title: "third", isFavorite: true),
         CellData(isChecked: false, title: "fourth", isFavorite: false),
         CellData(isChecked: true, title: "fifth", isFavorite: false),
-    ]
-    
-    lazy var list = BehaviorSubject(value: data)
+    ])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +57,26 @@ final class TodoViewController: UIViewController {
     }
     
     func configureBind() {
-        list
+        // ?? 왜 searchBar에 bind를 하니까 tap이 안되지?
+        let original = try! data.value()
+        
+            searchBar.rx.text.orEmpty
+                .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+                .distinctUntilChanged()
+                .bind(with: self, onNext: { owner, value in
+                    
+                    
+                    let result = original.filter { $0.title.localizedStandardContains(value)
+                    }
+////
+                    value.isEmpty ?
+                    owner.data.onNext(original) : owner.data.onNext(result)
+
+                })
+                .disposed(by: disposeBag)
+        
+        
+        data
             .bind(to: tableView.rx.items) { tableView, row, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: AssignmentTableViewCell.identifier) as! AssignmentTableViewCell
                 
@@ -67,21 +84,28 @@ final class TodoViewController: UIViewController {
                 cell.title.text = item.title
                 cell.isFavorite.onNext(item.isFavorite)
                 
+                cell.favoriteButton.rx.tap
+                    .subscribe {[weak self] _ in
+                        var oldValue = try! self?.data.value()
+                        oldValue?[row].isFavorite.toggle()
+                        
+                        self?.data.onNext(oldValue!)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+               cell.checkButton.rx.tap
+                    .subscribe {[weak self] _ in
+                        var oldValue = try! self?.data.value()
+                        oldValue?[row].isChecked.toggle()
+                        
+                        self?.data.onNext(oldValue!)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                
                 return cell
             }
             .disposed(by: disposeBag)
-        
-//            searchBar.rx.text.orEmpty
-//                .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-//                .distinctUntilChanged()
-//                .bind(with: self, onNext: { owner, value in
-//                    let result = owner.data.filter { $0.title.localizedStandardContains(value)}
-//    
-//                    value.isEmpty ?
-//                    owner.list.onNext(owner.data) : owner.list.onNext(result)
-//    
-//                })
-//                .disposed(by: disposeBag)
     }
 }
 
