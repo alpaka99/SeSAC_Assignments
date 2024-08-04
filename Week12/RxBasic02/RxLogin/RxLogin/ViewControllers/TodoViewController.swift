@@ -106,6 +106,15 @@ final class TodoViewController: UIViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .bind(with: self) { owner, indexPath in
+                let vc = UIViewController()
+                vc.view.backgroundColor = .systemIndigo
+                
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
