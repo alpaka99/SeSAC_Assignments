@@ -73,41 +73,19 @@ final class PasswordViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         
-        // output
-//        let a = userInput
-//        a
-//            .bind(to: passwordTextField.rx.text)
-//            .disposed(by: disposeBag)
+        output.baseColor
+            .bind(with: self) { owner, color in
+                owner.passwordTextField.layer.rx.borderColor.onNext(color.asUIColor.cgColor)
+                owner.nextButton.rx.backgroundColor.onNext(color.asUIColor)
+                owner.validationLabel.rx.textColor.onNext(color.asUIColor)
+            }
+            .disposed(by: disposeBag)
         
-        // output
-//        baseColor
-//            .bind(with: self, onNext: { owner, color in
-//                owner.passwordTextField.layer.borderColor = color.cgColor
-//                
-//            })
-//            .disposed(by: disposeBag)
-//        
-        
-        // input
-//        passwordTextField.rx.text.orEmpty // orEmpty를 안쓰면 ControlProperty<String?>인 optional type이라서 에러가 발생함
-//            .bind(to: passwordValidation)
-//            .disposed(by: disposeBag)
-        
-//        let a = passwordValidation
-        
-        
-        // output
-//        passwordValidation
-//            .map { $0.count >= 4 }
-//            .bind(with: self) { owner, flag in
-//                owner.nextButton.rx.isEnabled.onNext(flag)
-//                owner.validationLabel.rx.isHidden.onNext(flag)
-//                let color = flag ? UIColor.systemGreen : UIColor.systemRed
-//                owner.nextButton.rx.backgroundColor.onNext(color)
-//                owner.passwordTextField.layer.rx.borderColor.onNext(color.cgColor)
-//            }
-//            .disposed(by: disposeBag)
-        
+        output.isValid
+            .bind(with: self) { owner, flag in
+                owner.validationLabel.rx.isHidden.onNext(flag)
+            }
+            .disposed(by: disposeBag)
         
         // input
         output.nextButtonTapped.subscribe(with: self) { owner, _ in
