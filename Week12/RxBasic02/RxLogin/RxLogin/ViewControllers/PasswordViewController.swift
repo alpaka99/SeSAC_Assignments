@@ -14,6 +14,8 @@ import SnapKit
 final class PasswordViewController: UIViewController {
     let disposeBag = DisposeBag()
     
+    let viewModel = PasswordViewModel()
+    
     let userInput = PublishSubject<String>()
     let baseColor = BehaviorSubject<UIColor>(value: .systemRed)
     let passwordValidation = BehaviorSubject(value: "")
@@ -67,9 +69,13 @@ final class PasswordViewController: UIViewController {
     
     
     func configureBind() {
-        userInput
-            .bind(to: passwordTextField.rx.text)
-            .disposed(by: disposeBag)
+        let input = PasswordViewModel.Input(passwordTextFieldInput: passwordTextField.rx.text.orEmpty, nextButtonTapped: nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+//        let a = userInput
+//        a
+//            .bind(to: passwordTextField.rx.text)
+//            .disposed(by: disposeBag)
         
         baseColor
             .bind(with: self, onNext: { owner, color in
@@ -78,9 +84,11 @@ final class PasswordViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        passwordTextField.rx.text.orEmpty // orEmpty를 안쓰면 ControlProperty<String?>인 optional type이라서 에러가 발생함
-            .bind(to: passwordValidation)
-            .disposed(by: disposeBag)
+//        passwordTextField.rx.text.orEmpty // orEmpty를 안쓰면 ControlProperty<String?>인 optional type이라서 에러가 발생함
+//            .bind(to: passwordValidation)
+//            .disposed(by: disposeBag)
+        
+//        let a = passwordValidation
         
         passwordValidation
             .map { $0.count >= 4 }
