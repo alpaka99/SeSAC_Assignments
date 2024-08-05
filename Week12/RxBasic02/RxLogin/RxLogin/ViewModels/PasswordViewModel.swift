@@ -25,7 +25,7 @@ final class PasswordViewModel {
     }
     
     func transform(input: Input) -> Output {
-        var baseColor = BehaviorSubject(value: Color.red)
+        let baseColor = BehaviorSubject(value: Color.red)
         let isValid = BehaviorSubject(value: false)
         
         input.passwordTextFieldInput

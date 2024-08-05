@@ -24,6 +24,7 @@
 		CECB5F0C2C5FE2A300330A4C /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */; };
 		CECB5F132C6112CD00330A4C /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */; };
 		CECB5F162C61212F00330A4C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F152C61212F00330A4C /* Colors.swift */; };
+		CECB5F182C61353700330A4C /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F172C61353700330A4C /* PhoneViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		CECB5F152C61212F00330A4C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		CECB5F172C61353700330A4C /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,6 @@
 				CECB5F012C5F566A00330A4C /* PhoneViewController.swift */,
 				CECB5F072C5F824700330A4C /* BirthdayViewController.swift */,
 				CECB5F092C5FCDD000330A4C /* TodoViewController.swift */,
-				CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -117,6 +118,8 @@
 		CECB5F112C61120E00330A4C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */,
+				CECB5F172C61353700330A4C /* PhoneViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */,
 				CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */,
 				CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */,
+				CECB5F182C61353700330A4C /* PhoneViewModel.swift in Sources */,
 				CECB5F082C5F824700330A4C /* BirthdayViewController.swift in Sources */,
 				CECB5F132C6112CD00330A4C /* PasswordViewModel.swift in Sources */,
 			);

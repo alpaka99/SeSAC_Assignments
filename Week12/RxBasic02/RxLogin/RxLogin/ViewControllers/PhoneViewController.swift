@@ -14,6 +14,8 @@ import SnapKit
 final class PhoneViewController: UIViewController {
     let disposeBag = DisposeBag()
     
+    let viewModel = PhoneViewModel()
+    
     let phoneTextField = AssignmentTextField(placeholderText: "연락처를 입력해주세요")
     let nextButton = AssignmentButton(title: "다음")
     let validationLabel = {
@@ -62,48 +64,55 @@ final class PhoneViewController: UIViewController {
     }
     
     func configureBind() {
-        phoneNumber
+        let input = PhoneViewModel.Input(textfieldInput: phoneTextField.rx.text.orEmpty, nextButtonTapped: nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        // output
+        output.phoneNumber
             .bind(to: phoneTextField.rx.text)
             .disposed(by: disposeBag)
         
         
+        // input
         phoneTextField.rx.text.orEmpty
-            .map {[weak self] in
-                if $0.count > 11 { // 11 글자 이상 입력 못하게 자동 처리
-                    let startIndex = $0.index($0.startIndex, offsetBy: 0)
-                    let endRange = $0.index(startIndex, offsetBy: 10)
-                    let subString =  String($0[startIndex...endRange])
-                    
-                    self?.phoneTextField.text = subString
-                    return subString
-                } else {
-                    return $0
-                }
-            }
-            .map {
-                if $0.count == 11, let _ = Int($0) {
-                    return true
-                } else {
-                    return false
-                }
-            }
+            .bind(to: input.textfieldInput)
+            .disposed(by: disposeBag)
+        
+        
+        output.isEnabled
             .bind(with: self) { owner, value in
-                owner.baseColor.onNext(value ? .systemGreen : .systemRed)
                 owner.nextButton.isEnabled = value
-                owner.validationLabel.text = value ? "확인되었습니다 :D" : "올바른 형태의 전화번호를 입력해주세요"
-                owner.validationLabel.textColor = value ? .systemGreen : .systemRed
+            }
+            .disposed(by: disposeBag)
+        
+        output.validationText
+            .bind(with: self) { owner, text in
+                owner.validationLabel.rx.text
+                    .onNext(text)
+            }
+            .disposed(by: disposeBag)
+        
+        output.baseColor
+            .bind(with: self) { owner, color in
+                owner.validationLabel.rx.textColor
+                    .onNext(color.asUIColor)
+                owner.nextButton.rx.backgroundColor
+                    .onNext(color.asUIColor)
             }
             .disposed(by: disposeBag)
         
         
-        baseColor
-            .bind(to: nextButton.rx.backgroundColor)
-            .disposed(by: disposeBag)
+        // output
+//        baseColor
+//            .bind(to: nextButton.rx.backgroundColor)
+//            .disposed(by: disposeBag)
         
-        nextButton.rx.tap
-            .subscribe { _ in
-                
-            }
+        // output
+        
+        output.nextButtonTapped
+            .bind(with: self, onNext: { owner, _ in
+                owner.navigationController?.pushViewController(BirthdayViewController(), animated: true)
+            })
             .disposed(by: disposeBag)
     }
 }
