@@ -114,11 +114,9 @@ final class BirthdayViewController: UIViewController {
             .bind(to: yearLabel.rx.text)
             .disposed(by: disposeBag)
         output.month
-            .map { "\($0)월" }
             .bind(to: monthLabel.rx.text)
             .disposed(by: disposeBag)
         output.day
-            .map { "\($0)일" }
             .bind(to: dayLabel.rx.text)
             .disposed(by: disposeBag)
 
