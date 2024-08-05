@@ -16,10 +16,6 @@ final class PasswordViewController: UIViewController {
     
     let viewModel = PasswordViewModel()
     
-    let userInput = PublishSubject<String>()
-    let baseColor = BehaviorSubject<UIColor>(value: .systemRed)
-    let passwordValidation = BehaviorSubject(value: "")
-    
     let passwordTextField = {
         let textField = UITextField()
         textField.placeholder = "비밀번호를 입력해주세요"

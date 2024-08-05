@@ -25,6 +25,7 @@
 		CECB5F132C6112CD00330A4C /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */; };
 		CECB5F162C61212F00330A4C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F152C61212F00330A4C /* Colors.swift */; };
 		CECB5F182C61353700330A4C /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F172C61353700330A4C /* PhoneViewModel.swift */; };
+		CECB5F1A2C613DBC00330A4C /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F192C613DBC00330A4C /* BirthdayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		CECB5F152C61212F00330A4C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CECB5F172C61353700330A4C /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
+		CECB5F192C613DBC00330A4C /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */,
 				CECB5F172C61353700330A4C /* PhoneViewModel.swift */,
+				CECB5F192C613DBC00330A4C /* BirthdayViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECB5F1A2C613DBC00330A4C /* BirthdayViewModel.swift in Sources */,
 				CECB5F0A2C5FCDD000330A4C /* TodoViewController.swift in Sources */,
 				CECB5F162C61212F00330A4C /* Colors.swift in Sources */,
 				CECB5F0C2C5FE2A300330A4C /* AssignmentTableViewCell.swift in Sources */,

@@ -24,10 +24,6 @@ final class PhoneViewController: UIViewController {
         return label
     }()
     
-    let phoneNumber = BehaviorSubject(value: "010")
-    let phoneNumberValidation = PublishSubject<Bool>()
-    let baseColor = BehaviorSubject(value: UIColor.systemRed)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
