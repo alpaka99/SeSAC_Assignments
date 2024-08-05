@@ -17,11 +17,13 @@ final class PasswordViewModel {
     }
     
     struct Output {
-        
+        let nextButtonTapped: ControlEvent<Void>
     }
     
     func transform(input: Input) -> Output {
         
-        return Output()
+        
+        
+        return Output(nextButtonTapped: input.nextButtonTapped)
     }
 }
