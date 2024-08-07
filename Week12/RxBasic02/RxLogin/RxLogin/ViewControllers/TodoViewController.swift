@@ -13,6 +13,7 @@ import RxSwift
 
 final class TodoViewController: UIViewController {
     let searchBar = UISearchBar()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let tableView = UITableView()
     
     let disposeBag = DisposeBag()
@@ -26,6 +27,13 @@ final class TodoViewController: UIViewController {
     ])
     
     
+    static func createLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 120, height: 40)
+        return layout
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,16 +44,19 @@ final class TodoViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         
-        view.addSubview(searchBar)
+        navigationItem.titleView = searchBar
+        
+        view.addSubview(collectionView)
         view.addSubview(tableView)
         
-        searchBar.snp.makeConstraints { searchBar in
-            searchBar.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-                .inset(16)
+        
+        collectionView.snp.makeConstraints { collectionView in
+            collectionView.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            collectionView.height.equalTo(50)
         }
         
         tableView.snp.makeConstraints { tableView in
-            tableView.top.equalTo(searchBar.snp.bottom)
+            tableView.top.equalTo(collectionView.snp.bottom)
                 .offset(20)
             tableView.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
                 .inset(16)
