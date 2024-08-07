@@ -17,13 +17,14 @@ final class TodoViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    var data = BehaviorSubject(value:[
+    var data = BehaviorRelay(value:[
         CellData(isChecked: false, title: "first", isFavorite: true),
         CellData(isChecked: true, title: "second", isFavorite: false),
         CellData(isChecked: true, title: "third", isFavorite: true),
         CellData(isChecked: false, title: "fourth", isFavorite: false),
         CellData(isChecked: true, title: "fifth", isFavorite: false),
     ])
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,52 +59,43 @@ final class TodoViewController: UIViewController {
     
     func configureBind() {
         // ?? 왜 searchBar에 bind를 하니까 tap이 안되지?
-        let original = try! data.value()
+        let original = data.value
         
-            searchBar.rx.text.orEmpty
-                .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
-                .distinctUntilChanged()
-                .bind(with: self, onNext: { owner, value in
-                    
-                    
-                    let result = original.filter { $0.title.localizedStandardContains(value)
-                    }
-////
-                    value.isEmpty ?
-                    owner.data.onNext(original) : owner.data.onNext(result)
+        searchBar.rx.text.orEmpty
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .bind(with: self, onNext: { owner, value in
+                let result = original.filter { $0.title.localizedStandardContains(value)
+                }
+                
+                value.isEmpty ?
+                owner.data.accept(original)
+                : owner.data.accept(result)
 
-                })
-                .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
         
         data
-            .bind(to: tableView.rx.items) { tableView, row, item in
-                let cell = tableView.dequeueReusableCell(withIdentifier: AssignmentTableViewCell.identifier) as! AssignmentTableViewCell
+            .bind(to: tableView.rx.items(cellIdentifier: AssignmentTableViewCell.identifier, cellType: AssignmentTableViewCell.self)) { row, item, cell in
                 
-                cell.isChecked.onNext(item.isChecked)
-                cell.title.text = item.title
-                cell.isFavorite.onNext(item.isFavorite)
+                cell.configureData(cellData: item)
                 
-                cell.favoriteButton.rx.tap
-                    .subscribe {[weak self] _ in
-                        var oldValue = try! self?.data.value()
-                        oldValue?[row].isFavorite.toggle()
-                        
-                        self?.data.onNext(oldValue!)
-                    }
+                cell.checkButton.rx.tap
+                    .bind(with: self, onNext: { owner, _ in
+                        var list = owner.data.value
+                        list[row].isChecked.toggle()
+                        owner.data.accept(list)
+                    })
                     .disposed(by: cell.disposeBag)
                 
-               cell.checkButton.rx.tap
-                    .subscribe {[weak self] _ in
-                        var oldValue = try! self?.data.value()
-                        oldValue?[row].isChecked.toggle()
-                        
-                        self?.data.onNext(oldValue!)
-                    }
+               cell.favoriteButton.rx.tap
+                    .bind(with: self, onNext: { owner, _ in
+                        var list = owner.data.value
+                        list[row].isFavorite.toggle()
+                        owner.data.accept(list)
+                    })
                     .disposed(by: cell.disposeBag)
-                
-                
-                return cell
             }
             .disposed(by: disposeBag)
         
