@@ -16,9 +16,6 @@ final class AssignmentTableViewCell: UITableViewCell {
     
     static let identifier = "AssignmentTableViewCell"
     
-    var isChecked = BehaviorSubject(value: false)
-    var isFavorite = BehaviorSubject(value: false)
-    
     let checkButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
@@ -40,7 +37,6 @@ final class AssignmentTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureUI()
-        configureBind()
     }
     
     @available(iOS, unavailable)
@@ -80,22 +76,9 @@ final class AssignmentTableViewCell: UITableViewCell {
         }
     }
     
-    func configureBind() {
-        isFavorite
-            .subscribe(with: self) { owner, value in
-                let imageName = value ? "star.fill" : "star"
-                owner.favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
-            }
-            .disposed(by: disposeBag)
-        
-        
-        
-        
-        isChecked
-            .subscribe(with: self) { owner, value in
-                let imageName = value ? "checkmark.square.fill" : "checkmark.square"
-                owner.checkButton.setImage(UIImage(systemName: imageName), for: .normal)
-            }
-            .disposed(by: disposeBag)
+    func configureData(cellData: CellData) {
+        checkButton.setImage(UIImage(systemName: cellData.isChecked ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: cellData.isFavorite ? "star.fill" : "star"), for: .normal)
+        title.text = cellData.title
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE32EF852C643EE500540192 /* AssignmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32EF842C643EE500540192 /* AssignmentCollectionViewCell.swift */; };
 		CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */; };
 		CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */; };
 		CECB5EE92C5C85AE00330A4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECB5EE82C5C85AE00330A4C /* Assets.xcassets */; };
@@ -22,9 +23,14 @@
 		CECB5F082C5F824700330A4C /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F072C5F824700330A4C /* BirthdayViewController.swift */; };
 		CECB5F0A2C5FCDD000330A4C /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F092C5FCDD000330A4C /* TodoViewController.swift */; };
 		CECB5F0C2C5FE2A300330A4C /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */; };
+		CECB5F132C6112CD00330A4C /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */; };
+		CECB5F162C61212F00330A4C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F152C61212F00330A4C /* Colors.swift */; };
+		CECB5F182C61353700330A4C /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F172C61353700330A4C /* PhoneViewModel.swift */; };
+		CECB5F1A2C613DBC00330A4C /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5F192C613DBC00330A4C /* BirthdayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE32EF842C643EE500540192 /* AssignmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		CECB5EDC2C5C85AD00330A4C /* RxLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +45,10 @@
 		CECB5F072C5F824700330A4C /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 		CECB5F092C5FCDD000330A4C /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
+		CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		CECB5F152C61212F00330A4C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		CECB5F172C61353700330A4C /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
+		CECB5F192C613DBC00330A4C /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +85,8 @@
 		CECB5EDE2C5C85AD00330A4C /* RxLogin */ = {
 			isa = PBXGroup;
 			children = (
+				CECB5F142C61212A00330A4C /* Constants */,
+				CECB5F112C61120E00330A4C /* ViewModels */,
 				CECB5F062C5F5B7700330A4C /* ViewControllers */,
 				CECB5F052C5F5B6400330A4C /* Components */,
 				CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */,
@@ -92,6 +104,7 @@
 				CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */,
 				CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */,
 				CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */,
+				CE32EF842C643EE500540192 /* AssignmentCollectionViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -105,6 +118,24 @@
 				CECB5F092C5FCDD000330A4C /* TodoViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CECB5F112C61120E00330A4C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CECB5F122C6112CD00330A4C /* PasswordViewModel.swift */,
+				CECB5F172C61353700330A4C /* PhoneViewModel.swift */,
+				CECB5F192C613DBC00330A4C /* BirthdayViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CECB5F142C61212A00330A4C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CECB5F152C61212F00330A4C /* Colors.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,15 +218,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECB5F1A2C613DBC00330A4C /* BirthdayViewModel.swift in Sources */,
 				CECB5F0A2C5FCDD000330A4C /* TodoViewController.swift in Sources */,
+				CECB5F162C61212F00330A4C /* Colors.swift in Sources */,
 				CECB5F0C2C5FE2A300330A4C /* AssignmentTableViewCell.swift in Sources */,
 				CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */,
 				CECB5EF62C5C87A600330A4C /* PasswordViewController.swift in Sources */,
 				CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */,
+				CE32EF852C643EE500540192 /* AssignmentCollectionViewCell.swift in Sources */,
 				CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */,
 				CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */,
 				CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */,
+				CECB5F182C61353700330A4C /* PhoneViewModel.swift in Sources */,
 				CECB5F082C5F824700330A4C /* BirthdayViewController.swift in Sources */,
+				CECB5F132C6112CD00330A4C /* PasswordViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

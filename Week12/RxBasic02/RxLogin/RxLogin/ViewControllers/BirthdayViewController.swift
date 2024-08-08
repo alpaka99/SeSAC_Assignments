@@ -14,11 +14,7 @@ import SnapKit
 final class BirthdayViewController: UIViewController {
     let disposeBag = DisposeBag()
     
-    let year = BehaviorRelay<Int>(value: 2024)
-    let month = BehaviorRelay<Int>(value: 8)
-    let day = BehaviorRelay<Int>(value: 1)
-    let labelColor = BehaviorRelay<UIColor>(value: .systemRed)
-    let buttonColor = BehaviorRelay<UIColor>(value: .darkGray)
+    let viewModel = BirthdayViewModel()
     
     let birthDayPicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -87,88 +83,44 @@ final class BirthdayViewController: UIViewController {
     }
     
     func bind() {
-        nextButton.rx.tap
-            .bind(with: self) { owner, _ in
-                
+        let input = BirthdayViewModel.Input(birthDay: birthDayPicker.rx.date, nextButtonTapped: nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.labelText
+            .bind(to: infoLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.labelColor
+            .bind(with: self) { owner, color in
+                owner.infoLabel.rx.textColor.onNext(color.asUIColor)
             }
             .disposed(by: disposeBag)
         
-        birthDayPicker.rx.date
-            .bind(with: self) { owner, date in
-                let component = Calendar.current.dateComponents([.year, .month, .day], from: date)
-                
-                
-                owner.year.accept(component.year ?? 0)
-                owner.month.accept(component.month ?? 0)
-                owner.day.accept(component.day ?? 0)
-            }
+        output.isEnabled
+            .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        birthDayPicker.rx.date
-            .map {
-                let components = Calendar.current.dateComponents([.year, .month, .day], from: $0)
-                return components
-            }
-            .map {
-                let birthdayYear = $0.year ?? 0
-                let birthdayMonth = $0.month ?? 0
-                let birthdayDay = $0.day ?? 0
-                
-                let todayDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date.now)
-                let todayYear = todayDateComponents.year ?? 0
-                let todayMonth = todayDateComponents.month ?? 0
-                let todayDay = todayDateComponents.day ?? 0
-                
-                var age = todayYear - birthdayYear
-                
-                if todayMonth < birthdayMonth {
-                    age -= 1
-                }
-                
-                if todayMonth == birthdayMonth, todayDay < birthdayDay {
-                    age -= 1
-                }
-                
-                return age
-            }
-            .map {
-                if $0 < 17 {
-                    return false
-                } else {
-                    return true
-                }
-            }
-            .bind(with: self) { owner, flag in
-                owner.labelColor.accept(flag ? .systemGreen : .systemRed)
-                owner.infoLabel.text = flag ? "가입 가능한 나이입니다" : "만 17세 이상 가입 가능합니다."
-                owner.buttonColor.accept(flag ? .systemBlue : .systemRed)
-                owner.nextButton.isEnabled = flag
-                
+        output.buttonColor
+            .bind(with: self) { owner, color in
+                owner.nextButton.rx.backgroundColor.onNext(color.asUIColor)
             }
             .disposed(by: disposeBag)
         
         // year가 yearLabel에 표시되는 것이 실패될 리가 없음
         // 그래서 complete, error를 처리할 필요가 없는 bind를 씀
-        year
-            .map { "\($0)년" }
+        
+        // output
+        output.year
             .bind(to: yearLabel.rx.text)
             .disposed(by: disposeBag)
-        month
-            .map { "\($0)월" }
+        output.month
             .bind(to: monthLabel.rx.text)
             .disposed(by: disposeBag)
-        day
-            .map { "\($0)일" }
+        output.day
             .bind(to: dayLabel.rx.text)
             .disposed(by: disposeBag)
-        labelColor
-            .bind(to: infoLabel.rx.textColor)
-            .disposed(by: disposeBag)
-        buttonColor
-            .bind(to: nextButton.rx.backgroundColor)
-            .disposed(by: disposeBag)
-        
-        nextButton.rx.tap
+
+        output.nextButtonTapped
             .subscribe(with: self) { owner, _ in
                 owner.showAlert()
             }

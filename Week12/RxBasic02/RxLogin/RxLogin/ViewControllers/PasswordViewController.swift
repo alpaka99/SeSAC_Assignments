@@ -14,9 +14,7 @@ import SnapKit
 final class PasswordViewController: UIViewController {
     let disposeBag = DisposeBag()
     
-    let userInput = PublishSubject<String>()
-    let baseColor = BehaviorSubject<UIColor>(value: .systemRed)
-    let passwordValidation = BehaviorSubject(value: "")
+    let viewModel = PasswordViewModel()
     
     let passwordTextField = {
         let textField = UITextField()
@@ -67,37 +65,28 @@ final class PasswordViewController: UIViewController {
     
     
     func configureBind() {
-        userInput
-            .bind(to: passwordTextField.rx.text)
+        let input = PasswordViewModel.Input(passwordTextFieldInput: passwordTextField.rx.text.orEmpty, nextButtonTapped: nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        
+        output.baseColor
+            .bind(with: self) { owner, color in
+                owner.passwordTextField.layer.rx.borderColor.onNext(color.asUIColor.cgColor)
+                owner.nextButton.rx.backgroundColor.onNext(color.asUIColor)
+                owner.validationLabel.rx.textColor.onNext(color.asUIColor)
+            }
             .disposed(by: disposeBag)
         
-        baseColor
-            .bind(with: self, onNext: { owner, color in
-                owner.passwordTextField.layer.borderColor = color.cgColor
-                
-            })
-            .disposed(by: disposeBag)
-        
-        passwordTextField.rx.text.orEmpty // orEmpty를 안쓰면 ControlProperty<String?>인 optional type이라서 에러가 발생함
-            .bind(to: passwordValidation)
-            .disposed(by: disposeBag)
-        
-        passwordValidation
-            .map { $0.count >= 4 }
+        output.isValid
             .bind(with: self) { owner, flag in
-                owner.nextButton.rx.isEnabled.onNext(flag)
                 owner.validationLabel.rx.isHidden.onNext(flag)
-                let color = flag ? UIColor.systemGreen : UIColor.systemRed
-                owner.nextButton.rx.backgroundColor.onNext(color)
-                owner.passwordTextField.layer.rx.borderColor.onNext(color.cgColor)
             }
             .disposed(by: disposeBag)
         
-        
-        nextButton.rx.tap
-            .bind(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(PhoneViewController(), animated: true)
-            }
+        // input
+        output.nextButtonTapped.subscribe(with: self) { owner, _ in
+            owner.navigationController?.pushViewController(PhoneViewController(), animated: true)
+        }
             .disposed(by: disposeBag)
     }
 }
