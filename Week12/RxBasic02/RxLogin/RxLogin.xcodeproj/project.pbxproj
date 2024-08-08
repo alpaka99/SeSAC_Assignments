@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE32EF852C643EE500540192 /* AssignmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32EF842C643EE500540192 /* AssignmentCollectionViewCell.swift */; };
 		CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */; };
 		CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */; };
 		CECB5EE92C5C85AE00330A4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECB5EE82C5C85AE00330A4C /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE32EF842C643EE500540192 /* AssignmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		CECB5EDC2C5C85AD00330A4C /* RxLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECB5EDF2C5C85AD00330A4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECB5EE12C5C85AD00330A4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				CECB5EFF2C5F4FBB00330A4C /* AssignmentButton.swift */,
 				CECB5F032C5F59AC00330A4C /* AssignmentTextField.swift */,
 				CECB5F0B2C5FE2A300330A4C /* AssignmentTableViewCell.swift */,
+				CE32EF842C643EE500540192 /* AssignmentCollectionViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				CECB5F042C5F59AC00330A4C /* AssignmentTextField.swift in Sources */,
 				CECB5EF62C5C87A600330A4C /* PasswordViewController.swift in Sources */,
 				CECB5EE02C5C85AD00330A4C /* AppDelegate.swift in Sources */,
+				CE32EF852C643EE500540192 /* AssignmentCollectionViewCell.swift in Sources */,
 				CECB5F022C5F566A00330A4C /* PhoneViewController.swift in Sources */,
 				CECB5F002C5F4FBB00330A4C /* AssignmentButton.swift in Sources */,
 				CECB5EE22C5C85AD00330A4C /* SceneDelegate.swift in Sources */,
