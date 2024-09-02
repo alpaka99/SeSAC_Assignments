@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct LaunchView: View {
+    
+    @State private var launchScreenOpacity: Double = 0.0
+    
     var body: some View {
         NavigationView {
             VStack {
+                Spacer()
                 Image("launch")
                     .padding()
                 
@@ -33,9 +37,13 @@ struct LaunchView: View {
                 .background(.blue)
                 .clipShape(Capsule())
                 .padding()
-                
             }
-            .navigationTitle("some navigationTitle")
+            .opacity(launchScreenOpacity)
+            .onAppear {
+                withAnimation {
+                    launchScreenOpacity = 1
+                }
+            }
         }
     }
 }
