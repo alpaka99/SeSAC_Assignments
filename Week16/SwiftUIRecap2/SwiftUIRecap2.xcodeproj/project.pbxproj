@@ -11,6 +11,7 @@
 		CE91E5182C85D971000656E0 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5172C85D971000656E0 /* LaunchView.swift */; };
 		CE91E51A2C85D973000656E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE91E5192C85D973000656E0 /* Assets.xcassets */; };
 		CE91E51D2C85D973000656E0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE91E51C2C85D973000656E0 /* Preview Assets.xcassets */; };
+		CE91E5242C85DB6D000656E0 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5232C85DB6D000656E0 /* ProfileSettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		CE91E5172C85D971000656E0 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		CE91E5192C85D973000656E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE91E51C2C85D973000656E0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE91E5232C85DB6D000656E0 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				CE91E5172C85D971000656E0 /* LaunchView.swift */,
 				CE91E5192C85D973000656E0 /* Assets.xcassets */,
 				CE91E51B2C85D973000656E0 /* Preview Content */,
+				CE91E5232C85DB6D000656E0 /* ProfileSettingView.swift */,
 			);
 			path = SwiftUIRecap2;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE91E5242C85DB6D000656E0 /* ProfileSettingView.swift in Sources */,
 				CE91E5182C85D971000656E0 /* LaunchView.swift in Sources */,
 				CE91E5162C85D971000656E0 /* SwiftUIRecap2App.swift in Sources */,
 			);
