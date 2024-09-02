@@ -14,6 +14,7 @@
 		CE91E5242C85DB6D000656E0 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5232C85DB6D000656E0 /* ProfileSettingView.swift */; };
 		CE91E5262C85DDC7000656E0 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5252C85DDC7000656E0 /* ProfileImage.swift */; };
 		CE91E5282C85DF61000656E0 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5272C85DF61000656E0 /* ProfileImageView.swift */; };
+		CE91E52A2C85E83F000656E0 /* ProfileSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		CE91E5232C85DB6D000656E0 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 		CE91E5252C85DDC7000656E0 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		CE91E5272C85DF61000656E0 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				CE91E5232C85DB6D000656E0 /* ProfileSettingView.swift */,
 				CE91E5252C85DDC7000656E0 /* ProfileImage.swift */,
 				CE91E5272C85DF61000656E0 /* ProfileImageView.swift */,
+				CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */,
 			);
 			path = SwiftUIRecap2;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE91E5242C85DB6D000656E0 /* ProfileSettingView.swift in Sources */,
+				CE91E52A2C85E83F000656E0 /* ProfileSelectionView.swift in Sources */,
 				CE91E5262C85DDC7000656E0 /* ProfileImage.swift in Sources */,
 				CE91E5282C85DF61000656E0 /* ProfileImageView.swift in Sources */,
 				CE91E5182C85D971000656E0 /* LaunchView.swift in Sources */,

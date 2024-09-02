@@ -24,5 +24,5 @@ struct CircleImageView: View {
 }
 
 #Preview {
-    CircleImageView(image: Image(ProfileImage.randomImage().imageName))
+    CircleImageView(image: Image(systemName: "camera"))
 }
