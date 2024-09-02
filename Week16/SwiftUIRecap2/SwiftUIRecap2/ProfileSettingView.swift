@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ProfileSettingView: View {
+    
+    @State private var selectedImage = ProfileImage.randomImage()
+    
     var body: some View {
-        Text("안녕 세상아")
+        VStack {
+            CircleImageView(image: Image(selectedImage.imageName))
+                .frame(maxWidth: 100)
+                .overlay {
+                    
+                }
+                
+                
+        }
+        .navigationTitle("PROFILE SETTING")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
