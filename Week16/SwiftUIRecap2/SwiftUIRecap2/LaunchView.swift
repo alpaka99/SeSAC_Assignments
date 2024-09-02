@@ -31,12 +31,7 @@ struct LaunchView: View {
                         .bold()
                         .font(.headline)
                 }
-                .padding()
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity)
-                .background(.blue)
-                .clipShape(Capsule())
-                .padding()
+                .asRoundButton(.blue)
             }
             .opacity(launchScreenOpacity)
             .onAppear {
@@ -45,6 +40,26 @@ struct LaunchView: View {
                 }
             }
         }
+    }
+}
+
+struct RoundButtonModifer: ViewModifier {
+    let color: Color
+    
+    func body(content: Content) -> some View {
+        content
+        .padding()
+        .foregroundStyle(.white)
+        .frame(maxWidth: .infinity)
+        .background(color)
+        .clipShape(Capsule())
+        .padding()
+    }
+}
+
+extension View {
+    func asRoundButton(_ color: Color) -> some View {
+        modifier(RoundButtonModifer(color: color))
     }
 }
 

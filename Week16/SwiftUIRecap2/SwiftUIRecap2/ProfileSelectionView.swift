@@ -14,12 +14,12 @@ struct ProfileSelectionView: View {
     
     var body: some View {
         VStack {
-            CircleImageView(image: Image(selectedProfileImage.imageName))
+            CircleImageView(image: Image(selectedProfileImage.imageName), isSelected: true)
                 .frame(maxWidth: 100)
             
             LazyVGrid(columns: columns) {
                 ForEach(ProfileImage.allCases, id: \.self) { profileImage in
-                    CircleImageView(image: Image(profileImage.imageName))
+                    CircleImageView(image: Image(profileImage.imageName), isSelected: false)
                         .onTapGesture {
                             print("tapped")
                             selectedProfileImage = profileImage

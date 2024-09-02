@@ -17,22 +17,24 @@ struct ProfileSettingView: View {
             NavigationLink {
                 ProfileSelectionView(selectedProfileImage: $selectedImage)
             } label: {
-                CircleImageView(image: Image(selectedImage.imageName))
+                CircleImageView(image: Image(selectedImage.imageName), isSelected: true)
                     .frame(maxWidth: 100)
                     .overlay(alignment: .bottomTrailing) {
-                        CircleImageView(image: Image(systemName: "camera"))
+                        CircleImageView(image: Image(systemName: "camera"), isSelected: true)
                             .frame(width: 30)
                     }
             }
+            .padding(.vertical)
                 
             TextField("닉네임을 입력하세요 :)", text: $nickname)
                 .bold()
-                .padding()
+                .padding(16)
                 .foregroundStyle(.gray)
             
             Divider()
-                .padding(.horizontal)
+                .padding(.horizontal, 16)
             
+            Spacer()
             
             HStack {
                 Text("MBTI")
@@ -40,8 +42,19 @@ struct ProfileSettingView: View {
                     .font(.title2)
                     .padding()
                 
-                Spacer()
+                Text("MBTIView Comming soon")
             }
+            
+            Spacer()
+            
+            NavigationLink {
+                LastView()
+            } label: {
+                Text("완료")
+            }
+            .disabled(nickname.isEmpty)
+            .asRoundButton(nickname.isEmpty ? .gray : .blue)
+            .padding(.vertical)
             
             
         }
