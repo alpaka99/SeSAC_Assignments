@@ -11,6 +11,7 @@ struct ProfileSettingView: View {
     
     @State private var selectedImage = ProfileImage.randomImage()
     @State private var nickname = ""
+    @State private var isShowingFullscreenSheet = false
     
     var body: some View {
         VStack {
@@ -51,15 +52,17 @@ struct ProfileSettingView: View {
             
             Spacer()
             
-            NavigationLink {
-                LastView()
+            Button {
+                isShowingFullscreenSheet = true
             } label: {
                 Text("완료")
             }
             .disabled(nickname.isEmpty)
             .asRoundButton(nickname.isEmpty ? .gray : .blue)
             .padding(.vertical)
-            
+            .fullScreenCover(isPresented: $isShowingFullscreenSheet) {
+                LastView()
+            }
             
         }
         .navigationTitle("PROFILE SETTING")
