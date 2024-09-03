@@ -13,7 +13,7 @@ struct MBTIView: View {
         GridItem(.flexible(minimum: 50, maximum: 50), spacing: 0),
     ]
     
-    let mbtis = ["E", "I", "S", "N", "F", "T", "P", "J"]
+    let mbtiComponents = ["E", "I", "S", "N", "F", "T", "P", "J"]
     
     var body: some View {
         VStack {
@@ -21,7 +21,7 @@ struct MBTIView: View {
             HStack {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: gridItems) {
-                        ForEach(mbtis, id: \.self) { item in
+                        ForEach(mbtiComponents, id: \.self) { item in
                             Button {
                                 print(item)
                             } label: {
