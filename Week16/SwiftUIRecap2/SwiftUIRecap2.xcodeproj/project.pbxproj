@@ -16,6 +16,7 @@
 		CE91E5282C85DF61000656E0 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5272C85DF61000656E0 /* CircleImageView.swift */; };
 		CE91E52A2C85E83F000656E0 /* ProfileSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */; };
 		CE91E52C2C86782E000656E0 /* LastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E52B2C86782E000656E0 /* LastView.swift */; };
+		CE91E52E2C867A33000656E0 /* MBTIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E52D2C867A33000656E0 /* MBTIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		CE91E5272C85DF61000656E0 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectionView.swift; sourceTree = "<group>"; };
 		CE91E52B2C86782E000656E0 /* LastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastView.swift; sourceTree = "<group>"; };
+		CE91E52D2C867A33000656E0 /* MBTIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				CE91E5252C85DDC7000656E0 /* ProfileImage.swift */,
 				CE91E5272C85DF61000656E0 /* CircleImageView.swift */,
 				CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */,
+				CE91E52D2C867A33000656E0 /* MBTIView.swift */,
 			);
 			path = SwiftUIRecap2;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE91E52E2C867A33000656E0 /* MBTIView.swift in Sources */,
 				CE91E5242C85DB6D000656E0 /* ProfileSettingView.swift in Sources */,
 				CE91E52A2C85E83F000656E0 /* ProfileSelectionView.swift in Sources */,
 				CE91E52C2C86782E000656E0 /* LastView.swift in Sources */,

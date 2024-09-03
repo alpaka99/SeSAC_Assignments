@@ -42,7 +42,11 @@ struct ProfileSettingView: View {
                     .font(.title2)
                     .padding()
                 
-                Text("MBTIView Comming soon")
+                Spacer()
+                
+                MBTIView()
+                    .frame(maxWidth: 200)
+                    .padding()
             }
             
             Spacer()
