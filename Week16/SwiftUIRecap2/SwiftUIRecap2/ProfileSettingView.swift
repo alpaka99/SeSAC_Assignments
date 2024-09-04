@@ -61,7 +61,7 @@ struct ProfileSettingView: View {
             .asRoundButton(nickname.isEmpty ? .gray : .blue)
             .padding(.vertical)
             .fullScreenCover(isPresented: $isShowingFullscreenSheet) {
-                LastView()
+                CoinView()
             }
             
         }
