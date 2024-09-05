@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUIRecap2App: App {
     var body: some Scene {
         WindowGroup {
-            LaunchView()
+            RandomImageView()
         }
     }
 }

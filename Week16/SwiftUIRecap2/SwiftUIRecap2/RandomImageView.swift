@@ -18,13 +18,22 @@ struct RandomImageView:
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: gridItems) {
-                ForEach(imageDataArray, id: \.self) { imageData in
-                    VStack {
-                        Image(uiImage: UIImage(data: imageData.data) ?? UIImage(systemName: "star.fill")!)
-                            .resizable()
-                        Text(imageData.title)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: gridItems) {
+                    ForEach($imageDataArray) { $imageData in
+                        VStack {
+                            NavigationLink {
+                                NavigationLazyView(wrappedView: DetailRandomImageView(imageData: $imageData))
+                            } label: {
+                                VStack {
+                                    Image(uiImage: UIImage(data: imageData.data) ?? UIImage(systemName: "star.fill")!)
+                                        .resizable()
+                                    Text(imageData.title)
+                                }
+                            }
+                            .background(.red)
+                        }
                     }
                 }
             }
@@ -51,7 +60,10 @@ struct RandomImageView:
     RandomImageView()
 }
 
-struct ImageData: Hashable {
+struct ImageData: Hashable, Identifiable {
+    let id = UUID()
     let data: Data
-    let title: String
+    var title: String
 }
+
+
