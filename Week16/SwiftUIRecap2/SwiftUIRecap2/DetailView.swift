@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
-    let market: Market
+    @Binding var market: Market
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -29,5 +30,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(market: Market(market: "안녕세상아", koreanName: "안녕세상아 코인", englishName: "Hello world Coin"))
+    DetailView(market: .constant(Market(market: "안녕세상아", koreanName: "안녕세상아 코인", englishName: "Hello world Coin")))
 }

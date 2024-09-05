@@ -10,25 +10,17 @@ import SwiftUI
 struct CoinView: View {
     @State private var searchText = ""
     @State private var allMarkets: Markets = []
-    private var filteredMarkets: Markets {
-        if searchText.isEmpty {
-            return allMarkets
-        }
-        
-        return allMarkets.filter {
-            return $0.koreanName.localizedStandardContains(searchText) || $0.englishName.localizedStandardContains(searchText) || $0.market.localizedStandardContains(searchText)
-        }
-    }
+    @State private var filteredMarkets: Markets = []
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack {
-                    ForEach(filteredMarkets) { market in
+                    ForEach($filteredMarkets) { $market in
                         NavigationLink {
-                            DetailView(market: market)
+                            DetailView(market: $market)
                         } label: {
-                            RowView(market: market)
+                            RowView(market: $market)
                         }
                     }
                 }
@@ -40,12 +32,26 @@ struct CoinView: View {
             .task {
                 do {
                     allMarkets = try await UpbitAPI.fetchMarket()
+                    filteredMarkets = allMarkets
                 } catch {
                     print("error: \(error.localizedDescription)")
                 }
                 
             }
             .searchable(text: $searchText, prompt: "Search")
+            .onChange(of: searchText) { newValue in
+                print(newValue)
+                if newValue.isEmpty {
+                    print("Empty")
+                    filteredMarkets = allMarkets
+                }
+                
+                let filteredData = allMarkets.filter {
+                    return $0.koreanName.localizedStandardContains(searchText) || $0.englishName.localizedStandardContains(searchText) || $0.market.localizedStandardContains(searchText)
+                }
+                filteredMarkets = filteredData
+                
+            }
             .refreshable {
                 do {
                     print("refreshing")
@@ -67,7 +73,8 @@ struct RowView: View {
         "bitcoinsign.square",
         "bitcoinsign.square.fill"
     ]
-    let market: Market
+    @Binding var market: Market
+    
     var body: some View {
         HStack(alignment: .center) {
             Image(systemName: bitCoinImages.randomElement() ?? "bitcoinsign")
@@ -87,7 +94,7 @@ struct RowView: View {
             }
             
             Button {
-                
+                market.like.toggle()
             } label: {
                 Image(systemName: "star")
                     .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
