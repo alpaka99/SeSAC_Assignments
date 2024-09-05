@@ -88,16 +88,6 @@ struct Banner: Hashable, Identifiable {
 }
 
 
-extension Color {
-    static func random() -> Color {
-        return Color.init(
-            red: Double.random(in: 0...1),
-            green: Double.random(in: 0...1),
-            blue: Double.random(in: 0...1)
-        )
-    }
-}
-
 struct rowView: View {
     @Binding var market: Market
     
