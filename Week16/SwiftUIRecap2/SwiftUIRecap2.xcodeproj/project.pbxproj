@@ -21,6 +21,8 @@
 		CE91E53A2C87C643000656E0 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5392C87C643000656E0 /* MarketModel.swift */; };
 		CE91E53C2C87CEFA000656E0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E53B2C87CEFA000656E0 /* DetailView.swift */; };
 		CE91E53E2C87D401000656E0 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E53D2C87D401000656E0 /* Color+.swift */; };
+		CE91E5442C89C734000656E0 /* RandomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5432C89C734000656E0 /* RandomImageView.swift */; };
+		CE91E5462C89C7A4000656E0 /* PicsumAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5452C89C7A4000656E0 /* PicsumAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		CE91E5392C87C643000656E0 /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
 		CE91E53B2C87CEFA000656E0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CE91E53D2C87D401000656E0 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		CE91E5432C89C734000656E0 /* RandomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageView.swift; sourceTree = "<group>"; };
+		CE91E5452C89C7A4000656E0 /* PicsumAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsumAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				CE91E5152C85D971000656E0 /* SwiftUIRecap2App.swift */,
+				CE91E5432C89C734000656E0 /* RandomImageView.swift */,
+				CE91E5452C89C7A4000656E0 /* PicsumAPI.swift */,
 				CE91E5172C85D971000656E0 /* LaunchView.swift */,
 				CE91E5192C85D973000656E0 /* Assets.xcassets */,
 				CE91E51B2C85D973000656E0 /* Preview Content */,
@@ -174,11 +180,13 @@
 				CE91E52A2C85E83F000656E0 /* ProfileSelectionView.swift in Sources */,
 				CE91E52C2C86782E000656E0 /* CoinView.swift in Sources */,
 				CE91E53C2C87CEFA000656E0 /* DetailView.swift in Sources */,
+				CE91E5442C89C734000656E0 /* RandomImageView.swift in Sources */,
 				CE91E53A2C87C643000656E0 /* MarketModel.swift in Sources */,
 				CE91E5262C85DDC7000656E0 /* ProfileImage.swift in Sources */,
 				CE91E5282C85DF61000656E0 /* CircleImageView.swift in Sources */,
 				CE91E5182C85D971000656E0 /* LaunchView.swift in Sources */,
 				CE91E5162C85D971000656E0 /* SwiftUIRecap2App.swift in Sources */,
+				CE91E5462C89C7A4000656E0 /* PicsumAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
