@@ -9,30 +9,31 @@ import SwiftUI
 
 struct RandomImageView:
     View {
-    @State private var data: Data = Data()
+    @State private var dataArray: [Data] = []
+    
+    let gridItems: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach(0..<4) { _ in
-                    ScrollView(.horizontal) {
-                        LazyHStack {
-                            ForEach(0..<10) { _ in
-                                AsyncImage(url: URL(string: "https://picsum.photos/200/300"))
-                            }
-                        }
-                    }
+            LazyVGrid(columns: gridItems) {
+                
+                ForEach(dataArray, id: \.self) { data in
+                    Image(uiImage: UIImage(data: data) ?? UIImage(systemName: "star.fill")!)
                 }
             }
-        }
-        
-//            .task {
-//                do {
-//                    data = try await PicsumAPI.shared.requestPicsumData()
-//                } catch {
-//                    print("Image fetch error")
-//                }
-//            }
+                
+            }
+            .task {
+                do {
+                    dataArray = try await PicsumAPI.shared.requestPicsumData(of: 10)
+                } catch {
+                    print("Image fetch error")
+                }
+            }
     }
 }
 
