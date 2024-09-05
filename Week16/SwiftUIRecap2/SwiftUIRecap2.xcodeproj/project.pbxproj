@@ -25,6 +25,7 @@
 		CE91E5462C89C7A4000656E0 /* PicsumAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5452C89C7A4000656E0 /* PicsumAPI.swift */; };
 		CE91E5482C8A54A6000656E0 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5472C8A54A6000656E0 /* NavigationLazyView.swift */; };
 		CE91E54A2C8A55C5000656E0 /* DetailRandomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E5492C8A55C5000656E0 /* DetailRandomImageView.swift */; };
+		CE91E54C2C8A5888000656E0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE91E54B2C8A5888000656E0 /* CategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		CE91E5452C89C7A4000656E0 /* PicsumAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsumAPI.swift; sourceTree = "<group>"; };
 		CE91E5472C8A54A6000656E0 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		CE91E5492C8A55C5000656E0 /* DetailRandomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRandomImageView.swift; sourceTree = "<group>"; };
+		CE91E54B2C8A5888000656E0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				CE91E5292C85E83F000656E0 /* ProfileSelectionView.swift */,
 				CE91E52D2C867A33000656E0 /* MBTIView.swift */,
 				CE91E5392C87C643000656E0 /* MarketModel.swift */,
+				CE91E54B2C8A5888000656E0 /* CategoryView.swift */,
 			);
 			path = SwiftUIRecap2;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE91E52E2C867A33000656E0 /* MBTIView.swift in Sources */,
+				CE91E54C2C8A5888000656E0 /* CategoryView.swift in Sources */,
 				CE91E53E2C87D401000656E0 /* Color+.swift in Sources */,
 				CE91E5382C87C635000656E0 /* UpbitAPI.swift in Sources */,
 				CE91E5242C85DB6D000656E0 /* ProfileSettingView.swift in Sources */,
