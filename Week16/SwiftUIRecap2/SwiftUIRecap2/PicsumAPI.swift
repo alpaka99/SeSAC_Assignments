@@ -19,7 +19,7 @@ final class PicsumAPI {
                 
                 taskGroup.addTask {
                     let url = URL(string: "https://picsum.photos/200/300")!
-                        let (data, response) = try await URLSession.shared.data(from: url)
+                        let (data, _) = try await URLSession.shared.data(from: url)
                         
                         return data
                 }
