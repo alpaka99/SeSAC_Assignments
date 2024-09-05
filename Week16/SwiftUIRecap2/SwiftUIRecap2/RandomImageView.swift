@@ -9,31 +9,41 @@ import SwiftUI
 
 struct RandomImageView:
     View {
-    @State private var dataArray: [Data] = []
+    @State private var imageDataArray: [ImageData] = []
     
     let gridItems: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(minimum: 30, maximum: 400)),
+        GridItem(.flexible(minimum: 30, maximum: 400)),
+        GridItem(.flexible(minimum: 30, maximum: 400))
     ]
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: gridItems) {
-                
-                ForEach(dataArray, id: \.self) { data in
-                    Image(uiImage: UIImage(data: data) ?? UIImage(systemName: "star.fill")!)
+                ForEach(imageDataArray, id: \.self) { imageData in
+                    VStack {
+                        Image(uiImage: UIImage(data: imageData.data) ?? UIImage(systemName: "star.fill")!)
+                            .resizable()
+                        Text(imageData.title)
+                    }
                 }
             }
                 
             }
             .task {
-                do {
-                    dataArray = try await PicsumAPI.shared.requestPicsumData(of: 10)
-                } catch {
-                    print("Image fetch error")
-                }
+                await fetchImageGroup()
             }
+            .refreshable {
+                await fetchImageGroup()
+            }
+    }
+    
+    func fetchImageGroup() async {
+        do {
+            imageDataArray = try await PicsumAPI.shared.requestPicsumData(of: 10)
+        } catch {
+            print("Image fetch error")
+        }
     }
 }
 
@@ -41,7 +51,7 @@ struct RandomImageView:
     RandomImageView()
 }
 
-struct ImageData {
-    let url = "https://picsum.photos/200/300"
+struct ImageData: Hashable {
+    let data: Data
     let title: String
 }

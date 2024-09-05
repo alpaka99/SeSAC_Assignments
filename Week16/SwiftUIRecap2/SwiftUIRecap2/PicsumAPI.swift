@@ -11,9 +11,9 @@ final class PicsumAPI {
     static let shared = PicsumAPI()
     private init() { }
     
-    func requestPicsumData(of iteration: Int) async throws -> [Data] {
+    func requestPicsumData(of iteration: Int) async throws -> [ImageData] {
         try await withThrowingTaskGroup(of: Data.self) { taskGroup in
-            var dataGroup = [Data]()
+            var imaggeDataGroup = [ImageData]()
             for _ in 0..<iteration {
                 
                 
@@ -25,10 +25,11 @@ final class PicsumAPI {
                 }
                 
                 for try await data in taskGroup {
-                    dataGroup.append(data)
+                    let imageData = ImageData(data: data, title: "이미지: \(Int.random(in: 1...100))")
+                    imaggeDataGroup.append(imageData)
                 }
             }
-            return dataGroup
+            return imaggeDataGroup
         }
     }
 }
